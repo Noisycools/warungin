@@ -56,7 +56,9 @@
         </div>
       </div>
       <div class="credits">
-        <a href="homepage.php"><img src="img/WarungIn.png" alt="warungin"></a>
+        <!-- Marked -->
+        <a href="/index"><img src="img/WarungIn.png" alt="warungin"></a>
+        <!-- Marked -->
       </div>
     </div>
   </div>
