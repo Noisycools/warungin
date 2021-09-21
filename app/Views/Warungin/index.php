@@ -18,11 +18,11 @@
             <li><a href="#home">Home</a></li>
             <li><a href="#product">Product</a></li>
             <li><a href="/contact_us">Contact Us</a></li>
-            <li><a href="/daftar_belanja">WarungKu</a></li>
+            <li><a href="#">WarungKu</a></li>
         </ul>
         <div class="user">
             <span><a class="a" href="/login">Login</a></span>
-            <span class="unik"><a class="unk" href="/daftar"><img src="img/new.png" alt="">Sign Up</a></span>
+            <span class="unik"><a class="unk" href="/register"><img src="img/new.png" alt="">Sign Up</a></span>
         </div>
         <span class="check">
             <div class="hamburger"></div>

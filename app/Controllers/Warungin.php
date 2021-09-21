@@ -24,19 +24,19 @@ class Warungin extends BaseController
         return view('Warungin/index', $data);
     }
 
-    public function login()
-    {
-        return view('Warungin/login');
-    }
-    public function daftar()
-    {
-        return view('Warungin/daftar');
-    }
+    // public function login()
+    // {
+    //     return view('Warungin/login');
+    // }
+    // public function daftar()
+    // {
+    //     return view('Warungin/daftar');
+    // }
     public function contact_us()
     {
         return view('Warungin/contact_us');
     }
-    public function warungku()
+    public function daftar_belanja()
     {
         return view('Warungin/daftar_belanja');
     }

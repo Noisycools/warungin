@@ -32,10 +32,10 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Warungin::index');
-$routes->get('/login', 'Warungin::login');
-$routes->get('/daftar', 'Warungin::daftar');
+// $routes->get('/login', 'Warungin::login');
+// $routes->get('/daftar', 'Warungin::daftar');
 $routes->get('/contact_us', 'Warungin::contact_us');
-$routes->get('/daftar_belanja', 'Warungin::warungku');
+$routes->get('/daftar_belanja', 'Warungin::daftar_belanja');
 
 
 /*
