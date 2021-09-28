@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ind">
+<html lang="eng">
 
 <head>
     <meta charset="UTF-8">
@@ -19,10 +19,17 @@
             <li><a href="#product">Product</a></li>
             <li><a href="/contact_us">Contact Us</a></li>
             <li><a href="#">WarungKu</a></li>
+            <?php if (logged_in()) : ?>
+                <li><a href="/daftar_belanja">Daftar Belanja</a></li>
+            <?php endif; ?>
         </ul>
         <div class="user">
-            <span><a class="a" href="/login">Login</a></span>
-            <span class="unik"><a class="unk" href="/register"><img src="img/new.png" alt="">Sign Up</a></span>
+            <?php if (logged_in()) : ?>
+                <span><a class="a" href="/logout">Logout</a></span>
+            <?php else : ?>
+                <span><a class="a" href="/login">Login</a></span>
+                <span class="unik"><a class="unk" href="/register"><img src="img/new.png" alt="">Sign Up</a></span>
+            <?php endif; ?>
         </div>
         <span class="check">
             <div class="hamburger"></div>
@@ -34,15 +41,19 @@
         <div class="jumbotron" id="home">
             <div class="jumboText">
                 <h1>WarungIn</h1>
-                <p>Pengen nyetok warung jadi lebih praktis dan terorganisir ?<br>
-                    Males keluar Rumah untuk belanja stok di warung ?
-                </p>
-                <div class="continue">
-                    <p>Coba WarungIn Aja Dengan</p>
-                    <span class="sosmed"><img src="img/google.png" alt=""> With Google</span>
-                    <span class="garus">|</span>
-                    <span class="sosmed fb"><img src="img/fb.png" alt=""> With Facebook</span>
-                </div>
+                <?php if (logged_in()) : ?>
+                    <p>Selamat datang kembali!</p>
+                <?php else : ?>
+                    <p>Pengen nyetok warung jadi lebih praktis dan terorganisir ?<br>
+                        Males keluar Rumah untuk belanja stok di warung ?
+                    </p>
+                    <div class="continue">
+                        <p>Coba WarungIn Aja Dengan</p>
+                        <span class="sosmed"><img src="img/google.png" alt=""> With Google</span>
+                        <span class="garus">|</span>
+                        <span class="sosmed fb"><img src="img/fb.png" alt=""> With Facebook</span>
+                    </div>
+                <?php endif; ?>
             </div>
             <div class="img">
                 <img src="img/jumbotron.png" alt="">

@@ -32,7 +32,7 @@ class Filters extends BaseConfig
 	 */
 	public $globals = [
 		'before' => [
-			'honeypot',
+			// 'honeypot',
             // 'login'
 			// 'csrf',
 		],
@@ -64,6 +64,6 @@ class Filters extends BaseConfig
 	 */
 	public $filters = [
 		//                           ini bisa diganti sesuai method controller
-		// 'login' => ['before' => ['warungku', 'daftar_belanja']],
+		'login' => ['before' => ['warungku', 'daftar_belanja']],
 	];
 }

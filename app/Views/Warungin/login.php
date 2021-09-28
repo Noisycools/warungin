@@ -33,7 +33,6 @@
                 <div class="btn fb"><img class="facebook" src="img/fb.png" alt="">Login With Facebook</div>
                 <div class="strip"></div>
                 <div class="forgot">
-                    <p class="ft"><a href="#">Forgot Password ?</a></p>
                     <p class="ft">Don't have an account?<a href="daftar.php">Create one!</a></p>
                 </div>
             </form>
