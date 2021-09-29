@@ -14,11 +14,11 @@ class Warungin extends BaseController
 
     public function index()
     {
-        //$tabel_barang = $this->barangModel->findAll();
+        $tabel_barang = $this->barangModel->findAll();
 
         $data = [
             'title' => 'Warungin',
-            'barang' => $this->barangModel->getBarang()
+            'barang' => $tabel_barang
         ];
 
         return view('Warungin/index', $data);

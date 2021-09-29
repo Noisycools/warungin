@@ -1,16 +1,3 @@
-<!-- ==================== -->
-<?php
-
-if (!isset($_SESSION['user'])) {
-  header("Location: login.php");
-}
-
-$koneksi = mysqli_connect('localhost:3307', 'root', '', 'warungin');
-
-?>
-<!-- ==================== -->
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,34 +32,26 @@ $koneksi = mysqli_connect('localhost:3307', 'root', '', 'warungin');
           <div class="col col-qty align-center">QTY</div>
           <div class="col">Total</div>
         </div>
-
-        <?php
-        $result1 = mysqli_query($koneksi, "SELECT * FROM daftar_belanja");
-        while ($row = mysqli_fetch_array($result1)) {
-
-
-        ?>
-          <div class="layout-inline row">
-            <div class="col col-pro layout-inline">
-              <img src="<?php echo $row['img_barang'] ?>" alt="kitten" />
-              <p><?php echo $row['nama_barang'] ?></p>
-            </div>
-
-            <div class="col col-price col-numeric align-center ">
-              <p><?php echo $row['harga_barang'] ?></p>
-            </div>
-
-            <div class="col col-qty layout-inline">
-              <a href="#" class="qty qty-minus">-</a>
-              <input type="numeric" value="<?php echo $row['qty'] ?>" />
-              <a href="#" class="qty qty-plus">+</a>
-            </div>
-
-            <div class="col col-total col-numeric">
-              <p> <?php echo $row['harga_barang'] ?></p>
-            </div>
+        <div class="layout-inline row">
+          <div class="col col-pro layout-inline">
+            <img src="img/shampoo.jpg" alt="kitten" />
+            <p>Lifebuoy Shampoo</p>
           </div>
-        <?php } ?>
+
+          <div class="col col-price col-numeric align-center ">
+            <p>16000</p>
+          </div>
+
+          <div class="col col-qty layout-inline">
+            <a href="#" class="qty qty-minus">-</a>
+            <input type="numeric" value="1" />
+            <a href="#" class="qty qty-plus">+</a>
+          </div>
+
+          <div class="col col-total col-numeric">
+            <p> 16000</p>
+          </div>
+        </div>
 
 
         <div class="tf">

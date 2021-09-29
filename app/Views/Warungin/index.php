@@ -19,7 +19,11 @@
             <li><a href="#product">Product</a></li>
             <li><a href="/contact_us">Contact Us</a></li>
             <li><a href="#">WarungKu</a></li>
-            <?php if (logged_in()) : ?>
+            <?php
+
+use Myth\Auth\Collectors\Auth;
+
+if (logged_in()) : ?>
                 <li><a href="/daftar_belanja">Daftar Belanja</a></li>
             <?php endif; ?>
         </ul>
@@ -42,7 +46,7 @@
             <div class="jumboText">
                 <h1>WarungIn</h1>
                 <?php if (logged_in()) : ?>
-                    <p>Selamat datang kembali!</p>
+                    <p>Selamat datang kembali !</p>
                 <?php else : ?>
                     <p>Pengen nyetok warung jadi lebih praktis dan terorganisir ?<br>
                         Males keluar Rumah untuk belanja stok di warung ?
@@ -72,18 +76,11 @@
                 <span>Lihat Semua</span>
                 <div class="slider"><img src="img/slider.png" alt=""></div>
                 <div class="items">
-                    <div class="item"><img src="img/images (31).jpeg" alt="">
-                        <p>Indomie Goreng</p><span>Warung Mang Sholeh <br>Jl. Kebon Jeruk</span>
+                    <?php foreach($barang as $b) : ?>
+                    <div class="item"><img src="<?php echo $b['foto_barang'] ?>" alt="">
+                        <p><?php echo $b['nama_barang'] ?></p><span><?php echo $b['pemilik_barang'] ?> <br>Jl. Kebon Jeruk</span>
                     </div>
-                    <div class="item"><img src="img/shampoo.jpg" alt="">
-                        <p>Shampo</p><span>Warung Mang Sholeh <br>Jl. Kebon Jeruk</span>
-                    </div>
-                    <div class="item"><img src="img/kopikap.jpg" alt="">
-                        <p>Kopikap</p><span>Warung Mang Sholeh <br>Jl. Kebon Jeruk</span>
-                    </div>
-                    <div class="item"><img src="img/ciki.jpg" alt="">
-                        <p>Indomie Goreng</p><span>Warung Mang Sholeh <br>Jl. Kebon Jeruk</span>
-                    </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div>
