@@ -36,7 +36,7 @@
             <div class="jumboText">
                 <h1>WarungIn</h1>
                 <p>
-                    Selamat datang  ?>!
+                    Selamat datang ?>!
                 </p>
             </div>
             <div class="img">
