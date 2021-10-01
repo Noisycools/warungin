@@ -34,4 +34,14 @@ class Pages extends BaseController
     {
         return view('pages/warungku');
     }
+
+    public function detail_barang($slug)
+    {
+        $data = [
+            'title' => 'Detail Barang',
+            'barang' => $this->barangModel->getBarang($slug),
+        ];
+
+        return view('pages/detail_barang', $data);
+    }
 }

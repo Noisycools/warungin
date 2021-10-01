@@ -8,11 +8,11 @@ class BarangModel extends Model
 {
     protected $table      = 'tabel_barang';
     protected $primaryKey = 'barang_id';
-    public function getBarang($id = false)
+    public function getBarang($slug = false)
     {
-        if ($id == false) {
+        if ($slug == false) {
             return $this->findAll();
         }
-        return $this->where(['id' => $id])->first();
+        return $this->where(['slug' => $slug])->first();
     }
 }

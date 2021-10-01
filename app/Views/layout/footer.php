@@ -1,5 +1,5 @@
 <footer>
-    <img src="img/WarungIn.png" alt="">
+    <img src="/img/WarungIn.png" alt="">
     <ul>
         <li><a href="">Kerja Sama</a></li>
         <li><a href="">About</a></li>
