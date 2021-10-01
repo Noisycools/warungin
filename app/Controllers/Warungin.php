@@ -17,7 +17,7 @@ class Warungin extends BaseController
         $tabel_barang = $this->barangModel->findAll();
 
         $data = [
-            'title' => 'Warungin',
+            'title' => 'Warungin | Platform Penyetok Warung',
             'barang' => $tabel_barang
         ];
 

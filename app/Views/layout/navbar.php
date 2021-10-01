@@ -1,7 +1,7 @@
 <div class="navbar">
-    <img src="img/WarungIn.png" alt="">
+    <img src="/img/WarungIn.png" alt="">
     <ul class="nav">
-        <li><a href="#home">Home</a></li>
+        <li><a href="/">Home</a></li>
         <li><a href="#product">Product</a></li>
         <li><a href="/contact_us">Contact Us</a></li>
         <li><a href="#">WarungKu</a></li>

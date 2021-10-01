@@ -37,9 +37,11 @@
             <div class="slider"><img src="img/slider.png" alt=""></div>
             <div class="items">
                 <?php foreach ($barang as $b) : ?>
-                    <div class="item"><img src="<?php echo $b['foto_barang'] ?>" alt="">
-                        <p><?php echo $b['nama_barang'] ?></p><span><?php echo $b['pemilik_barang'] ?> <br>Jl. Kebon Jeruk</span>
-                    </div>
+                    <a href="/pages/detail_barang/<?= $b['slug']; ?>">
+                        <div class="item"><img src="<?php echo $b['foto_barang'] ?>" alt="">
+                            <p><?php echo $b['nama_barang'] ?></p><span><?php echo $b['pemilik_barang'] ?> <br>Jl. Kebon Jeruk</span>
+                        </div>
+                    </a>
                 <?php endforeach; ?>
             </div>
         </div>

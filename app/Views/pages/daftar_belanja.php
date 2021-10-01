@@ -13,7 +13,7 @@
 <body>
   <div class="container">
     <div class="heading">
-      <a href="homepage.php"><img src="img/WarungIn.png" alt="WarungIn"></a>
+      <a href="/"><img src="img/WarungIn.png" alt="WarungIn"></a>
       <a href="#" class="visibility-cart transition is-open">X</a>
     </div>
 
