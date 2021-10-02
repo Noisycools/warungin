@@ -25,24 +25,26 @@
           <div class="app-contact">CONTACT INFO : (+62) 815-6395-7870</div>
         </div>
         <div class="screen-body-item">
+          <?= form_open('Email/sendEmail') ?>
           <div class="app-form">
             <div class="app-form-group">
-              <input class="app-form-control" placeholder="NAMA">
+              <input class="app-form-control" placeholder="NAMA" name="nama">
             </div>
             <div class="app-form-group">
-              <input class="app-form-control" placeholder="EMAIL">
+              <input class="app-form-control" placeholder="EMAIL" name="email">
             </div>
             <div class="app-form-group">
-              <input class="app-form-control" placeholder="NOMOR KONTAK">
+              <input class="app-form-control" placeholder="NOMOR KONTAK" name="nomor_kontak">
             </div>
             <div class="app-form-group message">
-              <input class="app-form-control" placeholder="PESAN">
+              <input class="app-form-control" placeholder="PESAN" name="pesan">
             </div>
             <div class="app-form-group buttons">
-              <button class="app-form-button">BATAL</button>
-              <button class="app-form-button">KIRIM</button>
+              <button type="submit" name="cancel_submit" class="app-form-button">BATAL</button>
+              <button type="submit" name="submit_email" class="app-form-button">KIRIM</button>
             </div>
           </div>
+          <?= form_close() ?>
         </div>
       </div>
     </div>
