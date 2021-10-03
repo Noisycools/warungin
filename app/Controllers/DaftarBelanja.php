@@ -8,5 +8,21 @@ class DaftarBelanja extends BaseController
 {
     public function add()
     {
+        $db = \Config\Database::connect();
+
+        $slug = $this->request->getVar('slug');
+        $data = $db->query("SELECT * FROM tabel_barang WHERE slug = '$slug' ");
+
+        // this qty not programmed yet okayy
+        $qty = 1;
+
+        $row   = $data->getRowArray();
+        $nama_barang = $row['nama_barang'];
+        $harga_barang = $row['harga_barang'];
+        $img_barang = $row['foto_barang'];
+
+        $db->query("INSERT INTO daftar_belanja(qty, nama_barang, harga_barang, img_barang) VALUES('$qty', '$nama_barang', '$harga_barang', '$img_barang')");
+
+        return redirect()->to('/');
     }
 }

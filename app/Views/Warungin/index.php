@@ -40,11 +40,14 @@
                     <a href="/pages/detail_barang/<?= $b['slug']; ?>">
                         <div class="item"><img src="<?php echo $b['foto_barang'] ?>" alt="">
                             <p><?php echo $b['nama_barang'] ?></p><span><?php echo $b['pemilik_barang'] ?> <br>Jl. Kebon Jeruk</span><br>
-                            <div class="btn-1">
-                                <div class="btn-a">
-                                    <a href="/daftarbelanja/add"><span>Tambahkan ke Daftar Belanja</span></a>
+                            <form action="/daftarbelanja/add" method="post">
+                                <input type="hidden" name="slug" value="<?= $b['slug']; ?>">
+                                <div class="btn-1">
+                                    <div class="btn-a">
+                                        <button type="submit"><span>Tambahkan ke Daftar Belanja</span></button>
+                                    </div>
                                 </div>
-                            </div>
+                            </form>
                         </div>
                     </a>
                 <?php endforeach; ?>

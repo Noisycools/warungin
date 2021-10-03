@@ -21,20 +21,23 @@
         </div>
         <div class="col">Total</div>
       </div>
-      <div class="layout-inline row">
-        <div class="col col-pro layout-inline">
-          <img src="img/shampoo.jpg" alt="kitten" />
-          <p>Lifebuoy Shampoo</p>
+      <?php foreach ($barang as $b) : ?>
+        <div class="layout-inline row">
+          <div class="col col-pro layout-inline">
+            <img src="/<?= $b['img_barang']; ?>" alt="kitten" />
+            <p><?= $b['nama_barang']; ?></p>
+          </div>
+
+          <div class="col col-price col-numeric align-center ">
+            <p><?= (int)$b['harga_barang'] * $b['qty']; ?></p>
+          </div>
+
+          <div class="col col-total col-numeric">
+            <p><?= $b['harga_barang']; ?></p>
+          </div>
         </div>
 
-        <div class="col col-price col-numeric align-center ">
-          <p>16000</p>
-        </div>
-
-        <div class="col col-total col-numeric">
-          <p> 16000</p>
-        </div>
-      </div>
+      <?php endforeach; ?>
 
 
       <div class="tf">

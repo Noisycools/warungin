@@ -3,13 +3,17 @@
 namespace App\Controllers;
 
 use App\Models\BarangModel;
+use App\Models\DaftarBelanjaModel;
 
 class Pages extends BaseController
 {
     protected $barangModel;
+    protected $daftarBelanjaModel;
+
     public function __construct()
     {
         $this->barangModel = new BarangModel();
+        $this->daftarBelanjaModel = new DaftarBelanjaModel();
     }
 
     public function homepage()
@@ -19,8 +23,11 @@ class Pages extends BaseController
 
     public function daftar_belanja()
     {
+        $daftar_belanja = $this->daftarBelanjaModel->findAll();
+
         $data = [
             'title' => 'Daftar Belanja | Warungin',
+            'barang' => $daftar_belanja
         ];
 
         return view('pages/daftar_belanja', $data);
