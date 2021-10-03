@@ -13,9 +13,9 @@ class Email extends BaseController
     public function index()
     {
         $data = [
-            'title' => 'Halaman Email'
+            'title' => 'Hubungi Kami | WarungIn'
         ];
-        $this->load->view('contact_us', $data);
+        $this->load->view('pages/contact_us', $data);
     }
 
     public function sendEmail()

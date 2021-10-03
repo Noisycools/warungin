@@ -33,7 +33,7 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 
 $routes->get('/', 'Warungin::index');
-$routes->get('/contact_us', 'Pages::contact_us');
+$routes->get('/contact_us', 'Email::index');
 $routes->get('/daftar_belanja', 'Pages::daftar_belanja');
 $routes->get('/homepage', 'Pages::homepage');
 

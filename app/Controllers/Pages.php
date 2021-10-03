@@ -17,14 +17,6 @@ class Pages extends BaseController
         return view('pages/homepage');
     }
 
-    public function contact_us()
-    {
-        $data = [
-            'title' => 'Hubungi Kami | WarungIn'
-        ];
-        return view('pages/contact_us', $data);
-    }
-
     public function daftar_belanja()
     {
         return view('pages/daftar_belanja');
