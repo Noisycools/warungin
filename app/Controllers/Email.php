@@ -2,12 +2,18 @@
 
 namespace App\Controllers;
 
+use App\Models\EmailModel;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
 class Email extends BaseController
 {
+    protected $emailModel;
     public function __construct()
     {
         helper('form');
         $email = \Config\Services::email();
+        $this->emailModel = new EmailModel();
     }
 
     public function index()
@@ -20,39 +26,35 @@ class Email extends BaseController
 
     public function sendEmail()
     {
-        if (isset($_POST['submit_email'])) {
-            $nama = $this->input->post('nama');
-            $email = $this->input->post('email');
-            $nomor_kontak = $this->input->post('nomor_kontak');
-            $pesan = $this->input->post('pesan');
+        $mail = new PHPMailer(true);
 
-            if (!empty($email)) {
-                // configuration to email & process
-                $config = [
-                    'mailtype' => 'html',
-                    'charset' => 'iso-8859-1',
-                    'protocol' => 'smtp',
-                    'smtp_host' => 'ssl:smtp.googlemail.com',
-                    'smtp_user' => 'warungin.id@gmail.com',
-                    'smtp_pass' => 'penyetokwarung',
-                    'smtp_port' => 465
-                ];
+        if (isset($_POST['submit'])) {
+            $nama = $_POST['nama'];
+            $email = $_POST['email'];
+            $nomor_kontak = $_POST['nomor_kontak'];
+            $pesan = $_POST['pesan'];
 
-                $this->load->library('email', $config);
-                $this->email->initialize($config);
-                // end config
-                $this->email->from('emailFrom');
-                $this->email->to($email);
-                $this->email->subject($nama);
-                $this->email->message($nomor_kontak);
-                $this->email->message($pesan);
+            try {
+                $mail->isSMTP();
+                $mail->Host = 'smtp.gmail.com';
+                $mail->SMTPAuth = true;
+                $mail->Username = 'warungin.id@gmail.com';
+                $mail->Password = 'penyetokwarung';
+                $mail->SMTPSecure = 'tsl';
+                $mail->Port = '587';
 
-                if ($this->email->send()) {
-                    return redirect()->to('/contact_us');
-                } else {
-                    show_error($this->email->print_debugger());
-                }
+                $mail->setFrom('warungin.id@gmail.com');
+                $mail->addAddress('warungin.id@gmail.com');
+
+                $mail->isHTML(true);
+                $mail->Subject = 'Message Received (Contact Page)';
+                $mail->Body = "<h3>Name : '$nama' <br>Email : '$email' <br>Nomor Kontak : '$nomor_kontak' <br>Pesan : '$pesan' </h3>";
+
+                $mail->send();
+            } catch (Exceptions $e) {
+                $alert = "<span>'.$e'</span>";
             }
+            return redirect()->to('/contact_us');
         }
     }
 }
