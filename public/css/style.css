@@ -374,7 +374,6 @@ body {
 }
 
 .prod .items .item p {
-  margin: 0px 10px;
   color: black;
   font-family: sans-serif;
   font-weight: 1000;
@@ -386,9 +385,70 @@ body {
   color: black;
   font-size: 10px;
   top: 0px;
-  left: 18px;
+  left: 3px;
   color: red;
   font-weight: 1000;
+}
+
+.btn-1 {
+  width: 150px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.btn-1 {
+  text-decoration: none;
+  border: 2px solid #010100;
+  margin-top: 10px;
+  padding: 5px;
+  color: #000;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+  display: inline-block;
+}
+
+.btn-1 span {
+  position: relative;
+  /* z-index coz when we put bg to before and after this span text will not be visible */
+  z-index: 3;
+}
+
+.btn-1::before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: -2px;
+  width: calc(100% + 6px);
+  /*100% plus double the times left values*/
+  height: calc(100% - 10px);
+  background-color: #ffffff;
+  transition: all 0.5s ease-in-out;
+  transform: scaleY(1);
+}
+
+.btn-1:hover::before {
+  transform: scaleY(0);
+}
+
+.btn-1::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: -5px;
+  width: calc(100% - 10px);
+  /*100% plus double the times left values*/
+  height: calc(100% + 10px);
+  background-color: #ffffff;
+  transition: all 0.5s ease-in-out;
+  transform: scaleX(1);
+}
+
+.btn-1:hover::after {
+  transform: scaleX(0);
 }
 
 footer {

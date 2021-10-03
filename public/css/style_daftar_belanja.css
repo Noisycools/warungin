@@ -54,7 +54,7 @@ a {
 .container {
   max-width: 75em;
   width: 95%;
-  margin: 40px auto;
+  margin-top: 70px;
   overflow: hidden;
   position: relative;
 

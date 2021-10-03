@@ -19,7 +19,11 @@ class Pages extends BaseController
 
     public function daftar_belanja()
     {
-        return view('pages/daftar_belanja');
+        $data = [
+            'title' => 'Daftar Belanja | Warungin',
+        ];
+
+        return view('pages/daftar_belanja', $data);
     }
 
     public function warungku()

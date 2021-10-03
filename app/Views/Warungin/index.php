@@ -39,7 +39,12 @@
                 <?php foreach ($barang as $b) : ?>
                     <a href="/pages/detail_barang/<?= $b['slug']; ?>">
                         <div class="item"><img src="<?php echo $b['foto_barang'] ?>" alt="">
-                            <p><?php echo $b['nama_barang'] ?></p><span><?php echo $b['pemilik_barang'] ?> <br>Jl. Kebon Jeruk</span>
+                            <p><?php echo $b['nama_barang'] ?></p><span><?php echo $b['pemilik_barang'] ?> <br>Jl. Kebon Jeruk</span><br>
+                            <div class="btn-1">
+                                <div class="btn-a">
+                                    <a href="/daftarbelanja/add"><span>Tambahkan ke Daftar Belanja</span></a>
+                                </div>
+                            </div>
                         </div>
                     </a>
                 <?php endforeach; ?>
