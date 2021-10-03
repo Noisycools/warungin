@@ -15,7 +15,7 @@ class Email extends BaseController
         $data = [
             'title' => 'Hubungi Kami | WarungIn'
         ];
-        $this->load->view('pages/contact_us', $data);
+        return view('pages/contact_us', $data);
     }
 
     public function sendEmail()
