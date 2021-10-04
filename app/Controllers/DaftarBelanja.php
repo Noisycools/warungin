@@ -23,6 +23,20 @@ class DaftarBelanja extends BaseController
 
         $db->query("INSERT INTO daftar_belanja(qty, nama_barang, harga_barang, img_barang) VALUES('$qty', '$nama_barang', '$harga_barang', '$img_barang')");
 
-        return redirect()->to('/');
+        return redirect()->to('/#product');
+    }
+
+    public function delete()
+    {
+        $db = \Config\Database::connect();
+
+        $nama_barang = $this->request->getVar('nama_barang');
+        $db->query("DELETE FROM daftar_belanja WHERE nama_barang = '$nama_barang' ");
+
+        return redirect()->to('/pages/daftar_belanja');
+    }
+
+    public function update()
+    {
     }
 }

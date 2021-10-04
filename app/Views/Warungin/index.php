@@ -30,12 +30,12 @@
         <span class="search" id="basic-addon2">Lokasi</span>
         <span class="search" id="basic-addon2">Radius</span>
     </div>
-    <div class="product">
+    <div class="product" id="product">
         <div class="prod">
             <h1>Best Seller</h1>
             <span>Lihat Semua</span>
             <div class="slider"><img src="img/slider.png" alt=""></div>
-            <div class="items">
+            <div class="items" id="items">
                 <?php foreach ($barang as $b) : ?>
                     <a href="/pages/detail_barang/<?= $b['slug']; ?>">
                         <div class="item"><img src="<?php echo $b['foto_barang'] ?>" alt="">

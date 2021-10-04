@@ -27,7 +27,7 @@ class Pages extends BaseController
 
         $data = [
             'title' => 'Daftar Belanja | Warungin',
-            'barang' => $daftar_belanja
+            'barang' => $daftar_belanja,
         ];
 
         return view('pages/daftar_belanja', $data);
