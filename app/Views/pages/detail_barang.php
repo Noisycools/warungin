@@ -42,7 +42,10 @@
             <!-- Product Pricing -->
             <div class="product-price">
                 <span>Rp. <?= $barang['harga_barang']; ?></span>
-                <a href="#" class="cart-btn">Tambahkan ke Daftar Belanja</a>
+                <form action="/daftarbelanja/add" method="post">
+                    <input type="hidden" name="slug" value="<?= $barang['slug']; ?>">
+                    <a href="" class="cart-btn"><button type="submit">Tambahkan ke Daftar Belanja</button></a>
+                </form>
             </div>
         </div>
 </main>

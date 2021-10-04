@@ -18,10 +18,11 @@
         <div class="col col-pro">Product</div>
         <div class="col col-price align-center "> Price</div>
         <div class="col">Total</div>
+        <div class="col">QTY</div>
         <div class="col"></div>
       </div>
-      <?php foreach ($barang as $b) : ?>
-
+      <?php $shipping = 0; ?>
+      <?php foreach ($barang as $b) : $shipping++; ?>
         <div class="layout-inline row">
           <div class="col col-pro layout-inline">
             <img src="/<?= $b['img_barang']; ?>" alt="kitten" />
@@ -34,6 +35,10 @@
 
           <div class="col col-total col-numeric">
             <p><?= $b['harga_barang']; ?></p>
+          </div>
+
+          <div class="col col-numeric">
+            <p><?= $b['qty']; ?></p>
           </div>
 
           <div class="col col-action">
@@ -57,7 +62,7 @@
           <div class="col">
             <p>Shipping</p>
           </div>
-          <div class="col"></div>
+          <div class="col"><?= $shipping ?></div>
         </div>
         <div class="row layout-inline">
           <div class="col">

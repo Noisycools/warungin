@@ -28,7 +28,6 @@ body {
   margin-top: 60px;
 }
 
-
 /* Left Column */
 .left-column img {
   margin-top: 70px;
@@ -139,6 +138,13 @@ body {
   padding: 12px 30px;
   transition: all 0.5s;
 }
+
+button {
+  outline: none;
+  all: unset;
+  cursor: pointer;
+}
+
 .cart-btn:hover {
   background-color: #64af3d;
 }
