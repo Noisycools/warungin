@@ -6,9 +6,7 @@
         <div class="jumboText">
             <h1>WarungIn</h1>
             <?php if (logged_in()) : ?>
-                <?php foreach ($users as $u) : ?>
-                    <p>Selamat datang kembali <?= $u['username']; ?>!</p>
-                <?php endforeach; ?>
+                    <p>Selamat datang kembali!</p>
             <?php else : ?>
                 <p>Pengen nyetok warung jadi lebih praktis dan terorganisir ?<br>
                     Males keluar Rumah untuk belanja stok di warung ?
