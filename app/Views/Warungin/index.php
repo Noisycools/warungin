@@ -6,16 +6,14 @@
         <div class="jumboText">
             <h1>WarungIn</h1>
             <?php if (logged_in()) : ?>
-                    <p>Selamat datang kembali!</p>
+                <p>Selamat datang kembali!</p>
             <?php else : ?>
-                <p>Pengen nyetok warung jadi lebih praktis dan terorganisir ?<br>
-                    Males keluar Rumah untuk belanja stok di warung ?
+                <p>Setok warung anda secara online melalui website <br>
+                    dengan satu klik!<br>
                 </p>
                 <div class="continue">
-                    <p>Coba WarungIn Aja Dengan</p>
-                    <span class="sosmed"><img src="img/google.png" alt=""> With Google</span>
-                    <span class="garus">|</span>
-                    <span class="sosmed fb"><img src="img/fb.png" alt=""> With Facebook</span>
+                    <p>Mulai daftar dan stock warungmu!</p>
+                    <span class="unik"><a class="unk" href="/register"><img src="img/new.png" alt="">Sign Up</a></span>
                 </div>
             <?php endif; ?>
         </div>
@@ -32,14 +30,15 @@
     </div>
     <div class="product" id="product">
         <div class="prod">
-            <h1>Best Seller</h1>
-            <span>Lihat Semua</span>
+            <h1>Terlaris bulan ini!</h1>
+            <span><a href="pages/product">Lihat Semua</a></span>
             <div class="slider"><img src="img/slider.png" alt=""></div>
+
             <div class="items" id="items">
                 <?php foreach ($barang as $b) : ?>
                     <a href="/pages/detail_barang/<?= $b['slug']; ?>">
                         <div class="item"><img src="<?php echo $b['foto_barang'] ?>" alt="">
-                            <p><?php echo $b['nama_barang'] ?></p><span><?php echo $b['pemilik_barang'] ?> <br>Jl. Kebon Jeruk</span><br>
+                            <p><?php echo $b['nama_barang'] ?></p><br>
                             <form action="/daftarbelanja/add" method="post">
                                 <input type="hidden" name="slug" value="<?= $b['slug']; ?>">
                                 <div class="btn-1">
@@ -54,5 +53,8 @@
             </div>
         </div>
     </div>
+
+    <div class="product"></div>
+
 </div>
 <?= $this->endSection(); ?>

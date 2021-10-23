@@ -296,10 +296,10 @@ body {
 }
 
 .product {
+  margin-top: 20px;
   width: 100%;
   height: 750px;
   background-color: #ffffff17;
-  margin: 0 auto;
 }
 
 .prod {
@@ -318,7 +318,8 @@ body {
 }
 
 .prod h1 {
-  margin: 0px 20px;
+  margin: 10px 10px;
+  margin-bottom: 20px;
 }
 
 .prod .slider {
@@ -350,6 +351,10 @@ body {
   cursor: pointer;
   transition: 0.2s;
   text-align: center;
+}
+
+.item p {
+  margin-top: 10px;
 }
 
 .prod .items .item img {

@@ -36,7 +36,7 @@ $routes->get('/', 'Warungin::index');
 $routes->get('/contact_us', 'Email::index');
 $routes->get('/daftar_belanja', 'Pages::daftar_belanja');
 $routes->get('/homepage', 'Pages::homepage');
-
+$routes->get('/product', 'Pages::product');
 
 /*
  * --------------------------------------------------------------------

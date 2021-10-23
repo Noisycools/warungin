@@ -47,4 +47,15 @@ class Pages extends BaseController
 
         return view('pages/detail_barang', $data);
     }
+
+    public function product()
+    {
+        $tabel_barang = $this->barangModel->findAll();
+        $data = [
+            'title' => 'Product | WarungIn',
+            'barang' => $tabel_barang
+        ];
+
+        return view('pages/product', $data);
+    }
 }

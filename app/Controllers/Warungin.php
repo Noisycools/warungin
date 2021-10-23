@@ -11,18 +11,18 @@ class Warungin extends BaseController
     public function __construct()
     {
         $this->barangModel = new BarangModel();
-        $this->usersModel = new UsersModel();
+        // $this->usersModel = new UsersModel;
     }
 
     public function index()
     {
         $tabel_barang = $this->barangModel->findAll();
-        $users = $this->usersModel->findAll();
+        // $users = $this->usersModel->findAll();
 
         $data = [
             'title' => 'Warungin | Platform Penyetok Warung',
             'barang' => $tabel_barang,
-            'users' => $users
+            // 'users' => $users
         ];
 
         return view('Warungin/index', $data);

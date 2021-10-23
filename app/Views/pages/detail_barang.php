@@ -16,11 +16,6 @@
         <div class="product-description">
             <span><?= $barang['kategori_barang']; ?></span>
             <h1><?= $barang['nama_barang']; ?></h1>
-            <p>
-                Pemilik Barang : <br> <br>
-                <?= $barang['pemilik_barang']; ?> <br>
-                <br>
-            </p>
         </div>
 
         <!-- Product Configuration -->
@@ -28,6 +23,7 @@
 
             <!-- Quantity -->
             <div class="cable-config">
+                <h3>Satuan Barang : <?= $barang['satuan_barang']; ?></h3>
                 <div class="quantity">
                     <button class="plus-btn" type="button" name="button">
                         <img src="/img/plus.svg" alt="" />
@@ -41,7 +37,7 @@
 
             <!-- Product Pricing -->
             <div class="product-price">
-                <span>Rp. <?= $barang['harga_barang']; ?></span>
+                <span>Rp. <?= $barang['harga_barang']; ?> / <?= $barang['satuan_barang']; ?></span>
                 <form action="/daftarbelanja/add" method="post">
                     <input type="hidden" name="slug" value="<?= $barang['slug']; ?>">
                     <a href="" class="cart-btn"><button type="submit">Tambahkan ke Daftar Belanja</button></a>
