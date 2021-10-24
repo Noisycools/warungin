@@ -14,7 +14,7 @@ class DaftarBelanja extends BaseController
         $data = $db->query("SELECT * FROM tabel_barang WHERE slug = '$slug' ");
 
         // this qty not programmed yet okayy
-        $qty = 1;
+        $qty = $this->request->getVar('qty');
 
         $row   = $data->getRowArray();
         $nama_barang = $row['nama_barang'];

@@ -198,6 +198,7 @@ button {
   color: #43484d;
   font-weight: 300;
   margin-right: 10px;
+  height: 30px;
 }
 
 button[class*="btn"] {

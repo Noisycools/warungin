@@ -72,7 +72,7 @@
           </div>
           <div class="col">
             <?php foreach ($total->getResult() as $rows) : ?>
-              <h2><?php echo $rows->total_harga; ?></h2>
+              <h2><span>Rp. </span><?php echo $rows->total_harga; ?></h2>
             <?php endforeach;  ?>
           </div>
         </div>
