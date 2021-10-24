@@ -20,8 +20,9 @@ class DaftarBelanja extends BaseController
         $nama_barang = $row['nama_barang'];
         $harga_barang = $row['harga_barang'];
         $img_barang = $row['foto_barang'];
+        $harga_total = (int)$row['harga_barang'] * $qty;
 
-        $db->query("INSERT INTO daftar_belanja(qty, nama_barang, harga_barang, img_barang) VALUES('$qty', '$nama_barang', '$harga_barang', '$img_barang')");
+        $db->query("INSERT INTO daftar_belanja(qty, nama_barang, harga_barang, harga_total, img_barang) VALUES('$qty', '$nama_barang', '$harga_barang', '$harga_total', '$img_barang')");
 
         return redirect()->to('/');
     }
@@ -36,7 +37,7 @@ class DaftarBelanja extends BaseController
         return redirect()->to('/pages/daftar_belanja');
     }
 
-    public function update()
+    public function checkout()
     {
     }
 }

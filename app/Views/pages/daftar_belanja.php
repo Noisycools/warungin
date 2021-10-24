@@ -30,11 +30,11 @@
           </div>
 
           <div class="col col-price col-numeric align-center ">
-            <p><?= (int)$b['harga_barang'] * $b['qty']; ?></p>
+            <p><?= $b['harga_barang']; ?></p>
           </div>
 
           <div class="col col-total col-numeric">
-            <p><?= $b['harga_barang']; ?></p>
+            <p><?= $b['harga_total']; ?></p>
           </div>
 
           <div class="col col-numeric">
@@ -62,18 +62,24 @@
           <div class="col">
             <p>Shipping</p>
           </div>
-          <div class="col"><?= $shipping ?></div>
+          <div class="col">
+            <h2><?= $shipping ?></h2>
+          </div>
         </div>
         <div class="row layout-inline">
           <div class="col">
             <p>Total</p>
           </div>
-          <div class="col"></div>
+          <div class="col">
+            <?php foreach ($total->getResult() as $rows) : ?>
+              <h2><?php echo $rows->total_harga; ?></h2>
+            <?php endforeach;  ?>
+          </div>
         </div>
       </div>
     </div>
 
-    <a href="/daftarbelanja/update" class="btn btn-update">Update cart</a>
+    <a href="/daftarbelanja/checkout" class="btn btn-update">Checkout</a>
 
   </div>
   <script src="js/script_daftar_belanja.js"></script>

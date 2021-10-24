@@ -24,10 +24,12 @@ class Pages extends BaseController
     public function daftar_belanja()
     {
         $daftar_belanja = $this->daftarBelanjaModel->findAll();
+        $getTotal = $this->daftarBelanjaModel->getTotal();
 
         $data = [
             'title' => 'Daftar Belanja | Warungin',
             'barang' => $daftar_belanja,
+            'total' => $getTotal
         ];
 
         return view('pages/daftar_belanja', $data);
