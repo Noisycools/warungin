@@ -131,6 +131,7 @@ a {
   text-transform: uppercase;
   font-weight: bold;
   font-size: 1.5em;
+  height: 40px;
 }
 
 .tf {
@@ -151,7 +152,11 @@ a {
 }
 
 .col-pro {
-  width: 44%;
+  width: 35%;
+}
+
+.col-action {
+  width: 50px;
 }
 
 .col-pro > * {
@@ -164,7 +169,19 @@ a {
 }
 
 .col-numeric p {
-  font: bold 1.8em helvetica;
+  font: bold 1.5em helvetica;
+}
+
+.col-price {
+  width: 20%;
+}
+
+.col-total {
+  width: 20%;
+}
+
+.col-numeric {
+  text-align: center;
 }
 
 .col-total p {
@@ -172,7 +189,8 @@ a {
 }
 
 .tf .col {
-  width: 20%;
+  width: 40%;
+  padding-right: 20px;
 }
 
 .row > div {

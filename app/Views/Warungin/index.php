@@ -7,6 +7,7 @@
             <h1>WarungIn</h1>
             <?php if (logged_in()) : ?>
                 <p>Selamat datang kembali!</p>
+                <a href="warungin/templatePDF">Template PDF</a>
             <?php else : ?>
                 <p>Setok warung anda secara online melalui website <br>
                     dengan satu klik!<br>
@@ -14,6 +15,7 @@
                 <div class="continue">
                     <p>Mulai daftar dan stock warungmu!</p>
                     <span class="unik"><a class="unk" href="/register"><img src="img/new.png" alt="">Sign Up</a></span>
+                    Atau <span><a class="a" href="/login">Login</a></span>
                 </div>
             <?php endif; ?>
         </div>

@@ -16,8 +16,8 @@
 
       <div class="layout-inline row th">
         <div class="col col-pro">Product</div>
-        <div class="col col-price align-center "> Price</div>
-        <div class="col">Total</div>
+        <div class="col col-price align-center "> Price</div> &ensp; &ensp;
+        <div class="col">Total</div> &ensp; &ensp;
         <div class="col">QTY</div>
         <div class="col"></div>
       </div>
@@ -30,11 +30,11 @@
           </div>
 
           <div class="col col-price col-numeric align-center ">
-            <p><?= $b['harga_barang']; ?></p>
+            <p><?= "Rp. " . number_format($b['harga_barang'], 2, ',', '.'); ?></p>
           </div>
 
           <div class="col col-total col-numeric">
-            <p><?= $b['harga_total']; ?></p>
+            <p><?= "Rp. " . number_format($b['harga_total'], 2, ',', '.'); ?></p>
           </div>
 
           <div class="col col-numeric">
@@ -72,7 +72,7 @@
           </div>
           <div class="col">
             <?php foreach ($total->getResult() as $rows) : ?>
-              <h2><span>Rp. </span><?php echo $rows->total_harga; ?></h2>
+              <h2><?php echo "Rp. " . number_format($rows->total_harga, 2, ',', '.'); ?></h2>
             <?php endforeach;  ?>
           </div>
         </div>
