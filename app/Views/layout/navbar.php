@@ -10,6 +10,9 @@
 
         if (logged_in()) : ?>
             <li><a href="/daftar_belanja">Daftar Belanja</a></li>
+            <?php if (in_groups('admin')) : ?>
+                <li><a href="/admin">Admin</a></li>
+            <?php endif; ?>
         <?php endif; ?>
     </ul>
     <div class="user">
