@@ -1,0 +1,192 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  color: white;
+}
+
+a {
+  color: white;
+}
+
+html,
+body {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: #1c1b21;
+  font-family: monospace;
+  flex-wrap: wrap;
+}
+
+/* Awal Style Navbar */
+.navbar-tem {
+  position: fixed;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+  /* backdrop-filter: blur(10px); */
+}
+
+.navbar-tem img {
+  width: 100px;
+  margin-left: 5.5%;
+  backdrop-filter: blur(5px);
+}
+
+.navbar-tem .nav-tem {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  width: 30%;
+  right: 37.5%;
+  opacity: 0;
+}
+
+.navbar-tem .nav-tem li {
+  margin-bottom: 1px;
+  list-style: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.navbar-tem .nav-tem li:hover {
+  border-bottom: 1px solid red;
+}
+
+.navbar-tem .nav-tem li a {
+  text-decoration: none;
+}
+
+.navbar-tem .hamburger::before {
+  content: "";
+  position: absolute;
+  top: -7px;
+  width: 30px;
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.863);
+}
+
+.navbar-tem .hamburger {
+  position: absolute;
+  width: 30px;
+  height: 5px;
+  background-color: rgb(255, 255, 255);
+}
+
+.navbar-tem .hamburger::after {
+  content: "";
+  position: absolute;
+  bottom: -7px;
+  width: 30px;
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.863);
+}
+
+.check {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  transition: 0.7s;
+  width: 30px;
+  height: 23px;
+  right: 5%;
+  background-color: rgba(255, 1, 1, 0);
+  z-index: 11;
+  cursor: pointer;
+}
+
+.user {
+  display: none;
+  margin-right: 10%;
+  animation: animasi2 2s;
+  opacity: 0;
+}
+
+.user span,
+.a {
+  cursor: pointer;
+  position: relative;
+  padding: 5px;
+  border-radius: 15px;
+  text-decoration: none;
+}
+
+.unk {
+  text-decoration: none;
+}
+
+.unk:hover {
+  color: black;
+  background-color: red !important;
+}
+
+.user span a:hover {
+  background-color: white;
+  color: black;
+}
+
+.user .unik {
+  margin-left: 7px;
+  padding-left: 22px;
+  padding-right: 5px;
+  background-color: rgb(255, 0, 0);
+}
+
+.user .unik:hover {
+  background-color: red;
+}
+
+.user .unik img {
+  position: absolute;
+  width: 15px;
+  left: 0px;
+}
+
+@keyframes animasi1 {
+  from {
+    right: 0%;
+    opacity: 0;
+  }
+
+  to {
+    right: 37.5%;
+    opacity: 1;
+  }
+}
+
+@keyframes animasi2 {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* Akhir Style Navbar */
+
+footer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 120px;
+}
+
+footer img {
+  width: 100px;
+}
+
+footer ul {
+  display: flex;
+  list-style: none;
+}
+
+footer ul li a {
+  text-decoration: none;
+  margin: 0px 20px;
+}

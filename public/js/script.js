@@ -1,8 +1,8 @@
 // Awal Navbar
 const check = document.querySelector('.check');
-const navigasi = document.querySelector('.nav');
+const navigasi = document.querySelector('.nav-tem');
 const user = document.querySelector('.user');
-const navbar = document.querySelector('.navbar');
+const navbar = document.querySelector('.navbar-tem');
 navigasi.style.display = 'none';
 
 check.addEventListener('click', ()=> {
@@ -31,7 +31,7 @@ check.addEventListener('click', ()=> {
             user.style.display = 'none';
             navigasi.style.display = 'none';
         }, 500);
-        
+
     }
 });
 
@@ -43,7 +43,7 @@ function mobile(x) {
     if(x.matches) {
         document.createElement
     }else {
-        
+
     }
 }
 

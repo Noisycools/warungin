@@ -60,4 +60,13 @@ class Pages extends BaseController
 
         return view('pages/product', $data);
     }
+
+    public function profile()
+    {
+        $data = [
+            'title' => 'Profile | WarungIn'
+        ];
+
+        return view('pages/profile', $data);
+    }
 }
