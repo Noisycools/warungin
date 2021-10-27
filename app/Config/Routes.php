@@ -42,6 +42,7 @@ $routes->get('admin/users/', 'Users::index');
 $routes->get('admin/users/create', 'Users::create');
 $routes->get('admin/users/edit/(:segment)', 'Users::edit/$1');
 $routes->delete('admin/users/(:num)', 'Users::delete/$1');
+$routes->get('/profile', 'Pages::profile');
 
 /*
  * --------------------------------------------------------------------

@@ -79,7 +79,7 @@
       </div>
     </div>
 
-    <a href="/daftarbelanja/checkout" class="btn btn-update">Checkout</a>
+    <a href="daftarbelanja/checkout" class="btn btn-update">Checkout</a>
 
   </div>
   <script src="js/script_daftar_belanja.js"></script>

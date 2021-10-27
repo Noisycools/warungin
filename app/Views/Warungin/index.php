@@ -7,7 +7,6 @@
             <h1>WarungIn</h1>
             <?php if (logged_in()) : ?>
                 <p>Selamat datang kembali!</p>
-                <a href="warungin/templatePDF">Template PDF</a>
             <?php else : ?>
                 <p>Setok warung anda secara online melalui website <br>
                     dengan satu klik!<br>

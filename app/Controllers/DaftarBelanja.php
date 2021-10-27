@@ -3,9 +3,17 @@
 namespace App\Controllers;
 
 use App\Models\BarangModel;
+use App\Models\DaftarBelanjaModel;
 
 class DaftarBelanja extends BaseController
 {
+    protected $daftarBelanjaModel;
+
+    public function __construct()
+    {
+        $this->daftarBelanjaModel = new DaftarBelanjaModel();
+    }
+
     public function add()
     {
         $db = \Config\Database::connect();
@@ -39,5 +47,15 @@ class DaftarBelanja extends BaseController
 
     public function checkout()
     {
+        $daftar_belanja = $this->daftarBelanjaModel->findAll();
+        $getTotal = $this->daftarBelanjaModel->getTotal();
+
+        $data = [
+            'title' => 'Checkout | WarungIn',
+            'barang' => $daftar_belanja,
+            'total' => $getTotal
+        ];
+
+        return view('pages/checkout', $data);
     }
 }
