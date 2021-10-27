@@ -37,6 +37,11 @@ $routes->get('/contact_us', 'Email::index');
 $routes->get('/daftar_belanja', 'Pages::daftar_belanja');
 $routes->get('/homepage', 'Pages::homepage');
 $routes->get('/product', 'Pages::product');
+$routes->get('/admin', 'Admin::index');
+$routes->get('admin/users/', 'Users::index');
+$routes->get('admin/users/create', 'Users::create');
+$routes->get('admin/users/edit/(:segment)', 'Users::edit/$1');
+$routes->delete('admin/users/(:num)', 'Users::delete/$1');
 
 /*
  * --------------------------------------------------------------------

@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class UsersModel extends Model
 {
     protected $table      = 'users';
-    protected $primaryKey = 'id';
+    protected $allowedFields = ['email', 'username', 'password_hash'];
     public function getUsers($id = false)
     {
         if ($id == false) {

@@ -2,890 +2,425 @@
 <html lang="en">
 
 <head>
+
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
   <title>Admin | Dashboard</title>
 
-  <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-  <!-- Tempusdominus Bootstrap 4 -->
-  <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
-  <!-- iCheck -->
-  <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-  <!-- JQVMap -->
-  <link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/adminlte.min.css">
-  <!-- overlayScrollbars -->
-  <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
-  <!-- Daterange picker -->
-  <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
-  <!-- summernote -->
-  <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+  <!-- Custom fonts for this template-->
+  <link href="<?= base_url(); ?>/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="<?= base_url(); ?>/css/sb-admin-2.min.css" rel="stylesheet">
+
 </head>
 
-<body class="hold-transition sidebar-mini layout-fixed">
-  <div class="wrapper">
+<body id="page-top">
 
-    <!-- Preloader -->
-    <div class="preloader flex-column justify-content-center align-items-center">
-      <img class="animation__shake" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
-    </div>
+  <!-- Page Wrapper -->
+  <div id="wrapper">
 
-    <!-- Navbar -->
-    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-      <!-- Left navbar links -->
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-        </li>
-        <li class="nav-item d-none d-sm-inline-block">
-          <a href="index.html" class="nav-link">Home</a>
-        </li>
-        <li class="nav-item d-none d-sm-inline-block">
-          <a href="#" class="nav-link">Contact</a>
-        </li>
-      </ul>
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-      <!-- Right navbar links -->
-      <ul class="navbar-nav ml-auto">
-        <!-- Navbar Search -->
-        <li class="nav-item">
-          <a class="nav-link" data-widget="navbar-search" href="#" role="button">
-            <i class="fas fa-search"></i>
-          </a>
-          <div class="navbar-search-block">
-            <form class="form-inline">
-              <div class="input-group input-group-sm">
-                <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-                <div class="input-group-append">
-                  <button class="btn btn-navbar" type="submit">
-                    <i class="fas fa-search"></i>
-                  </button>
-                  <button class="btn btn-navbar" type="button" data-widget="navbar-search">
-                    <i class="fas fa-times"></i>
-                  </button>
-                </div>
-              </div>
-            </form>
-          </div>
-        </li>
-
-        <!-- Messages Dropdown Menu -->
-        <li class="nav-item dropdown">
-          <a class="nav-link" data-toggle="dropdown" href="#">
-            <i class="far fa-comments"></i>
-            <span class="badge badge-danger navbar-badge">3</span>
-          </a>
-          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-            <a href="#" class="dropdown-item">
-              <!-- Message Start -->
-              <div class="media">
-                <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-                <div class="media-body">
-                  <h3 class="dropdown-item-title">
-                    Brad Diesel
-                    <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                  </h3>
-                  <p class="text-sm">Call me whenever you can...</p>
-                  <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                </div>
-              </div>
-              <!-- Message End -->
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <!-- Message Start -->
-              <div class="media">
-                <img src="dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                <div class="media-body">
-                  <h3 class="dropdown-item-title">
-                    John Pierce
-                    <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                  </h3>
-                  <p class="text-sm">I got your message bro</p>
-                  <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                </div>
-              </div>
-              <!-- Message End -->
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <!-- Message Start -->
-              <div class="media">
-                <img src="dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                <div class="media-body">
-                  <h3 class="dropdown-item-title">
-                    Nora Silvester
-                    <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
-                  </h3>
-                  <p class="text-sm">The subject goes here</p>
-                  <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                </div>
-              </div>
-              <!-- Message End -->
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-          </div>
-        </li>
-        <!-- Notifications Dropdown Menu -->
-        <li class="nav-item dropdown">
-          <a class="nav-link" data-toggle="dropdown" href="#">
-            <i class="far fa-bell"></i>
-            <span class="badge badge-warning navbar-badge">15</span>
-          </a>
-          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-            <span class="dropdown-item dropdown-header">15 Notifications</span>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-envelope mr-2"></i> 4 new messages
-              <span class="float-right text-muted text-sm">3 mins</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-users mr-2"></i> 8 friend requests
-              <span class="float-right text-muted text-sm">12 hours</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-file mr-2"></i> 3 new reports
-              <span class="float-right text-muted text-sm">2 days</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-          </div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-            <i class="fas fa-expand-arrows-alt"></i>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-            <i class="fas fa-th-large"></i>
-          </a>
-        </li>
-      </ul>
-    </nav>
-    <!-- /.navbar -->
-
-    <!-- Main Sidebar Container -->
-    <aside class="main-sidebar sidebar-dark-primary elevation-4">
-      <!-- Brand Logo -->
-      <a href="index.html" class="brand-link">
-        <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">Admin</span>
+      <!-- Sidebar - Brand -->
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <div class="sidebar-brand-icon rotate-n-15">
+          <i class="fas fa-laugh-wink"></i>
+        </div>
+        <div class="sidebar-brand-text mx-3">Admin</div>
       </a>
 
-      <!-- Sidebar -->
-      <div class="sidebar">
-        <!-- Sidebar user panel (optional) -->
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-          <div class="image">
-            <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-          </div>
-          <div class="info">
-            <a href="#" class="d-block">Foreight Team</a>
-          </div>
-        </div>
+      <!-- Divider -->
+      <hr class="sidebar-divider my-0">
 
-        <!-- SidebarSearch Form -->
-        <div class="form-inline">
-          <div class="input-group" data-widget="sidebar-search">
-            <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-            <div class="input-group-append">
-              <button class="btn btn-sidebar">
-                <i class="fas fa-search fa-fw"></i>
-              </button>
-            </div>
-          </div>
-        </div>
+      <!-- Nav Item - Dashboard -->
+      <li class="nav-item active">
+        <a class="nav-link" href="index.html">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>Dashboard</span></a>
+      </li>
 
-        <!-- Sidebar Menu -->
-        <nav class="mt-2">
-          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-            <li class="nav-header">EXAMPLES</li>
-            <li class="nav-item">
-              <a href="pages/calendar.html" class="nav-link">
-                <i class="nav-icon far fa-calendar-alt"></i>
-                <p>
-                  Calendar
-                  <span class="badge badge-info right">2</span>
-                </p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="pages/gallery.html" class="nav-link">
-                <i class="nav-icon far fa-image"></i>
-                <p>
-                  Gallery
-                </p>
-              </a>
-            </li>
-          </ul>
-        </nav>
-        <!-- /.sidebar-menu -->
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('admin/users'); ?>">
+          <i class="fas fa-users"></i>
+          <span>Users</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">
+          <i class="fas fa-clipboard-list"></i>
+          <span>Product</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">
+          <i class="fas fa-user-tag"></i>
+          <span>Customer</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">
+          <i class="fas fa-clipboard-check"></i>
+          <span>Transaction</span>
+        </a>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        Interface
       </div>
-      <!-- /.sidebar -->
-    </aside>
+      <!-- End of Sidebar -->
 
-    <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
-      <!-- Content Header (Page header) -->
-      <div class="content-header">
-        <div class="container-fluid">
-          <div class="row mb-2">
-            <div class="col-sm-6">
-              <h1 class="m-0">Dashboard</h1>
-            </div><!-- /.col -->
-            <div class="col-sm-6">
-              <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Dashboard v1</li>
-              </ol>
-            </div><!-- /.col -->
-          </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
-      </div>
-      <!-- /.content-header -->
+      <!-- Content Wrapper -->
+      <div id="content-wrapper" class="d-flex flex-column">
 
-      <!-- Main content -->
-      <section class="content">
-        <div class="container-fluid">
-          <!-- Small boxes (Stat box) -->
-          <div class="row">
-            <div class="col-lg-3 col-6">
-              <!-- small box -->
-              <div class="small-box bg-info">
-                <div class="inner">
-                  <h3>150</h3>
+        <!-- Main Content -->
+        <div id="content">
 
-                  <p>New Orders</p>
-                </div>
-                <div class="icon">
-                  <i class="ion ion-bag"></i>
-                </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-              </div>
-            </div>
-            <!-- ./col -->
-            <div class="col-lg-3 col-6">
-              <!-- small box -->
-              <div class="small-box bg-success">
-                <div class="inner">
-                  <h3>53<sup style="font-size: 20px">%</sup></h3>
+          <!-- Topbar -->
+          <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
-                  <p>Bounce Rate</p>
-                </div>
-                <div class="icon">
-                  <i class="ion ion-stats-bars"></i>
-                </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-              </div>
-            </div>
-            <!-- ./col -->
-            <div class="col-lg-3 col-6">
-              <!-- small box -->
-              <div class="small-box bg-warning">
-                <div class="inner">
-                  <h3>44</h3>
+            <!-- Sidebar Toggle (Topbar) -->
+            <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+              <i class="fa fa-bars"></i>
+            </button>
 
-                  <p>User Registrations</p>
-                </div>
-                <div class="icon">
-                  <i class="ion ion-person-add"></i>
-                </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-              </div>
-            </div>
-            <!-- ./col -->
-            <div class="col-lg-3 col-6">
-              <!-- small box -->
-              <div class="small-box bg-danger">
-                <div class="inner">
-                  <h3>65</h3>
+            <!-- Topbar Navbar -->
+            <ul class="navbar-nav ml-auto">
 
-                  <p>Unique Visitors</p>
-                </div>
-                <div class="icon">
-                  <i class="ion ion-pie-graph"></i>
-                </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-              </div>
-            </div>
-            <!-- ./col -->
-          </div>
-          <!-- /.row -->
-          <!-- Main row -->
-          <div class="row">
-            <!-- Left col -->
-            <section class="col-lg-7 connectedSortable">
-              <!-- Custom tabs (Charts with tabs)-->
-              <div class="card">
-                <div class="card-header">
-                  <h3 class="card-title">
-                    <i class="fas fa-chart-pie mr-1"></i>
-                    Sales
-                  </h3>
-                  <div class="card-tools">
-                    <ul class="nav nav-pills ml-auto">
-                      <li class="nav-item">
-                        <a class="nav-link active" href="#revenue-chart" data-toggle="tab">Area</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="#sales-chart" data-toggle="tab">Donut</a>
-                      </li>
-                    </ul>
-                  </div>
-                </div><!-- /.card-header -->
-                <div class="card-body">
-                  <div class="tab-content p-0">
-                    <!-- Morris chart - Sales -->
-                    <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px;">
-                      <canvas id="revenue-chart-canvas" height="300" style="height: 300px;"></canvas>
-                    </div>
-                    <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;">
-                      <canvas id="sales-chart-canvas" height="300" style="height: 300px;"></canvas>
-                    </div>
-                  </div>
-                </div><!-- /.card-body -->
-              </div>
-              <!-- /.card -->
-
-              <!-- DIRECT CHAT -->
-              <div class="card direct-chat direct-chat-primary">
-                <div class="card-header">
-                  <h3 class="card-title">Direct Chat</h3>
-
-                  <div class="card-tools">
-                    <span title="3 New Messages" class="badge badge-primary">3</span>
-                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                      <i class="fas fa-minus"></i>
-                    </button>
-                    <button type="button" class="btn btn-tool" title="Contacts" data-widget="chat-pane-toggle">
-                      <i class="fas fa-comments"></i>
-                    </button>
-                    <button type="button" class="btn btn-tool" data-card-widget="remove">
-                      <i class="fas fa-times"></i>
-                    </button>
-                  </div>
-                </div>
-                <!-- /.card-header -->
-                <div class="card-body">
-                  <!-- Conversations are loaded here -->
-                  <div class="direct-chat-messages">
-                    <!-- Message. Default to the left -->
-                    <div class="direct-chat-msg">
-                      <div class="direct-chat-infos clearfix">
-                        <span class="direct-chat-name float-left">Alexander Pierce</span>
-                        <span class="direct-chat-timestamp float-right">23 Jan 2:00 pm</span>
-                      </div>
-                      <!-- /.direct-chat-infos -->
-                      <img class="direct-chat-img" src="dist/img/user1-128x128.jpg" alt="message user image">
-                      <!-- /.direct-chat-img -->
-                      <div class="direct-chat-text">
-                        Is this template really for free? That's unbelievable!
-                      </div>
-                      <!-- /.direct-chat-text -->
-                    </div>
-                    <!-- /.direct-chat-msg -->
-
-                    <!-- Message to the right -->
-                    <div class="direct-chat-msg right">
-                      <div class="direct-chat-infos clearfix">
-                        <span class="direct-chat-name float-right">Sarah Bullock</span>
-                        <span class="direct-chat-timestamp float-left">23 Jan 2:05 pm</span>
-                      </div>
-                      <!-- /.direct-chat-infos -->
-                      <img class="direct-chat-img" src="dist/img/user3-128x128.jpg" alt="message user image">
-                      <!-- /.direct-chat-img -->
-                      <div class="direct-chat-text">
-                        You better believe it!
-                      </div>
-                      <!-- /.direct-chat-text -->
-                    </div>
-                    <!-- /.direct-chat-msg -->
-
-                    <!-- Message. Default to the left -->
-                    <div class="direct-chat-msg">
-                      <div class="direct-chat-infos clearfix">
-                        <span class="direct-chat-name float-left">Alexander Pierce</span>
-                        <span class="direct-chat-timestamp float-right">23 Jan 5:37 pm</span>
-                      </div>
-                      <!-- /.direct-chat-infos -->
-                      <img class="direct-chat-img" src="dist/img/user1-128x128.jpg" alt="message user image">
-                      <!-- /.direct-chat-img -->
-                      <div class="direct-chat-text">
-                        Working with AdminLTE on a great new app! Wanna join?
-                      </div>
-                      <!-- /.direct-chat-text -->
-                    </div>
-                    <!-- /.direct-chat-msg -->
-
-                    <!-- Message to the right -->
-                    <div class="direct-chat-msg right">
-                      <div class="direct-chat-infos clearfix">
-                        <span class="direct-chat-name float-right">Sarah Bullock</span>
-                        <span class="direct-chat-timestamp float-left">23 Jan 6:10 pm</span>
-                      </div>
-                      <!-- /.direct-chat-infos -->
-                      <img class="direct-chat-img" src="dist/img/user3-128x128.jpg" alt="message user image">
-                      <!-- /.direct-chat-img -->
-                      <div class="direct-chat-text">
-                        I would love to.
-                      </div>
-                      <!-- /.direct-chat-text -->
-                    </div>
-                    <!-- /.direct-chat-msg -->
-
-                  </div>
-                  <!--/.direct-chat-messages-->
-
-                  <!-- Contacts are loaded here -->
-                  <div class="direct-chat-contacts">
-                    <ul class="contacts-list">
-                      <li>
-                        <a href="#">
-                          <img class="contacts-list-img" src="dist/img/user1-128x128.jpg" alt="User Avatar">
-
-                          <div class="contacts-list-info">
-                            <span class="contacts-list-name">
-                              Count Dracula
-                              <small class="contacts-list-date float-right">2/28/2015</small>
-                            </span>
-                            <span class="contacts-list-msg">How have you been? I was...</span>
-                          </div>
-                          <!-- /.contacts-list-info -->
-                        </a>
-                      </li>
-                      <!-- End Contact Item -->
-                      <li>
-                        <a href="#">
-                          <img class="contacts-list-img" src="dist/img/user7-128x128.jpg" alt="User Avatar">
-
-                          <div class="contacts-list-info">
-                            <span class="contacts-list-name">
-                              Sarah Doe
-                              <small class="contacts-list-date float-right">2/23/2015</small>
-                            </span>
-                            <span class="contacts-list-msg">I will be waiting for...</span>
-                          </div>
-                          <!-- /.contacts-list-info -->
-                        </a>
-                      </li>
-                      <!-- End Contact Item -->
-                      <li>
-                        <a href="#">
-                          <img class="contacts-list-img" src="dist/img/user3-128x128.jpg" alt="User Avatar">
-
-                          <div class="contacts-list-info">
-                            <span class="contacts-list-name">
-                              Nadia Jolie
-                              <small class="contacts-list-date float-right">2/20/2015</small>
-                            </span>
-                            <span class="contacts-list-msg">I'll call you back at...</span>
-                          </div>
-                          <!-- /.contacts-list-info -->
-                        </a>
-                      </li>
-                      <!-- End Contact Item -->
-                      <li>
-                        <a href="#">
-                          <img class="contacts-list-img" src="dist/img/user5-128x128.jpg" alt="User Avatar">
-
-                          <div class="contacts-list-info">
-                            <span class="contacts-list-name">
-                              Nora S. Vans
-                              <small class="contacts-list-date float-right">2/10/2015</small>
-                            </span>
-                            <span class="contacts-list-msg">Where is your new...</span>
-                          </div>
-                          <!-- /.contacts-list-info -->
-                        </a>
-                      </li>
-                      <!-- End Contact Item -->
-                      <li>
-                        <a href="#">
-                          <img class="contacts-list-img" src="dist/img/user6-128x128.jpg" alt="User Avatar">
-
-                          <div class="contacts-list-info">
-                            <span class="contacts-list-name">
-                              John K.
-                              <small class="contacts-list-date float-right">1/27/2015</small>
-                            </span>
-                            <span class="contacts-list-msg">Can I take a look at...</span>
-                          </div>
-                          <!-- /.contacts-list-info -->
-                        </a>
-                      </li>
-                      <!-- End Contact Item -->
-                      <li>
-                        <a href="#">
-                          <img class="contacts-list-img" src="dist/img/user8-128x128.jpg" alt="User Avatar">
-
-                          <div class="contacts-list-info">
-                            <span class="contacts-list-name">
-                              Kenneth M.
-                              <small class="contacts-list-date float-right">1/4/2015</small>
-                            </span>
-                            <span class="contacts-list-msg">Never mind I found...</span>
-                          </div>
-                          <!-- /.contacts-list-info -->
-                        </a>
-                      </li>
-                      <!-- End Contact Item -->
-                    </ul>
-                    <!-- /.contacts-list -->
-                  </div>
-                  <!-- /.direct-chat-pane -->
-                </div>
-                <!-- /.card-body -->
-                <div class="card-footer">
-                  <form action="#" method="post">
+              <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+              <li class="nav-item dropdown no-arrow d-sm-none">
+                <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fas fa-search fa-fw"></i>
+                </a>
+                <!-- Dropdown - Messages -->
+                <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
+                  <form class="form-inline mr-auto w-100 navbar-search">
                     <div class="input-group">
-                      <input type="text" name="message" placeholder="Type Message ..." class="form-control">
-                      <span class="input-group-append">
-                        <button type="button" class="btn btn-primary">Send</button>
-                      </span>
+                      <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                      <div class="input-group-append">
+                        <button class="btn btn-primary" type="button">
+                          <i class="fas fa-search fa-sm"></i>
+                        </button>
+                      </div>
                     </div>
                   </form>
                 </div>
-                <!-- /.card-footer-->
-              </div>
-              <!--/.direct-chat -->
+              </li>
 
-              <!-- TO DO List -->
-              <div class="card">
-                <div class="card-header">
-                  <h3 class="card-title">
-                    <i class="ion ion-clipboard mr-1"></i>
-                    To Do List
-                  </h3>
+              <!-- Nav Item - Alerts -->
+              <li class="nav-item dropdown no-arrow mx-1">
+                <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fas fa-bell fa-fw"></i>
+                  <!-- Counter - Alerts -->
+                  <span class="badge badge-danger badge-counter">3+</span>
+                </a>
+                <!-- Dropdown - Alerts -->
+                <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
+                  <h6 class="dropdown-header">
+                    Alerts Center
+                  </h6>
+                  <a class="dropdown-item d-flex align-items-center" href="#">
+                    <div class="mr-3">
+                      <div class="icon-circle bg-primary">
+                        <i class="fas fa-file-alt text-white"></i>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="small text-gray-500">December 12, 2019</div>
+                      <span class="font-weight-bold">A new monthly report is ready to download!</span>
+                    </div>
+                  </a>
+                  <a class="dropdown-item d-flex align-items-center" href="#">
+                    <div class="mr-3">
+                      <div class="icon-circle bg-success">
+                        <i class="fas fa-donate text-white"></i>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="small text-gray-500">December 7, 2019</div>
+                      $290.29 has been deposited into your account!
+                    </div>
+                  </a>
+                  <a class="dropdown-item d-flex align-items-center" href="#">
+                    <div class="mr-3">
+                      <div class="icon-circle bg-warning">
+                        <i class="fas fa-exclamation-triangle text-white"></i>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="small text-gray-500">December 2, 2019</div>
+                      Spending Alert: We've noticed unusually high spending for your account.
+                    </div>
+                  </a>
+                  <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+                </div>
+              </li>
 
-                  <div class="card-tools">
-                    <ul class="pagination pagination-sm">
-                      <li class="page-item"><a href="#" class="page-link">&laquo;</a></li>
-                      <li class="page-item"><a href="#" class="page-link">1</a></li>
-                      <li class="page-item"><a href="#" class="page-link">2</a></li>
-                      <li class="page-item"><a href="#" class="page-link">3</a></li>
-                      <li class="page-item"><a href="#" class="page-link">&raquo;</a></li>
-                    </ul>
-                  </div>
+              <!-- Nav Item - Messages -->
+              <li class="nav-item dropdown no-arrow mx-1">
+                <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fas fa-envelope fa-fw"></i>
+                  <!-- Counter - Messages -->
+                  <span class="badge badge-danger badge-counter">7</span>
+                </a>
+                <!-- Dropdown - Messages -->
+                <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
+                  <h6 class="dropdown-header">
+                    Message Center
+                  </h6>
+                  <a class="dropdown-item d-flex align-items-center" href="#">
+                    <div class="dropdown-list-image mr-3">
+                      <img class="rounded-circle" src="img/undraw_profile_1.svg" alt="">
+                      <div class="status-indicator bg-success"></div>
+                    </div>
+                    <div class="font-weight-bold">
+                      <div class="text-truncate">Hi there! I am wondering if you can help me with a
+                        problem I've been having.</div>
+                      <div class="small text-gray-500">Emily Fowler · 58m</div>
+                    </div>
+                  </a>
+                  <a class="dropdown-item d-flex align-items-center" href="#">
+                    <div class="dropdown-list-image mr-3">
+                      <img class="rounded-circle" src="img/undraw_profile_2.svg" alt="">
+                      <div class="status-indicator"></div>
+                    </div>
+                    <div>
+                      <div class="text-truncate">I have the photos that you ordered last month, how
+                        would you like them sent to you?</div>
+                      <div class="small text-gray-500">Jae Chun · 1d</div>
+                    </div>
+                  </a>
+                  <a class="dropdown-item d-flex align-items-center" href="#">
+                    <div class="dropdown-list-image mr-3">
+                      <img class="rounded-circle" src="img/undraw_profile_3.svg" alt="">
+                      <div class="status-indicator bg-warning"></div>
+                    </div>
+                    <div>
+                      <div class="text-truncate">Last month's report looks great, I am very happy with
+                        the progress so far, keep up the good work!</div>
+                      <div class="small text-gray-500">Morgan Alvarez · 2d</div>
+                    </div>
+                  </a>
+                  <a class="dropdown-item d-flex align-items-center" href="#">
+                    <div class="dropdown-list-image mr-3">
+                      <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="">
+                      <div class="status-indicator bg-success"></div>
+                    </div>
+                    <div>
+                      <div class="text-truncate">Am I a good boy? The reason I ask is because someone
+                        told me that people say this to all dogs, even if they aren't good...</div>
+                      <div class="small text-gray-500">Chicken the Dog · 2w</div>
+                    </div>
+                  </a>
+                  <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
                 </div>
-                <!-- /.card-header -->
-                <div class="card-body">
-                  <ul class="todo-list" data-widget="todo-list">
-                    <li>
-                      <!-- drag handle -->
-                      <span class="handle">
-                        <i class="fas fa-ellipsis-v"></i>
-                        <i class="fas fa-ellipsis-v"></i>
-                      </span>
-                      <!-- checkbox -->
-                      <div class="icheck-primary d-inline ml-2">
-                        <input type="checkbox" value="" name="todo1" id="todoCheck1">
-                        <label for="todoCheck1"></label>
-                      </div>
-                      <!-- todo text -->
-                      <span class="text">Design a nice theme</span>
-                      <!-- Emphasis label -->
-                      <small class="badge badge-danger"><i class="far fa-clock"></i> 2 mins</small>
-                      <!-- General tools such as edit or delete-->
-                      <div class="tools">
-                        <i class="fas fa-edit"></i>
-                        <i class="fas fa-trash-o"></i>
-                      </div>
-                    </li>
-                    <li>
-                      <span class="handle">
-                        <i class="fas fa-ellipsis-v"></i>
-                        <i class="fas fa-ellipsis-v"></i>
-                      </span>
-                      <div class="icheck-primary d-inline ml-2">
-                        <input type="checkbox" value="" name="todo2" id="todoCheck2" checked>
-                        <label for="todoCheck2"></label>
-                      </div>
-                      <span class="text">Make the theme responsive</span>
-                      <small class="badge badge-info"><i class="far fa-clock"></i> 4 hours</small>
-                      <div class="tools">
-                        <i class="fas fa-edit"></i>
-                        <i class="fas fa-trash-o"></i>
-                      </div>
-                    </li>
-                    <li>
-                      <span class="handle">
-                        <i class="fas fa-ellipsis-v"></i>
-                        <i class="fas fa-ellipsis-v"></i>
-                      </span>
-                      <div class="icheck-primary d-inline ml-2">
-                        <input type="checkbox" value="" name="todo3" id="todoCheck3">
-                        <label for="todoCheck3"></label>
-                      </div>
-                      <span class="text">Let theme shine like a star</span>
-                      <small class="badge badge-warning"><i class="far fa-clock"></i> 1 day</small>
-                      <div class="tools">
-                        <i class="fas fa-edit"></i>
-                        <i class="fas fa-trash-o"></i>
-                      </div>
-                    </li>
-                    <li>
-                      <span class="handle">
-                        <i class="fas fa-ellipsis-v"></i>
-                        <i class="fas fa-ellipsis-v"></i>
-                      </span>
-                      <div class="icheck-primary d-inline ml-2">
-                        <input type="checkbox" value="" name="todo4" id="todoCheck4">
-                        <label for="todoCheck4"></label>
-                      </div>
-                      <span class="text">Let theme shine like a star</span>
-                      <small class="badge badge-success"><i class="far fa-clock"></i> 3 days</small>
-                      <div class="tools">
-                        <i class="fas fa-edit"></i>
-                        <i class="fas fa-trash-o"></i>
-                      </div>
-                    </li>
-                    <li>
-                      <span class="handle">
-                        <i class="fas fa-ellipsis-v"></i>
-                        <i class="fas fa-ellipsis-v"></i>
-                      </span>
-                      <div class="icheck-primary d-inline ml-2">
-                        <input type="checkbox" value="" name="todo5" id="todoCheck5">
-                        <label for="todoCheck5"></label>
-                      </div>
-                      <span class="text">Check your messages and notifications</span>
-                      <small class="badge badge-primary"><i class="far fa-clock"></i> 1 week</small>
-                      <div class="tools">
-                        <i class="fas fa-edit"></i>
-                        <i class="fas fa-trash-o"></i>
-                      </div>
-                    </li>
-                    <li>
-                      <span class="handle">
-                        <i class="fas fa-ellipsis-v"></i>
-                        <i class="fas fa-ellipsis-v"></i>
-                      </span>
-                      <div class="icheck-primary d-inline ml-2">
-                        <input type="checkbox" value="" name="todo6" id="todoCheck6">
-                        <label for="todoCheck6"></label>
-                      </div>
-                      <span class="text">Let theme shine like a star</span>
-                      <small class="badge badge-secondary"><i class="far fa-clock"></i> 1 month</small>
-                      <div class="tools">
-                        <i class="fas fa-edit"></i>
-                        <i class="fas fa-trash-o"></i>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-                <!-- /.card-body -->
-                <div class="card-footer clearfix">
-                  <button type="button" class="btn btn-primary float-right"><i class="fas fa-plus"></i> Add
-                    item</button>
-                </div>
-              </div>
-              <!-- /.card -->
-            </section>
-            <!-- /.Left col -->
-            <!-- right col (We are only adding the ID to make the widgets sortable)-->
-            <section class="col-lg-5 connectedSortable">
+              </li>
 
-              <!-- Map card -->
-              <div class="card bg-gradient-primary">
-                <div class="card-header border-0">
-                  <h3 class="card-title">
-                    <i class="fas fa-map-marker-alt mr-1"></i>
-                    Visitors
-                  </h3>
-                  <!-- card tools -->
-                  <div class="card-tools">
-                    <button type="button" class="btn btn-primary btn-sm daterange" title="Date range">
-                      <i class="far fa-calendar-alt"></i>
-                    </button>
-                    <button type="button" class="btn btn-primary btn-sm" data-card-widget="collapse" title="Collapse">
-                      <i class="fas fa-minus"></i>
-                    </button>
-                  </div>
-                  <!-- /.card-tools -->
+              <div class="topbar-divider d-none d-sm-block"></div>
+
+              <!-- Nav Item - User Information -->
+              <li class="nav-item dropdown no-arrow">
+                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span class="mr-2 d-none d-lg-inline text-gray-600 small">Warungin</span>
+                  <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
+                </a>
+                <!-- Dropdown - User Information -->
+                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                  <a class="dropdown-item" href="#">
+                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Profile
+                  </a>
+                  <a class="dropdown-item" href="#">
+                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Settings
+                  </a>
+                  <a class="dropdown-item" href="#">
+                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Activity Log
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Logout
+                  </a>
                 </div>
-                <div class="card-body">
-                  <div id="world-map" style="height: 250px; width: 100%;"></div>
-                </div>
-                <!-- /.card-body-->
-                <div class="card-footer bg-transparent">
-                  <div class="row">
-                    <div class="col-4 text-center">
-                      <div id="sparkline-1"></div>
-                      <div class="text-white">Visitors</div>
+              </li>
+
+            </ul>
+
+          </nav>
+          <!-- End of Topbar -->
+
+          <!-- Begin Page Content -->
+          <div class="container-fluid">
+
+            <!-- Page Heading -->
+            <div class="d-sm-flex align-items-center justify-content-between mb-4">
+              <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+              <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+            </div>
+
+            <!-- Content Row -->
+            <div class="row">
+
+              <!-- Earnings (Monthly) Card Example -->
+              <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-primary shadow h-100 py-2">
+                  <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                          Earnings (Monthly)</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                      </div>
+                      <div class="col-auto">
+                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                      </div>
                     </div>
-                    <!-- ./col -->
-                    <div class="col-4 text-center">
-                      <div id="sparkline-2"></div>
-                      <div class="text-white">Online</div>
-                    </div>
-                    <!-- ./col -->
-                    <div class="col-4 text-center">
-                      <div id="sparkline-3"></div>
-                      <div class="text-white">Sales</div>
-                    </div>
-                    <!-- ./col -->
                   </div>
-                  <!-- /.row -->
                 </div>
               </div>
-              <!-- /.card -->
 
-              <!-- solid sales graph -->
-              <div class="card bg-gradient-info">
-                <div class="card-header border-0">
-                  <h3 class="card-title">
-                    <i class="fas fa-th mr-1"></i>
-                    Sales Graph
-                  </h3>
-
-                  <div class="card-tools">
-                    <button type="button" class="btn bg-info btn-sm" data-card-widget="collapse">
-                      <i class="fas fa-minus"></i>
-                    </button>
-                    <button type="button" class="btn bg-info btn-sm" data-card-widget="remove">
-                      <i class="fas fa-times"></i>
-                    </button>
-                  </div>
-                </div>
-                <div class="card-body">
-                  <canvas class="chart" id="line-chart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
-                </div>
-                <!-- /.card-body -->
-                <div class="card-footer bg-transparent">
-                  <div class="row">
-                    <div class="col-4 text-center">
-                      <input type="text" class="knob" data-readonly="true" value="20" data-width="60" data-height="60" data-fgColor="#39CCCC">
-
-                      <div class="text-white">Mail-Orders</div>
-                    </div>
-                    <!-- ./col -->
-                    <div class="col-4 text-center">
-                      <input type="text" class="knob" data-readonly="true" value="50" data-width="60" data-height="60" data-fgColor="#39CCCC">
-
-                      <div class="text-white">Online</div>
-                    </div>
-                    <!-- ./col -->
-                    <div class="col-4 text-center">
-                      <input type="text" class="knob" data-readonly="true" value="30" data-width="60" data-height="60" data-fgColor="#39CCCC">
-
-                      <div class="text-white">In-Store</div>
-                    </div>
-                    <!-- ./col -->
-                  </div>
-                  <!-- /.row -->
-                </div>
-                <!-- /.card-footer -->
-              </div>
-              <!-- /.card -->
-
-              <!-- Calendar -->
-              <div class="card bg-gradient-success">
-                <div class="card-header border-0">
-
-                  <h3 class="card-title">
-                    <i class="far fa-calendar-alt"></i>
-                    Calendar
-                  </h3>
-                  <!-- tools card -->
-                  <div class="card-tools">
-                    <!-- button with a dropdown -->
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown" data-offset="-52">
-                        <i class="fas fa-bars"></i>
-                      </button>
-                      <div class="dropdown-menu" role="menu">
-                        <a href="#" class="dropdown-item">Add new event</a>
-                        <a href="#" class="dropdown-item">Clear events</a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">View calendar</a>
+              <!-- Earnings (Monthly) Card Example -->
+              <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-success shadow h-100 py-2">
+                  <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                          Earnings (Annual)</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+                      </div>
+                      <div class="col-auto">
+                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
                       </div>
                     </div>
-                    <button type="button" class="btn btn-success btn-sm" data-card-widget="collapse">
-                      <i class="fas fa-minus"></i>
-                    </button>
-                    <button type="button" class="btn btn-success btn-sm" data-card-widget="remove">
-                      <i class="fas fa-times"></i>
-                    </button>
                   </div>
-                  <!-- /. tools -->
                 </div>
-                <!-- /.card-header -->
-                <div class="card-body pt-0">
-                  <!--The calendar -->
-                  <div id="calendar" style="width: 100%"></div>
-                </div>
-                <!-- /.card-body -->
               </div>
-              <!-- /.card -->
-            </section>
-            <!-- right col -->
+
+              <!-- Earnings (Monthly) Card Example -->
+              <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-info shadow h-100 py-2">
+                  <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks
+                        </div>
+                        <div class="row no-gutters align-items-center">
+                          <div class="col-auto">
+                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
+                          </div>
+                          <div class="col">
+                            <div class="progress progress-sm mr-2">
+                              <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-auto">
+                        <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Pending Requests Card Example -->
+              <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-warning shadow h-100 py-2">
+                  <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                          Pending Requests</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                      </div>
+                      <div class="col-auto">
+                        <i class="fas fa-comments fa-2x text-gray-300"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <!-- /.row (main row) -->
-        </div><!-- /.container-fluid -->
-      </section>
-      <!-- /.content -->
-    </div>
-    <!-- /.content-wrapper -->
-    <footer class="main-footer">
-      <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
-      All rights reserved.
-      <div class="float-right d-none d-sm-inline-block">
-        <b>Version</b> 3.1.0
+          <!-- /.container-fluid -->
+
+        </div>
+        <!-- End of Main Content -->
+
+        <!-- Footer -->
+        <footer class="sticky-footer bg-white">
+          <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+              <span>Copyright &copy; Your Website 2020</span>
+            </div>
+          </div>
+        </footer>
+        <!-- End of Footer -->
+
       </div>
-    </footer>
+      <!-- End of Content Wrapper -->
 
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-      <!-- Control sidebar content goes here -->
-    </aside>
-    <!-- /.control-sidebar -->
   </div>
-  <!-- ./wrapper -->
+  <!-- End of Page Wrapper -->
 
-  <!-- jQuery -->
-  <script src="plugins/jquery/jquery.min.js"></script>
-  <!-- jQuery UI 1.11.4 -->
-  <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
-  <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-  <script>
-    $.widget.bridge('uibutton', $.ui.button)
-  </script>
-  <!-- Bootstrap 4 -->
-  <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <!-- ChartJS -->
-  <script src="plugins/chart.js/Chart.min.js"></script>
-  <!-- Sparkline -->
-  <script src="plugins/sparklines/sparkline.js"></script>
-  <!-- JQVMap -->
-  <script src="plugins/jqvmap/jquery.vmap.min.js"></script>
-  <script src="plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
-  <!-- jQuery Knob Chart -->
-  <script src="plugins/jquery-knob/jquery.knob.min.js"></script>
-  <!-- daterangepicker -->
-  <script src="plugins/moment/moment.min.js"></script>
-  <script src="plugins/daterangepicker/daterangepicker.js"></script>
-  <!-- Tempusdominus Bootstrap 4 -->
-  <script src="plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
-  <!-- Summernote -->
-  <script src="plugins/summernote/summernote-bs4.min.js"></script>
-  <!-- overlayScrollbars -->
-  <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-  <!-- AdminLTE App -->
-  <script src="dist/js/adminlte.js"></script>
-  <!-- AdminLTE for demo purposes -->
-  <script src="dist/js/demo.js"></script>
-  <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-  <script src="dist/js/pages/dashboard.js"></script>
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-primary" href="login.html">Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="<?= base_url(); ?>/vendor/jquery/jquery.min.js"></script>
+  <script src="<?= base_url(); ?>/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="<?= base_url(); ?>/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="<?= base_url(); ?>/js/sb-admin-2.min.js"></script>
+
+  <!-- Page level plugins -->
+  <script src="<?= base_url(); ?>/vendor/chart.js/Chart.min.js"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="<?= base_url(); ?>/js/demo/chart-area-demo.js"></script>
+  <script src="<?= base_url(); ?>/js/demo/chart-pie-demo.js"></script>
+
 </body>
 
 </html>
