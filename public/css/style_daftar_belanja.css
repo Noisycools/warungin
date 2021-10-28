@@ -1,6 +1,6 @@
 html {
   background: #1c1b21;
-  font: 62.5%/1.5em "Trebuchet Ms", helvetica;
+  /* font: 62.5%/1.5em "Trebuchet Ms", helvetica; */
 }
 
 * {
@@ -24,10 +24,10 @@ html {
 h1 {
   text-transform: uppercase;
   font-weight: bold;
-  font-size: 4em;
+  font-size: 3.5em;
   color: #3d3d3d;
-  margin-top: 3px;
-  margin-bottom: 23px;
+  margin-top: 6px;
+  margin-bottom: 26px;
   text-align: center;
 }
 
@@ -66,6 +66,8 @@ a {
 }
 
 .container {
+  font: 62.5%/1.5em "Trebuchet Ms", helvetica;
+
   max-width: 75em;
   width: 95%;
   margin-top: 70px;

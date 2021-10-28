@@ -7,6 +7,7 @@
 
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/style_daftar_belanja.css">
+    <link rel="stylesheet" href="/css/style_nav_footer.css">
 
     <title><?= $title; ?></title>
 </head>
