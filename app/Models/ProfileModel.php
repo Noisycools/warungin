@@ -8,11 +8,24 @@ class ProfileModel extends Model
 {
     protected $table = 'profile';
 
-    public function getData()
+    public function getData($username = null)
     {
-        // $db = \Config\Database::connect();
-        // $builder = $db->table($this->table);
-        // $query = $builder->get();
-        return $this->db->query("SELECT * FROM profile");
+        if ($username == null) {
+            return $this->findAll();
+        } else {
+            return $this->getWhere(['username' => $username]);
+        }
+    }
+
+    public function addProfile($data)
+    {
+        $builder = $this->db->table($this->table);
+        return $builder->insert($data);
+    }
+
+    public function updateProfile($data)
+    {
+        $builder = $this->db->table($this->table);
+        return $builder->update($data);
     }
 }

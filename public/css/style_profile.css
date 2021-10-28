@@ -1,3 +1,8 @@
 .container {
   margin-top: 120px;
+  background: #3d3d3d;
+}
+
+.info-wrap {
+  background: #ffffff17;
 }

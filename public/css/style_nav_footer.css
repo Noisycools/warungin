@@ -40,8 +40,8 @@ body {
   position: absolute;
   display: flex;
   justify-content: space-between;
-  width: 30%;
-  right: 37.5%;
+  width: 35%;
+  right: 32.5%;
   opacity: 0;
 }
 

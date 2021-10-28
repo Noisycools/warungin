@@ -3,15 +3,19 @@
 namespace App\Controllers;
 
 use App\Models\BarangModel;
+use App\Models\ProfileModel;
 use TCPDF;
 
 class Warungin extends BaseController
 {
     protected $barangModel;
     protected $usersModel;
+    protected $profileModel;
+
     public function __construct()
     {
         $this->barangModel = new BarangModel();
+        $this->profileModel = new ProfileModel();
         // $this->usersModel = new UsersModel;
     }
 
@@ -22,7 +26,7 @@ class Warungin extends BaseController
 
         $data = [
             'title' => 'Warungin | Platform Penyetok Warung',
-            'barang' => $tabel_barang,
+            'barang' => $tabel_barang
             // 'users' => $users
         ];
 

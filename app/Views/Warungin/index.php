@@ -6,7 +6,7 @@
         <div class="jumboText">
             <h1>WarungIn</h1>
             <?php if (logged_in()) : ?>
-                <p>Selamat datang kembali!</p>
+                <p>Selamat datang kembali, <?= user()->username; ?>!</p>
             <?php else : ?>
                 <p>Setok warung anda secara online melalui website <br>
                     dengan satu klik!<br>
