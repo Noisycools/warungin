@@ -3,6 +3,8 @@
 namespace App\Controllers;
 
 use App\Models\BarangModel;
+use App\Models\CheckoutModel;
+use App\Models\DaftarBelanjaModel;
 use App\Models\ProfileModel;
 use TCPDF;
 
@@ -11,11 +13,15 @@ class Warungin extends BaseController
     protected $barangModel;
     protected $usersModel;
     protected $profileModel;
+    protected $checkoutModel;
+    protected $daftarBelanjaModel;
 
     public function __construct()
     {
         $this->barangModel = new BarangModel();
         $this->profileModel = new ProfileModel();
+        $this->checkoutModel = new CheckoutModel();
+        $this->daftarBelanjaModel = new DaftarBelanjaModel();
         // $this->usersModel = new UsersModel;
     }
 
@@ -44,14 +50,18 @@ class Warungin extends BaseController
 
     public function printPDF()
     {
-        $tabel_barang = $this->barangModel->findAll();
+        $username = user()->username;
+        $daftar_belanja = $this->daftarBelanjaModel->getData($username);
+        $getTotal = $this->daftarBelanjaModel->getTotal($username);
+        $kodeTransaksi = $this->request->getPost('kodeTransaksi');
 
         $data = [
-            'title' => 'Cetak Transaksi | WarungIn',
-            'barang' => $tabel_barang
+            'transaksi' => $this->checkoutModel->getData($kodeTransaksi)->getRow(),
+            'barang' => $daftar_belanja,
+            'total' => $getTotal
         ];
 
-        $html = view('pages/print_pdf', $data);
+        $html = view('pages/template_pdf', $data);
 
         // create new PDF document
         $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);

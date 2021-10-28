@@ -32,23 +32,22 @@
             <div class="col-sm-4 invoice-col">
                 Untuk
                 <address>
-                    Nama:
+                    Nama : <?= $transaksi->nama_penerima ?>
                     <br>
-                    Alamat:
+                    Alamat : <?= $transaksi->alamat ?>
                     <br>
-                    Telepon:
+                    Telepon : <?= $transaksi->no_hp ?>
                     <br>
-                    Email:
+                    Email : <?= $transaksi->email ?>
                 </address>
             </div><!-- /.col -->
             <div class="col-sm-4 invoice-col">
                 <b>Invoice</b><br>
                 <br>
-                <b>Kode Barang
+                <b>Kode : <?= $transaksi->kode_transaksi ?>
                     <br>
-                    <b>Tanggal Pembayaran
+                    <b>Tanggal Pembayaran :
                         <br>
-                        <b>Akun:</b>
             </div><!-- /.col -->
         </div><!-- /.row -->
 
@@ -65,12 +64,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
+                        <?php foreach ($barang->getResult() as $b) : ?>
+                            <tr>
+                                <td><?= $b->qty ?></td>
+                                <td><?= $b->nama_barang ?></td>
+                                <td><?= "Rp. " . number_format($b->harga_barang, 2, ',', '.') ?></td>
+                                <td><?= "Rp. " . number_format($b->harga_total, 2, ',', '.'); ?></td>
+                            </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div><!-- /.col -->
@@ -83,7 +84,8 @@
                     <table class="table">
                         <tbody>
                             <tr>
-                                <th>Total:</th>
+                                <th>Total: <?php foreach ($total->getResult() as $rows) : echo "Rp. " . number_format($rows->total_harga, 2, ',', '.');
+                                            endforeach;  ?></th>
                                 <td></td>
                             </tr>
                         </tbody>
@@ -95,10 +97,11 @@
         <!-- this row will not appear when printing -->
         <div class="row no-print">
             <div class="col-xs-12">
-                <a href="" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
-                <button class="btn btn-success pull-right"><i class="fa fa-credit-card"></i>Kirim Pembayaran </button>
-                <button class="btn btn-primary pull-right" style="margin-right: 5px;"><i class="fa fa-download"></i>
-                    Cetak PDF </button>
+                <form action="<?= base_url('warungin/printPDF') ?>" method="post">
+                    <input type="hidden" name="kodeTransaksi" value="<?= $transaksi->kode_transaksi ?>">
+                    <button type="submit" class="btn btn-primary pull-right" style="margin-right: 5px;">Cetak PDF</button>
+                </form>
+                <!-- <a href="<?= base_url('warungin/printPDF') ?>" class="btn btn-primary pull-right" style="margin-right: 5px;">Cetak PDF</a> -->
             </div>
         </div>
     </section>

@@ -4,14 +4,17 @@ namespace App\Controllers;
 
 use App\Models\BarangModel;
 use App\Models\DaftarBelanjaModel;
+use App\Models\ProfileModel;
 
 class DaftarBelanja extends BaseController
 {
     protected $daftarBelanjaModel;
+    protected $profileModel;
 
     public function __construct()
     {
         $this->daftarBelanjaModel = new DaftarBelanjaModel();
+        $this->profileModel = new ProfileModel();
     }
 
     public function add()
@@ -48,13 +51,16 @@ class DaftarBelanja extends BaseController
 
     public function checkout()
     {
-        $daftar_belanja = $this->daftarBelanjaModel->findAll();
-        $getTotal = $this->daftarBelanjaModel->getTotal();
+        $username = user()->username;
+        $daftar_belanja = $this->daftarBelanjaModel->getData($username);
+        $getTotal = $this->daftarBelanjaModel->getTotal($username);
+        $getProfile = $this->profileModel->getData($username)->getRow();
 
         $data = [
             'title' => 'Checkout | WarungIn',
             'barang' => $daftar_belanja,
-            'total' => $getTotal
+            'total' => $getTotal,
+            'profile' => $getProfile
         ];
 
         return view('pages/checkout', $data);
