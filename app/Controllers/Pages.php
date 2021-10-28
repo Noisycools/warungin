@@ -4,16 +4,19 @@ namespace App\Controllers;
 
 use App\Models\BarangModel;
 use App\Models\DaftarBelanjaModel;
+use App\Models\ProfileModel;
 
 class Pages extends BaseController
 {
     protected $barangModel;
     protected $daftarBelanjaModel;
+    protected $profileModel;
 
     public function __construct()
     {
         $this->barangModel = new BarangModel();
         $this->daftarBelanjaModel = new DaftarBelanjaModel();
+        $this->profileModel = new ProfileModel();
     }
 
     public function homepage()
@@ -63,8 +66,12 @@ class Pages extends BaseController
 
     public function profile()
     {
+        $profileModel = new ProfileModel();
+        $profile = $profileModel->getData()->getRow();
+
         $data = [
-            'title' => 'Profile | WarungIn'
+            'title' => 'Profile | WarungIn',
+            'profile' => $profile
         ];
 
         return view('pages/profile', $data);

@@ -40,7 +40,7 @@
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <input type="submit" value="Send Message" class="btn btn-secondary">
+                                                <input type="submit" value="Edit Profile" class="btn btn-secondary">
                                                 <div class="submitting"></div>
                                             </div>
                                         </div>
@@ -56,7 +56,13 @@
                                         <span class="fa fa-map-marker"></span>
                                     </div>
                                     <div class="text pl-3">
-                                        <p><span>Alamat:</span> 198 West 21th Street, Suite 721 New York NY 10016</p>
+                                        <p><span>Alamat:</span>
+                                            <?php if ($profile == null) : ?>
+                                                Belum diset
+                                            <?php else :
+                                            ?> Sudah diset 
+                                        <?php endif; ?>
+                                        </p>
                                     </div>
                                 </div>
                                 <div class="dbox w-100 d-flex align-items-center">
