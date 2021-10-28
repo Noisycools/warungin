@@ -9,10 +9,10 @@
 		"codeigniter4/framework": "^4",
 		"myth/auth": "^1.0",
 		"phpmailer/phpmailer": "^6.5",
-		"tecnickcom/tcpdf": "^6.4"
+		"tecnickcom/tcpdf": "^6.4",
+		"fakerphp/faker": "^1.16"
 	},
 	"require-dev": {
-		"fakerphp/faker": "^1.9",
 		"mikey179/vfsstream": "^1.6",
 		"phpunit/phpunit": "^9.1"
 	},

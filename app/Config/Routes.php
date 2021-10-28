@@ -38,10 +38,14 @@ $routes->get('/daftar_belanja', 'Pages::daftar_belanja');
 $routes->get('/homepage', 'Pages::homepage');
 $routes->get('/product', 'Pages::product');
 $routes->get('/admin', 'Admin::index');
-$routes->get('admin/users/', 'Users::index');
-$routes->get('admin/users/create', 'Users::create');
-$routes->get('admin/users/edit/(:segment)', 'Users::edit/$1');
-$routes->delete('admin/users/(:num)', 'Users::delete/$1');
+$routes->get('admin/product', 'Product::index');
+$routes->get('admin/product/create', 'Product::create');
+$routes->get('/product/edit/(:segment)', 'Product::edit/$1');
+$routes->delete('/product/(:num)', 'Product::delete/$1');
+$routes->get('admin/customer', 'Customer::index');
+$routes->get('admin/customer/create', 'Customer::create');
+$routes->get('/customer/edit/(:segment)', 'Customer::edit/$1');
+$routes->delete('/customer/(:num)', 'Customer::delete/$1');
 $routes->get('/profile', 'Pages::profile');
 
 /*
