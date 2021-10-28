@@ -1,0 +1,26 @@
+* {
+  color: white;
+}
+
+.logo {
+  border-bottom: 2px solid white;
+  margin-bottom: 10px;
+}
+
+.invoice {
+  position: relative;
+  background: #1c1b21;
+  border: 1px solid #f4f4f4;
+  padding: 20px;
+  margin: 0px 25px;
+  color: white;
+}
+
+.page-header {
+  margin: 0px 0 -40px 0;
+  font-size: 22px;
+}
+
+.pull-right {
+  font-size: 17px;
+}

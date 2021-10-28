@@ -26,8 +26,9 @@ class Pages extends BaseController
 
     public function daftar_belanja()
     {
-        $daftar_belanja = $this->daftarBelanjaModel->findAll();
-        $getTotal = $this->daftarBelanjaModel->getTotal();
+        $username = user()->username;
+        $daftar_belanja = $this->daftarBelanjaModel->getData($username);
+        $getTotal = $this->daftarBelanjaModel->getTotal($username);
 
         $data = [
             'title' => 'Daftar Belanja | Warungin',

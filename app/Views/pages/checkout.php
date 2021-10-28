@@ -53,7 +53,7 @@
                 <?php endforeach;  ?>
             </div>
             <div class="btns">
-                <button><a href="warungin/templatePDF">Buat Pesanan</a></button>
+                <button><a href="<?= base_url('warungin/templatePDF') ?>">Buat Pesanan</a></button>
                 <button><a href="/daftar_belanja">Kembali</a></button>
             </div>
         </form>

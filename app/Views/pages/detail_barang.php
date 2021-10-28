@@ -42,7 +42,7 @@
                 <form action="/daftarbelanja/add" method="post">
                     <input type="hidden" name="slug" value="<?= $barang['slug']; ?>">
                     <input type="hidden" id="qty-hidden" name="qty" value="">
-                    <a href="" class="cart-btn"><button type="submit">Tambahkan ke Daftar Belanja</button></a>
+                    <a class="cart-btn"><button type="submit">Tambahkan ke Daftar Belanja</button></a>
                 </form>
             </div>
         </div>

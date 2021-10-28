@@ -22,30 +22,30 @@
         <div class="col"></div>
       </div>
       <?php $shipping = 0; ?>
-      <?php foreach ($barang as $b) : $shipping++; ?>
+      <?php foreach ($barang->getResult() as $b) : $shipping++; ?>
         <div class="layout-inline row">
           <div class="col col-pro layout-inline">
-            <img src="/<?= $b['img_barang']; ?>" alt="kitten" />
-            <p><?= $b['nama_barang']; ?></p>
+            <img src="/<?= $b->img_barang; ?>" alt="kitten" />
+            <p><?= $b->nama_barang; ?></p>
           </div>
 
           <div class="col col-price col-numeric align-center ">
-            <p><?= "Rp. " . number_format($b['harga_barang'], 2, ',', '.'); ?></p>
+            <p><?= "Rp. " . number_format($b->harga_barang, 2, ',', '.'); ?></p>
           </div>
 
           <div class="col col-total col-numeric">
-            <p><?= "Rp. " . number_format($b['harga_total'], 2, ',', '.'); ?></p>
+            <p><?= "Rp. " . number_format($b->harga_total, 2, ',', '.'); ?></p>
           </div>
 
           <div class="col col-numeric">
-            <p><?= $b['qty']; ?></p>
+            <p><?= $b->qty; ?></p>
           </div>
 
           <div class="col col-action">
             <div class="action">
               <form action="/daftarbelanja/delete" method="post">
                 <button type="submit"><img src="/img/trash-can.png" alt="" srcset=""></button>
-                <input type="hidden" name="nama_barang" value="<?= $b['nama_barang']; ?>">
+                <input type="hidden" name="nama_barang" value="<?= $b->nama_barang; ?>">
               </form>
             </div>
           </div>

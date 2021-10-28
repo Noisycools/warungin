@@ -18,6 +18,7 @@ class DaftarBelanja extends BaseController
     {
         $db = \Config\Database::connect();
 
+        $username = user()->username;
         $slug = $this->request->getVar('slug');
         $data = $db->query("SELECT * FROM tabel_barang WHERE slug = '$slug' ");
 
@@ -30,7 +31,7 @@ class DaftarBelanja extends BaseController
         $img_barang = $row['foto_barang'];
         $harga_total = (int)$row['harga_barang'] * $qty;
 
-        $db->query("INSERT INTO daftar_belanja(qty, nama_barang, harga_barang, harga_total, img_barang) VALUES('$qty', '$nama_barang', '$harga_barang', '$harga_total', '$img_barang')");
+        $db->query("INSERT INTO daftar_belanja(username, qty, nama_barang, harga_barang, harga_total, img_barang) VALUES('$username', '$qty', '$nama_barang', '$harga_barang', '$harga_total', '$img_barang')");
 
         return redirect()->to('/');
     }
