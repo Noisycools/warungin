@@ -5,7 +5,6 @@ use Myth\Auth\Collectors\Auth; ?>
     <img src="/img/WarungIn.png" alt="">
     <ul class="nav-tem">
         <li><a href="/">Home</a></li>
-        <li><a href="/product">Product</a></li>
         <li><a href="/contact_us">Contact Us</a></li>
         <?php if (logged_in()) : ?>
             <li><a href="/profile">Profile</a></li>

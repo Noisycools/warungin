@@ -15,10 +15,12 @@ class Profile extends BaseController
 
     public function add()
     {
+        $username = user()->username;
         $profileModel = new ProfileModel();
-        $profile = $profileModel->getData()->getRow();
+        $profile = $profileModel->getData($username)->getRow();
 
         $data = [
+            'username' => $username,
             'nama_warung' => $this->request->getPost('namaWarung'),
             'alamat' => $this->request->getPost('alamat'),
             'no_hp' => $this->request->getPost('noHp'),

@@ -49,7 +49,7 @@
                                                         <input type="email" class="form-control" name="email" id="email" placeholder="Email">
                                                     </div>
                                                 </div>
-                                                <input type="hidden" name="username" value="<?= $username; ?>">
+                                                <input type="hidden" name="username" value="<?= user()->username; ?>">
                                             <?php else : ?>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
