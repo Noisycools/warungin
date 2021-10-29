@@ -245,7 +245,8 @@
                                                     <div class="invalid-feedback">
                                                         <?= $validation->getError('foto_barang'); ?>
                                                     </div>
-                                                    <label class="custom-file-label" for="foto_barang"><?= $barang['foto_barang']; ?></label>
+                                                    <label class="custom-file-label" for="foto_barang">
+                                                    </label>
                                                 </div>
                                             </div>
                                         </div>

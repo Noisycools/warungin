@@ -21,6 +21,7 @@ class Profile extends BaseController
 
         $data = [
             'username' => $username,
+            'nama' => $this->request->getPost('nama'),
             'nama_warung' => $this->request->getPost('namaWarung'),
             'alamat' => $this->request->getPost('alamat'),
             'no_hp' => $this->request->getPost('noHp'),
@@ -34,6 +35,7 @@ class Profile extends BaseController
     public function update()
     {
         $data = [
+            'nama' => $this->request->getPost('nama'),
             'nama_warung' => $this->request->getPost('namaWarung'),
             'alamat' => $this->request->getPost('alamat'),
             'no_hp' => $this->request->getPost('noHp'),

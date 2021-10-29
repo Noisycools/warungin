@@ -29,7 +29,12 @@
                                         <?php endif; ?>
                                         <div class="row">
                                             <?php if ($profile == null) : ?>
-                                                <div class="col-md-6">
+                                                <div class="col-md-7">
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" name="nama" id="name" placeholder="Nama Panjang">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-7">
                                                     <div class="form-group">
                                                         <input type="text" class="form-control" name="namaWarung" id="name" placeholder="Nama Warung">
                                                     </div>
@@ -51,7 +56,12 @@
                                                 </div>
                                                 <input type="hidden" name="username" value="<?= user()->username; ?>">
                                             <?php else : ?>
-                                                <div class="col-md-6">
+                                                <div class="col-md-7">
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" name="nama" id="name" value="<?= $profile->nama; ?>" placeholder="Nama Panjang">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-7">
                                                     <div class="form-group">
                                                         <input type="text" class="form-control" name="namaWarung" id="name" value="<?= $profile->nama_warung; ?>" placeholder="Nama Warung">
                                                     </div>
@@ -90,10 +100,18 @@
                                     <h3 class="mb-4 mt-md-4">Nama Warung Kamu</h3>
                                     <div class="dbox w-100 d-flex align-items-start">
                                         <div class="icon d-flex align-items-center justify-content-center">
+                                            <span class="fas fa-id-badge"></span>
+                                        </div>
+                                        <div class="text pl-3">
+                                            <p><span>Nama :</span> Belum diset</p>
+                                        </div>
+                                    </div>
+                                    <div class="dbox w-100 d-flex align-items-start">
+                                        <div class="icon d-flex align-items-center justify-content-center">
                                             <span class="fa fa-map-marker"></span>
                                         </div>
                                         <div class="text pl-3">
-                                            <p><span>Alamat:</span> Belum diset</p>
+                                            <p><span>Alamat :</span> Belum diset</p>
                                         </div>
                                     </div>
                                     <div class="dbox w-100 d-flex align-items-center">
@@ -101,7 +119,7 @@
                                             <span class="fa fa-phone"></span>
                                         </div>
                                         <div class="text pl-3">
-                                            <p><span>No. HP:</span><a href="tel://1234567920"> Belum diset</a></p>
+                                            <p><span>No. HP :</span><a href="tel://1234567920"> Belum diset</a></p>
                                         </div>
                                     </div>
                                     <div class="dbox w-100 d-flex align-items-center">
@@ -109,7 +127,7 @@
                                             <span class="fa fa-paper-plane"></span>
                                         </div>
                                         <div class="text pl-3">
-                                            <p><span>Email:</span><a href="mailto:info@yoursite.com"> Belum diset</a></p>
+                                            <p><span>Email :</span><a href="mailto:info@yoursite.com"> Belum diset</a></p>
                                         </div>
                                     </div>
                                 </div>
@@ -120,10 +138,20 @@
                                     </h3>
                                     <div class="dbox w-100 d-flex align-items-start">
                                         <div class="icon d-flex align-items-center justify-content-center">
+                                            <span class="fas fa-id-badge"></span>
+                                        </div>
+                                        <div class="text pl-3">
+                                            <p><span>Nama :</span>
+                                                <?= $profile->nama; ?>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="dbox w-100 d-flex align-items-start">
+                                        <div class="icon d-flex align-items-center justify-content-center">
                                             <span class="fa fa-map-marker"></span>
                                         </div>
                                         <div class="text pl-3">
-                                            <p><span>Alamat:</span>
+                                            <p><span>Alamat :</span>
                                                 <?= $profile->alamat; ?>
                                             </p>
                                         </div>
@@ -133,7 +161,7 @@
                                             <span class="fa fa-phone"></span>
                                         </div>
                                         <div class="text pl-3">
-                                            <p><span>No. HP:</span> <a href="tel://1234567920">
+                                            <p><span>No. HP :</span> <a href="tel://1234567920">
                                                     <?= $profile->no_hp; ?>
                                                 </a></p>
                                         </div>
@@ -143,7 +171,7 @@
                                             <span class="fa fa-paper-plane"></span>
                                         </div>
                                         <div class="text pl-3">
-                                            <p><span>Email:</span> <a href="mailto:info@yoursite.com">
+                                            <p><span>Email :</span> <a href="mailto:info@yoursite.com">
                                                     <?= $profile->email; ?>
                                                 </a></p>
                                         </div>

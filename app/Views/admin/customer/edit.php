@@ -199,9 +199,9 @@
                             <div class="col">
                                 <div class="col-8">
                                     <h2 class="my-3">Form Ubah Data</h2>
-                                    <form action="/customer/update/<?= $customer['id']; ?>" method="POST" enctype="multipart/form-data">
+                                    <form action="/customer/update/<?= $profile->id_profile; ?>" method="POST" enctype="multipart/form-data">
                                         <?= csrf_field(); ?>
-                                        <input type="hidden" name="password" value="<?= $customer['password']; ?>">
+                                        <input type="hidden" name="password" value="<?= $profile->id_profile; ?>">
                                         <div class="form-group row">
                                             <label for="nama" class="col-sm-2 col-form-label">Nama</label>
                                             <div class="col-sm-10">

@@ -213,27 +213,27 @@
                                         <tr>
                                             <th scope="col">#</th>
                                             <th scope="col">Nama</th>
+                                            <th scope="col">Nama Warung</th>
                                             <th scope="col">Alamat</th>
+                                            <th scope="col">No. HP</th>
                                             <th scope="col">Email</th>
-                                            <th scope="col">No Hp</th>
-                                            <th scope="col">Username</th>
                                             <th scope="col">Aksi</th>
                                             <th scope="col"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php $i = 1; ?>
-                                        <?php foreach ($customer as $c) : ?>
+                                        <?php foreach ($profile as $c) : ?>
                                             <tr>
                                                 <th scope="row"><?= $i++; ?></th>
                                                 <td><?= $c['nama']; ?></td>
+                                                <td><?= $c['nama_warung']; ?></td>
                                                 <td><?= $c['alamat']; ?></td>
+                                                <td><?= $c['no_hp']; ?></td>
                                                 <td><?= $c['email']; ?></td>
-                                                <td><?= $c['no_tlp']; ?></td>
-                                                <td><?= $c['username']; ?></td>
-                                                <td><a href="/customer/edit/<?= $c['password']; ?>" class="btn btn-warning">Edit</a></td>
+                                                <td><a href="/customer/edit/<?= $c['id_profile']; ?>" class="btn btn-warning">Edit</a></td>
                                                 <td>
-                                                    <form action="/customer/<?= $c['id']; ?>" method="POST" class="d-inline">
+                                                    <form action="/customer/<?= $c['id_profile']; ?>" method="POST" class="d-inline">
                                                         <?= csrf_field(); ?>
                                                         <input type="hidden" name="_method" value="DELETE">
                                                         <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin?')">Delete</button>

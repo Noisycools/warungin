@@ -5,7 +5,7 @@
 
     <!-- Left Column / Headphones Image -->
     <div class="left-column">
-        <img src="/<?= $barang['foto_barang']; ?>" alt="">
+        <img src="/img/<?= $barang['foto_barang']; ?>" alt="">
     </div>
 
 

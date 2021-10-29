@@ -31,9 +31,11 @@ class Product extends BaseController
 
     public function create()
     {
+        $tabel_barang = $this->barangModel->findAll();
         // session();
         $data = [
-            'validation' => \Config\Services::validation()
+            'validation' => \Config\Services::validation(),
+            'barang' => $tabel_barang
         ];
         return view('admin/product/create', $data);
     }

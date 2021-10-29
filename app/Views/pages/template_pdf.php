@@ -2,23 +2,14 @@
 <link rel="stylesheet" href="/css/style_template_pdf.css">
 <script src="htpp://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="htpp://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<title>Print PDF</title>
 <!------ Include the above in your HEAD tag ---------->
 
+<h1>
+    <center></center>
+</h1>
 <section class="content content_content" style="width: 70%; margin: auto;">
     <section class="invoice">
-        <!-- title row -->
-        <div class="row">
-            <div class="col-xs-12 logo">
-                <h2 class="page-header">
-                    <div class="col-md-6">
-                        <div class="col-md-5 px-0">
-                            <img class="img-fluid logo-img" src="/img/WarungIn.png">
-                        </div>
-                </h2>
-            </div><!-- /.col -->
-        </div>
-        <small class="pull-right">Tanggal:</small>
+        <b class="pull-right">Tanggal : </b>
         <!-- info row -->
         <div class="row invoice-info">
             <div class="col-sm-4 invoice-col">
@@ -97,7 +88,7 @@
         <!-- this row will not appear when printing -->
         <div class="row no-print">
             <div class="col-xs-12">
-                <form action="<?= base_url('warungin/printPDF') ?>" method="post">
+                <form action="<?= base_url('warungin/printPDF') ?>" method="post" target="_blank">
                     <input type="hidden" name="kodeTransaksi" value="<?= $transaksi->kode_transaksi ?>">
                     <button type="submit" class="btn btn-primary pull-right" style="margin-right: 5px;">Cetak PDF</button>
                 </form>

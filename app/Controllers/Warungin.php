@@ -8,6 +8,20 @@ use App\Models\DaftarBelanjaModel;
 use App\Models\ProfileModel;
 use TCPDF;
 
+class MYPDF extends TCPDF
+{
+    // Page footer
+    public function Footer()
+    {
+        // Position at 15 mm from bottom
+        $this->SetY(-15);
+        // Set font
+        $this->SetFont('helvetica', 'I', 8);
+        // Page number
+        $this->Cell(0, 10, '(c) Copyright WarungIn 2021', 0, false, 'C', 0, '', 0, false, 'T', 'M');
+    }
+}
+
 class Warungin extends BaseController
 {
     protected $barangModel;
@@ -64,14 +78,26 @@ class Warungin extends BaseController
         $html = view('pages/template_pdf', $data);
 
         // create new PDF document
-        $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+        $pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
         $pdf->AddPage();
+
+        $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
 
         // Print text using writeHTMLCell()
         $pdf->writeHTML($html);
 
+        // Set Footer
+        $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+        $pdf->setFooterFont(array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
+
+        // set auto page breaks
+        $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+
+        // set image scale factor
+        $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
+
         // Close and output PDF document
         $this->response->setContentType('application/pdf');
-        $pdf->Output('Transaksi-WarungIn.pdf', 'I');
+        $pdf->Output('transaksi_warungin.pdf', 'I');
     }
 }

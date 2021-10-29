@@ -3,14 +3,18 @@
 namespace App\Controllers;
 
 use App\Models\CustomerModel;
+use App\Models\ProfileModel;
 use CodeIgniter\Validation\Rules;
 
 class Customer extends BaseController
 {
     protected $customerModel;
+    protected $profileModel;
+
     public function __construct()
     {
         $this->customerModel = new CustomerModel();
+        $this->profileModel = new ProfileModel();
     }
 
     public function index()
@@ -18,7 +22,8 @@ class Customer extends BaseController
         // $customer = $this->customerModel->findAll();
 
         $data = [
-            'customer' => $this->customerModel->getCustomer()
+            'customer' => $this->customerModel->getCustomer(),
+            'profile' => $this->profileModel->findAll()
         ];
 
         // connect secara manual
@@ -121,7 +126,8 @@ class Customer extends BaseController
     {
         $data = [
             'validation' => \Config\Services::validation(),
-            'customer' => $this->customerModel->getCustomer($password)
+            // 'customer' => $this->customerModel->getCustomer($password),
+            'profile' => $this->profileModel->getData($password)->getRow()
         ];
         return view('admin/customer/edit', $data);
     }
@@ -130,25 +136,25 @@ class Customer extends BaseController
     {
         // dd($this->request->getVar());
         //cek nama_customer
-        $customerLama = $this->customerModel->getCustomer($this->request->getVar('password'));
-        if ($customerLama['nama'] == $this->request->getVar('nama')) {
-            $rule_namacustomer = 'required';
-        } else {
-            $rule_namacustomer = 'required|is_unique[customer.nama]';
-        }
+        // $customerLama = $this->customerModel->getCustomer($this->request->getVar('password'));
+        // if ($customerLama['nama'] == $this->request->getVar('nama')) {
+        //     $rule_namacustomer = 'required';
+        // } else {
+        //     $rule_namacustomer = 'required|is_unique[customer.nama]';
+        // }
 
-        if (!$this->validate([
-            'nama' => [
-                'rules' => $rule_namacustomer,
-                'errors' => [
-                    'required' => 'Kolom ini harus diisi!',
-                    'is_unique' => 'nama customer sudah terdaftar'
-                ]
-            ]
-        ])) {
-            // $validation = \Config\Services::validation();
-            return redirect()->to('/customer/edit/' . $this->request->getVar('password'))->withInput();
-        }
+        // if (!$this->validate([
+        //     'nama' => [
+        //         'rules' => $rule_namacustomer,
+        //         'errors' => [
+        //             'required' => 'Kolom ini harus diisi!',
+        //             'is_unique' => 'nama customer sudah terdaftar'
+        //         ]
+        //     ]
+        // ])) {
+        //     // $validation = \Config\Services::validation();
+        //     return redirect()->to('/customer/edit/' . $this->request->getVar('password'))->withInput();
+        // }
 
         // $fileGambar = $this->request->getFile('foto_customer');
         // //cek gambar apakah tetap gambar lama
@@ -165,7 +171,6 @@ class Customer extends BaseController
 
         // $slug = url_title($this->request->getVar('nama_customer'), '-', true);
         $this->customerModel->save([
-            'id' => $id,
             'nama' => $this->request->getVar('nama'),
             'alamat' => $this->request->getVar('alamat'),
             'email' => $this->request->getVar('email'),
