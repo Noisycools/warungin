@@ -46,6 +46,10 @@ $routes->get('admin/customer', 'Customer::index');
 $routes->get('admin/customer/create', 'Customer::create');
 $routes->get('/customer/edit/(:segment)', 'Customer::edit/$1');
 $routes->delete('/customer/(:num)', 'Customer::delete/$1');
+$routes->get('admin/transaction', 'Transaction::index');
+$routes->get('admin/transaction/create', 'Transaction::create');
+$routes->get('/transaction/edit/(:segment)', 'Transaction::edit/$1');
+$routes->delete('/transaction/(:segment)', 'Transaction::delete/$1');
 $routes->get('/profile', 'Pages::profile');
 
 /*

@@ -2,18 +2,18 @@
 
 namespace App\Controllers;
 
-use App\Models\CustomerModel;
+// use App\Models\CustomerModel;
 use App\Models\ProfileModel;
 use CodeIgniter\Validation\Rules;
 
 class Customer extends BaseController
 {
-    protected $customerModel;
+    // protected $customerModel;
     protected $profileModel;
 
     public function __construct()
     {
-        $this->customerModel = new CustomerModel();
+        // $this->customerModel = new CustomerModel();
         $this->profileModel = new ProfileModel();
     }
 
@@ -22,7 +22,7 @@ class Customer extends BaseController
         // $customer = $this->customerModel->findAll();
 
         $data = [
-            'customer' => $this->customerModel->getCustomer(),
+            // 'customer' => $this->customerModel->getCustomer(),
             'profile' => $this->profileModel->findAll()
         ];
 
@@ -48,10 +48,16 @@ class Customer extends BaseController
         //validation
         if (!$this->validate([
             'nama' => [
-                'rules' => 'required|is_unique[customer.nama]',
+                'rules' => 'required|is_unique[profile.nama]',
                 'errors' => [
                     'required' => 'Kolom ini harus diisi!',
                     'is_unique' => 'nama customer sudah terdaftar'
+                ]
+            ],
+            'nama_warung' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Kolom ini harus diisi!'
                 ]
             ],
             'alamat' => [
@@ -66,7 +72,7 @@ class Customer extends BaseController
                     'required' => 'Kolom ini harus diisi!',
                 ]
             ],
-            'no_tlp' => [
+            'no_hp' => [
                 'rules' => 'required',
                 'errors' => [
                     'required' => 'Kolom ini harus diisi!',
@@ -96,65 +102,65 @@ class Customer extends BaseController
         // $namaGambar = $fileGambar->getName();
 
         // $slug = url_title($this->request->getVar('nama_customer'), '-', true);
-        $faker = \Faker\Factory::create('id_ID');
-        $this->customerModel->save([
-            'nama' => $this->request->getVar('nama'),
-            'alamat' => $this->request->getVar('alamat'),
-            'email' => $this->request->getVar('email'),
-            'no_tlp' => $this->request->getVar('no_tlp'),
+        // $faker = \Faker\Factory::create('id_ID');
+        $this->profileModel->save([
             'username' => $this->request->getVar('username'),
-            'password' => $faker->password,
+            'nama' => $this->request->getVar('nama'),
+            'nama_warung' => $this->request->getVar('nama_warung'),
+            'alamat' => $this->request->getVar('alamat'),
+            'no_hp' => $this->request->getVar('no_hp'),
+            'email' => $this->request->getVar('email'),
         ]);
         session()->setFlashData('pesan', 'Data berhasil ditambahkan');
         return redirect()->to('admin/customer');
     }
 
-    public function delete($id)
+    public function delete($id_profile)
     {
-        // cari gambar berdasarkan id
-        // $customer = $this->customerModel->find($id);
+        // cari gambar berdasarkan profi$id_profile
+        // $customer = $this->customerModel->find($id_profile);
 
         // // hapus gambar
         // unlink('img/' . $customer['foto_customer']);
 
-        $this->customerModel->delete($id);
+        $this->profileModel->delete($id_profile);
         session()->setFlashData('pesan', 'Data berhasil dihapus');
         return redirect()->to('admin/customer');
     }
 
-    public function edit($password)
+    public function edit($username)
     {
         $data = [
             'validation' => \Config\Services::validation(),
-            // 'customer' => $this->customerModel->getCustomer($password),
-            'profile' => $this->profileModel->getData($password)->getRow()
+            // 'customer' => $this->customerModel->getCustomer($username),
+            'profile' =>  $this->profileModel->getProfile($username)
         ];
         return view('admin/customer/edit', $data);
     }
 
-    public function update($id)
+    public function update($id_profile)
     {
         // dd($this->request->getVar());
         //cek nama_customer
-        // $customerLama = $this->customerModel->getCustomer($this->request->getVar('password'));
-        // if ($customerLama['nama'] == $this->request->getVar('nama')) {
-        //     $rule_namacustomer = 'required';
-        // } else {
-        //     $rule_namacustomer = 'required|is_unique[customer.nama]';
-        // }
+        $customerLama = $this->profileModel->getProfile($this->request->getVar('username'));
+        if ($customerLama['nama'] == $this->request->getVar('nama')) {
+            $rule_namacustomer = 'required';
+        } else {
+            $rule_namacustomer = 'required|is_unique[profile.nama]';
+        }
 
-        // if (!$this->validate([
-        //     'nama' => [
-        //         'rules' => $rule_namacustomer,
-        //         'errors' => [
-        //             'required' => 'Kolom ini harus diisi!',
-        //             'is_unique' => 'nama customer sudah terdaftar'
-        //         ]
-        //     ]
-        // ])) {
-        //     // $validation = \Config\Services::validation();
-        //     return redirect()->to('/customer/edit/' . $this->request->getVar('password'))->withInput();
-        // }
+        if (!$this->validate([
+            'nama' => [
+                'rules' => $rule_namacustomer,
+                'errors' => [
+                    'required' => 'Kolom ini harus diisi!',
+                    'is_unique' => 'nama customer sudah terdaftar'
+                ]
+            ]
+        ])) {
+            // $validation = \Config\Services::validation();
+            return redirect()->to('/customer/edit/' . $this->request->getProfile('username'))->withInput();
+        }
 
         // $fileGambar = $this->request->getFile('foto_customer');
         // //cek gambar apakah tetap gambar lama
@@ -170,12 +176,14 @@ class Customer extends BaseController
         // }
 
         // $slug = url_title($this->request->getVar('nama_customer'), '-', true);
-        $this->customerModel->save([
+        $this->profileModel->save([
+            'id_profile' => $id_profile,
+            'username' => $this->request->getVar('username'),
             'nama' => $this->request->getVar('nama'),
+            'nama_warung' => $this->request->getVar('nama_warung'),
             'alamat' => $this->request->getVar('alamat'),
-            'email' => $this->request->getVar('email'),
-            'no_tlp' => $this->request->getVar('no_tlp'),
-            'username' => $this->request->getVar('username')
+            'no_hp' => $this->request->getVar('no_hp'),
+            'email' => $this->request->getVar('email')
         ]);
         session()->setFlashData('pesan', 'Data berhasil diubah');
         return redirect()->to('admin/customer');

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin | Customer</title>
+    <title>Admin | Edit Transaksi</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="<?= base_url(); ?>/../../plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="<?= base_url(); ?>/../../dist/css/adminlte.min.css">
-    <link rel="stylesheet" href="/css/gambar.css">
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -26,7 +25,7 @@
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="<?= base_url('admin'); ?>" class="nav-link">Home</a>
+                    <a href="index.html" class="nav-link">Home</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
                     <a href="#" class="nav-link">Contact</a>
@@ -198,48 +197,63 @@
                     <div class="container">
                         <div class="row">
                             <div class="col">
-                                <h1 class="mt-2">Daftar Customer</h1>
-                                <a href="/customer/create" class="btn btn-primary mb-3">Tambah Data</a>
-                                <?php if (session()->getFlashData('pesan')) : ?>
-                                    <div class="alert alert-success" role="alert">
-                                        <?= session()->getFlashData('pesan'); ?>
-                                    </div>
-                                <?php endif; ?>
-                                <table class="table">
-                                    <thead class="table-light">
-                                        <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">Nama</th>
-                                            <th scope="col">Nama Warung</th>
-                                            <th scope="col">Alamat</th>
-                                            <th scope="col">No. HP</th>
-                                            <th scope="col">Email</th>
-                                            <th scope="col">Aksi</th>
-                                            <th scope="col"></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php $i = 1; ?>
-                                        <?php foreach ($profile as $p) : ?>
-                                            <tr>
-                                                <th scope="row"><?= $i++; ?></th>
-                                                <td><?= $p['nama']; ?></td>
-                                                <td><?= $p['nama_warung']; ?></td>
-                                                <td><?= $p['alamat']; ?></td>
-                                                <td><?= $p['no_hp']; ?></td>
-                                                <td><?= $p['email']; ?></td>
-                                                <td><a href="/customer/edit/<?= $p['username']; ?>" class="btn btn-warning">Edit</a></td>
-                                                <td>
-                                                    <form action="/customer/<?= $p['id_profile']; ?>" method="POST" class="d-inline">
-                                                        <?= csrf_field(); ?>
-                                                        <input type="hidden" name="_method" value="DELETE">
-                                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin?')">Delete</button>
-                                                    </form>
-                                                </td>
-                                            </tr>
-                                        <?php endforeach; ?>
-                                    </tbody>
-                                </table>
+                                <div class="col-8">
+                                    <h2 class="my-3">Form Ubah Data</h2>
+                                    <form action="/transaction/update/<?= $transaksi['kode_transaksi']; ?>" method="POST" enctype="multipart/form-data">
+                                        <?= csrf_field(); ?>
+                                        <input type="hidden" name="kode_transaksi" value="<?= $transaksi['kode_transaksi']; ?>">
+                                        <div class="form-group row">
+                                            <label for="nama_penerima" class="col-sm-2 col-form-label">Nama Penerima</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control <?= ($validation->hasError('nama_penerima')) ? 'is-invalid' : ''; ?>" id="nama_penerima" name="nama_penerima" autofocus value="<?= (old('nama_penerima')) ? old('nama_penerima') : $transaksi['nama_penerima'] ?>">
+                                                <div class="invalid-feedback">
+                                                    <?= $validation->getError('nama_penerima'); ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="nama_warung" class="col-sm-2 col-form-label">Nama Warung</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="nama_warung" name="nama_warung" value="<?= (old('nama_warung')) ? old('nama_warung') : $transaksi['nama_warung'] ?>">
+                                                <div class="invalid-feedback">
+                                                    <?= $validation->getError('nama_warung'); ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="alamat" class="col-sm-2 col-form-label">Alamat</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="alamat" name="alamat" value="<?= (old('alamat')) ? old('alamat') : $transaksi['alamat'] ?>">
+                                                <div class="invalid-feedback">
+                                                    <?= $validation->getError('alamat'); ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="no_hp" class="col-sm-2 col-form-label">No HP</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="no_hp" name="no_hp" value="<?= (old('no_hp')) ? old('no_hp') : $transaksi['no_hp'] ?>">
+                                                <div class="invalid-feedback">
+                                                    <?= $validation->getError('no_hp'); ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="email" class="col-sm-2 col-form-label">Email</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="email" name="email" value="<?= (old('email')) ? old('email') : $transaksi['email'] ?>">
+                                                <div class="invalid-feedback">
+                                                    <?= $validation->getError('email'); ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-10">
+                                                <button type="submit" class="btn btn-primary">Ubah Data</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>

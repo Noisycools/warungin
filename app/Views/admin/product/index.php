@@ -200,9 +200,6 @@
                             <div class="col">
                                 <h1 class="mt-2">Daftar Barang</h1>
                                 <a href="/product/create" class="btn btn-primary mb-3">Tambah Data</a>
-                                <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
-                                    <i class="fas fa-download"></i> Print PDF
-                                </button>
                                 <?php if (session()->getFlashData('pesan')) : ?>
                                     <div class="alert alert-success" role="alert">
                                         <?= session()->getFlashData('pesan'); ?>

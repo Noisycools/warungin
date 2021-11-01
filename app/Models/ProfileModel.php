@@ -7,25 +7,13 @@ use CodeIgniter\Model;
 class ProfileModel extends Model
 {
     protected $table = 'profile';
-
-    public function getData($username = null)
+    protected $primaryKey = 'id_profile';
+    protected $allowedFields = ['username', 'nama', 'nama_warung', 'alamat', 'no_hp', 'email'];
+    public function getProfile($username = false)
     {
-        if ($username == null) {
+        if ($username == false) {
             return $this->findAll();
-        } else {
-            return $this->getWhere(['username' => $username]);
         }
-    }
-
-    public function addProfile($data)
-    {
-        $builder = $this->db->table($this->table);
-        return $builder->insert($data);
-    }
-
-    public function updateProfile($data)
-    {
-        $builder = $this->db->table($this->table);
-        return $builder->update($data);
+        return $this->where(['username' => $username])->first();
     }
 }
