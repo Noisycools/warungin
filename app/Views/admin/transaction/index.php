@@ -199,7 +199,6 @@
                         <div class="row">
                             <div class="col">
                                 <h1 class="mt-2">Histori Transaksi</h1>
-                                <a href="/transaction/create" class="btn btn-primary mb-3">Tambah Data</a>
                                 <?php if (session()->getFlashData('pesan')) : ?>
                                     <div class="alert alert-success" role="alert">
                                         <?= session()->getFlashData('pesan'); ?>

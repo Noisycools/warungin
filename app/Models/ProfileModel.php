@@ -8,12 +8,27 @@ class ProfileModel extends Model
 {
     protected $table = 'profile';
     protected $primaryKey = 'id_profile';
-    protected $allowedFields = ['username', 'nama', 'nama_warung', 'alamat', 'no_hp', 'email'];
-    public function getProfile($username = false)
+    protected $allowedFields = ['nama', 'nama_warung', 'alamat', 'no_hp', 'email'];
+
+    public function getProfile($username = null)
     {
-        if ($username == false) {
+        if ($username == null) {
             return $this->findAll();
+        } else {
+            return $this->getWhere(['username' => $username]);
         }
-        return $this->where(['username' => $username])->first();
+    }
+
+    public function addProfile($data)
+    {
+        $builder = $this->db->table($this->table);
+        return $builder->insert($data);
+    }
+
+    public function updateProfile($data)
+    {
+        $builder = $this->db->table($this->table);
+        $builder->where(['nama' => $data['nama']]);
+        return $builder->update($data);
     }
 }

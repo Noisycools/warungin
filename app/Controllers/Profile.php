@@ -17,7 +17,7 @@ class Profile extends BaseController
     {
         $username = user()->username;
         $profileModel = new ProfileModel();
-        $profile = $profileModel->getData($username)->getRow();
+        $profile = $profileModel->getProfile($username)->getRow();
 
         $data = [
             'username' => $username,
@@ -39,8 +39,7 @@ class Profile extends BaseController
             'nama_warung' => $this->request->getPost('namaWarung'),
             'alamat' => $this->request->getPost('alamat'),
             'no_hp' => $this->request->getPost('noHp'),
-            'email' => $this->request->getPost('email'),
-            'username' => $this->request->getPost('username')
+            'email' => $this->request->getPost('email')
         ];
 
         $this->profileModel->updateProfile($data);

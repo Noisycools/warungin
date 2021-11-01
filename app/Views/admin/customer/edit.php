@@ -199,22 +199,12 @@
                             <div class="col">
                                 <div class="col-8">
                                     <h2 class="my-3">Form Ubah Data</h2>
-                                    <form action="/customer/update/<?= $profile['id_profile']; ?>" method="POST" enctype="multipart/form-data">
+                                    <form action="/customer/update" method="POST" enctype="multipart/form-data">
                                         <?= csrf_field(); ?>
-                                        <input type="hidden" name="username" value="<?= $profile['username']; ?>">
-                                        <div class="form-group row">
-                                            <label for="username" class="col-sm-2 col-form-label">Username</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" class="form-control <?= ($validation->hasError('username')) ? 'is-invalid' : ''; ?>" id="username" name="username" autofocus value="<?= (old('username')) ? old('username') : $profile['username'] ?>">
-                                                <div class="invalid-feedback">
-                                                    <?= $validation->getError('username'); ?>
-                                                </div>
-                                            </div>
-                                        </div>
                                         <div class="form-group row">
                                             <label for="nama" class="col-sm-2 col-form-label">Nama</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control <?= ($validation->hasError('nama')) ? 'is-invalid' : ''; ?>" id="nama" name="nama" autofocus value="<?= (old('nama')) ? old('nama') : $profile['nama'] ?>">
+                                                <input type="text" class="form-control <?= ($validation->hasError('nama')) ? 'is-invalid' : ''; ?>" id="nama" name="nama" autofocus value="<?= (old('nama')) ? old('nama') : $profile->nama; ?>">
                                                 <div class="invalid-feedback">
                                                     <?= $validation->getError('nama'); ?>
                                                 </div>
@@ -223,7 +213,7 @@
                                         <div class="form-group row">
                                             <label for="nama_warung" class="col-sm-2 col-form-label">Nama Warung</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" id="nama_warung" name="nama_warung" value="<?= (old('nama_warung')) ? old('nama_warung') : $profile['nama_warung'] ?>">
+                                                <input type="text" class="form-control" id="nama_warung" name="nama_warung" value="<?= (old('nama_warung')) ? old('nama_warung') : $profile->nama_warung; ?>">
                                                 <div class="invalid-feedback">
                                                     <?= $validation->getError('nama_warung'); ?>
                                                 </div>
@@ -232,7 +222,7 @@
                                         <div class="form-group row">
                                             <label for="alamat" class="col-sm-2 col-form-label">Alamat</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" id="alamat" name="alamat" value="<?= (old('alamat')) ? old('alamat') : $profile['alamat'] ?>">
+                                                <input type="text" class="form-control" id="alamat" name="alamat" value="<?= (old('alamat')) ? old('alamat') : $profile->alamat; ?>">
                                                 <div class="invalid-feedback">
                                                     <?= $validation->getError('alamat'); ?>
                                                 </div>
@@ -241,7 +231,7 @@
                                         <div class="form-group row">
                                             <label for="no_hp" class="col-sm-2 col-form-label">No Hp</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" id="no_hp" name="no_hp" value="<?= (old('no_hp')) ? old('no_hp') : $profile['no_hp'] ?>">
+                                                <input type="text" class="form-control" id="no_hp" name="no_hp" value="<?= (old('no_hp')) ? old('no_hp') : $profile->no_hp; ?>">
                                                 <div class="invalid-feedback">
                                                     <?= $validation->getError('no_hp'); ?>
                                                 </div>
@@ -250,7 +240,7 @@
                                         <div class="form-group row">
                                             <label for="email" class="col-sm-2 col-form-label">Email</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" id="email" name="email" value="<?= (old('email')) ? old('email') : $profile['email'] ?>">
+                                                <input type="text" class="form-control" id="email" name="email" value="<?= (old('email')) ? old('email') : $profile->email; ?>">
                                                 <div class="invalid-feedback">
                                                     <?= $validation->getError('email'); ?>
                                                 </div>

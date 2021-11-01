@@ -67,14 +67,12 @@ class Pages extends BaseController
 
     public function profile()
     {
-        $username = user()->username;
         $profileModel = new ProfileModel();
-        $tabel_profile = $this->profileModel->findAll();
-        $profile = $profileModel->getData($username)->getRow();
+        $username = user()->username;
+        $profile = $profileModel->getProfile($username)->getRow();
 
         $data = [
             'title' => 'Profile | WarungIn',
-            'tabel_profile' => $tabel_profile,
             'profile' => $profile
         ];
 

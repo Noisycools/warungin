@@ -133,34 +133,21 @@ class Customer extends BaseController
         $data = [
             'validation' => \Config\Services::validation(),
             // 'customer' => $this->customerModel->getCustomer($username),
-            'profile' =>  $this->profileModel->getProfile($username)
+            'profile' =>  $this->profileModel->getProfile($username)->getRow()
         ];
         return view('admin/customer/edit', $data);
     }
 
-    public function update($id_profile)
+    public function update()
     {
         // dd($this->request->getVar());
         //cek nama_customer
-        $customerLama = $this->profileModel->getProfile($this->request->getVar('username'));
-        if ($customerLama['nama'] == $this->request->getVar('nama')) {
-            $rule_namacustomer = 'required';
-        } else {
-            $rule_namacustomer = 'required|is_unique[profile.nama]';
-        }
-
-        if (!$this->validate([
-            'nama' => [
-                'rules' => $rule_namacustomer,
-                'errors' => [
-                    'required' => 'Kolom ini harus diisi!',
-                    'is_unique' => 'nama customer sudah terdaftar'
-                ]
-            ]
-        ])) {
-            // $validation = \Config\Services::validation();
-            return redirect()->to('/customer/edit/' . $this->request->getProfile('username'))->withInput();
-        }
+        // $customerLama = $this->profileModel->getProfile($this->request->getVar('username'));
+        // if ($customerLama['nama'] == $this->request->getVar('nama')) {
+        //     $rule_namacustomer = 'required';
+        // } else {
+        //     $rule_namacustomer = 'required|is_unique[profile.nama]';
+        // }
 
         // $fileGambar = $this->request->getFile('foto_customer');
         // //cek gambar apakah tetap gambar lama
@@ -176,15 +163,27 @@ class Customer extends BaseController
         // }
 
         // $slug = url_title($this->request->getVar('nama_customer'), '-', true);
-        $this->profileModel->save([
-            'id_profile' => $id_profile,
-            'username' => $this->request->getVar('username'),
-            'nama' => $this->request->getVar('nama'),
-            'nama_warung' => $this->request->getVar('nama_warung'),
-            'alamat' => $this->request->getVar('alamat'),
-            'no_hp' => $this->request->getVar('no_hp'),
-            'email' => $this->request->getVar('email')
-        ]);
+        $data = [
+            'nama' => $this->request->getPost('nama'),
+            'nama_warung' => $this->request->getPost('nama_warung'),
+            'alamat' => $this->request->getPost('alamat'),
+            'no_hp' => $this->request->getPost('no_hp'),
+            'email' => $this->request->getPost('email')
+        ];
+
+        // if (!$this->validate([
+        //     'nama' => [
+        //         'rules' => $rule_namacustomer,
+        //         'errors' => [
+        //             'required' => 'Kolom ini harus diisi!',
+        //             'is_unique' => 'Nama customer sudah terdaftar'
+        //         ]
+        //     ]
+        // ])) {
+        //     // $validation = \Config\Services::validation();
+        // }
+        $this->profileModel->updateProfile($data);
+
         session()->setFlashData('pesan', 'Data berhasil diubah');
         return redirect()->to('admin/customer');
     }
