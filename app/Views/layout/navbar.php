@@ -12,6 +12,9 @@ use Myth\Auth\Collectors\Auth; ?>
             <?php if (in_groups('admin')) : ?>
                 <li><a href="/admin">Admin</a></li>
             <?php endif; ?>
+            <?php if (in_groups('kurir')) : ?>
+                <li><a href="/kurir">Kurir</a></li>
+            <?php endif; ?>
         <?php endif; ?>
     </ul>
     <div class="user">

@@ -8,7 +8,7 @@
         <div class="items" id="items">
             <?php foreach ($barang as $b) : ?>
                 <a href="/pages/detail_barang/<?= $b['slug']; ?>">
-                    <div class="item"><img src="/<?php echo $b['foto_barang'] ?>" alt="">
+                    <div class="item"><img src="/img/<?= $b['foto_barang'] ?>" alt="">
                         <p><?php echo $b['nama_barang'] ?></p><span><?php echo $b['pemilik_barang'] ?> <br>Jl. Kebon Jeruk</span><br>
                         <form action="/daftarbelanja/add" method="post">
                             <input type="hidden" name="slug" value="<?= $b['slug']; ?>">
