@@ -3,20 +3,24 @@
 namespace App\Controllers;
 
 use App\Models\BarangModel;
+use App\Models\CheckoutModel;
 use App\Models\DaftarBelanjaModel;
 use App\Models\ProfileModel;
+use App\Models\TransactionModel;
 
 class Pages extends BaseController
 {
     protected $barangModel;
     protected $daftarBelanjaModel;
     protected $profileModel;
+    protected $checkoutModel;
 
     public function __construct()
     {
         $this->barangModel = new BarangModel();
         $this->daftarBelanjaModel = new DaftarBelanjaModel();
         $this->profileModel = new ProfileModel();
+        $this->checkoutModel = new CheckoutModel();
     }
 
     public function homepage()
@@ -31,12 +35,23 @@ class Pages extends BaseController
         $getTotal = $this->daftarBelanjaModel->getTotal($username);
 
         $data = [
-            'title' => 'Daftar Belanja | Warungin',
+            'title' => 'Daftar Belanja | WarungIn',
             'barang' => $daftar_belanja,
             'total' => $getTotal
         ];
 
         return view('pages/daftar_belanja', $data);
+    }
+
+    public function histori_transaksi()
+    {
+        $username = user()->username;
+        $data = [
+            'title'     => 'Histori Transaksi | WarungIn',
+            'transaksi' => $this->checkoutModel->getDataByUsername($username)
+        ];
+
+        return view('pages/histori_transaksi', $data);
     }
 
     public function warungku()

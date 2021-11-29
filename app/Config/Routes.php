@@ -52,6 +52,7 @@ $routes->get('/transaction/edit/(:segment)', 'Transaction::edit/$1');
 $routes->delete('/transaction/(:segment)', 'Transaction::delete/$1');
 $routes->get('/profile', 'Pages::profile');
 $routes->get('/checkout', 'DaftarBelanja::checkout');
+$routes->get('/histori_transaksi', 'Pages::histori_transaksi');
 
 /*
  * --------------------------------------------------------------------

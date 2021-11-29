@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\BarangTransaksiModel;
 use App\Models\CheckoutModel;
 use App\Models\DaftarBelanjaModel;
 
@@ -24,11 +25,13 @@ class Checkout extends BaseController
 
         $data = [
             'kode_transaksi' => $this->request->getPost('kodeTransaksi'),
+            'username' => user()->username,
             'nama_penerima' => $this->request->getPost('namaPenerima'),
             'nama_warung' => $this->request->getPost('namaWarung'),
             'alamat' => $this->request->getPost('alamat'),
             'no_hp' => $this->request->getPost('noHp'),
-            'email' => $this->request->getPost('email')
+            'email' => $this->request->getPost('email'),
+            'barang' => $this->request->getPost('namaBarang') . ' = ' . $this->request->getPost('qty')
         ];
         $this->checkoutModel->add($data);
 

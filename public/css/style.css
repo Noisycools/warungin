@@ -43,8 +43,8 @@ body {
   position: absolute;
   display: flex;
   justify-content: space-between;
-  width: 35%;
-  right: 32.5%;
+  width: 45%;
+  right: 30%;
   opacity: 0;
 }
 

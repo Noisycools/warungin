@@ -18,6 +18,15 @@ class CheckoutModel extends Model
         }
     }
 
+    public function getDataByUsername($username = null)
+    {
+        if ($username == null) {
+            return $this->findAll();
+        } else {
+            return $this->getWhere(['username' => $username]);
+        }
+    }
+
     public function add($data)
     {
         $builder = $this->db->table($this->table);

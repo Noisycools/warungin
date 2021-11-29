@@ -209,6 +209,7 @@
                                         <tr>
                                             <th scope="col">#</th>
                                             <th scope="col">Kode Transaksi</th>
+                                            <th scope="col">Username</th>
                                             <th scope="col">Nama Penerima</th>
                                             <th scope="col">Nama Warung</th>
                                             <th scope="col">Alamat</th>
@@ -224,6 +225,7 @@
                                             <tr>
                                                 <th scope="row"><?= $i++; ?></th>
                                                 <td><?= $t['kode_transaksi']; ?></td>
+                                                <td><?= $t['username']; ?></td>
                                                 <td><?= $t['nama_penerima']; ?></td>
                                                 <td><?= $t['nama_warung']; ?></td>
                                                 <td><?= $t['alamat']; ?></td>
