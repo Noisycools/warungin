@@ -25,7 +25,7 @@
       <?php foreach ($barang->getResult() as $b) : $shipping++; ?>
         <div class="layout-inline row">
           <div class="col col-pro layout-inline">
-            <img src="/<?= $b->img_barang; ?>" alt="kitten" />
+            <img src="/img/<?= $b->img_barang; ?>" alt="kitten" />
             <p><?= $b->nama_barang; ?></p>
           </div>
 

@@ -31,7 +31,8 @@ class Checkout extends BaseController
             'alamat' => $this->request->getPost('alamat'),
             'no_hp' => $this->request->getPost('noHp'),
             'email' => $this->request->getPost('email'),
-            'barang' => $this->request->getPost('namaBarang') . ' = ' . $this->request->getPost('qty')
+            'barang' => $this->request->getPost('namaBarang') . ' = ' . $this->request->getPost('qty'),
+            'status' => 'unverified'
         ];
         $this->checkoutModel->add($data);
 

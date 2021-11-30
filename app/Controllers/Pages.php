@@ -93,4 +93,13 @@ class Pages extends BaseController
 
         return view('pages/profile', $data);
     }
+
+    public function kurir()
+    {
+        $data = [
+            'title' => 'Verifikasi Pesanan | WarungIn Kurir',
+        ];
+
+        return view('pages/kurir', $data);
+    }
 }

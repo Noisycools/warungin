@@ -37,22 +37,23 @@ $routes->get('/contact_us', 'Email::index');
 $routes->get('/daftar_belanja', 'Pages::daftar_belanja');
 $routes->get('/homepage', 'Pages::homepage');
 $routes->get('/product', 'Pages::product');
-$routes->get('/admin', 'Admin::index');
-$routes->get('admin/product', 'Product::index');
-$routes->get('admin/product/create', 'Product::create');
+$routes->get('/admin', 'Admin::index', ['filter' => 'role:admin']);
+$routes->get('admin/product', 'Product::index', ['filter' => 'role:admin']);
+$routes->get('admin/product/create', 'Product::create', ['filter' => 'role:admin']);
 $routes->get('/product/edit/(:segment)', 'Product::edit/$1');
 $routes->delete('/product/(:num)', 'Product::delete/$1');
-$routes->get('admin/customer', 'Customer::index');
-$routes->get('admin/customer/create', 'Customer::create');
+$routes->get('admin/customer', 'Customer::index', ['filter' => 'role:admin']);
+$routes->get('admin/customer/create', 'Customer::create', ['filter' => 'role:admin']);
 $routes->get('/customer/edit/(:segment)', 'Customer::edit/$1');
 $routes->delete('/customer/(:num)', 'Customer::delete/$1');
-$routes->get('admin/transaction', 'Transaction::index');
-$routes->get('admin/transaction/create', 'Transaction::create');
+$routes->get('admin/transaction', 'Transaction::index', ['filter' => 'role:admin']);
+$routes->get('admin/transaction/create', 'Transaction::create', ['filter' => 'role:admin']);
 $routes->get('/transaction/edit/(:segment)', 'Transaction::edit/$1');
 $routes->delete('/transaction/(:segment)', 'Transaction::delete/$1');
 $routes->get('/profile', 'Pages::profile');
 $routes->get('/checkout', 'DaftarBelanja::checkout');
 $routes->get('/histori_transaksi', 'Pages::histori_transaksi');
+$routes->get('/kurir', 'Pages::kurir', ['filter' => 'role:kurir']);
 
 /*
  * --------------------------------------------------------------------
