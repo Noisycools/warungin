@@ -4,7 +4,7 @@
 
 <div class="wrapper">
     <div class="container">
-        <form action="/checkout/buatPesanan" method="post" onsubmit="return confirm('Apakah data sudah benar?');" enctype="multipart/form-data">
+        <form action="/kurir/verifikasi" method="post" onsubmit="return confirm('Apakah data sudah benar?');" enctype="multipart/form-data">
             <h1>
                 <i class="fas fa-check-circle"></i>
                 Verifikasi Pesanan
@@ -12,13 +12,13 @@
             <div class="name">
                 <div>
                     <label for="f-name">Masukkan kode transaksi</label>
-                    <input type="text" name="namaPenerima">
+                    <input type="text" name="kodeTransaksi">
                 </div>
             </div>
             <div class="name">
                 <div>
                     <label for="city">Bukti Struk</label>
-                    <input type="file" id="file" class="custom-file-input">
+                    <input type="file" name="fotoStruk" id="file" class="custom-file-input">
                 </div>
             </div>
             <div class="btns">
