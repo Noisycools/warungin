@@ -12,13 +12,15 @@
             <div class="name">
                 <div>
                     <label for="f-name">Masukkan kode transaksi</label>
-                    <input type="text" name="kodeTransaksi">
+                    <input type="text" name="kodeTransaksi" value="<?= old('kodeTransaksi'); ?>">
+                    <label for="city"><?= $validation->getError('kodeTransaksi'); ?></label>
                 </div>
             </div>
             <div class="name">
                 <div>
                     <label for="city">Bukti Struk</label>
                     <input type="file" name="fotoStruk" id="file" class="custom-file-input">
+                    <label for="city"><?= $validation->getError('fotoStruk'); ?></label>
                 </div>
             </div>
             <div class="btns">

@@ -98,6 +98,7 @@ class Pages extends BaseController
     {
         $data = [
             'title' => 'Verifikasi Pesanan | WarungIn Kurir',
+            'validation' => \Config\Services::validation()
         ];
 
         return view('pages/kurir', $data);
