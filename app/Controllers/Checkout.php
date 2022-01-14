@@ -5,16 +5,19 @@ namespace App\Controllers;
 use App\Models\BarangTransaksiModel;
 use App\Models\CheckoutModel;
 use App\Models\DaftarBelanjaModel;
+use App\Models\HistoriTransaksiModel;
 
 class Checkout extends BaseController
 {
     protected $checkoutModel;
     protected $daftarBelanjaModel;
+    protected $historiTransaksiModel;
 
     public function __construct()
     {
         $this->checkoutModel = new CheckoutModel();
         $this->daftarBelanjaModel = new DaftarBelanjaModel();
+        $this->historiTransaksiModel = new HistoriTransaksiModel();
     }
 
     public function buatPesanan()
@@ -31,10 +34,16 @@ class Checkout extends BaseController
             'alamat' => $this->request->getPost('alamat'),
             'no_hp' => $this->request->getPost('noHp'),
             'email' => $this->request->getPost('email'),
-            'barang' => $this->request->getPost('namaBarang') . ' = ' . $this->request->getPost('qty'),
             'status' => 'unverified'
         ];
         $this->checkoutModel->add($data);
+
+        $data2 = [
+            'kode_transaksi' => $this->request->getPost('kodeTransaksi'),
+            'username' => user()->username,
+            
+        ];
+        $this->historiTransaksiModel->add($data2);
 
         $kodeTransaksi = $this->request->getPost('kodeTransaksi');
         $dataTransaksi = [

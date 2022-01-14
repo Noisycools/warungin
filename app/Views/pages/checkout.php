@@ -41,18 +41,19 @@
                 <?php $urutanKe = 0; ?>
                 <?php foreach ($barang->getResult() as $b) : ?>
                     <label>- <?= $b->nama_barang; ?> (<?= $b->qty; ?>)</label> <br>
-                    <input type="hidden" name="namaBarang" value="<?= $b->nama_barang; ?>">
-                    <input type="hidden" name="qty" value="<?= $b->qty; ?>">
                 <?php endforeach; ?>
             </div>
             <div class="cc-num">
                 <label>Total : </label>
                 <?php foreach ($total->getResult() as $rows) : ?>
                     <label><?php echo "Rp. " . number_format($rows->total_harga, 2, ',', '.'); ?></label>
+                    <input type="hidden" name="totalHarga" value="<?= $rows->total_harga; ?>">
                 <?php endforeach;  ?>
             </div>
             <div class="btns">
-                <input type="hidden" name="kodeTransaksi" value="wr-<?= random_string('alnum', 5); ?>">
+                <input type="hidden" name="kodeTransaksi" value="
+                    <?php echo $kodeTransaksi = 'wr-'.random_string('alnum', 5); ?>
+                ">
                 <button type="submit" id="submit">Buat Pesanan</button>
                 <button><a href="/daftar_belanja">Kembali</a></button>
             </div>

@@ -25,6 +25,20 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 
     <script src="/js/script.js"></script>
+
+    <script>
+        function previewImg() {
+            const fotoStruk = document.querySelector('#fotoStruk');
+            const imgPreview = document.querySelector('.img-preview');
+
+            const fileFoto = new FileReader();
+            fileFoto.readAsDataURL(fotoStruk.files[0]);
+
+            fileFoto.onload = function(e) {
+                imgPreview.src = e.target.result;
+            }
+        }
+    </script> 
 </body>
 
 </html>
