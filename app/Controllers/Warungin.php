@@ -50,7 +50,7 @@ class Warungin extends BaseController
             // 'users' => $users
         ];
 
-        return view('Warungin/index', $data);
+        return view('Warungin/tes_tailwind', $data);
     }
 
     public function templatePDF()

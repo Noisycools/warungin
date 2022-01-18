@@ -25,6 +25,7 @@ class Checkout extends BaseController
         $username = user()->username;
         $daftar_belanja = $this->daftarBelanjaModel->getData($username);
         $getTotal = $this->daftarBelanjaModel->getTotal($username);
+        $jumlahBarang = $this->request->getPost('jumlahBarang');
 
         $data = [
             'kode_transaksi' => $this->request->getPost('kodeTransaksi'),
@@ -38,11 +39,16 @@ class Checkout extends BaseController
         ];
         $this->checkoutModel->add($data);
 
-        $data2 = [
-            'kode_transaksi' => $this->request->getPost('kodeTransaksi'),
-            'username' => user()->username,
-            
-        ];
+        $data2 = [];
+        for ($i=0; $i < $jumlahBarang; $i++) { 
+            $data2[] = array(
+                'kode_transaksi' => $this->request->getPost('kodeTransaksi'),
+                'username' => user()->username,
+                'nama_barang' => $this->request->getPost('nama_barang' . $i),
+                'qty' => $this->request->getPost('qty' . $i),
+                'total_harga' => $this->request->getPost('totalHarga')
+            );
+        }
         $this->historiTransaksiModel->add($data2);
 
         $kodeTransaksi = $this->request->getPost('kodeTransaksi');

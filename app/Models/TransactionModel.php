@@ -23,4 +23,11 @@ class TransactionModel extends Model
         $builder = $this->db->table($this->table);
         return $builder->insert($data);
     }
+
+    public function verifikasi($data, $kode_transaksi)
+    {
+        $builder = $this->db->table($this->table);
+        return $this->db->query("UPDATE transaksi SET foto_struk='banh' WHERE  kode_transaksi='$kode_transaksi'");
+    }
 }
+

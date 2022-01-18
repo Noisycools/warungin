@@ -2,16 +2,19 @@
 
 namespace App\Controllers;
 
+use App\Models\TransactionModel;
+
 class Kurir extends BaseController
 {
+    protected $transactionModel;
+
+    public function __construct()
+    {
+        $this->transactionModel = new TransactionModel();
+    }
 
     public function verifikasi()
     {
-
-        $fotoStruk = $this->request->getFile('fotoStruk');
-        $namaFoto = $fotoStruk->getRandomName();
-        $fotoStruk->move('img', $namaFoto);
-
         if (!$this->validate([
             'kodeTransaksi' => [
                 'rules' => 'required',
@@ -20,7 +23,7 @@ class Kurir extends BaseController
                 ]
             ],
             'fotoStruk' => [
-                'rules' => 'uploaded[fotoStruk]|is_image[sampul]|mime_in[sampul,image/jpg,image/jpeg,image/png]',
+                'rules' => 'uploaded[fotoStruk]|is_image[fotoStruk]|mime_in[fotoStruk,image/jpg,image/jpeg,image/png]',
                 'errors' => [
                     'uploaded' => 'Upload foto struknya terlebih dahulu!',
                     'is_image' => 'File harus berupa image/foto!',
@@ -31,8 +34,16 @@ class Kurir extends BaseController
             return redirect()->to('/kurir')->withInput();
         }
 
+        $fotoStruk = $this->request->getFile('fotoStruk');
+        $namaFoto = $fotoStruk->getRandomName();
+        $fotoStruk->move('img', $namaFoto);
+
         $data = [
-            
+            'foto_struk' => $namaFoto,
         ];
+        $kodeTransaksi = $this->request->getPost('kodeTransaksi');
+        $this->transactionModel->verifikasi($data, $kodeTransaksi);
+
+        return redirect()->to('pages/kurir');
     }
 }

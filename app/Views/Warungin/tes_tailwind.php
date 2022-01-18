@@ -6,8 +6,10 @@
   <link href="src/css/app.css" rel="stylesheet">
 </head>
 <body>
-  <h1 class="text-3xl font-bold underline">
-    Hello world!
-  </h1>
+  <header>
+    <nav class="container">
+      <h1>halo bang</h1>
+    </nav>
+  </header>
 </body>
 </html>

@@ -12,6 +12,6 @@ class HistoriTransaksiModel extends Model
     public function add($data)
     {
         $builder = $this->db->table($this->table);
-        return $builder->insert($data);
+        return $builder->insertBatch($data);
     }
 }

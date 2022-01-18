@@ -20,7 +20,7 @@
                 <div>
                     <label for="city">Bukti Struk</label>
                     <input type="file" name="fotoStruk" id="fotoStruk" class="custom-file-input" onchange="previewImg()">
-                    <img src="" class="img-preview">
+                    <img class="img-preview">
                     <label for="city"><?= $validation->getError('fotoStruk'); ?></label>
                 </div>
             </div>

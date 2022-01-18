@@ -39,9 +39,13 @@
             <div class="cc-num">
                 <label>Barang yang dibeli : </label> <br>
                 <?php $urutanKe = 0; ?>
+                <?php $qtyKe = 0; ?>
                 <?php foreach ($barang->getResult() as $b) : ?>
                     <label>- <?= $b->nama_barang; ?> (<?= $b->qty; ?>)</label> <br>
+                    <input type="hidden" name="nama_barang<?= $urutanKe++ ?>" value="<?= $b->nama_barang; ?>">
+                    <input type="hidden" name="qty<?= $qtyKe++ ?>" value="<?= $b->qty; ?>">
                 <?php endforeach; ?>
+                <input type="hidden" name="jumlahBarang" value="<?= $urutanKe ?>">
             </div>
             <div class="cc-num">
                 <label>Total : </label>
