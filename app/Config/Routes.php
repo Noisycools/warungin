@@ -54,6 +54,8 @@ $routes->get('/profile', 'Pages::profile');
 $routes->get('/checkout', 'DaftarBelanja::checkout');
 $routes->get('/histori_transaksi', 'Pages::histori_transaksi');
 $routes->get('/kurir', 'Pages::kurir', ['filter' => 'role:kurir']);
+$routes->get('admin/incoming_item', 'Incoming_Item::index');
+$routes->get('admin/incoming_item/datatemp', 'Incoming_Item::dataTemp');
 
 /*
  * --------------------------------------------------------------------

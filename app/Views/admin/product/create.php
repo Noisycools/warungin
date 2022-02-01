@@ -182,6 +182,18 @@
                                 &ensp;&ensp;<span>Transaction</span>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= base_url('admin/incoming_item'); ?>">
+                                <i class="fas fa-sign-in-alt"></i>
+                                &ensp;&ensp;<span>Incoming Item</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= base_url('admin/exit_item'); ?>">
+                                <i class="fas fa-sign-out-alt"></i>
+                                &ensp;&ensp;<span>Exit Item</span>
+                            </a>
+                        </li>
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
