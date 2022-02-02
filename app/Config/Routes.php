@@ -34,9 +34,15 @@ $routes->setAutoRoute(true);
 
 $routes->get('/', 'Warungin::index');
 $routes->get('/contact_us', 'Email::index');
-$routes->get('/daftar_belanja', 'Pages::daftar_belanja');
+$routes->get('/daftar_belanja', 'Pages::daftar_belanja', ['filter' => 'role:user']);
 $routes->get('/homepage', 'Pages::homepage');
 $routes->get('/product', 'Pages::product');
+$routes->get('/profile', 'Pages::profile');
+$routes->get('/checkout', 'DaftarBelanja::checkout', ['filter' => 'role:user']);
+$routes->get('/histori_transaksi', 'Pages::histori_transaksi', ['filter' => 'role:user']);
+$routes->get('/kurir', 'Pages::kurir', ['filter' => 'role:kurir']);
+
+// *** ADMIN ***
 $routes->get('/admin', 'Admin::index', ['filter' => 'role:admin']);
 $routes->get('admin/product', 'Product::index', ['filter' => 'role:admin']);
 $routes->get('admin/product/create', 'Product::create', ['filter' => 'role:admin']);
@@ -50,12 +56,9 @@ $routes->get('admin/transaction', 'Transaction::index', ['filter' => 'role:admin
 $routes->get('admin/transaction/create', 'Transaction::create', ['filter' => 'role:admin']);
 $routes->get('/transaction/edit/(:segment)', 'Transaction::edit/$1');
 $routes->delete('/transaction/(:segment)', 'Transaction::delete/$1');
-$routes->get('/profile', 'Pages::profile');
-$routes->get('/checkout', 'DaftarBelanja::checkout');
-$routes->get('/histori_transaksi', 'Pages::histori_transaksi');
-$routes->get('/kurir', 'Pages::kurir', ['filter' => 'role:kurir']);
 $routes->get('admin/incoming_item', 'Incoming_Item::index');
 $routes->get('admin/incoming_item/datatemp', 'Incoming_Item::dataTemp');
+
 
 /*
  * --------------------------------------------------------------------
