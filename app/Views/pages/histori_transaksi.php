@@ -5,7 +5,6 @@
 <div class="container">
     <div class="heading">
         <a href="/"><img src="/img/WarungIn.png" alt="WarungIn"></a>
-        <a href="#" class="visibility-cart transition is-open">X</a>
     </div>
 
     <div class="cart transition is-open">
@@ -24,7 +23,7 @@
                 <div class="col">Email</div>
             </div>
             <?php foreach ($transaksi->getResult() as $t) : ?>
-                <a href="#">
+                <a href="<?= '/pages/detail_transaksi/'.$t->kode_transaksi ?>">
                     <div class="layout-inline row rows">
                         <div class="col col-pro layout-inline">
                             <p><?= $t->kode_transaksi; ?></p>

@@ -26,7 +26,7 @@
             </div>
             <div class="btns">
                 <button type="submit" id="submit">Verifikasi</button>
-                <button><a href="/daftar_belanja">Kembali</a></button>
+                <button><a href="/">Kembali</a></button>
             </div>
         </form>
     </div>

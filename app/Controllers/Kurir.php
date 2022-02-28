@@ -40,9 +40,9 @@ class Kurir extends BaseController
 
         $data = [
             'foto_struk' => $namaFoto,
+            'kodeTransaksi' => $this->request->getPost('kodeTransaksi')
         ];
-        $kodeTransaksi = $this->request->getPost('kodeTransaksi');
-        $this->transactionModel->verifikasi($data, $kodeTransaksi);
+        $this->transactionModel->verifikasi($data);
 
         return redirect()->to('pages/kurir');
     }

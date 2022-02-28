@@ -9,7 +9,6 @@
 </h1>
 <section class="content content_content" style="width: 70%; margin: auto;">
     <section class="invoice">
-        <b class="pull-right">Tanggal : </b>
         <!-- info row -->
         <div class="row invoice-info">
             <div class="col-sm-4 invoice-col">
@@ -37,7 +36,7 @@
                 <br>
                 <b>Kode : <?= $transaksi->kode_transaksi ?>
                     <br>
-                    <b>Tanggal Pembayaran :
+                    <b>Tanggal Pembayaran : <?= $transaksi->tgl_pembayaran ?>
                         <br>
             </div><!-- /.col -->
         </div><!-- /.row -->

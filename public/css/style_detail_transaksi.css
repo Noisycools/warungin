@@ -1,0 +1,301 @@
+html {
+  background: #1c1b21;
+  /* font: 62.5%/1.5em "Trebuchet Ms", helvetica; */
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+}
+
+@font-face {
+  font-family: "Shopper";
+  src: url("http://www.shopperfont.com/font/Shopper-Std.ttf");
+}
+
+.shopper {
+  text-transform: lowercase;
+  font: 2em "Shopper", sans-serif;
+  line-height: 0.5em;
+  display: inline-block;
+}
+
+.center {
+  margin-left: 110px;
+}
+
+h1 {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 3.5em;
+  color: #3d3d3d;
+  margin-top: 6px;
+  margin-bottom: 26px;
+  text-align: center;
+}
+
+p {
+  font-size: 1.5em;
+  color: #8a8a8a;
+}
+
+input {
+  border: 0.3em solid #bbc3c6;
+  padding: 0.5em 0.3em;
+  font-size: 1.4em;
+  color: #8a8a8a;
+  text-align: center;
+}
+
+.action {
+  text-align: center;
+}
+
+button {
+  outline: none;
+  all: unset;
+  cursor: pointer;
+}
+
+.action img {
+  max-width: 5em;
+  width: 50%;
+  overflow: hidden;
+  margin-left: 10px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  font: 62.5%/1.5em "Trebuchet Ms", helvetica;
+
+  max-width: 100em;
+  width: 95%;
+  margin-top: 100px;
+  overflow: hidden;
+  position: relative;
+
+  border-radius: 0.6em;
+  background: #ecf0f1;
+  box-shadow: 0 0.5em 0 rgba(138, 148, 152, 0.2);
+}
+
+.heading {
+  padding: 1em;
+  position: relative;
+  z-index: 1;
+  color: #f7f7f7;
+  background: #3d3d3d;
+}
+
+.heading img {
+  max-width: 9em;
+  width: 100%;
+  overflow: hidden;
+  margin-right: 1em;
+}
+
+.cart {
+  margin: 2.5em;
+  overflow: hidden;
+}
+
+.cart.is-closed {
+  height: 0;
+  margin-top: -2.5em;
+}
+
+.table {
+  background: #ffffff;
+  border-radius: 0.6em;
+  overflow: hidden;
+  clear: both;
+  margin-bottom: 1.8em;
+}
+
+.layout-inline > * {
+  display: inline-block;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.th {
+  width: 720px;
+  background: #3d3d3d;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1.5em;
+  /* text-align: center; */
+  /* height: 40px; */
+}
+
+.tf {
+  background: #3d3d3d;
+  text-transform: uppercase;
+  text-align: right;
+  font-size: 1.2em;
+}
+
+.tf p {
+  color: #fff;
+  font-weight: bold;
+}
+
+.col {
+  padding: 0.75em;
+  margin-left: 50px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.col-pro {
+  /* width: 35%; */
+}
+
+.col-action {
+  width: 50px;
+}
+
+.col-pro > * {
+  vertical-align: middle;
+}
+
+.col-qty {
+  text-align: center;
+  width: 17%;
+}
+
+.col-numeric p {
+  font: bold 1.5em helvetica;
+}
+
+.col-price {
+  width: 17%;
+}
+
+.col-nama {
+  margin-left: 45px;
+}
+
+.col-kode {
+  width: 15.8%;
+}
+
+.col-total {
+  width: 12%;
+  text-align: left;
+}
+
+.col-alamat {
+  width: 15%;
+}
+
+.col-numeric {
+  text-align: left;
+}
+
+.col-total p {
+  color: #12c8b1;
+}
+
+.tf .col {
+  width: 40%;
+  padding-right: 20px;
+}
+
+.row > div {
+  vertical-align: middle;
+}
+
+.row-bg2 {
+  background: #f7f7f7;
+}
+
+.rows:hover {
+  background: rgb(200, 200, 200);
+}
+
+.visibility-cart {
+  position: absolute;
+  color: #fff;
+  top: 0.5em;
+  right: 0.5em;
+  font: bold 2em arial;
+  border: 0.16em solid #fff;
+  border-radius: 2.5em;
+  padding: 0 0.22em 0 0.25em;
+}
+
+.col-qty > * {
+  vertical-align: middle;
+}
+
+.col-qty > input {
+  max-width: 2.6em;
+}
+
+a.qty {
+  width: 1em;
+  line-height: 1em;
+  border-radius: 2em;
+  font-size: 2.5em;
+  font-weight: bold;
+  text-align: left;
+  background: #43ace3;
+  color: #fff;
+}
+
+a.qty:hover {
+  background: #3b9ac6;
+}
+
+.btn {
+  padding: 10px 30px;
+  border-radius: 0.3em;
+  font-size: 1.4em;
+  font-weight: bold;
+  background: #43ace3;
+  color: #fff;
+  box-shadow: 0 3px 0 rgba(59, 154, 198, 1);
+}
+
+.btn:hover {
+  box-shadow: 0 3px 0 rgba(59, 154, 198, 0);
+}
+
+.btn-update {
+  float: right;
+  margin: 0 8.5em 1.5em 0;
+}
+
+.transition {
+  transition: all 0.3s ease-in-out;
+}
+
+@media screen and (max-width: 755px) {
+  .container {
+    width: 98%;
+  }
+
+  .col-pro {
+    /* width: 35%; */
+  }
+
+  .col-qty {
+    width: 22%;
+  }
+
+  img {
+    max-width: 100%;
+    margin-bottom: 1em;
+  }
+}
+
+@media screen and (max-width: 591px) {
+}

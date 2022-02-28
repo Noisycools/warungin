@@ -25,4 +25,24 @@ class DaftarBelanjaModel extends Model
             return $this->db->query("SELECT SUM(harga_total) AS total_harga FROM daftar_belanja WHERE username='$username'");
         }
     }
+
+    public function hapus()
+    {
+        $username = user()->username;
+        return $this->db->query("DELETE FROM daftar_belanja WHERE username='$username'");
+    }
+
+    public function isDaftarBelanja()
+    {
+        $builder = $this->db->table('daftar_belanja');
+        $builder->select('username');
+        $builder->where('username', user()->username);
+        $query = $builder->get();
+        if ($query->getRow() == false)
+        {
+            return false;
+        } else {
+            return true;
+        }
+    }
 }

@@ -4,17 +4,20 @@ namespace App\Controllers;
 
 use App\Models\BarangModel;
 use App\Models\DaftarBelanjaModel;
+use App\Models\HistoriTransaksiModel;
 use App\Models\ProfileModel;
 
 class DaftarBelanja extends BaseController
 {
     protected $daftarBelanjaModel;
     protected $profileModel;
+    protected $historiTransaksiModel;
 
     public function __construct()
     {
         $this->daftarBelanjaModel = new DaftarBelanjaModel();
         $this->profileModel = new ProfileModel();
+        $this->historiTransaksiModel = new HistoriTransaksiModel();
     }
 
     public function add()
@@ -62,6 +65,11 @@ class DaftarBelanja extends BaseController
             'total' => $getTotal,
             'profile' => $getProfile
         ];
+
+        if ($this->daftarBelanjaModel->isDaftarBelanja() == false)
+        {
+            return redirect()->to('/daftar_belanja');
+        }
 
         return view('pages/checkout', $data);
     }

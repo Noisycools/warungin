@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\BarangModel;
 use App\Models\CheckoutModel;
 use App\Models\DaftarBelanjaModel;
+use App\Models\HistoriTransaksiModel;
 use App\Models\ProfileModel;
 use App\Models\TransactionModel;
 
@@ -14,6 +15,7 @@ class Pages extends BaseController
     protected $daftarBelanjaModel;
     protected $profileModel;
     protected $checkoutModel;
+    protected $historiTransaksiModel;
 
     public function __construct()
     {
@@ -21,6 +23,7 @@ class Pages extends BaseController
         $this->daftarBelanjaModel = new DaftarBelanjaModel();
         $this->profileModel = new ProfileModel();
         $this->checkoutModel = new CheckoutModel();
+        $this->historiTransaksiModel = new HistoriTransaksiModel();
     }
 
     public function homepage()
@@ -52,6 +55,28 @@ class Pages extends BaseController
         ];
 
         return view('pages/histori_transaksi', $data);
+    }
+
+    public function detail_transaksi($kodeTransaksi)
+    {
+        $data = [
+            'title'     => 'Detail Transaksi | WarungIn',
+            'transaksi' => $this->checkoutModel->getData($kodeTransaksi)->getRow()
+        ];
+
+        return view('pages/detail_transaksi', $data);
+    }
+
+    public function struk()
+    {   
+        $kodeTransaksi = $this->request->getPost('kodeTransaksi');
+        $data = [
+            'transaksi' => $this->checkoutModel->getData($kodeTransaksi)->getRow(),
+            'barangTransaksi' => $this->historiTransaksiModel->getData($kodeTransaksi),
+            'barangTransaksi2' => $this->historiTransaksiModel->getData($kodeTransaksi)->getRow()
+        ];
+
+        return view('pages/struk', $data);
     }
 
     public function warungku()

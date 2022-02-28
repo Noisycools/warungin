@@ -7,9 +7,11 @@ use Myth\Auth\Collectors\Auth; ?>
         <li><a href="/">Home</a></li>
         <li><a href="/contact_us">Contact Us</a></li>
         <?php if (logged_in()) : ?>
-            <li><a href="/profile">Profile</a></li>
-            <li><a href="/daftar_belanja">Daftar Belanja</a></li>
-            <li><a href="/histori_transaksi">Histori Transaksi</a></li>
+            <?php if (in_groups('user')) : ?>
+                <li><a href="/profile">Profile</a></li>
+                <li><a href="/daftar_belanja">Daftar Belanja</a></li>
+                <li><a href="/histori_transaksi">Histori Transaksi</a></li>
+            <?php endif; ?>
             <?php if (in_groups('admin')) : ?>
                 <li><a href="/admin">Admin</a></li>
             <?php endif; ?>

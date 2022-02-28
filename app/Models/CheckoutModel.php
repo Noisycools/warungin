@@ -7,7 +7,10 @@ use CodeIgniter\Model;
 class CheckoutModel extends Model
 {
     protected $table = 'transaksi';
+    protected $allowedFields = ['kode_transaksi', 'username', 'nama_penerima', 'nama_warung', 'alamat', 'no_hp', 'email', 'tgl_pembayaran', 'status', 'foto_struk'];
+    protected $returnType    = '\App\Entities\Transaksi';
     protected $primaryKey = 'kode_transaksi';
+    protected $useTimestamps = true;
 
     public function getData($kodeTransaksi = null)
     {
