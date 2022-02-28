@@ -56,8 +56,6 @@ $routes->get('admin/transaction', 'Transaction::index', ['filter' => 'role:admin
 $routes->get('admin/transaction/create', 'Transaction::create', ['filter' => 'role:admin']);
 $routes->get('/transaction/edit/(:segment)', 'Transaction::edit/$1');
 $routes->delete('/transaction/(:segment)', 'Transaction::delete/$1');
-$routes->get('admin/incoming_item', 'Incoming_Item::index');
-$routes->get('admin/incoming_item/datatemp', 'Incoming_Item::dataTemp');
 
 
 /*
