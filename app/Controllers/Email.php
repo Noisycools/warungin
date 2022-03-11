@@ -19,7 +19,8 @@ class Email extends BaseController
     public function index()
     {
         $data = [
-            'title' => 'Hubungi Kami | WarungIn'
+            'title' => 'Hubungi Kami | WarungIn',
+            'alt_title' => 'contactUs',
         ];
         return view('pages/contact_us', $data);
     }

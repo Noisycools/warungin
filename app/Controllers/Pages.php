@@ -39,6 +39,7 @@ class Pages extends BaseController
 
         $data = [
             'title' => 'Daftar Belanja | WarungIn',
+            'alt_title' => 'daftarBelanja',
             'barang' => $daftar_belanja,
             'total' => $getTotal
         ];
@@ -51,6 +52,7 @@ class Pages extends BaseController
         $username = user()->username;
         $data = [
             'title'     => 'Histori Transaksi | WarungIn',
+            'alt_title' => 'historiTransaksi',
             'transaksi' => $this->checkoutModel->getDataByUsername($username)
         ];
 
@@ -113,6 +115,7 @@ class Pages extends BaseController
 
         $data = [
             'title' => 'Profile | WarungIn',
+            'alt_title' => 'profile',
             'profile' => $profile
         ];
 
@@ -123,6 +126,7 @@ class Pages extends BaseController
     {
         $data = [
             'title' => 'Verifikasi Pesanan | WarungIn Kurir',
+            'alt_title' => 'kurir',
             'validation' => \Config\Services::validation()
         ];
 

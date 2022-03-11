@@ -46,11 +46,12 @@ class Warungin extends BaseController
 
         $data = [
             'title' => 'Warungin | Platform Penyetok Warung',
+            'alt_title' => 'home',
             'barang' => $tabel_barang
             // 'users' => $users
         ];
 
-        return view('Warungin/index', $data);
+        return view('Warungin/tes_tailwind', $data);
     }
 
     public function templatePDF()
