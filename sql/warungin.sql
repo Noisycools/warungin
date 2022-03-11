@@ -458,7 +458,7 @@ INSERT INTO `tabel_barang` (`barang_id`, `nama_barang`, `slug`, `harga_barang`, 
 (7, 'Susu Frisian Flag', 'susu-frisian-flag', 7000, 'sachet (6 pcs)', 'susukntlmanis_1.jpg', 'Minuman'),
 (8, 'Coki-coki', 'coki-coki', 17500, 'pack (20 pcs)', 'coki-coki_2.jpg', 'Makanan Ringan'),
 (9, 'Richeese Nabati Cheese Wafer', 'richeese-nabati-cheese-wafer', 20000, 'pack (20 pcs)', 'nabati_2.jpg', 'Makanan Ringan'),
-(10, 'Nestle Nescafe Classic Jar', 'nestle-nescafe-classic-jar', 86900, 'botol 200g', 'nescafe_1.jpg', 'Minuman');
+(10, 'Nestle Nescafe Classic Jar', 'nestle-nescafe-classic-jar', 86900, 'botol 200g', 'nescafe_1.jpg', 'Minuman'),;
 
 -- --------------------------------------------------------
 
