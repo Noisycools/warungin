@@ -17,19 +17,38 @@ class Customer extends BaseController
         $this->profileModel = new ProfileModel();
     }
 
+    public function laporan()
+    {
+        $data = [
+            'profile' => $this->profileModel->getProfile()
+        ];
+
+        return view('admin/customer/laporan', $data);
+    }
+
     public function index()
     {
-        // $customer = $this->customerModel->findAll();
+        // $barang = $this->barangModel->findAll();
+        $currentPage = $this->request->getVar('page_profile') ? $this->request->getVar('page_profile') : 1;
+        // d($this->request->getVar('keyword'));
+        $keyword = $this->request->getVar('keyword');
+        if ($keyword) {
+            $profile = $this->profileModel->search($keyword);
+        } else {
+            $profile = $this->profileModel;
+        }
 
         $data = [
-            // 'customer' => $this->customerModel->getCustomer(),
-            'profile' => $this->profileModel->findAll()
+            // 'profile' => $this->profileModel->getBarang(),
+            'profile' => $profile->paginate(10, 'profile'),
+            'pager' => $this->profileModel->pager,
+            'currentPage' => $currentPage
         ];
 
         // connect secara manual
         // $db = \Config\Database::connect();
-        // $customer = $db->query("SELECT * FROM customer");
-        // dd($customer);
+        // $barang = $db->query("SELECT * FROM barang");
+        // dd($barang);
 
         return view('admin/customer/index', $data);
     }

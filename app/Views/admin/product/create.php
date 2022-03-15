@@ -237,6 +237,15 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="form-group row">
+                                            <label for="stok" class="col-sm-2 col-form-label">Stok</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control <?= ($validation->hasError('stok')) ? 'is-invalid' : ''; ?>" id="stok" name="stok" autofocus value="<?= old('stok'); ?>">
+                                                <div class="invalid-feedback">
+                                                    <?= $validation->getError('stok'); ?>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class=" form-group row">
                                             <label for="foto_barang" class="col-sm-2 col-form-label">Gambar</label>
                                             <div class="col">

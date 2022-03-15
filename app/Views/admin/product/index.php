@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin | Users</title>
+    <title>Admin | Product</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -198,13 +198,27 @@
                     <div class="container">
                         <div class="row">
                             <div class="col">
-                                <h1 class="mt-2">Daftar Barang</h1>
-                                <a href="/product/create" class="btn btn-primary mb-3">Tambah Data</a>
-                                <?php if (session()->getFlashData('pesan')) : ?>
-                                    <div class="alert alert-success" role="alert">
-                                        <?= session()->getFlashData('pesan'); ?>
+                                <h1 class="mt-2 mb-2">Daftar Barang</h1>
+                                <a href="/product/laporan" rel="noopener" target="_blank" class="btn btn-primary float-right"><i class="fas fa-print"></i> Print</a>
+                                <a href="/product/create" class="btn btn-primary mb-3 float-right mr-2">Tambah Data</a>
+                                <!-- <?php if (session()->getFlashData('message')) : ?>
+                                    <div class="swal">
+                                        <?= session()->getFlashData('message'); ?>
                                     </div>
-                                <?php endif; ?>
+                                <?php endif; ?> -->
+                                <div class="swal" data-swal="<?= session()->getFlashdata('message'); ?>"></div>
+                                <div class="col-4">
+                                    <form action="" method="GET">
+                                        <div class="input-group mb-3">
+                                            <input type="text" class="form-control" placeholder="Search" name="keyword">
+                                            <button class="btn btn-outline-secondary" type="submit" name="submit"><i class="fa fa-search"></i></button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
                                 <table class="table">
                                     <thead class="table-light">
                                         <tr>
@@ -213,12 +227,13 @@
                                             <th scope="col">Harga</th>
                                             <th scope="col">Satuan</th>
                                             <th scope="col">Kategori</th>
+                                            <th scope="col">Stok</th>
                                             <th scope="col">Gambar</th>
-                                            <th scope="col">Aksi</th>
+                                            <th scope="col"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php $i = 1; ?>
+                                        <?php $i = 1 + (10 * ($currentPage - 1)); ?>
                                         <?php foreach ($barang as $b) : ?>
                                             <tr>
                                                 <th scope="row"><?= $i++; ?></th>
@@ -226,18 +241,20 @@
                                                 <td><?= $b['harga_barang']; ?></td>
                                                 <td><?= $b['satuan_barang']; ?></td>
                                                 <td><?= $b['kategori_barang']; ?></td>
+                                                <td><?= $b['stok']; ?></td>
                                                 <td><img src="/img/<?= $b['foto_barang']; ?>" alt="" class="gambar"></td>
-                                                <td><a href="/product/edit/<?= $b['slug']; ?>" class="btn btn-warning">Edit</a>
+                                                <td><a href="/product/edit/<?= $b['slug']; ?>" class="btn btn-info"><i class="fas fa-eye"></i></a>
                                                     <form action="/product/<?= $b['barang_id']; ?>" method="POST" class="d-inline">
                                                         <?= csrf_field(); ?>
                                                         <input type="hidden" name="_method" value="DELETE">
-                                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin?')">Delete</button>
+                                                        <button type="submit" class="btn btn-danger btn-hapus"><i class="fas fa-trash"></i></button>
                                                     </form>
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>
                                     </tbody>
                                 </table>
+                                <?= $pager->links('tabel_barang', 'pagination'); ?>
                             </div>
                         </div>
                     </div>
@@ -264,6 +281,8 @@
     <script src="<?= base_url(); ?>/../../dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="<?= base_url(); ?>/../../dist/js/demo.js"></script>
+    <script src="<?= base_url(); ?>/../../js/sweetalert2.all.js"></script>
+    <script src="<?= base_url(); ?>/../../js/sweetalert.js"></script>
 </body>
 
 </html>

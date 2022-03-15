@@ -199,12 +199,25 @@
                         <div class="row">
                             <div class="col">
                                 <h1 class="mt-2">Daftar Customer</h1>
-                                <a href="/customer/create" class="btn btn-primary mb-3">Tambah Data</a>
+                                <a href="/customer/laporan" rel="noopener" target="_blank" class="btn btn-primary float-right"><i class="fas fa-print"></i> Print</a>
+                                <a href="/customer/create" class="btn btn-primary mb-3 float-right mr-2">Tambah Data</a>
                                 <?php if (session()->getFlashData('pesan')) : ?>
                                     <div class="alert alert-success" role="alert">
                                         <?= session()->getFlashData('pesan'); ?>
                                     </div>
                                 <?php endif; ?>
+                                <div class="col-4">
+                                    <form action="" method="GET">
+                                        <div class="input-group mb-3">
+                                            <input type="text" class="form-control" placeholder="Masukkan keyword pencarian.." name="keyword">
+                                            <button class="btn btn-outline-secondary" type="submit" name="submit">Cari</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
                                 <table class="table">
                                     <thead class="table-light">
                                         <tr>
@@ -240,6 +253,7 @@
                                         <?php endforeach; ?>
                                     </tbody>
                                 </table>
+                                <?= $pager->links('profile', 'pagination'); ?>
                             </div>
                         </div>
                     </div>

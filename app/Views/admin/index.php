@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="<?= base_url(); ?>/plugins/summernote/summernote-bs4.min.css">
 </head>
 
-<body class="hold-transition sidebar-mini layout-fixed">
+<body class="hold-transition sidebar-mini layout-navbar-fixed">
   <div class="wrapper">
 
     <!-- Preloader -->
@@ -201,12 +201,12 @@
                 &ensp;&ensp;<span>Transaction</span>
               </a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a class="nav-link" href="<?= base_url('admin/transaction'); ?>">
                 <i class="fas fa-poll"></i>
                 &ensp;&ensp;<span>Finance</span>
               </a>
-            </li>
+            </li> -->
         </nav>
         <!-- /.sidebar-menu -->
       </div>
@@ -242,7 +242,7 @@
               <!-- small box -->
               <div class="small-box bg-info">
                 <div class="inner">
-                  <h3>150</h3>
+                  <h3>8</h3>
 
                   <p>New Orders</p>
                 </div>
@@ -257,7 +257,7 @@
               <!-- small box -->
               <div class="small-box bg-success">
                 <div class="inner">
-                  <h3>53<sup style="font-size: 20px">%</sup></h3>
+                  <h3>60<sup style="font-size: 20px">%</sup></h3>
 
                   <p>Bounce Rate</p>
                 </div>
@@ -272,7 +272,7 @@
               <!-- small box -->
               <div class="small-box bg-warning">
                 <div class="inner">
-                  <h3>44</h3>
+                  <h3>4</h3>
 
                   <p>User Registrations</p>
                 </div>
@@ -287,7 +287,7 @@
               <!-- small box -->
               <div class="small-box bg-danger">
                 <div class="inner">
-                  <h3>65</h3>
+                  <h3>16</h3>
 
                   <p>Unique Visitors</p>
                 </div>

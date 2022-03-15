@@ -35,7 +35,7 @@ class DaftarBelanja extends BaseController
         $nama_barang = $row['nama_barang'];
         $harga_barang = $row['harga_barang'];
         $img_barang = $row['foto_barang'];
-        $harga_total = (int)$row['harga_barang'] * $qty;
+        $harga_total = (int) $row['harga_barang'] * $qty;
 
         $db->query("INSERT INTO daftar_belanja(username, qty, nama_barang, harga_barang, harga_total, img_barang) VALUES('$username', '$qty', '$nama_barang', '$harga_barang', '$harga_total', '$img_barang')");
 
@@ -66,8 +66,7 @@ class DaftarBelanja extends BaseController
             'profile' => $getProfile
         ];
 
-        if ($this->daftarBelanjaModel->isDaftarBelanja() == false)
-        {
+        if ($this->daftarBelanjaModel->isDaftarBelanja() == false) {
             return redirect()->to('/daftar_belanja');
         }
 

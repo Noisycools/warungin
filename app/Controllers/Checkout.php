@@ -49,7 +49,7 @@ class Checkout extends BaseController
         $this->checkoutModel->add($data);
 
         $data2 = [];
-        for ($i=0; $i < $jumlahBarang; $i++) { 
+        for ($i = 0; $i < $jumlahBarang; $i++) {
             $data2[] = array(
                 'kode_transaksi' => $this->request->getPost('kodeTransaksi'),
                 'username' => user()->username,

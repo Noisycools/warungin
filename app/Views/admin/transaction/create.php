@@ -202,6 +202,15 @@
                                     <form action="/transaction/save" method="POST" enctype="multipart/form-data">
                                         <?= csrf_field(); ?>
                                         <div class="form-group row">
+                                            <label for="username" class="col-sm-2 col-form-label">Username</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control <?= ($validation->hasError('username')) ? 'is-invalid' : ''; ?>" id="username" name="username" autofocus value="<?= old('username'); ?>">
+                                                <div class="invalid-feedback">
+                                                    <?= $validation->getError('username'); ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
                                             <label for="nama_penerima" class="col-sm-2 col-form-label">Nama Penerima</label>
                                             <div class="col-sm-10">
                                                 <input type="text" class="form-control <?= ($validation->hasError('nama_penerima')) ? 'is-invalid' : ''; ?>" id="nama_penerima" name="nama_penerima" autofocus value="<?= old('nama_penerima'); ?>">

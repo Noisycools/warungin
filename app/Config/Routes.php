@@ -48,14 +48,17 @@ $routes->get('admin/product', 'Product::index', ['filter' => 'role:admin']);
 $routes->get('admin/product/create', 'Product::create', ['filter' => 'role:admin']);
 $routes->get('/product/edit/(:segment)', 'Product::edit/$1');
 $routes->delete('/product/(:num)', 'Product::delete/$1');
+$routes->delete('/product/laporan', 'Product::laporan');
 $routes->get('admin/customer', 'Customer::index', ['filter' => 'role:admin']);
 $routes->get('admin/customer/create', 'Customer::create', ['filter' => 'role:admin']);
 $routes->get('/customer/edit/(:segment)', 'Customer::edit/$1');
 $routes->delete('/customer/(:num)', 'Customer::delete/$1');
+$routes->delete('/customer/laporan', 'Customer::laporan');
 $routes->get('admin/transaction', 'Transaction::index', ['filter' => 'role:admin']);
 $routes->get('admin/transaction/create', 'Transaction::create', ['filter' => 'role:admin']);
 $routes->get('/transaction/edit/(:segment)', 'Transaction::edit/$1');
 $routes->delete('/transaction/(:segment)', 'Transaction::delete/$1');
+$routes->delete('/transaction/laporan)', 'Transaction::laporan');
 
 
 /*

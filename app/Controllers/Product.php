@@ -13,12 +13,32 @@ class Product extends BaseController
         $this->barangModel = new BarangModel();
     }
 
+    public function laporan()
+    {
+        $data = [
+            'barang' => $this->barangModel->getBarang()
+        ];
+
+        return view('admin/product/laporan', $data);
+    }
+
     public function index()
     {
         // $barang = $this->barangModel->findAll();
+        $currentPage = $this->request->getVar('page_tabel_barang') ? $this->request->getVar('page_tabel_barang') : 1;
+        // d($this->request->getVar('keyword'));
+        $keyword = $this->request->getVar('keyword');
+        if ($keyword) {
+            $barang = $this->barangModel->search($keyword);
+        } else {
+            $barang = $this->barangModel;
+        }
 
         $data = [
-            'barang' => $this->barangModel->getBarang()
+            // 'barang' => $this->barangModel->getBarang(),
+            'barang' => $barang->paginate(10, 'tabel_barang'),
+            'pager' => $this->barangModel->pager,
+            'currentPage' => $currentPage
         ];
 
         // connect secara manual
@@ -68,6 +88,12 @@ class Product extends BaseController
                     'required' => 'Kolom ini harus diisi!',
                 ]
             ],
+            'stok' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Kolom ini harus diisi!',
+                ]
+            ],
             'foto_barang' => [
                 'rules' => 'uploaded[foto_barang]|max_size[foto_barang,1024]|is_image[foto_barang,image/jpg,image/jpeg,image/png]'
             ]
@@ -95,9 +121,10 @@ class Product extends BaseController
             'kategori_barang' => $this->request->getVar('kategori_barang'),
             'harga_barang' => $this->request->getVar('harga_barang'),
             'satuan_barang' => $this->request->getVar('satuan_barang'),
+            'stok' => $this->request->getVar('stok'),
             'foto_barang' => $namaGambar
         ]);
-        session()->setFlashData('pesan', 'Data berhasil ditambahkan');
+        session()->setFlashData('message', 'Data berhasil ditambahkan');
         return redirect()->to('admin/product');
     }
 
@@ -110,7 +137,7 @@ class Product extends BaseController
         unlink('img/' . $barang['foto_barang']);
 
         $this->barangModel->delete($barang_id);
-        session()->setFlashData('pesan', 'Data berhasil dihapus');
+        session()->setFlashData('message', 'Data berhasil dihapus');
         return redirect()->to('admin/product');
     }
 
@@ -168,9 +195,10 @@ class Product extends BaseController
             'kategori_barang' => $this->request->getVar('kategori_barang'),
             'harga_barang' => $this->request->getVar('harga_barang'),
             'satuan_barang' => $this->request->getVar('satuan_barang'),
+            'stok' => $this->request->getVar('stok'),
             'foto_barang' => $namaGambar
         ]);
-        session()->setFlashData('pesan', 'Data berhasil diubah');
+        session()->setFlashData('message', 'Data berhasil diubah');
         return redirect()->to('admin/product');
     }
 }

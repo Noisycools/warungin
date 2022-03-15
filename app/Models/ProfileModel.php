@@ -31,4 +31,14 @@ class ProfileModel extends Model
         $builder->where(['nama' => $data['nama']]);
         return $builder->update($data);
     }
+
+    public function search($keyword)
+    {
+        return $this->table('profilel')
+            ->like('nama', $keyword)
+            ->orLike('nama_warung', $keyword)
+            ->orLike('alamat', $keyword)
+            ->orLike('no_hp', $keyword)
+            ->orLike('email', $keyword);
+    }
 }
