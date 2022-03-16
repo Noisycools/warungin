@@ -22,16 +22,5 @@
         </form>
     </div>
 </div>
-<script src="js/sweetalert2.all.min.js"></script>
-<script>
-    $('btn').on('click', function() {
-        e.preventDefault();
-        Swal({
-            'Succes',
-            'You have successfully logged in',
-            'succes',
-        });
-    });
-</script>
 
 <?= $this->endSection(); ?>

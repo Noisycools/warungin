@@ -28,7 +28,7 @@ use Myth\Auth\Collectors\Auth; ?>
                     <a id="home" href="/" class="block py-2 pr-4 pl-3 text-white rounded md:bg-transparent md:p-0" aria-current="page">Home</a>
                 </li>
                 <li>
-                    <a id="contactUs" href="/contact_us" class="block py-2 pr-4 pl-3 border-b border-white md:hover:bg-transparent md:border-0 md:p-0 text-white md:hover:text-white hover:bg-white hover:text-black">Contact Us</a>
+                    <a id="contactUs" href="#contact_us" class="block py-2 pr-4 pl-3 border-b border-white md:hover:bg-transparent md:border-0 md:p-0 text-white md:hover:text-white hover:bg-white hover:text-black">Contact Us</a>
                 </li>
                 <?php if (logged_in()) : ?>
                     <?php if (in_groups('user')) : ?>
@@ -67,7 +67,7 @@ use Myth\Auth\Collectors\Auth; ?>
                     <a id="home2" href="/" class="block py-2 pr-4 pl-3 text-white rounded md:bg-transparent md:text-blue-700 md:p-0" aria-current="page">Home</a>
                 </li>
                 <li>
-                    <a id="contactUs2" href="/contact_us" class="block py-2 pr-4 pl-3 border-b border-white md:hover:bg-transparent md:border-0 md:p-0 text-white md:hover:text-white hover:bg-white hover:text-black">Contact Us</a>
+                    <a id="contactUs2" href="#contact_us" class="block py-2 pr-4 pl-3 border-b border-white md:hover:bg-transparent md:border-0 md:p-0 text-white md:hover:text-white hover:bg-white hover:text-black">Contact Us</a>
                 </li>
                 <?php if (logged_in()) : ?>
                     <?php if (in_groups('user')) : ?>
