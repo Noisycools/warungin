@@ -41,6 +41,7 @@ $routes->get('/profile', 'Pages::profile');
 $routes->get('/checkout', 'DaftarBelanja::checkout', ['filter' => 'role:user']);
 $routes->get('/histori_transaksi', 'Pages::histori_transaksi', ['filter' => 'role:user']);
 $routes->get('/kurir', 'Pages::kurir', ['filter' => 'role:kurir']);
+$routes->get('/kurir_verif', 'Pages::kurir_verif', ['filter' => 'role:kurir']);
 
 // *** ADMIN ***
 $routes->get('/admin', 'Admin::index', ['filter' => 'role:admin']);
@@ -48,17 +49,18 @@ $routes->get('admin/product', 'Product::index', ['filter' => 'role:admin']);
 $routes->get('admin/product/create', 'Product::create', ['filter' => 'role:admin']);
 $routes->get('/product/edit/(:segment)', 'Product::edit/$1');
 $routes->delete('/product/(:num)', 'Product::delete/$1');
-$routes->delete('/product/laporan', 'Product::laporan');
+$routes->get('/product/laporan', 'Product::laporan');
 $routes->get('admin/customer', 'Customer::index', ['filter' => 'role:admin']);
 $routes->get('admin/customer/create', 'Customer::create', ['filter' => 'role:admin']);
 $routes->get('/customer/edit/(:segment)', 'Customer::edit/$1');
 $routes->delete('/customer/(:num)', 'Customer::delete/$1');
-$routes->delete('/customer/laporan', 'Customer::laporan');
+$routes->get('/customer/laporan', 'Customer::laporan');
 $routes->get('admin/transaction', 'Transaction::index', ['filter' => 'role:admin']);
 $routes->get('admin/transaction/create', 'Transaction::create', ['filter' => 'role:admin']);
 $routes->get('/transaction/edit/(:segment)', 'Transaction::edit/$1');
 $routes->delete('/transaction/(:segment)', 'Transaction::delete/$1');
-$routes->delete('/transaction/laporan)', 'Transaction::laporan');
+$routes->get('/transaction/laporan', 'Transaction::laporan');
+$routes->get('admin/report', 'Report::index', ['filter' => 'role:admin']);
 
 
 /*

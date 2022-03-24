@@ -16,6 +16,7 @@ class Pages extends BaseController
     protected $profileModel;
     protected $checkoutModel;
     protected $historiTransaksiModel;
+    protected $transaksiModel;
 
     public function __construct()
     {
@@ -24,6 +25,7 @@ class Pages extends BaseController
         $this->profileModel = new ProfileModel();
         $this->checkoutModel = new CheckoutModel();
         $this->historiTransaksiModel = new HistoriTransaksiModel();
+        $this->transaksiModel = new TransactionModel();
     }
 
     public function homepage()
@@ -70,7 +72,7 @@ class Pages extends BaseController
     }
 
     public function struk()
-    {   
+    {
         $kodeTransaksi = $this->request->getPost('kodeTransaksi');
         $data = [
             'transaksi' => $this->checkoutModel->getData($kodeTransaksi)->getRow(),
@@ -125,11 +127,22 @@ class Pages extends BaseController
     public function kurir()
     {
         $data = [
-            'title' => 'Verifikasi Pesanan | WarungIn Kurir',
+            'title' => 'Pesanan Hari Ini | WarungIn Kurir',
             'alt_title' => 'kurir',
-            'validation' => \Config\Services::validation()
+            'validation' => \Config\Services::validation(),
+            'transaksi' => $this->checkoutModel->getDataByDate()
         ];
 
         return view('pages/kurir', $data);
+    }
+
+    public function kurir_verif()
+    {
+        $data = [
+            'title' => 'Verifikasi Pesanan | WarungIn Kurir',
+            'validation' => \Config\Services::validation(),
+        ];
+
+        return view('pages/kurir_verif', $data);
     }
 }

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin | Users</title>
+    <title>Admin | Report</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="<?= base_url(); ?>/../../plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="<?= base_url(); ?>/../../dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="/css/gambar.css">
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -25,7 +26,7 @@
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="<?= base_url('admin'); ?>" class="nav-link">Home</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
                     <a href="#" class="nav-link">Contact</a>
@@ -193,86 +194,7 @@
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
             <section class="content-header">
-                <div class="container-fluid">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col">
-                                <div class="col-8">
-                                    <h2 class="my-3">Form Tambah Data</h2>
-                                    <form action="/product/save" method="POST" enctype="multipart/form-data">
-                                        <?= csrf_field(); ?>
-                                        <div class="form-group row">
-                                            <label for="nama_barang" class="col-sm-2 col-form-label">Nama</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" class="form-control <?= ($validation->hasError('nama_barang')) ? 'is-invalid' : ''; ?>" id="nama_barang" name="nama barang" autofocus value="<?= old('nama_barang'); ?>">
-                                                <div class="invalid-feedback">
-                                                    <?= $validation->getError('nama_barang'); ?>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="kategori_barang" class="col-sm-2 col-form-label">Kategori</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" class="form-control <?= ($validation->hasError('kategori_barang')) ? 'is-invalid' : ''; ?>" id="kategori_barang" name="kategori_barang" autofocus value="<?= old('kategori_barang'); ?>">
-                                                <div class="invalid-feedback">
-                                                    <?= $validation->getError('kategori_barang'); ?>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="harga_barang" class="col-sm-2 col-form-label">Harga</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" class="form-control <?= ($validation->hasError('harga_barang')) ? 'is-invalid' : ''; ?>" id="harga_barang" name="harga_barang" autofocus value="<?= old('harga_barang'); ?>">
-                                                <div class="invalid-feedback">
-                                                    <?= $validation->getError('harga_barang'); ?>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="satuan_barang" class="col-sm-2 col-form-label">Satuan</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" class="form-control <?= ($validation->hasError('satuan_barang')) ? 'is-invalid' : ''; ?>" id="satuan_barang" name="satuan_barang" autofocus value="<?= old('satuan_barang'); ?>">
-                                                <div class="invalid-feedback">
-                                                    <?= $validation->getError('satuan_barang'); ?>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="stok" class="col-sm-2 col-form-label">Stok</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" class="form-control <?= ($validation->hasError('stok')) ? 'is-invalid' : ''; ?>" id="stok" name="stok" autofocus value="<?= old('stok'); ?>">
-                                                <div class="invalid-feedback">
-                                                    <?= $validation->getError('stok'); ?>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class=" form-group row">
-                                            <label for="foto_barang" class="col-sm-2 col-form-label">Gambar</label>
-                                            <div class="col">
-                                                <div class="col-sm-12">
-                                                    <input type="file" class="custom-file-input <?= ($validation->hasError('foto_barang')) ? 'is-invalid' : ''; ?>" id="foto_barang" name="foto_barang" onchange="previewImg()">
-                                                    <div class="invalid-feedback">
-                                                        <?= $validation->getError('foto_barang'); ?>
-                                                    </div>
-                                                    <label class="custom-file-label" for="foto_barang">
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="col-4">
-                                                <img src="/img/default.jpg" class="img-thumbnail img-preview">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <div class="col-sm-10">
-                                                <button type="submit" class="btn btn-primary">Tambah Data</button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div><!-- /.container-fluid -->
+                <!-- /.container-fluid -->
             </section>
 
             <!-- /.content -->
@@ -295,22 +217,8 @@
     <script src="<?= base_url(); ?>/../../dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="<?= base_url(); ?>/../../dist/js/demo.js"></script>
-    <script>
-        function previewImg() {
-            const gambar = document.querySelector('#foto_barang');
-            const gambarLabel = document.querySelector('.custom-file-label');
-            const imgPreview = document.querySelector('.img-preview');
-
-            gambarLabel.textContent = gambar.files[0].name;
-
-            const fileGambar = new FileReader();
-            fileGambar.readAsDataURL(gambar.files[0]);
-
-            fileGambar.onload = function(e) {
-                imgPreview.src = e.target.result;
-            }
-        }
-    </script>
+    <script src="<?= base_url(); ?>/../../js/sweetalert2.all.js"></script>
+    <script src="<?= base_url(); ?>/../../js/sweetalert.js"></script>
 </body>
 
 </html>

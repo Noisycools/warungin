@@ -259,6 +259,9 @@
                                                     <label class="custom-file-label" for="foto_barang"><?= $barang['foto_barang']; ?></label>
                                                 </div>
                                             </div>
+                                            <div class="col-4">
+                                                <img src="/img/<?= $barang['foto_barang']; ?>" class="img-thumbnail img-preview">
+                                            </div>
                                         </div>
                                         <div class="form-group row">
                                             <div class="col-sm-10">
@@ -293,6 +296,22 @@
     <script src="<?= base_url(); ?>/../../dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="<?= base_url(); ?>/../../dist/js/demo.js"></script>
+    <script>
+        function previewImg() {
+            const gambar = document.querySelector('#foto_barang');
+            const gambarLabel = document.querySelector('.custom-file-label');
+            const imgPreview = document.querySelector('.img-preview');
+
+            gambarLabel.textContent = gambar.files[0].name;
+
+            const fileGambar = new FileReader();
+            fileGambar.readAsDataURL(gambar.files[0]);
+
+            fileGambar.onload = function(e) {
+                imgPreview.src = e.target.result;
+            }
+        }
+    </script>
 </body>
 
 </html>

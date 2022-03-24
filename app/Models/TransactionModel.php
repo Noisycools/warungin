@@ -8,9 +8,10 @@ class TransactionModel extends Model
 {
     protected $table      = 'transaksi';
     protected $primaryKey = 'kode_transaksi';
-    protected $allowedFields = ['kode_transaksi', 'username', 'nama_penerima', 'nama_warung', 'alamat', 'no_hp', 'email', 'status', 'foto_struk'];
+    protected $allowedFields = ['kode_transaksi', 'username', 'nama_penerima', 'nama_warung', 'alamat', 'no_hp', 'email', 'status', 'foto_struk', 'foto_pengiriman'];
 
-    public function getTransaksi($kode_transaksi = false)
+
+    public function getTransaksi($kode_transaksi = null)
     {
         if ($kode_transaksi == false) {
             return $this->findAll();

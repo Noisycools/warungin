@@ -23,7 +23,7 @@
                 <div class="col">Email</div>
             </div>
             <?php foreach ($transaksi->getResult() as $t) : ?>
-                <a href="<?= '/pages/detail_transaksi/'.$t->kode_transaksi ?>">
+                <a href="<?= '/pages/detail_transaksi/' . $t->kode_transaksi ?>">
                     <div class="layout-inline row rows">
                         <div class="col col-pro layout-inline">
                             <p><?= $t->kode_transaksi; ?></p>

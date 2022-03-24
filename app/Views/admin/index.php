@@ -184,10 +184,27 @@
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-              <a class="nav-link" href="<?= base_url('admin/product'); ?>">
-                <i class="fas fa-clipboard-list"></i>
-                &ensp;&ensp;<span>Product</span>
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-clipboard-list"></i>
+                <p>
+                  Product
+                  <i class="fas fa-angle-left right"></i>
+                </p>
               </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="<?= base_url('admin/product'); ?>" class="nav-link">
+                    &ensp;<i class="far fa-circle nav-icon"></i>
+                    <p>Daftar Barang</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/search/enhanced.html" class="nav-link">
+                    &ensp;<i class="far fa-circle nav-icon"></i>
+                    <p>Kategori</p>
+                  </a>
+                </li>
+              </ul>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="<?= base_url('admin/customer'); ?>">
@@ -201,12 +218,12 @@
                 &ensp;&ensp;<span>Transaction</span>
               </a>
             </li>
-            <!-- <li class="nav-item">
-              <a class="nav-link" href="<?= base_url('admin/transaction'); ?>">
-                <i class="fas fa-poll"></i>
-                &ensp;&ensp;<span>Finance</span>
+            <li class="nav-item">
+              <a class="nav-link" href="<?= base_url('admin/report'); ?>">
+                <i class="fas fa-clipboard-check"></i>
+                &ensp;&ensp;<span>Laporan</span>
               </a>
-            </li> -->
+            </li>
         </nav>
         <!-- /.sidebar-menu -->
       </div>

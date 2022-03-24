@@ -27,22 +27,36 @@ class Kurir extends BaseController
                 'errors' => [
                     'uploaded' => 'Upload foto struknya terlebih dahulu!',
                     'is_image' => 'File harus berupa image/foto!',
-                    'mime_in' => 'File harus berupa image/foto!' 
+                    'mime_in' => 'File harus berupa image/foto!'
+                ]
+            ],
+            'fotoPengiriman' => [
+                'rules' => 'uploaded[fotoPengiriman]|is_image[fotoPengiriman]|mime_in[fotoPengiriman,image/jpg,image/jpeg,image/png]',
+                'errors' => [
+                    'uploaded' => 'Upload foto Pengirimannya terlebih dahulu!',
+                    'is_image' => 'File harus berupa image/foto!',
+                    'mime_in' => 'File harus berupa image/foto!'
                 ]
             ]
         ])) {
             return redirect()->to('/kurir')->withInput();
         }
 
-        $fotoStruk = $this->request->getFile('fotoStruk');
-        $namaFoto = $fotoStruk->getRandomName();
-        $fotoStruk->move('img', $namaFoto);
+        $fileFotoStruk = $this->request->getFile('fotoStruk');
+        $fileFotoPengiriman = $this->request->getFile('fotoPengiriman');
+        $namaFoto = $fileFotoStruk->getRandomName();
+        $namaFoto2 = $fileFotoPengiriman->getRandomName();
+        $fileFotoStruk->move('img');
+        $fileFotoPengiriman->move('img');
+        $namaFoto = $fileFotoStruk->getName();
+        $namaFoto2 = $fileFotoPengiriman->getName();
 
-        $data = [
+        $this->transactionModel->verifikasi([
+            'kodeTransaksi' => $this->request->getVar('kodeTransaksi'),
             'foto_struk' => $namaFoto,
-            'kodeTransaksi' => $this->request->getPost('kodeTransaksi')
-        ];
-        $this->transactionModel->verifikasi($data);
+            'foto_pengiriman' => $namaFoto2
+        ]);
+        session()->setFlashData('message', 'Data berhasil ditambahkan');
 
         return redirect()->to('pages/kurir');
     }

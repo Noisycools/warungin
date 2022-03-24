@@ -83,14 +83,18 @@
         </div><!-- /.row -->
 
         <!-- this row will not appear when printing -->
-        <div class="row no-print">
-            <div class="col-xs-12">
-                <form action="<?= base_url('warungin/printPDF') ?>" method="post" target="_blank">
-                    <input type="hidden" name="kodeTransaksi" value="<?= $transaksi->kode_transaksi ?>">
-                    <button type="submit" class="btn btn-primary pull-right" style="margin-right: 5px;">Cetak PDF</button>
-                </form>
-                <!-- <a href="<?= base_url('warungin/printPDF') ?>" class="btn btn-primary pull-right" style="margin-right: 5px;">Cetak PDF</a> -->
-            </div>
-        </div>
+        <?php if (logged_in()) : ?>
+            <?php if (in_groups('kurir')) : ?>
+                <div class="row no-print">
+                    <div class="col-xs-12">
+                        <form action="<?= base_url('warungin/printPDF') ?>" method="post" target="_blank">
+                            <input type="hidden" name="kodeTransaksi" value="<?= $transaksi->kode_transaksi ?>">
+                            <button type="submit" class="btn btn-primary pull-right" style="margin-right: 5px;">Cetak PDF</button>
+                        </form>
+                        <!-- <a href="<?= base_url('warungin/printPDF') ?>" class="btn btn-primary pull-right" style="margin-right: 5px;">Cetak PDF</a> -->
+                    </div>
+                </div>
+            <?php endif; ?>
+        <?php endif; ?>
     </section>
 </section>

@@ -26,8 +26,15 @@ class CheckoutModel extends Model
         if ($username == null) {
             return $this->findAll();
         } else {
-            return $this->getWhere(['username' => $username]);
+            $builder = $this->db->table('transaksi');
+            return $builder->getWhere(['username' => $username]);
         }
+    }
+
+    public function getDataByDate()
+    {
+        $tgl = date("Y-m-d");
+        return $this->db->query("SELECT * FROM transaksi WHERE created_at='$tgl' ORDER BY created_at DESC");
     }
 
     public function add($data)
