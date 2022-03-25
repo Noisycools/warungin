@@ -22,7 +22,6 @@
                         <th scope="col">No Hp</th>
                         <th scope="col">Email</th>
                         <th scope="col">Status</th>
-                        <th scope="col">Aksi</th>
                         <th scope="col"></th>
                     </tr>
                 </thead>
@@ -40,7 +39,8 @@
                             <td><?= $t['email']; ?></td>
                             <td><?= $t['status']; ?></td>
                             <td><a href="/pages/detail_transaksi/<?= $t['kode_transaksi']; ?>" class="btn btn-info"><i class="fas fa-eye"></i></a></td>
-                            <td><a href="/pages/kurir_verif/<?= $t['kode_transaksi']; ?>" class="btn btn-warning"><i class="fas fa-pen"></i></a></td>
+                            <td><button href="/pages/kurir_verif/<?= $t['kode_transaksi']; ?>" class="btn btn-warning"><i class="fas fa-pen"></i></button>
+                            </td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>

@@ -60,7 +60,10 @@ $routes->get('admin/transaction/create', 'Transaction::create', ['filter' => 'ro
 $routes->get('/transaction/edit/(:segment)', 'Transaction::edit/$1');
 $routes->delete('/transaction/(:segment)', 'Transaction::delete/$1');
 $routes->get('/transaction/laporan', 'Transaction::laporan');
-$routes->get('admin/report', 'Report::index', ['filter' => 'role:admin']);
+$routes->get('admin/transaction/pesanan_masuk', 'Transaction::pesanan_masuk');
+$routes->get('admin/transaction/pesanan_selesai', 'Transaction::pesanan_selesai');
+$routes->get('admin/transaction/pesanan_terima', 'Transaction::pesanan_diterima');
+$routes->get('admin/transaction/pesanan_kirim', 'Transaction::pesanan_dikirim');
 
 
 /*

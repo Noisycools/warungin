@@ -31,6 +31,42 @@ class TransactionModel extends Model
         return $builder->set('foto_struk', $data['foto_struk'])->where('kode_transaksi', $data['kodeTransaksi'])->update();
     }
 
+    public function pesanan_masuk()
+    {
+        return $this->db->query("SELECT DISTINCT transaksi.kode_transaksi, transaksi.username, transaksi.nama_warung, transaksi.tgl_pembayaran, barang_transaksi.total_harga, transaksi.status
+        FROM transaksi INNER JOIN barang_transaksi 
+        ON transaksi.kode_transaksi = barang_transaksi.kode_transaksi
+        WHERE transaksi.status='Proses'
+        ORDER BY transaksi.created_at DESC");
+    }
+
+    public function pesanan_selesai()
+    {
+        return $this->db->query("SELECT DISTINCT transaksi.kode_transaksi, transaksi.username, transaksi.nama_warung, transaksi.tgl_pembayaran, barang_transaksi.total_harga, transaksi.status
+        FROM transaksi INNER JOIN barang_transaksi 
+        ON transaksi.kode_transaksi = barang_transaksi.kode_transaksi
+        WHERE transaksi.status='Selesai'
+        ORDER BY transaksi.created_at DESC");
+    }
+
+    public function pesanan_dikirim()
+    {
+        return $this->db->query("SELECT DISTINCT transaksi.kode_transaksi, transaksi.username, transaksi.nama_warung, transaksi.tgl_pembayaran, barang_transaksi.total_harga, transaksi.status
+        FROM transaksi INNER JOIN barang_transaksi 
+        ON transaksi.kode_transaksi = barang_transaksi.kode_transaksi
+        WHERE transaksi.status='Dikirim'
+        ORDER BY transaksi.created_at DESC");
+    }
+
+    public function pesanan_diterima()
+    {
+        return $this->db->query("SELECT DISTINCT transaksi.kode_transaksi, transaksi.username, transaksi.nama_warung, transaksi.tgl_pembayaran, barang_transaksi.total_harga, transaksi.status
+        FROM transaksi INNER JOIN barang_transaksi 
+        ON transaksi.kode_transaksi = barang_transaksi.kode_transaksi
+        WHERE transaksi.status='Diterima'
+        ORDER BY transaksi.created_at DESC");
+    }
+
     public function search($keyword)
     {
         return $this->table('transaksi')

@@ -165,22 +165,68 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Nav Item - Pages Collapse Menu -->
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= base_url('admin/product'); ?>">
-                                <i class="fas fa-clipboard-list"></i>
-                                &ensp;&ensp;<span>Product</span>
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-clipboard-list"></i>
+                                <p>
+                                    Product
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
                             </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="<?= base_url('admin/product'); ?>" class="nav-link">
+                                        &ensp;<i class="fas fa-cube nav-icon"></i>
+                                        <p>Daftar Barang</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="<?= base_url('admin/kategori'); ?>" class="nav-link">
+                                        &ensp;<i class="fas fa-cubes nav-icon"></i>
+                                        <p>Kategori</p>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="<?= base_url('admin/customer'); ?>">
-                                <i class="fas fa-user-tag"></i>
+                                &ensp;<i class="fas fa-user-tag"></i>
                                 &ensp;<span>Customer</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= base_url('admin/transaction'); ?>">
-                                <i class="fas fa-clipboard-check"></i>
-                                &ensp;&ensp;<span>Transaction</span>
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-envelope-open-text"></i>
+                                <p>
+                                    Transaksi
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
                             </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="<?= base_url('admin/transaction/pesanan_masuk'); ?>" class="nav-link">
+                                        &ensp;<i class="fas fa-download nav-icon"></i>
+                                        <p>Pesanan Masuk</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="<?= base_url('admin/transaction/pesanan_kirim'); ?>" class="nav-link">
+                                        &ensp;<i class="fas fa-shipping-fast nav-icon"></i>
+                                        <p>Dikirim</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="<?= base_url('admin/transaction/pesanan_terima'); ?>" class="nav-link">
+                                        &ensp;<i class=" 	fas fa-truck nav-icon"></i>
+                                        <p>Diterima</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="<?= base_url('admin/transaction/pesanan_selesai'); ?>" class="nav-link">
+                                        &ensp;<i class="fas fa-check-circle nav-icon"></i>
+                                        <p>Selesai</p>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </nav>

@@ -3,14 +3,17 @@
 namespace App\Controllers;
 
 use App\Models\TransactionModel;
+use App\Models\BarangTransaksiModel;
 use CodeIgniter\Validation\Rules;
 
 class Transaction extends BaseController
 {
     protected $transaksiModel;
+    protected $barangTransaksiModel;
     public function __construct()
     {
         $this->transaksiModel = new TransactionModel();
+        $this->barangTransaksiModel = new BarangTransaksiModel();
     }
 
     public function laporan()
@@ -111,7 +114,7 @@ class Transaction extends BaseController
         // $fileGambar = $this->request->getFile('foto_barang');
 
         //generate nama file random
-        // $namaGambar = $fileGambar->getRandomName(); //lalu parameter dimasukan ke function move
+        // $namaGambar = $fileGambar->getRandomName(); //lalu parameter diselepesanan_selesaian ke function move
 
         //pindahkan file ke folder img
         // $fileGambar->move('img');
@@ -204,5 +207,37 @@ class Transaction extends BaseController
         ]);
         session()->setFlashData('pesan', 'Data berhasil diubah');
         return redirect()->to('admin/transaction');
+    }
+
+    public function pesanan_masuk()
+    {
+        $data = [
+            'transaksi' => $this->transaksiModel->pesanan_masuk()
+        ];
+        return view('admin/transaction/pesanan_masuk/index', $data);
+    }
+
+    public function pesanan_selesai()
+    {
+        $data = [
+            'transaksi' => $this->transaksiModel->pesanan_selesai()
+        ];
+        return view('admin/transaction/pesanan_selesai/index', $data);
+    }
+
+    public function pesanan_diterima()
+    {
+        $data = [
+            'transaksi' => $this->transaksiModel->pesanan_diterima()
+        ];
+        return view('admin/transaction/pesanan_diterima/index', $data);
+    }
+
+    public function pesanan_dikirim()
+    {
+        $data = [
+            'transaksi' => $this->transaksiModel->pesanan_dikirim()
+        ];
+        return view('admin/transaction/pesanan_dikirim/index', $data);
     }
 }

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin | Report</title>
+    <title>Admin | Transaksi</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -166,22 +166,68 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Nav Item - Pages Collapse Menu -->
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= base_url('admin/product'); ?>">
-                                <i class="fas fa-clipboard-list"></i>
-                                &ensp;&ensp;<span>Product</span>
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-clipboard-list"></i>
+                                <p>
+                                    Product
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
                             </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="<?= base_url('admin/product'); ?>" class="nav-link">
+                                        &ensp;<i class="fas fa-cube nav-icon"></i>
+                                        <p>Daftar Barang</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="<?= base_url('admin/kategori'); ?>" class="nav-link">
+                                        &ensp;<i class="fas fa-cubes nav-icon"></i>
+                                        <p>Kategori</p>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="<?= base_url('admin/customer'); ?>">
-                                <i class="fas fa-user-tag"></i>
+                                &ensp;<i class="fas fa-user-tag"></i>
                                 &ensp;<span>Customer</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= base_url('admin/transaction'); ?>">
-                                <i class="fas fa-clipboard-check"></i>
-                                &ensp;&ensp;<span>Transaction</span>
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-envelope-open-text"></i>
+                                <p>
+                                    Transaksi
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
                             </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="<?= base_url('admin/transaction/pesanan_masuk'); ?>" class="nav-link">
+                                        &ensp;<i class="fas fa-download nav-icon"></i>
+                                        <p>Pesanan Masuk</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="<?= base_url('admin/transaction/pesanan_kirim'); ?>" class="nav-link">
+                                        &ensp;<i class="fas fa-shipping-fast nav-icon"></i>
+                                        <p>Dikirim</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="<?= base_url('admin/transaction/pesanan_terima'); ?>" class="nav-link">
+                                        &ensp;<i class=" 	fas fa-truck nav-icon"></i>
+                                        <p>Diterima</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="<?= base_url('admin/transaction/pesanan_selesai'); ?>" class="nav-link">
+                                        &ensp;<i class="fas fa-check-circle nav-icon"></i>
+                                        <p>Selesai</p>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </nav>
@@ -194,7 +240,92 @@
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
             <section class="content-header">
-                <!-- /.container-fluid -->
+                <div class="container-fluid">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <h1 class="mt-2">Histori Transaksi</h1>
+                                <a href="/transaction/laporan" rel="noopener" target="_blank" class="btn btn-primary float-right"><i class="fas fa-print"></i> Print</a>
+                                <a href="/transaction/create" class="btn btn-primary mb-3 float-right mr-2">Tambah Data</a>
+                                <?php if (session()->getFlashData('pesan')) : ?>
+                                    <div class="alert alert-success" role="alert">
+                                        <?= session()->getFlashData('pesan'); ?>
+                                    </div>
+                                <?php endif; ?>
+                                <div class="col-4">
+                                    <form action="" method="GET">
+                                        <div class="input-group mb-3">
+                                            <input type="text" class="form-control" placeholder="Masukkan keyword pencarian.." name="keyword">
+                                            <button class="btn btn-outline-secondary" type="submit" name="submit">Cari</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <table class="table">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Kode Transaksi</th>
+                                            <th scope="col">Username</th>
+                                            <th scope="col">Nama Warung</th>
+                                            <th scope="col">Tanggal Pembayaran</th>
+                                            <th scope="col">Total Harga</th>
+                                            <th scope="col">Status</th>
+                                            <th scope="col"></th>
+                                            <th scope="col"></th>
+                                            <th scope="col"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php $i = 1; ?>
+                                        <?php foreach ($transaksi->getResult('array') as $t) : ?>
+                                            <tr>
+                                                <th scope="row"><?= $i++; ?></th>
+                                                <td><?= $t['kode_transaksi']; ?></td>
+                                                <td><?= $t['username']; ?></td>
+                                                <td><?= $t['nama_warung']; ?></td>
+                                                <td><?= $t['tgl_pembayaran']; ?></td>
+                                                <td>Rp. <?= number_format($t['total_harga'], 0); ?></td>
+                                                <td><span class="badge bg-primary"><?= $t['status']; ?></span></td>
+                                                <td><a href="/transaction/edit/<?= $t['kode_transaksi']; ?>" class="btn btn-warning"><i class="fas fa-pen"></i></a></td>
+                                                <td> <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-default">
+                                                        <i class="fas fa-eye"></i>
+                                                    </button></td>
+                                                <td>
+                                                    <form action="/transaction/<?= $t['kode_transaksi']; ?>" method="POST" class="d-inline">
+                                                        <?= csrf_field(); ?>
+                                                        <input type="hidden" name="_method" value="DELETE">
+                                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin?')"><i class="fas fa-trash"></i></button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="modal fade" id="modal-default">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Default Modal</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>One fine body&hellip;</p>
+                                    </div>
+                                </div>
+                                <!-- /.modal-content -->
+                            </div>
+                            <!-- /.modal-dialog -->
+                        </div>
+                    </div>
+                </div><!-- /.container-fluid -->
             </section>
 
             <!-- /.content -->
@@ -217,8 +348,6 @@
     <script src="<?= base_url(); ?>/../../dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="<?= base_url(); ?>/../../dist/js/demo.js"></script>
-    <script src="<?= base_url(); ?>/../../js/sweetalert2.all.js"></script>
-    <script src="<?= base_url(); ?>/../../js/sweetalert.js"></script>
 </body>
 
 </html>
