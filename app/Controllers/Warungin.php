@@ -41,6 +41,21 @@ class Warungin extends BaseController
 
     public function index()
     {
+        if (logged_in()) :
+            if (in_groups('kurir')) :
+                $data = [
+                    'title' => 'Pesanan Hari Ini | WarungIn Kurir',
+                    'alt_title' => 'kurir',
+                    'validation' => \Config\Services::validation(),
+                    'transaksi' => $this->checkoutModel->getData(),
+                    'selesai' => $this->checkoutModel->getDataByStatus('Selesai'),
+                    'proses' => $this->checkoutModel->getDataByStatus('Proses')
+                ];
+                // return view('pages/kurir', $data);
+                return view('Warungin/tes_tailwind', $data);
+            endif;
+        endif;
+
         $tabel_barang = $this->barangModel->findAll();
         // $users = $this->usersModel->findAll();
 

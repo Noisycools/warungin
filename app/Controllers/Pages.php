@@ -130,7 +130,8 @@ class Pages extends BaseController
             'title' => 'Pesanan Hari Ini | WarungIn Kurir',
             'alt_title' => 'kurir',
             'validation' => \Config\Services::validation(),
-            'transaksi' => $this->checkoutModel->getDataByDate()
+            'transaksi' => $this->checkoutModel->getDataByDate(),
+            'status' => $this->checkoutModel->getDataByStatus('Selesai')
         ];
 
         return view('pages/kurir', $data);

@@ -18,7 +18,7 @@
         <p class="leading-normal text-2xl mb-8 mx-auto md:mx-0">
           Mulai daftar dan stock warungmu!
         </p>
-        <button type="button" class="mx-auto w-1/3 md:mx-0 text-center hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+        <button type="button" class="mx-auto w-1/3 md:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
           <a href="/register">Daftar</a>
         </button>
       <?php endif; ?>
@@ -86,7 +86,7 @@
             <h1 class="mb-3 text-sm font-semibold leading-none tracking-tighter text-neutral-600">
               <?php echo $b['nama_barang'] ?>
             </h1>
-            <span class="text-black">$00.00</span>
+            <span class="text-black"><?php echo "Rp. " . number_format($b['harga_barang'], 2, ',', '.'); ?></span>
           </div>
         </div>
       <?php endforeach; ?>
@@ -154,7 +154,7 @@
     <div class="grid grid-cols-2 gap-3 mx-auto sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
       <?php foreach ($barang as $b) : ?>
         <a href="/pages/detail_barang/<?= $b['slug']; ?>">
-          <div class="p-6 sm:pb-5 rounded-lg shadow-lg sm:w-full">
+          <div class="p-6 sm:pb-5 rounded-lg shadow-lg sm:w-full h-80">
             <img class="
                 object-cover object-center
                 h-28
@@ -173,7 +173,7 @@
                   tracking-tighter
                   text-neutral-600
                 "> <?php echo $b['nama_barang'] ?> </h1>
-              <span class="text-black">$00.00</span>
+              <span class="text-black text-xs"><?php echo "Rp. " . number_format($b['harga_barang'], 0, '', '.'); ?></span>
             </div>
             <form action="/daftarbelanja/add" method="post">
               <input type="hidden" name="slug" value="<?= $b['slug']; ?>">
@@ -209,7 +209,7 @@
       <?php foreach ($barang as $b) : ?>
         <?php if ($i++ < 10) : ?>
           <a href="/pages/detail_barang/<?= $b['slug']; ?>">
-            <div class="p-6 sm:pb-5 rounded-lg shadow-lg sm:w-full">
+            <div class="p-6 sm:pb-5 rounded-lg shadow-lg sm:w-full h-80">
               <img class="
                 object-cover object-center
                 h-28
@@ -228,7 +228,7 @@
                   tracking-tighter
                   text-neutral-600
                 "> <?php echo $b['nama_barang'] ?> </h1>
-                <span class="text-black">$00.00</span>
+                <span class="text-black text-xs"><?php echo "Rp. " . number_format($b['harga_barang'], 0, '', '.'); ?></span>
               </div>
               <form action="/daftarbelanja/add" method="post">
                 <input type="hidden" name="slug" value="<?= $b['slug']; ?>">

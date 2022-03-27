@@ -37,6 +37,16 @@ class CheckoutModel extends Model
         return $this->db->query("SELECT * FROM transaksi WHERE created_at='$tgl' ORDER BY created_at DESC");
     }
 
+    public function getDataByStatus($status = null)
+    {
+        if ($status == null) {
+            return $this->findAll();
+        } else {
+            $builder = $this->db->table('transaksi');
+            return $builder->getWhere(['status' => $status]);
+        }
+    }
+
     public function add($data)
     {
         $builder = $this->db->table($this->table);

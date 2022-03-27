@@ -33,6 +33,7 @@ class Checkout extends BaseController
 
         $myTime = Time::now('Asia/Jakarta');
         $time = $myTime->toLocalizedString('d MMM yyyy');
+        $tgl = date("Y-m-d");
 
         $data = [
             'kode_transaksi' => $this->request->getPost('kodeTransaksi'),
@@ -43,6 +44,7 @@ class Checkout extends BaseController
             'no_hp' => $this->request->getPost('noHp'),
             'email' => $this->request->getPost('email'),
             'tgl_pembayaran' => $time,
+            'created_at' => $tgl,
             'status' => 'unverified',
             'foto_struk' => 'none'
         ];

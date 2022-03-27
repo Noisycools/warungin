@@ -96,6 +96,12 @@
                         <!-- <a href="<?= base_url('warungin/printPDF') ?>" class="btn btn-primary pull-right" style="margin-right: 5px;">Cetak PDF</a> -->
                     </div>
                 </div>
+            <?php else : ?>
+                <div class="row no-print">
+                    <div class="col-xs-12">
+                        <a href="/" class="btn btn-primary pull-right" style="margin-right: 5px;">Kembali</a>
+                    </div>
+                </div>
             <?php endif; ?>
         <?php endif; ?>
     </section>
