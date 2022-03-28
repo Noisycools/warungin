@@ -37,7 +37,15 @@
                             <td><?= $t['alamat']; ?></td>
                             <td><?= $t['no_hp']; ?></td>
                             <td><?= $t['email']; ?></td>
-                            <td><?= $t['status']; ?></td>
+                            <td><?php if ($t['status'] == 'Proses') : ?>
+                                    <span class="badge bg-primary"><?= $t['status']; ?></span>
+                                <?php elseif ($t['status'] == 'Dikirim') : ?>
+                                    <a type="submit" href="/transaction/update_kirim/<?= $t['kode_transaksi']; ?>" class="badge btn btn-block btn-outline-warning btn-sm"><?= $t['status']; ?></a>
+                                <?php elseif ($t['status'] == 'Diterima') : ?>
+                                    <span class="badge bg-info"><?= $t['status']; ?></span>
+                                <?php elseif ($t['status'] == 'Selesai') : ?>
+                                    <span class="badge bg-success"><?= $t['status']; ?></span>
+                                <?php endif; ?></td>
                             <td><a href="/pages/detail_transaksi/<?= $t['kode_transaksi']; ?>" class="btn btn-info"><i class="fas fa-eye"></i></a></td>
                             <td><button href="/pages/kurir_verif/<?= $t['kode_transaksi']; ?>" class="btn btn-warning"><i class="fas fa-pen"></i></button>
                             </td>

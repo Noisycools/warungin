@@ -22,8 +22,8 @@
             <div class="row">
                 <div class="col-12">
                     <h2 class="page-header">
-                        <i class="fas fa-globe"></i> Warungin
-                        <small class="float-right">Date: 3/15/2022</small>
+                        <i class="fas fa-envelope-open-text"></i> Warungin
+                        <small class="float-right">Date: <?= $date; ?></small>
                     </h2>
                     <h1 class="mt-2 mb-2">Daftar Customer</h1>
                 </div>
@@ -33,7 +33,7 @@
             <!-- Table row -->
             <div class="row">
                 <div class="col">
-                    <table class="table">
+                    <table class="table table-striped">
                         <thead class="table-light">
                             <tr>
                                 <th scope="col">#</th>

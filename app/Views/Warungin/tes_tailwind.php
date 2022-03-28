@@ -185,7 +185,7 @@
                             <div class="container flex flex-col mx-auto w-full items-center justify-center bg-red-500 rounded-lg shadow-lg">
                                 <div class="px-4 py-5 sm:px-6 border-b w-full">
                                     <h3 class="text-lg leading-6 font-medium text-gray-900 dark:text-white">
-                                        Pesanan Selesai
+                                        Pesanan Dikirim
                                     </h3>
                                 </div>
                                 <ul class="flex flex-col divide divide-y w-full p-5">
@@ -208,7 +208,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="text-gray-600 dark:text-gray-200 text-md">
-                                                    <i class="far fa-check-circle"></i>
+                                                    <a href=""><i class="far fa-check-circle"></i></a>
                                                 </div>
                                             </div>
                                         </li>

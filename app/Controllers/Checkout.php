@@ -45,7 +45,7 @@ class Checkout extends BaseController
             'email' => $this->request->getPost('email'),
             'tgl_pembayaran' => $time,
             'created_at' => $tgl,
-            'status' => 'unverified',
+            'status' => 'Pending',
             'foto_struk' => 'none'
         ];
         $this->checkoutModel->add($data);

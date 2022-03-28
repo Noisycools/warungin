@@ -18,8 +18,13 @@ class BarangModel extends Model
         return $this->where(['slug' => $slug])->first();
     }
 
+    public function habis()
+    {
+        return $this->db->query("SELECT * FROM tabel_barang WHERE stok='0'");
+    }
+
     public function search($keyword)
     {
-        return $this->table('tabel_barang')->like('nama_barang', $keyword)->orLike('kategori_barang', $keyword);
+        return $this->table('tabel_barang')->like('nama_barang', $keyword)->orLike('kategori_barang', $keyword)->orLike('stok', $keyword);
     }
 }

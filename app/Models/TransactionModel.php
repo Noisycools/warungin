@@ -36,6 +36,15 @@ class TransactionModel extends Model
         return $this->db->query("SELECT DISTINCT transaksi.kode_transaksi, transaksi.username, transaksi.nama_warung, transaksi.tgl_pembayaran, barang_transaksi.total_harga, transaksi.status
         FROM transaksi INNER JOIN barang_transaksi 
         ON transaksi.kode_transaksi = barang_transaksi.kode_transaksi
+        WHERE transaksi.status='Pending'
+        ORDER BY transaksi.created_at DESC");
+    }
+
+    public function pesanan_proses()
+    {
+        return $this->db->query("SELECT DISTINCT transaksi.kode_transaksi, transaksi.username, transaksi.nama_warung, transaksi.tgl_pembayaran, barang_transaksi.total_harga, transaksi.status
+        FROM transaksi INNER JOIN barang_transaksi 
+        ON transaksi.kode_transaksi = barang_transaksi.kode_transaksi
         WHERE transaksi.status='Proses'
         ORDER BY transaksi.created_at DESC");
     }
@@ -70,12 +79,13 @@ class TransactionModel extends Model
     public function search($keyword)
     {
         return $this->table('transaksi')
-            ->like('kode_transaksi', $keyword)
+            ->Like('kode_transaksi', $keyword)
             ->orLike('username', $keyword)
             ->orLike('nama_penerima', $keyword)
             ->orLike('nama_warung', $keyword)
             ->orLike('alamat', $keyword)
             ->orLike('no_hp', $keyword)
-            ->orLike('email', $keyword);
+            ->orLike('email', $keyword)
+            ->orLike('status', $keyword);
     }
 }

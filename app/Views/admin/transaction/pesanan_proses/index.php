@@ -12,11 +12,7 @@
                         <h1 class="mt-2">Histori Transaksi</h1>
                         <a href="/transaction/laporan" rel="noopener" target="_blank" class="btn btn-primary float-right"><i class="fas fa-print"></i> Print</a>
                         <a href="/transaction/create" class="btn btn-primary mb-3 float-right mr-2">Tambah Data</a>
-                        <?php if (session()->getFlashData('pesan')) : ?>
-                            <div class="alert alert-success" role="alert">
-                                <?= session()->getFlashData('pesan'); ?>
-                            </div>
-                        <?php endif; ?>
+                        <div class="swal" data-swal="<?= session()->getFlashdata('message'); ?>"></div>
                         <div class="col-4">
                             <form action="" method="GET">
                                 <div class="input-group mb-3">
@@ -35,41 +31,59 @@
                                     <th scope="col">#</th>
                                     <th scope="col">Kode Transaksi</th>
                                     <th scope="col">Username</th>
-                                    <th scope="col">Nama Penerima</th>
                                     <th scope="col">Nama Warung</th>
-                                    <th scope="col">Alamat</th>
-                                    <th scope="col">No Hp</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">Aksi</th>
+                                    <th scope="col">Tanggal Pembayaran</th>
+                                    <th scope="col">Total Harga</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
                                     <th scope="col"></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php $i = 1; ?>
-                                <?php foreach ($transaksi as $t) : ?>
+                                <?php foreach ($transaksi->getResult('array') as $t) : ?>
                                     <tr>
                                         <th scope="row"><?= $i++; ?></th>
                                         <td><?= $t['kode_transaksi']; ?></td>
                                         <td><?= $t['username']; ?></td>
-                                        <td><?= $t['nama_penerima']; ?></td>
                                         <td><?= $t['nama_warung']; ?></td>
-                                        <td><?= $t['alamat']; ?></td>
-                                        <td><?= $t['no_hp']; ?></td>
-                                        <td><?= $t['email']; ?></td>
-                                        <td><a href="/transaction/edit/<?= $t['kode_transaksi']; ?>" class="btn btn-warning">Edit</a></td>
+                                        <td><?= $t['tgl_pembayaran']; ?></td>
+                                        <td>Rp. <?= number_format($t['total_harga'], 0); ?></td>
+                                        <td><a type="submit" href="/transaction/update_pm/<?= $t['kode_transaksi']; ?>" class="badge btn btn-block btn-outline-primary btn-sm"><?= $t['status']; ?></a></td>
+                                        <td><a href="/transaction/edit/<?= $t['kode_transaksi']; ?>" class="btn btn-warning"><i class="fas fa-pen"></i></a></td>
+                                        <td> <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-default">
+                                                <i class="fas fa-eye"></i>
+                                            </button></td>
                                         <td>
                                             <form action="/transaction/<?= $t['kode_transaksi']; ?>" method="POST" class="d-inline">
                                                 <?= csrf_field(); ?>
                                                 <input type="hidden" name="_method" value="DELETE">
-                                                <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin?')">Delete</button>
+                                                <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin?')"><i class="fas fa-trash"></i></button>
                                             </form>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>
                         </table>
-                        <?= $pager->links('transaksi', 'pagination'); ?>
                     </div>
+                </div>
+                <div class="modal fade" id="modal-default">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Default Modal</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p>One fine body&hellip;</p>
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
                 </div>
             </div>
         </div><!-- /.container-fluid -->
@@ -78,5 +92,4 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
-
 <?= $this->endSection(); ?>

@@ -5,6 +5,7 @@ namespace App\Controllers;
 // use App\Models\CustomerModel;
 use App\Models\ProfileModel;
 use CodeIgniter\Validation\Rules;
+use CodeIgniter\I18n\Time;
 
 class Customer extends BaseController
 {
@@ -19,7 +20,10 @@ class Customer extends BaseController
 
     public function laporan()
     {
+        $myTime = Time::now('Asia/Jakarta');
+        $date = $myTime->toLocalizedString('d MMM yyyy');
         $data = [
+            'date' => $date,
             'profile' => $this->profileModel->getProfile()
         ];
 
@@ -39,6 +43,7 @@ class Customer extends BaseController
         }
 
         $data = [
+            'title' => "Admin | Customer",
             // 'profile' => $this->profileModel->getBarang(),
             'profile' => $profile->paginate(10, 'profile'),
             'pager' => $this->profileModel->pager,
@@ -57,6 +62,7 @@ class Customer extends BaseController
     {
         // session();
         $data = [
+            'title' => "Admin | Create Customer",
             'validation' => \Config\Services::validation()
         ];
         return view('admin/customer/create', $data);
@@ -150,6 +156,7 @@ class Customer extends BaseController
     public function edit($username)
     {
         $data = [
+            'title' => "Admin | Edit Customer",
             'validation' => \Config\Services::validation(),
             // 'customer' => $this->customerModel->getCustomer($username),
             'profile' =>  $this->profileModel->getProfile($username)->getRow()

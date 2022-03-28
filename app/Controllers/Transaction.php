@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\TransactionModel;
 use App\Models\BarangTransaksiModel;
 use CodeIgniter\Validation\Rules;
+use CodeIgniter\I18n\Time;
 
 class Transaction extends BaseController
 {
@@ -18,7 +19,10 @@ class Transaction extends BaseController
 
     public function laporan()
     {
+        $myTime = Time::now('Asia/Jakarta');
+        $date = $myTime->toLocalizedString('d MMM yyyy');
         $data = [
+            'date' => $date,
             'transaksi' => $this->transaksiModel->getTransaksi()
         ];
 
@@ -39,6 +43,7 @@ class Transaction extends BaseController
 
 
         $data = [
+            'title' => "Admin | Transaki",
             // 'transaksi' => $this->transaksiModel->getTransaksi(),
             'transaksi' => $transaksi->paginate(10, 'transaksi'),
             'pager' => $this->transaksiModel->pager,
@@ -57,6 +62,7 @@ class Transaction extends BaseController
     {
         // session();
         $data = [
+            'title' => "Admin | Create Transaksi",
             'validation' => \Config\Services::validation(),
             'transaksi' => $this->transaksiModel->getTransaksi()
         ];
@@ -152,6 +158,7 @@ class Transaction extends BaseController
     public function edit($kode_transaksi)
     {
         $data = [
+            'title' => "Admin | Edit Transaksi",
             'validation' => \Config\Services::validation(),
             'transaksi' => $this->transaksiModel->getTransaksi($kode_transaksi)
         ];
@@ -212,32 +219,116 @@ class Transaction extends BaseController
     public function pesanan_masuk()
     {
         $data = [
+            'title' => "Admin | Pesanan Masuk",
             'transaksi' => $this->transaksiModel->pesanan_masuk()
         ];
         return view('admin/transaction/pesanan_masuk/index', $data);
     }
 
-    public function pesanan_selesai()
+    public function update_pending($kode_transaksi)
     {
-        $data = [
-            'transaksi' => $this->transaksiModel->pesanan_selesai()
-        ];
-        return view('admin/transaction/pesanan_selesai/index', $data);
+        $this->transaksiModel->save([
+            'kode_transaksi' => $kode_transaksi,
+            'status' => 'Proses'
+        ]);
+        session()->setFlashData('pesan', 'Pesanan berhasil diproses');
+        return redirect()->to('admin/transaction/pesanan_masuk');
     }
 
-    public function pesanan_diterima()
+    public function pesanan_proses()
     {
         $data = [
-            'transaksi' => $this->transaksiModel->pesanan_diterima()
+            'title' => "Admin | Pesanan Proses",
+            'transaksi' => $this->transaksiModel->pesanan_proses()
         ];
-        return view('admin/transaction/pesanan_diterima/index', $data);
+        return view('admin/transaction/pesanan_proses/index', $data);
+    }
+
+    public function update_pm($kode_transaksi)
+    {
+        $this->transaksiModel->save([
+            'kode_transaksi' => $kode_transaksi,
+            'status' => 'Dikirim'
+        ]);
+        session()->setFlashData('pesan', 'Pesanan berhasil diproses');
+        return redirect()->to('admin/transaction/pesanan_proses');
     }
 
     public function pesanan_dikirim()
     {
         $data = [
+            'title' => "Admin | Pesanan Dikirim",
             'transaksi' => $this->transaksiModel->pesanan_dikirim()
         ];
         return view('admin/transaction/pesanan_dikirim/index', $data);
+    }
+
+    public function update_kirim($kode_transaksi)
+    {
+        $this->transaksiModel->save([
+            'kode_transaksi' => $kode_transaksi,
+            'status' => 'Diterima'
+        ]);
+        session()->setFlashData('pesan', 'Pesanan berhasil diterima');
+        return redirect()->to('admin/transaction/pesanan_dikirim');
+    }
+
+    public function update_kirimkurir($kode_transaksi)
+    {
+        $this->transaksiModel->save([
+            'kode_transaksi' => $kode_transaksi,
+            'status' => 'Diterima'
+        ]);
+        session()->setFlashData('pesan', 'Pesanan berhasil diterima');
+        return redirect()->to('Warungin/tes_tailwind');
+    }
+
+    public function pesanan_diterima()
+    {
+        $keyword = $this->request->getVar('keyword');
+        if ($keyword) {
+            $transaksi = $this->transaksiModel->search($keyword);
+        } else {
+            $transaksi = $this->transaksiModel;
+        }
+
+        $data = [
+            'title' => "Admin | Pesanan Diterima",
+            'transaksi' => $this->transaksiModel->pesanan_diterima()
+        ];
+        return view('admin/transaction/pesanan_diterima/index', $data);
+    }
+
+    public function update_terima($kode_transaksi)
+    {
+        $myTime = Time::now('Asia/Jakarta');
+        $date = $myTime->toLocalizedString('d MMM yyyy');
+        $this->transaksiModel->save([
+            'kode_transaksi' => $kode_transaksi,
+            'status' => 'Selesai',
+            'tgl_pembayaran' => $date
+        ]);
+        session()->setFlashData('pesan', 'Pesanan berhasil diterima');
+        return redirect()->to('admin/transaction/pesanan_diterima');
+    }
+
+    public function pesanan_selesai()
+    {
+        $keyword = $this->request->getVar('search');
+        if (isset($keyword)) {
+            $search = $this->request->getVar('keyword');
+            session()->set('keyword', $search);
+            redirect()->to('admin/transaction/pesanan_selesai/index');
+        } else {
+            $search = session()->get('search');
+        }
+
+        $transaksi = $search ? $this->transaksiModel->search($keyword) : $this->transaksiModel;
+        $data = [
+            'title' => "Admin | Pesanan Selesai",
+            'transaksi' => $transaksi->pesanan_selesai(),
+            'search' => $search
+        ];
+        return view('admin/transaction/pesanan_selesai/index', $data);
     }
 }

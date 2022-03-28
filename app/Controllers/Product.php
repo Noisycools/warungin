@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\BarangModel;
 use CodeIgniter\Validation\Rules;
+use CodeIgniter\I18n\Time;
 
 class Product extends BaseController
 {
@@ -15,7 +16,10 @@ class Product extends BaseController
 
     public function laporan()
     {
+        $myTime = Time::now('Asia/Jakarta');
+        $date = $myTime->toLocalizedString('d MMM yyyy');
         $data = [
+            'date' => $date,
             'barang' => $this->barangModel->getBarang()
         ];
 
@@ -36,6 +40,7 @@ class Product extends BaseController
 
         $data = [
             // 'barang' => $this->barangModel->getBarang(),
+            'title' => "Admin | Product",
             'barang' => $barang->paginate(10, 'tabel_barang'),
             'pager' => $this->barangModel->pager,
             'currentPage' => $currentPage
@@ -49,10 +54,20 @@ class Product extends BaseController
         return view('admin/product/index', $data);
     }
 
+    public function habis()
+    {
+        $data = [
+            'title' => 'Admin | Product Habis',
+            'barang' => $this->barangModel->habis()
+        ];
+        return view('admin/product/habis/index', $data);
+    }
+
     public function create()
     {
         // session();
         $data = [
+            'title' => "Admin | Create Barang",
             'validation' => \Config\Services::validation(),
             'barang' => $this->barangModel->getBarang()
         ];
@@ -144,6 +159,7 @@ class Product extends BaseController
     public function edit($barang_id)
     {
         $data = [
+            'title' => "Admin | Edit Barang",
             'validation' => \Config\Services::validation(),
             'barang' => $this->barangModel->getBarang($barang_id)
         ];

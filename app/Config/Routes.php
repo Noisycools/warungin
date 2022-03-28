@@ -46,24 +46,26 @@ $routes->get('/kurir_verif', 'Pages::kurir_verif', ['filter' => 'role:kurir']);
 // *** ADMIN ***
 $routes->get('/admin', 'Admin::index', ['filter' => 'role:admin']);
 $routes->get('admin/product', 'Product::index', ['filter' => 'role:admin']);
+$routes->get('admin/product/habis', 'Product::habis', ['filter' => 'role:admin']);
 $routes->get('admin/product/create', 'Product::create', ['filter' => 'role:admin']);
-$routes->get('/product/edit/(:segment)', 'Product::edit/$1');
-$routes->delete('/product/(:num)', 'Product::delete/$1');
-$routes->get('/product/laporan', 'Product::laporan');
+$routes->get('/product/edit/(:segment)', 'Product::edit/$1', ['filter' => 'role:admin']);
+$routes->delete('/product/(:num)', 'Product::delete/$1', ['filter' => 'role:admin']);
+$routes->get('/product/laporan', 'Product::laporan', ['filter' => 'role:admin']);
 $routes->get('admin/customer', 'Customer::index', ['filter' => 'role:admin']);
 $routes->get('admin/customer/create', 'Customer::create', ['filter' => 'role:admin']);
-$routes->get('/customer/edit/(:segment)', 'Customer::edit/$1');
-$routes->delete('/customer/(:num)', 'Customer::delete/$1');
-$routes->get('/customer/laporan', 'Customer::laporan');
+$routes->get('/customer/edit/(:segment)', 'Customer::edit/$1', ['filter' => 'role:admin']);
+$routes->delete('/customer/(:num)', 'Customer::delete/$1', ['filter' => 'role:admin']);
+$routes->get('/customer/laporan', 'Customer::laporan', ['filter' => 'role:admin']);
 $routes->get('admin/transaction', 'Transaction::index', ['filter' => 'role:admin']);
 $routes->get('admin/transaction/create', 'Transaction::create', ['filter' => 'role:admin']);
-$routes->get('/transaction/edit/(:segment)', 'Transaction::edit/$1');
-$routes->delete('/transaction/(:segment)', 'Transaction::delete/$1');
-$routes->get('/transaction/laporan', 'Transaction::laporan');
-$routes->get('admin/transaction/pesanan_masuk', 'Transaction::pesanan_masuk');
-$routes->get('admin/transaction/pesanan_selesai', 'Transaction::pesanan_selesai');
-$routes->get('admin/transaction/pesanan_terima', 'Transaction::pesanan_diterima');
-$routes->get('admin/transaction/pesanan_kirim', 'Transaction::pesanan_dikirim');
+$routes->get('/transaction/edit/(:segment)', 'Transaction::edit/$1', ['filter' => 'role:admin']);
+$routes->delete('/transaction/(:segment)', 'Transaction::delete/$1', ['filter' => 'role:admin']);
+$routes->get('/transaction/laporan', 'Transaction::laporan', ['filter' => 'role:admin']);
+$routes->get('admin/transaction/pesanan_masuk', 'Transaction::pesanan_masuk', ['filter' => 'role:admin']);
+$routes->get('admin/transaction/pesanan_proses', 'Transaction::pesanan_proses', ['filter' => 'role:admin']);
+$routes->get('admin/transaction/pesanan_selesai', 'Transaction::pesanan_selesai', ['filter' => 'role:admin']);
+$routes->get('admin/transaction/pesanan_terima', 'Transaction::pesanan_diterima', ['filter' => 'role:admin']);
+$routes->get('admin/transaction/pesanan_kirim', 'Transaction::pesanan_dikirim', ['filter' => 'role:admin']);
 
 
 /*

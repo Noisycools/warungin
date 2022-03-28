@@ -33,8 +33,8 @@ class CheckoutModel extends Model
 
     public function getDataByDate()
     {
-        $tgl = date("Y-m-d");
-        return $this->db->query("SELECT * FROM transaksi WHERE created_at='$tgl' ORDER BY created_at DESC");
+        $tgl = date("d M Y");
+        return $this->db->query("SELECT * FROM transaksi WHERE tgl_pembayaran='$tgl' ORDER BY created_at DESC");
     }
 
     public function getDataByStatus($status = null)
