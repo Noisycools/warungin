@@ -64,8 +64,8 @@ $routes->get('/transaction/laporan', 'Transaction::laporan', ['filter' => 'role:
 $routes->get('admin/transaction/pesanan_masuk', 'Transaction::pesanan_masuk', ['filter' => 'role:admin']);
 $routes->get('admin/transaction/pesanan_proses', 'Transaction::pesanan_proses', ['filter' => 'role:admin']);
 $routes->get('admin/transaction/pesanan_selesai', 'Transaction::pesanan_selesai', ['filter' => 'role:admin']);
-$routes->get('admin/transaction/pesanan_terima', 'Transaction::pesanan_diterima', ['filter' => 'role:admin']);
-$routes->get('admin/transaction/pesanan_kirim', 'Transaction::pesanan_dikirim', ['filter' => 'role:admin']);
+$routes->get('admin/transaction/pesanan_diterima', 'Transaction::pesanan_diterima', ['filter' => 'role:admin']);
+$routes->get('admin/transaction/pesanan_dikirim', 'Transaction::pesanan_dikirim', ['filter' => 'role:admin']);
 
 
 /*
