@@ -35,6 +35,8 @@ class Checkout extends BaseController
         $time = $myTime->toLocalizedString('d MMM yyyy');
         $tgl = date("Y-m-d");
 
+        $waktuCreatedAt = Time::now('Asia/Jakarta', 'id_ID');
+
         $data = [
             'kode_transaksi' => $this->request->getPost('kodeTransaksi'),
             'username' => user()->username,
@@ -45,6 +47,7 @@ class Checkout extends BaseController
             'email' => $this->request->getPost('email'),
             'tgl_pembayaran' => $time,
             'created_at' => $tgl,
+            'waktu_created_at' => $waktuCreatedAt->hour . ':' . $waktuCreatedAt->minute,
             'status' => 'Pending',
             'foto_struk' => 'none'
         ];
@@ -70,8 +73,23 @@ class Checkout extends BaseController
             'total' => $getTotal
         ];
 
-        $this->daftarBelanjaModel->hapus();
+        $this->daftarBelanjaModel->hapus($username);
 
         return view('pages/template_pdf', $dataTransaksi);
+    }
+
+    public function updateStatus()
+    {
+        $kodeTransaksi = $this->request->getVar('kodeTransaksi');
+        $status = $this->request->getVar('status');
+
+        $data = [
+            'kode_transaksi' => $kodeTransaksi,
+            'status' => $status
+        ];
+
+        $this->checkoutModel->updateStatus($data);
+
+        return redirect()->to('/');
     }
 }

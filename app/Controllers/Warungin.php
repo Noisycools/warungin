@@ -6,6 +6,7 @@ use App\Models\BarangModel;
 use App\Models\CheckoutModel;
 use App\Models\DaftarBelanjaModel;
 use App\Models\ProfileModel;
+use CodeIgniter\I18n\Time;
 use TCPDF;
 
 class MYPDF extends TCPDF
@@ -48,11 +49,16 @@ class Warungin extends BaseController
                     'alt_title' => 'kurir',
                     'validation' => \Config\Services::validation(),
                     'transaksi' => $this->checkoutModel->getData(),
-                    'selesai' => $this->checkoutModel->getDataByStatus('Selesai'),
-                    'proses' => $this->checkoutModel->getDataByStatus('Proses')
+                    'pending' => $this->checkoutModel->getDataByStatus('Pending'),
+                    'dikirim' => $this->checkoutModel->getDataByStatus('Dikirim'),
+                    'proses' => $this->checkoutModel->getDataByStatus('Diproses')
                 ];
                 // return view('pages/kurir', $data);
                 return view('Warungin/tes_tailwind', $data);
+            endif;
+            if (in_groups('admin')) :
+                $data = ['title' => "Admin | Dashboard"];
+                return view('admin/index', $data);
             endif;
         endif;
 

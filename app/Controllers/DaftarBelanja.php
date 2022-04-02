@@ -22,32 +22,51 @@ class DaftarBelanja extends BaseController
 
     public function add()
     {
-        $db = \Config\Database::connect();
-
         $username = user()->username;
-        $slug = $this->request->getVar('slug');
-        $data = $db->query("SELECT * FROM tabel_barang WHERE slug = '$slug' ");
-
-        // this qty not programmed yet okayy
         $qty = $this->request->getVar('qty');
+        $slug = $this->request->getVar('slug');
+        $namaBarang = $this->request->getPost('namaBarang');
+        $hargaBarang = $this->request->getPost('hargaBarang');
+        $imgBarang = $this->request->getPost('imgBarang');
+        $hargaTotal = $this->request->getPost('hargaTotal');
 
-        $row   = $data->getRowArray();
-        $nama_barang = $row['nama_barang'];
-        $harga_barang = $row['harga_barang'];
-        $img_barang = $row['foto_barang'];
-        $harga_total = (int) $row['harga_barang'] * $qty;
+        $data = [
+            'username' => $username,
+            'qty' => $qty,
+            'nama_barang' => $namaBarang,
+            'harga_barang' => $hargaBarang,
+            'harga_total' => $hargaTotal,
+            'img_barang' => $imgBarang,
+        ];
 
-        $db->query("INSERT INTO daftar_belanja(username, qty, nama_barang, harga_barang, harga_total, img_barang) VALUES('$username', '$qty', '$nama_barang', '$harga_barang', '$harga_total', '$img_barang')");
+        $data2 = [
+            'nama_barang' => $namaBarang,
+            'stok' => 0
+        ];
+
+        if ($this->daftarBelanjaModel->ifOutOfStock($data2) == false) {
+            return redirect()->to('/pages/detail_barang/' . $slug);
+        }
+
+        $this->daftarBelanjaModel->tambah($data);
+
+        session()->setFlashdata('daftarBelanjaAdd', 'Barang berhasil ditambahkan!');
 
         return redirect()->to('/');
     }
 
-    public function delete()
+    public function redirectBack()
+    {
+        
+    }
+
+    public function delete($namaBarang)
     {
         $db = \Config\Database::connect();
+        // $namaBarang = $this->deleteVariable;
 
-        $nama_barang = $this->request->getVar('nama_barang');
-        $db->query("DELETE FROM daftar_belanja WHERE nama_barang = '$nama_barang' ");
+        // $nama_barang = $this->request->getVar('nama_barang');
+        $db->query("DELETE FROM daftar_belanja WHERE nama_barang = '$namaBarang' ");
 
         return redirect()->to('/pages/daftar_belanja');
     }

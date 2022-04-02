@@ -2,7 +2,45 @@
 
 <?= $this->section('content'); ?>
 
-<div class="pt-24">
+<div class="pt-24" x-data="{ flashdata: true }">
+  <?php if (session()->getFlashdata('daftarBelanjaAdd')) : ?>
+    <!-- Main modal -->
+    <div id="walletModal" x-show="flashdata" tabindex="-1" aria-hidden="true" class="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 md:h-full flex items-center justify-center h-full bg-black bg-opacity-40">
+      <div class="relative p-4 w-full max-w-md h-full md:h-auto">
+        <!-- Modal content -->
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+          <!-- Modal header -->
+          <div class="flex justify-between items-center py-4 px-6 rounded-t">
+            <h3 class="text-base font-semibold text-gray-900 lg:text-xl dark:text-white">
+              <?= session()->getFlashdata('daftarBelanjaAdd') ?> <i class="far fa-check-circle text-green-500"></i>
+            </h3>
+            <button @click="flashdata = false" type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+              </svg>
+            </button>
+          </div>
+          <!-- Modal body -->
+          <div class="p-6">
+            <ul class="my-4 space-y-3">
+              <li>
+                <a href="/daftar_belanja" class="flex items-center justify-center text-center p-3 text-base font-bold text-gray-900 bg-gray-50 rounded-lg hover:bg-gray-400 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
+                  <i class="fas fa-shopping-cart"></i>
+                  <span class="flex-1 ml-3 whitespace-nowrap">Ke Daftar Belanja</span>
+                </a>
+              </li>
+              <li>
+                <button @click="flashdata = false" type="button" class="flex items-center p-3 text-base font-bold text-gray-900 w-full bg-gray-50 rounded-lg hover:bg-gray-400 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
+                  <i class="fas fa-sign-in-alt"></i>
+                  <span class="flex-1 ml-3 whitespace-nowrap">Lanjut Belanja</span>
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  <?php endif; ?>
   <div class="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center">
     <!--Left Col-->
     <div class="z-40 flex flex-col w-full md:w-2/5 justify-center text-center md:text-left">
@@ -154,7 +192,7 @@
     <div class="grid grid-cols-2 gap-3 mx-auto sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
       <?php foreach ($barang as $b) : ?>
         <a href="/pages/detail_barang/<?= $b['slug']; ?>">
-          <div class="p-6 sm:pb-5 rounded-lg shadow-lg sm:w-full h-80">
+          <div class="relative p-6 sm:pb-5 rounded-lg shadow-lg sm:w-full h-80">
             <img class="
                 object-cover object-center
                 h-28
@@ -163,6 +201,13 @@
                 lg:h-32
                 rounded-xl
               " src="/img/<?= $b['foto_barang'] ?>">
+            <?php if ($b['stok'] == 0) : ?>
+            <button type="button" class="absolute right-6 bottom-40 bg-yellow-500 rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+              <span class="sr-only">Close menu</span>
+              <!-- Heroicon name: outline/x -->
+              <i class="fas fa-exclamation font-bold text-lg text-red-600"></i>
+            </button>
+            <?php endif; ?>
             <div class="inline-flex justify-between w-full lg:mb-8">
               <h1 class="
                   mb-8
@@ -177,7 +222,7 @@
             </div>
             <form action="/daftarbelanja/add" method="post">
               <input type="hidden" name="slug" value="<?= $b['slug']; ?>">
-              <button class="w-full p-3 mx-auto text-xs font-medium gradient rounded-sm" type="button">
+              <button class="w-full block cursor-pointer p-3 mx-auto text-xs font-medium gradient rounded-sm" type="button">
                 Tambah ke Daftar Belanja
               </button>
             </form>

@@ -11,6 +11,8 @@
   <!-- <link rel="stylesheet" href="/css/swiper-bundle.css">
   <script src="/js/swiper-bundle.js"></script> -->
 
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
+
   <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.css">
   <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>

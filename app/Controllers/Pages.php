@@ -38,15 +38,17 @@ class Pages extends BaseController
         $username = user()->username;
         $daftar_belanja = $this->daftarBelanjaModel->getData($username);
         $getTotal = $this->daftarBelanjaModel->getTotal($username);
+        $getProfile = $this->profileModel->getProfile($username)->getRow();
 
         $data = [
             'title' => 'Daftar Belanja | WarungIn',
             'alt_title' => 'daftarBelanja',
             'barang' => $daftar_belanja,
-            'total' => $getTotal
+            'total' => $getTotal,
+            'profile' => $getProfile
         ];
 
-        return view('pages/daftar_belanja', $data);
+        return view('pages/new_daftar_belanja', $data);
     }
 
     public function histori_transaksi()
@@ -58,17 +60,17 @@ class Pages extends BaseController
             'transaksi' => $this->checkoutModel->getDataByUsername($username)
         ];
 
-        return view('pages/histori_transaksi', $data);
+        return view('Warungin/tes_tailwind4', $data);
     }
 
     public function detail_transaksi($kodeTransaksi)
     {
         $data = [
             'title'     => 'Detail Transaksi | WarungIn',
-            'transaksi' => $this->checkoutModel->getData($kodeTransaksi)->getRow()
+            'transaksi' => $this->checkoutModel->getData($kodeTransaksi)->getRowArray()
         ];
 
-        return view('pages/detail_transaksi', $data);
+        return view('Warungin/tes_tailwind3', $data);
     }
 
     public function struk()
@@ -92,10 +94,11 @@ class Pages extends BaseController
     {
         $data = [
             'title' => 'Detail Barang',
+            'alt_title' => 'detail-barang',
             'barang' => $this->barangModel->getBarang($slug),
         ];
 
-        return view('pages/detail_barang', $data);
+        return view('Warungin/tes_tailwind2', $data);
     }
 
     public function product()

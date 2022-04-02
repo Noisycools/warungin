@@ -39,6 +39,8 @@ $routes->get('/homepage', 'Pages::homepage');
 $routes->get('/product', 'Pages::product');
 $routes->get('/profile', 'Pages::profile');
 $routes->get('/checkout', 'DaftarBelanja::checkout', ['filter' => 'role:user']);
+$routes->add('daftarbelanja/add', 'DaftarBelanja::add', ['filter' => 'role:user']);
+$routes->add('daftarbelanja/delete/(:any)', 'DaftarBelanja::delete/$1', ['filter' => 'role:user']);
 $routes->get('/histori_transaksi', 'Pages::histori_transaksi', ['filter' => 'role:user']);
 $routes->get('/kurir', 'Pages::kurir', ['filter' => 'role:kurir']);
 $routes->get('/kurir_verif', 'Pages::kurir_verif', ['filter' => 'role:kurir']);

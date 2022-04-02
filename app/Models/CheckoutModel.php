@@ -43,7 +43,10 @@ class CheckoutModel extends Model
             return $this->findAll();
         } else {
             $builder = $this->db->table('transaksi');
-            return $builder->getWhere(['status' => $status]);
+            $builder->select('*');
+            $builder->where('status', $status);
+            $builder->orderBy('waktu_created_at', 'asc');
+            return $builder->get();
         }
     }
 
@@ -51,5 +54,12 @@ class CheckoutModel extends Model
     {
         $builder = $this->db->table($this->table);
         return $builder->insert($data);
+    }
+
+    public function updateStatus($data)
+    {
+        $builder = $this->db->table($this->table);
+        $builder->where(['kode_transaksi' => $data['kode_transaksi']]);
+        return $builder->update($data);
     }
 }
