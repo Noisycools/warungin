@@ -47,7 +47,7 @@
                         <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
                             Barang yang dibeli : <br>
                             <?php foreach ($barang->getResult() as $b) : ?>
-                                <label>- <?= $b->nama_barang; ?> <?= "Rp. " . number_format($b->harga_total, 2, ',', '.'); ?> (<span id="_qty"></span>)</label> <br>
+                                <label>- <?= $b->nama_barang; ?> <span id="harga_total1"></span> (<span id="_qty"></span>)</label> <br>
                                 <input type="hidden" name="nama_barang<?= $urutanKe++ ?>" value="<?= $b->nama_barang; ?>">
                                 <input type="hidden" name="qty<?= $qtyKe++ ?>" value="<?= $b->qty; ?>">
                                 <input type="hidden" name="hargaBarang<?= $hargaBarangKe++ ?>" value="<?= $b->harga_barang; ?>">
@@ -57,7 +57,7 @@
                         <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
                             Total :
                             <?php foreach ($total->getResult() as $rows) : ?>
-                                <label><?php echo "Rp. " . number_format($rows->total_harga, 2, ',', '.'); ?></label>
+                                <label id="total_harga"><?php echo "Rp. " . number_format($rows->total_harga, 2, ',', '.'); ?></label>
                                 <input type="hidden" name="totalHarga" value="<?= $rows->total_harga; ?>">
                             <?php endforeach;  ?>
                         </p>
@@ -97,7 +97,7 @@
                                             <input id="input" type="text" class="focus:outline-none bg-gray-100 border h-6 w-8 rounded text-sm text-black px-2 mx-2" value="<?= $b->qty; ?>">
                                             <button id="plus" class="font-semibold text-black">+</button>
                                         </div>
-                                        <div class="pr-8 "> <span class="text-xs text-black font-medium"><?= "Rp. " . number_format($b->harga_total, 2, ',', '.'); ?></span> </div>
+                                        <div class="pr-8 "> <span id="harga_total2" class="text-xs text-black font-medium"><?= "Rp. " . number_format($b->harga_total, 0, '', '.'); ?></span> <input type="hidden" value="<?= $b->harga_barang ?>"> <input id="multiplyHarga" type="hidden" value="<?= $b->harga_total ?>"> </div>
                                         <div>
                                             <button type="button"><a href="/daftarbelanja/delete/<?= $b->nama_barang ?>"><i class="fas fa-trash text-black font-medium"></i></a></button>
                                             <input type="hidden" name="nama_barang" value="<?= $b->nama_barang; ?>">
@@ -109,7 +109,7 @@
                                 <div class="flex items-center"> <i class="fa fa-arrow-left text-sm pr-2 text-blue-500"></i> <span class="text-md font-medium text-blue-500"><a href="/">Lanjut Belanja</a></span> </div>
                                 <div class="flex justify-center items-end"> <span class="text-sm font-medium text-gray-400 mr-1">Subtotal:</span> <span class="text-lg font-bold text-gray-800 ">
                                         <?php foreach ($total->getResult() as $rows) : ?>
-                                            <?php echo "Rp. " . number_format($rows->total_harga, 2, ',', '.'); ?>
+                                            <span id="subtotal"><?php echo "Rp. " . number_format($rows->total_harga, 2, ',', '.'); ?></span>
                                         <?php endforeach;  ?>
                                     </span> </div>
                             </div>
@@ -165,10 +165,28 @@
         var _qty = document.querySelectorAll('#_qty');
         var jumlahQty = _qty.length;
         var qty;
+        var hargaTotal1 = document.querySelectorAll('#harga_total1');
+        var h1;
+        var hargaTotal2 = document.querySelectorAll('#harga_total2');
+        var h2;
+        var multiplyHarga = document.querySelectorAll('#multiplyHarga');
+        var harga;
+        var totalHarga = document.getElementById('total_harga');
 
+        let sum = 0;
         for (let i = 0; i < jumlahInput; i++) {
             input = allInput[i];
-            qty = _qty[i]
+            qty = _qty[i];
+            h1 = hargaTotal1[i];
+            h2 = hargaTotal2[i];
+            harga = multiplyHarga[i];
+            h1.textContent = h2.textContent;
+            if (harga.value) {
+                sum = sum + parseInt(harga.value);
+                totalHarga.textContent = "Rp. " + sum.toLocaleString('id-ID');
+            } else {
+                totalHarga.textContent = "<?php echo "Rp. " . number_format($rows->total_harga, 2, ',', '.'); ?>";
+            }
             if (input.value) {
                 qty.textContent = input.value;
             }
@@ -188,13 +206,17 @@
     minusButton.forEach((btn) => {
         btn.addEventListener('click', () => {
             event.preventDefault();
-            var input = btn.parentElement.children[1]
+            var input = btn.parentElement.children[1];
             var inputValue = input.value;
-            var newValue = parseInt(inputValue) - 1
-            if (newValue >= 0) {
+            var newValue = parseInt(inputValue) - 1;
+            var harga = btn.parentElement.nextElementSibling.children[1];
+            if (newValue >= 1) {
                 input.value = newValue;
+                var multiplyHarga = parseInt(harga.value) * newValue;
+                btn.parentElement.nextElementSibling.children[2].value = multiplyHarga;
+                btn.parentElement.nextElementSibling.children[0].textContent = "Rp. " + multiplyHarga.toLocaleString('id-ID');
             } else {
-                input.value = 0;
+                input.value = 1;
             }
         })
     });
@@ -202,13 +224,17 @@
     plusButton.forEach((btn) => {
         btn.addEventListener('click', () => {
             event.preventDefault();
-            var input = btn.parentElement.children[1]
+            var input = btn.parentElement.children[1];
             var inputValue = input.value;
-            var newValue = parseInt(inputValue) + 1
-            if (newValue >= 0) {
+            var newValue = parseInt(inputValue) + 1;
+            var harga = btn.parentElement.nextElementSibling.children[1];
+            if (newValue >= 1) {
                 input.value = newValue;
+                var multiplyHarga = parseInt(harga.value) * newValue;
+                btn.parentElement.nextElementSibling.children[2].value = multiplyHarga;
+                btn.parentElement.nextElementSibling.children[0].textContent = "Rp. " + multiplyHarga.toLocaleString('id-ID');
             } else {
-                input.value = 0;
+                input.value = 1;
             }
         })
     });

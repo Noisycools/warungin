@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use CodeIgniter\Model;
+use CodeIgniter\I18n\Time;
 
 class CheckoutModel extends Model
 {
@@ -39,12 +40,14 @@ class CheckoutModel extends Model
 
     public function getDataByStatus($status = null)
     {
+        $myTime = Time::now('Asia/Jakarta');
+        $time = $myTime->toLocalizedString('d MMM yyyy');
         if ($status == null) {
             return $this->findAll();
         } else {
             $builder = $this->db->table('transaksi');
             $builder->select('*');
-            $builder->where('status', $status);
+            $builder->where(['status' => $status, 'tgl_pembayaran' => $time]);
             $builder->orderBy('waktu_created_at', 'asc');
             return $builder->get();
         }

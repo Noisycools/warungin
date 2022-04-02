@@ -28,7 +28,7 @@ class DaftarBelanja extends BaseController
         $namaBarang = $this->request->getPost('namaBarang');
         $hargaBarang = $this->request->getPost('hargaBarang');
         $imgBarang = $this->request->getPost('imgBarang');
-        $hargaTotal = $this->request->getPost('hargaTotal');
+        $hargaTotal = (int)$this->request->getPost('hargaTotal') * (int)$qty;
 
         $data = [
             'username' => $username,
