@@ -244,7 +244,7 @@ class Transaction extends BaseController
         return view('admin/transaction/pesanan_proses/index', $data);
     }
 
-    public function update_pm($kode_transaksi)
+    public function update_proses($kode_transaksi)
     {
         $this->transaksiModel->save([
             'kode_transaksi' => $kode_transaksi,

@@ -50,7 +50,7 @@
                                         <td><?= $t['nama_warung']; ?></td>
                                         <td><?= $t['tgl_pembayaran']; ?></td>
                                         <td>Rp. <?= number_format($t['total_harga'], 0); ?></td>
-                                        <td><span class="badge bg-primary"><?= $t['status']; ?></span></td>
+                                        <td><a type="submit" href="/transaction/update_terima/<?= $t['kode_transaksi']; ?>" class="badge btn btn-block btn-outline-primary btn-sm"><?= $t['status']; ?></a></td>
                                         <td><a href="/transaction/edit/<?= $t['kode_transaksi']; ?>" class="btn btn-warning"><i class="fas fa-pen"></i></a></td>
                                         <td> <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-default">
                                                 <i class="fas fa-eye"></i>

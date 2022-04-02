@@ -224,13 +224,13 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="<?= base_url('admin/transaction/pesanan_kirim'); ?>" class="nav-link">
+                                    <a href="<?= base_url('admin/transaction/pesanan_dikirim'); ?>" class="nav-link">
                                         &ensp;<i class="fas fa-shipping-fast nav-icon"></i>
                                         <p>Dikirim</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="<?= base_url('admin/transaction/pesanan_terima'); ?>" class="nav-link">
+                                    <a href="<?= base_url('admin/transaction/pesanan_diterima'); ?>" class="nav-link">
                                         &ensp;<i class=" 	fas fa-truck nav-icon"></i>
                                         <p>Diterima</p>
                                     </a>
