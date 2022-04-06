@@ -47,6 +47,10 @@ $routes->get('/kurir_verif', 'Pages::kurir_verif', ['filter' => 'role:kurir']);
 
 // *** ADMIN ***
 $routes->get('/admin', 'Admin::index', ['filter' => 'role:admin']);
+$routes->get('/admin/lap_harian', 'Admin::lap_harian', ['filter' => 'role:admin']);
+$routes->get('/admin/lap_mingguan', 'Admin::lap_mingguan', ['filter' => 'role:admin']);
+$routes->get('/admin/lap_bulanan', 'Admin::lap_bulanan', ['filter' => 'role:admin']);
+$routes->get('/admin/lap_tahunan', 'Admin::lap_tahunan', ['filter' => 'role:admin']);
 $routes->get('admin/product', 'Product::index', ['filter' => 'role:admin']);
 $routes->get('admin/product/habis', 'Product::habis', ['filter' => 'role:admin']);
 $routes->get('admin/product/create', 'Product::create', ['filter' => 'role:admin']);
