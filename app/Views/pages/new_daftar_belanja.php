@@ -41,6 +41,7 @@
                     </div>
                     <!-- Modal body -->
                     <div class="p-6 space-y-3">
+                        <?php $idKe = 0; ?>
                         <?php $urutanKe = 0; ?>
                         <?php $qtyKe = 0; ?>
                         <?php $hargaBarangKe = 0; ?>
@@ -48,9 +49,10 @@
                             Barang yang dibeli : <br>
                             <?php foreach ($barang->getResult() as $b) : ?>
                                 <label>- <?= $b->nama_barang; ?> <span id="harga_total1"></span> (<span id="_qty"></span>)</label> <br>
-                                <input type="hidden" name="nama_barang<?= $urutanKe++ ?>" value="<?= $b->nama_barang; ?>">
-                                <input type="hidden" name="qty<?= $qtyKe++ ?>" value="<?= $b->qty; ?>">
-                                <input type="hidden" name="hargaBarang<?= $hargaBarangKe++ ?>" value="<?= $b->harga_barang; ?>">
+                                <input type="hidden" name="barangId<?= $idKe++ ?>" value="<?= $b->barang_id; ?>">
+                                <input id="namaBarangHidden" type="hidden" name="nama_barang<?= $urutanKe++ ?>" value="<?= $b->nama_barang; ?>">
+                                <input id="qtyHidden" type="hidden" name="qty<?= $qtyKe++ ?>" value="<?= $b->qty; ?>">
+                                <input id="hargaBarangHidden" type="hidden" name="hargaBarang<?= $hargaBarangKe++ ?>" value="<?= $b->harga_barang; ?>">
                             <?php endforeach; ?>
                             <input type="hidden" name="jumlahBarang" value="<?= $urutanKe ?>">
                         </p>
@@ -58,7 +60,7 @@
                             Total :
                             <?php foreach ($total->getResult() as $rows) : ?>
                                 <label id="total_harga"><?php echo "Rp. " . number_format($rows->total_harga, 2, ',', '.'); ?></label>
-                                <input type="hidden" name="totalHarga" value="<?= $rows->total_harga; ?>">
+                                <input id="totalHargaHidden" type="hidden" name="totalHarga" value="<?= $rows->total_harga; ?>">
                             <?php endforeach;  ?>
                         </p>
                         <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
@@ -115,6 +117,7 @@
                             </div>
                         </div>
                         <div class=" p-5 bg-gray-800 rounded overflow-visible"> <span class="text-xl font-medium text-gray-100 block pb-3">Rincian pengiriman</span>
+                            <input type="hidden" name="idProfile" value="<?= $profile->id_profile ?>">
                             <div class="overflow-visible flex justify-between items-center mt-2 ml-4">
                                 <div class="flex justify-center items-center flex-col"> <img src="/img/cod.png" width="60" class="relative right-5" /> </div>
                             </div>
@@ -159,6 +162,8 @@
         var alamat = document.getElementById('alamat').value;
         var noHp = document.getElementById('noHp').value;
         var email = document.getElementById('email').value;
+        var qtyHidden = document.querySelectorAll('#qtyHidden');
+        var qty_hidden;
         var allInput = document.querySelectorAll('#input');
         var jumlahInput = allInput.length;
         var input;
@@ -172,11 +177,13 @@
         var multiplyHarga = document.querySelectorAll('#multiplyHarga');
         var harga;
         var totalHarga = document.getElementById('total_harga');
+        var totalHargaHidden = document.getElementById('totalHargaHidden');
 
         let sum = 0;
         for (let i = 0; i < jumlahInput; i++) {
             input = allInput[i];
             qty = _qty[i];
+            qty_hidden = qtyHidden[i];
             h1 = hargaTotal1[i];
             h2 = hargaTotal2[i];
             harga = multiplyHarga[i];
@@ -184,11 +191,13 @@
             if (harga.value) {
                 sum = sum + parseInt(harga.value);
                 totalHarga.textContent = "Rp. " + sum.toLocaleString('id-ID');
+                totalHargaHidden.value = parseInt(sum);
             } else {
                 totalHarga.textContent = "<?php echo "Rp. " . number_format($rows->total_harga, 2, ',', '.'); ?>";
             }
             if (input.value) {
                 qty.textContent = input.value;
+                qty_hidden.value = qty.textContent;
             }
         }
 

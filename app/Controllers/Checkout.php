@@ -33,12 +33,16 @@ class Checkout extends BaseController
 
         $myTime = Time::now('Asia/Jakarta');
         $time = $myTime->toLocalizedString('d MMM yyyy');
-        $tgl = date("Y-m-d");
 
         $waktuCreatedAt = Time::now('Asia/Jakarta', 'id_ID');
+        $today = Time::today('Asia/Jakarta', 'id_ID');
+        $expiredDate = Time::parse($today, 'Asia/Jakarta');
+        $tgl = $expiredDate->toDateString();
+        $expiredDate = $expiredDate->addDays(7);
 
         $data = [
             'kode_transaksi' => $this->request->getPost('kodeTransaksi'),
+            'id_profile' => $this->request->getPost('idProfile'),
             'username' => user()->username,
             'nama_penerima' => $this->request->getPost('namaPenerima'),
             'nama_warung' => $this->request->getPost('namaWarung'),
@@ -47,6 +51,7 @@ class Checkout extends BaseController
             'email' => $this->request->getPost('email'),
             'tgl_pembayaran' => $time,
             'created_at' => $tgl,
+            'expired_date' => $expiredDate->toDateString(),
             'waktu_created_at' => $waktuCreatedAt->hour . ':' . $waktuCreatedAt->minute,
             'status' => 'Pending',
             'foto_struk' => 'none'
@@ -57,7 +62,9 @@ class Checkout extends BaseController
         for ($i = 0; $i < $jumlahBarang; $i++) {
             $data2[] = array(
                 'kode_transaksi' => $this->request->getPost('kodeTransaksi'),
+                'id_profile' => $this->request->getPost('idProfile'),
                 'username' => user()->username,
+                'barang_id' => $this->request->getPost('barangId' . $i),
                 'nama_barang' => $this->request->getPost('nama_barang' . $i),
                 'qty' => $this->request->getPost('qty' . $i),
                 'harga_barang' => $this->request->getPost('hargaBarang' . $i),
@@ -69,8 +76,8 @@ class Checkout extends BaseController
         $kodeTransaksi = $this->request->getPost('kodeTransaksi');
         $dataTransaksi = [
             'transaksi' => $this->checkoutModel->getData($kodeTransaksi)->getRow(),
-            'barang' => $daftar_belanja,
-            'total' => $getTotal
+            'barang' => $this->historiTransaksiModel->getData($kodeTransaksi),
+            'barang2' => $this->historiTransaksiModel->getData($kodeTransaksi)->getRowArray(),
         ];
 
         $this->daftarBelanjaModel->hapus($username);

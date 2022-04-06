@@ -103,21 +103,35 @@
                                                     <li class="text-white font-medium text-sm lg:w-full"><b class="inline-block w-1/2 relative pr-3 after:content-[':'] after:absolute after:right-3">Email</b> <?= $transaksi['email'] ?></li>
                                                     <li class="text-white font-medium text-sm lg:w-full"><b class="inline-block w-1/2 relative pr-3 after:content-[':'] after:absolute after:right-3">Tanggal Pembayaran</b> <?= $transaksi['tgl_pembayaran'] ?> <?= $transaksi['waktu_created_at'] ?> WIB</li>
                                                 </ul>
-                                                <label for="toogleA" class="flex items-center cursor-pointer mt-6">
-                                                    <!-- toggle -->
-                                                    <div class="relative">
-                                                        <!-- input -->
-                                                        <input id="toogleA" type="checkbox" class="sr-only" onclick="ifChecked()" />
-                                                        <!-- line -->
-                                                        <div class="w-10 h-4 bg-gray-400 rounded-full shadow-inner"></div>
-                                                        <!-- dot -->
-                                                        <div class="dot absolute w-6 h-6 bg-white rounded-full shadow -left-1 -top-1 transition"></div>
-                                                    </div>
-                                                    <!-- label -->
-                                                    <div class="ml-3 text-white font-bold">
-                                                        <span id="status">Pending</span>
-                                                    </div>
-                                                </label>
+                                                <!-- Base - Left -->
+                                                <div class="flex justify-between flex-row-reverse mt-6">
+                                                    <a class="relative inline-flex items-center px-4 py-3 overflow-hidden text-white bg-blue-600 rounded group active:bg-blue-500 focus:outline-none focus:ring" href="/pages/struk/<?= $transaksi['kode_transaksi'] ?>">
+                                                        <span class="absolute right-0 transition-transform translate-x-full group-hover:-translate-x-4">
+                                                            <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                                            </svg>
+                                                        </span>
+
+                                                        <span class="text-sm font-medium transition-all group-hover:mr-4">
+                                                            Lihat Struk Pesanan
+                                                        </span>
+                                                    </a>
+                                                    <label for="toogleA" class="flex items-center cursor-pointer ml-1 mr-12">
+                                                        <!-- toggle -->
+                                                        <div class="relative">
+                                                            <!-- input -->
+                                                            <input id="toogleA" type="checkbox" class="sr-only" onclick="ifChecked()" />
+                                                            <!-- line -->
+                                                            <div class="w-10 h-4 bg-gray-400 rounded-full shadow-inner"></div>
+                                                            <!-- dot -->
+                                                            <div class="dot absolute w-6 h-6 bg-white rounded-full shadow -left-1 -top-1 transition"></div>
+                                                        </div>
+                                                        <!-- label -->
+                                                        <div class="ml-3 text-white font-bold">
+                                                            <span id="status">Pending</span>
+                                                        </div>
+                                                    </label>
+                                                </div>
                                             </div>
                                         </div>
                                     </li>

@@ -8,6 +8,8 @@ use App\Models\DaftarBelanjaModel;
 use App\Models\HistoriTransaksiModel;
 use App\Models\ProfileModel;
 use App\Models\TransactionModel;
+use App\Models\UsersModel;
+use CodeIgniter\I18n\Time;
 
 class Pages extends BaseController
 {
@@ -17,6 +19,7 @@ class Pages extends BaseController
     protected $checkoutModel;
     protected $historiTransaksiModel;
     protected $transaksiModel;
+    protected $usersModel;
 
     public function __construct()
     {
@@ -26,6 +29,7 @@ class Pages extends BaseController
         $this->checkoutModel = new CheckoutModel();
         $this->historiTransaksiModel = new HistoriTransaksiModel();
         $this->transaksiModel = new TransactionModel();
+        $this->usersModel = new UsersModel();
     }
 
     public function homepage()
@@ -73,13 +77,12 @@ class Pages extends BaseController
         return view('Warungin/tes_tailwind3', $data);
     }
 
-    public function struk()
+    public function struk($kodeTransaksi)
     {
-        $kodeTransaksi = $this->request->getPost('kodeTransaksi');
         $data = [
-            'transaksi' => $this->checkoutModel->getData($kodeTransaksi)->getRow(),
+            'transaksi' => $this->checkoutModel->getData($kodeTransaksi)->getRowArray(),
             'barangTransaksi' => $this->historiTransaksiModel->getData($kodeTransaksi),
-            'barangTransaksi2' => $this->historiTransaksiModel->getData($kodeTransaksi)->getRow()
+            'barangTransaksi2' => $this->historiTransaksiModel->getData($kodeTransaksi)->getRowArray()
         ];
 
         return view('pages/struk', $data);
@@ -92,12 +95,13 @@ class Pages extends BaseController
 
     public function detail_barang($slug)
     {
+        $username = user()->username;
         $data = [
             'title' => 'Detail Barang',
             'alt_title' => 'detail-barang',
             'barang' => $this->barangModel->getBarang($slug),
+            'profile' => $this->profileModel->getProfile($username)->getRow()
         ];
-
         return view('Warungin/tes_tailwind2', $data);
     }
 
@@ -116,12 +120,14 @@ class Pages extends BaseController
     {
         $profileModel = new ProfileModel();
         $username = user()->username;
+        $usersID = $this->usersModel->getID($username)->getRow();
         $profile = $profileModel->getProfile($username)->getRow();
 
         $data = [
             'title' => 'Profile | WarungIn',
             'alt_title' => 'profile',
-            'profile' => $profile
+            'profile' => $profile,
+            'usersID' => $usersID
         ];
 
         return view('pages/profile', $data);

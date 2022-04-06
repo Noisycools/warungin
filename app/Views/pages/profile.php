@@ -24,6 +24,7 @@
                                 </h3>
                                 <?php if ($profile == null) : ?>
                                     <form action="profile/add" method="POST" id="contactForm" name="contactForm">
+                                        <input type="hidden" name="usersID" value="<?= $usersID->id ?>">
                                     <?php else : ?>
                                         <form action="profile/update" method="POST" id="contactForm" name="contactForm">
                                         <?php endif; ?>

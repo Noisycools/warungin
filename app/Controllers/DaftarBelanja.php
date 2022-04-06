@@ -25,6 +25,8 @@ class DaftarBelanja extends BaseController
         $username = user()->username;
         $qty = $this->request->getVar('qty');
         $slug = $this->request->getVar('slug');
+        $idProfile = $this->request->getPost('idProfile');
+        $barangId = $this->request->getPost('barangId');
         $namaBarang = $this->request->getPost('namaBarang');
         $hargaBarang = $this->request->getPost('hargaBarang');
         $imgBarang = $this->request->getPost('imgBarang');
@@ -33,6 +35,8 @@ class DaftarBelanja extends BaseController
         $data = [
             'username' => $username,
             'qty' => $qty,
+            'id_profile' => $idProfile,
+            'barang_id' => $barangId,
             'nama_barang' => $namaBarang,
             'harga_barang' => $hargaBarang,
             'harga_total' => $hargaTotal,
@@ -53,11 +57,6 @@ class DaftarBelanja extends BaseController
         session()->setFlashdata('daftarBelanjaAdd', 'Barang berhasil ditambahkan!');
 
         return redirect()->to('/');
-    }
-
-    public function redirectBack()
-    {
-        
     }
 
     public function delete($namaBarang)

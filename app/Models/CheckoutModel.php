@@ -18,17 +18,33 @@ class CheckoutModel extends Model
         if ($kodeTransaksi == null) {
             return $this->findAll();
         } else {
-            return $this->getWhere(['kode_transaksi' => $kodeTransaksi]);
+            $builder = $this->db->table($this->table);
+            $builder->select('*');
+            $builder->where('kode_transaksi', $kodeTransaksi);
+            return $builder->get();
         }
     }
 
     public function getDataByUsername($username = null)
     {
+        $today = Time::today('Asia/Jakarta', 'id_ID');
+        $hariIni = Time::parse($today, 'Asia/Jakarta');
         if ($username == null) {
             return $this->findAll();
         } else {
             $builder = $this->db->table('transaksi');
-            return $builder->getWhere(['username' => $username]);
+            $builder->select('*');
+            $builder->where('username', $username);
+            $query = $builder->get();
+            foreach ($query->getResultArray() as $row) {
+                $expired_date = Time::parse($row['expired_date'], 'Asia/Jakarta');
+                if ($hariIni->toDateString() >= $expired_date->toDateString()) {
+                    $builder->where('kode_transaksi', $row['kode_transaksi']);
+                    return $builder->delete();
+                } else {
+                    return $builder->getWhere(['username' => $username]);
+                }
+            }
         }
     }
 

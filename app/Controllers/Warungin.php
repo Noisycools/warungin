@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\BarangModel;
 use App\Models\CheckoutModel;
 use App\Models\DaftarBelanjaModel;
+use App\Models\HistoriTransaksiModel;
 use App\Models\ProfileModel;
 use CodeIgniter\I18n\Time;
 use TCPDF;
@@ -30,6 +31,7 @@ class Warungin extends BaseController
     protected $profileModel;
     protected $checkoutModel;
     protected $daftarBelanjaModel;
+    protected $historiTransaksiModel;
 
     public function __construct()
     {
@@ -37,6 +39,7 @@ class Warungin extends BaseController
         $this->profileModel = new ProfileModel();
         $this->checkoutModel = new CheckoutModel();
         $this->daftarBelanjaModel = new DaftarBelanjaModel();
+        $this->historiTransaksiModel = new HistoriTransaksiModel();
         // $this->usersModel = new UsersModel;
     }
 
@@ -87,14 +90,12 @@ class Warungin extends BaseController
     public function printPDF()
     {
         $username = user()->username;
-        $daftar_belanja = $this->daftarBelanjaModel->getData($username);
-        $getTotal = $this->daftarBelanjaModel->getTotal($username);
         $kodeTransaksi = $this->request->getPost('kodeTransaksi');
 
         $data = [
             'transaksi' => $this->checkoutModel->getData($kodeTransaksi)->getRow(),
-            'barang' => $daftar_belanja,
-            'total' => $getTotal
+            'barang' => $this->historiTransaksiModel->getData($kodeTransaksi),
+            'barang2' => $this->historiTransaksiModel->getData($kodeTransaksi)->getRowArray()
         ];
 
         $html = view('pages/template_pdf', $data);

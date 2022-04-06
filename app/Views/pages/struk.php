@@ -22,21 +22,21 @@
             <div class="col-sm-4 invoice-col">
                 Untuk
                 <address>
-                    Nama : <?= $transaksi->nama_penerima ?>
+                    Nama : <?= $transaksi['nama_penerima'] ?>
                     <br>
-                    Alamat : <?= $transaksi->alamat ?>
+                    Alamat : <?= $transaksi['alamat'] ?>
                     <br>
-                    Telepon : <?= $transaksi->no_hp ?>
+                    Telepon : <?= $transaksi['no_hp'] ?>
                     <br>
-                    Email : <?= $transaksi->email ?>
+                    Email : <?= $transaksi['email'] ?>
                 </address>
             </div><!-- /.col -->
             <div class="col-sm-4 invoice-col">
                 <b>Invoice</b><br>
                 <br>
-                <b>Kode : <?= $transaksi->kode_transaksi ?>
+                <b>Kode : <?= $transaksi['kode_transaksi'] ?>
                     <br>
-                    <b>Tanggal Pembayaran : <?= $transaksi->tgl_pembayaran ?>
+                    <b>Tanggal Pembayaran : <?= $transaksi['tgl_pembayaran'] ?>
                         <br>
             </div><!-- /.col -->
         </div><!-- /.row -->
@@ -73,7 +73,7 @@
                     <table class="table">
                         <tbody>
                             <tr>
-                                <th>Total: <?php echo "Rp. " . number_format($barangTransaksi2->total_harga, 2, ',', '.'); ?></th>
+                                <th>Total: <?php echo "Rp. " . number_format($barangTransaksi2['total_harga'], 2, ',', '.'); ?></th>
                                 <td></td>
                             </tr>
                         </tbody>
@@ -88,9 +88,10 @@
                 <div class="row no-print">
                     <div class="col-xs-12">
                         <form action="<?= base_url('warungin/printPDF') ?>" method="post" target="_blank">
-                            <input type="hidden" name="kodeTransaksi" value="<?= $transaksi->kode_transaksi ?>">
+                            <input type="hidden" name="kodeTransaksi" value="<?= $transaksi['kode_transaksi'] ?>">
                             <button type="submit" class="btn btn-primary pull-right" style="margin-right: 5px;">Cetak PDF</button>
                         </form>
+                        <a class="btn btn-primary pull-right" href="<?= '/pages/detail_transaksi/' . $transaksi['kode_transaksi']; ?>">Kembali</a>
                         <!-- <a href="<?= base_url('warungin/printPDF') ?>" class="btn btn-primary pull-right" style="margin-right: 5px;">Cetak PDF</a> -->
                     </div>
                 </div>

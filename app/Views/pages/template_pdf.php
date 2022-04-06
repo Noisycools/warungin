@@ -59,7 +59,7 @@
                                 <td><?= $b->qty ?></td>
                                 <td><?= $b->nama_barang ?></td>
                                 <td><?= "Rp. " . number_format($b->harga_barang, 2, ',', '.') ?></td>
-                                <td><?= "Rp. " . number_format($b->harga_total, 2, ',', '.'); ?></td>
+                                <td><?= "Rp. " . number_format((int)$b->qty * $b->harga_barang, 2, ',', '.'); ?></td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
@@ -74,8 +74,7 @@
                     <table class="table">
                         <tbody>
                             <tr>
-                                <th>Total: <?php foreach ($total->getResult() as $rows) : echo "Rp. " . number_format($rows->total_harga, 2, ',', '.');
-                                            endforeach;  ?></th>
+                                <th>Total: <?= "Rp. " . number_format($barang2['total_harga'], 2, ',', '.')  ?></th>
                                 <td></td>
                             </tr>
                         </tbody>

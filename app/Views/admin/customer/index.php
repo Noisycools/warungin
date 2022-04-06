@@ -50,7 +50,7 @@
                                         <td><?= $p['email']; ?></td>
                                         <td><a href="/customer/edit/<?= $p['username']; ?>" class="btn btn-warning">Edit</a></td>
                                         <td>
-                                            <form action="/customer/<?= $p['id_profile']; ?>" method="POST" class="d-inline">
+                                            <form action="/customer/<?= $p['username']; ?>" method="POST" class="d-inline">
                                                 <?= csrf_field(); ?>
                                                 <input type="hidden" name="_method" value="DELETE">
                                                 <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin?')">Delete</button>

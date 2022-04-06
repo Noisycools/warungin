@@ -51,7 +51,6 @@
                                             </td>
                                             <td>Rp. <?= number_format($b['harga_barang'], 0); ?></td>
                                             <td><?= $b['satuan_barang']; ?></td>
-                                            <td><?= $b['kategori_barang']; ?></td>
                                             <td><?= $b['stok']; ?></td>
                                             <td><img src="/img/<?= $b['foto_barang']; ?>" alt="" class="gambar"></td>
                                             <td><a href="/product/edit/<?= $b['slug']; ?>" class="btn btn-info"><i class="fas fa-eye"></i></a>
@@ -74,7 +73,6 @@
                                             </td>
                                             <td>Rp. <?= number_format($b['harga_barang'], 0); ?></td>
                                             <td><?= $b['satuan_barang']; ?></td>
-                                            <td><?= $b['kategori_barang']; ?></td>
                                             <td><?= $b['stok']; ?></td>
                                             <td><img src="/img/<?= $b['foto_barang']; ?>" alt="" class="gambar"></td>
                                             <td><a href="/product/edit/<?= $b['slug']; ?>" class="btn btn-info"><i class="fas fa-pen"></i></a>

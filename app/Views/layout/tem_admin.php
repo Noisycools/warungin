@@ -152,7 +152,7 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a class="brand-link d-flex align-items-center justify-content-center">
-                <img src="img/warungIn.png" alt="Warungin Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+                <img src="/img/WarungIn.png" alt="Warungin Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light mx-3">WARUNGIN</span>
             </a>
 

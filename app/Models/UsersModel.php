@@ -15,4 +15,15 @@ class UsersModel extends Model
         }
         return $this->where(['id' => $id])->first();
     }
+
+    public function getID($username = false)
+    {
+        if ($username == false) {
+            return $this->findAll();
+        }
+        $builder = $this->db->table($this->table);
+        $builder->select('*');
+        $builder->where('username', $username);
+        return $builder->get();
+    }
 }

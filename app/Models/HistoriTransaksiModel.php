@@ -14,7 +14,10 @@ class HistoriTransaksiModel extends Model
         if ($kodeTransaksi == null) {
             return $this->findAll();
         } else {
-            return $this->getWhere(['kode_transaksi' => $kodeTransaksi]);
+            $builder = $this->db->table($this->table);
+            $builder->select('*');
+            $builder->where('kode_transaksi', $kodeTransaksi);
+            return $builder->get();
         }
     }
 

@@ -15,7 +15,20 @@ class BarangModel extends Model
         if ($slug == false) {
             return $this->findAll();
         }
-        return $this->where(['slug' => $slug])->first();
+        $builder = $this->db->table('tabel_barang');
+        $builder->select('*');
+        $builder->join('kategori_barang', 'kategori_barang.id_kategori = tabel_barang.id_kategori');
+        $builder->where('slug', $slug);
+        // dd($builder->get()->getResultArray());
+        return $builder->get()->getFirstRow();
+    }
+
+    public function getBarangFull()
+    {
+        $builder = $this->db->table('tabel_barang');
+        $builder->select('*');
+        $builder->join('kategori_barang', 'kategori_barang.id_kategori = tabel_barang.id_kategori');
+        return $builder->get()->getFirstRow();
     }
 
     public function habis()

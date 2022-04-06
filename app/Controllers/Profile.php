@@ -18,14 +18,17 @@ class Profile extends BaseController
         $username = user()->username;
         $profileModel = new ProfileModel();
         $profile = $profileModel->getProfile($username)->getRow();
+        $tgl = date("Y-m-d");
 
         $data = [
+            'user_id' => $this->request->getPost('usersID'),
             'username' => $username,
             'nama' => $this->request->getPost('nama'),
             'nama_warung' => $this->request->getPost('namaWarung'),
             'alamat' => $this->request->getPost('alamat'),
             'no_hp' => $this->request->getPost('noHp'),
-            'email' => $this->request->getPost('email')
+            'email' => $this->request->getPost('email'),
+            'created_at' => $tgl
         ];
 
         $this->profileModel->addProfile($data);

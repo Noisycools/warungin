@@ -202,11 +202,15 @@
                 rounded-xl
               " src="/img/<?= $b['foto_barang'] ?>">
             <?php if ($b['stok'] == 0) : ?>
-            <button type="button" class="absolute right-6 bottom-40 bg-yellow-500 rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
-              <span class="sr-only">Close menu</span>
-              <!-- Heroicon name: outline/x -->
-              <i class="fas fa-exclamation font-bold text-lg text-red-600"></i>
-            </button>
+              <div class="absolute right-0 bottom-40">
+                <strong class="inline-flex items-center border bg-yellow-500 rounded relative px-2.5 py-1.5 text-xs font-medium">
+                  <span class="text-gray-700"> Stok: </span>
+
+                  <span class="text-red-600 ml-1.5">
+                    0
+                  </span>
+                </strong>
+              </div>
             <?php endif; ?>
             <div class="inline-flex justify-between w-full lg:mb-8">
               <h1 class="
@@ -217,8 +221,9 @@
                   leading-none
                   tracking-tighter
                   text-neutral-600
+                  truncate
                 "> <?php echo $b['nama_barang'] ?> </h1>
-              <span class="text-black text-xs"><?php echo "Rp. " . number_format($b['harga_barang'], 0, '', '.'); ?></span>
+              <span class="text-black text-xs w-7/12"><?php echo "Rp. " . number_format($b['harga_barang'], 0, '', '.'); ?></span>
             </div>
             <form action="/daftarbelanja/add" method="post">
               <input type="hidden" name="slug" value="<?= $b['slug']; ?>">
@@ -272,8 +277,9 @@
                   leading-none
                   tracking-tighter
                   text-neutral-600
+                  truncate
                 "> <?php echo $b['nama_barang'] ?> </h1>
-                <span class="text-black text-xs"><?php echo "Rp. " . number_format($b['harga_barang'], 0, '', '.'); ?></span>
+                <span class="text-black text-xs w-7/12"><?php echo "Rp. " . number_format($b['harga_barang'], 0, '', '.'); ?></span>
               </div>
               <form action="/daftarbelanja/add" method="post">
                 <input type="hidden" name="slug" value="<?= $b['slug']; ?>">
