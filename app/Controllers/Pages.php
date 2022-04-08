@@ -71,10 +71,28 @@ class Pages extends BaseController
     {
         $data = [
             'title'     => 'Detail Transaksi | WarungIn',
-            'transaksi' => $this->checkoutModel->getData($kodeTransaksi)->getRowArray()
+            'transaksi' => $this->checkoutModel->getData($kodeTransaksi)->getRowArray(),
+            'validation' => \Config\Services::validation()
         ];
 
-        return view('Warungin/tes_tailwind3', $data);
+        if (!$this->validate([
+            'kode_transaksi' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Tolong masukkan Kode Transaksi!'
+                ]
+            ],
+            'fotoPengiriman' => [
+                'rules' => 'uploaded[fotoPengiriman]|is_image[fotoPengiriman]|mime_in[fotoPengiriman,image/jpg,image/jpeg,image/png]',
+                'errors' => [
+                    'uploaded' => 'Upload gambar terlebih dahulu!',
+                    'is_image' => 'File hanya berupa gambar!',
+                    'mime_in' => 'File hanya berupa gambar!'
+                ]
+            ]
+        ])) {
+            return view('Warungin/tes_tailwind3', $data);
+        }
     }
 
     public function struk($kodeTransaksi)
@@ -96,6 +114,21 @@ class Pages extends BaseController
     public function detail_barang($slug)
     {
         $username = user()->username;
+        if ($this->profileModel->getProfile($username)->getRow() == null) {
+            $profileModel = new ProfileModel();
+            $username = user()->username;
+            $usersID = $this->usersModel->getID($username)->getRow();
+            $profile = $profileModel->getProfile($username)->getRow();
+
+            $data = [
+                'title' => 'Profile | WarungIn',
+                'alt_title' => 'profile',
+                'profile' => $profile,
+                'usersID' => $usersID
+            ];
+
+            return view('pages/profile', $data);
+        }
         $data = [
             'title' => 'Detail Barang',
             'alt_title' => 'detail-barang',
@@ -130,7 +163,7 @@ class Pages extends BaseController
             'usersID' => $usersID
         ];
 
-        return view('pages/profile', $data);
+        return view('Warungin/tes_tailwind5', $data);
     }
 
     public function kurir()

@@ -13,51 +13,24 @@ class Kurir extends BaseController
         $this->transactionModel = new TransactionModel();
     }
 
-    public function verifikasi()
+    public function verifikasi($kode_transaksi)
     {
-        if (!$this->validate([
-            'kodeTransaksi' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} harus diisi'
-                ]
-            ],
-            'fotoStruk' => [
-                'rules' => 'uploaded[fotoStruk]|is_image[fotoStruk]|mime_in[fotoStruk,image/jpg,image/jpeg,image/png]',
-                'errors' => [
-                    'uploaded' => 'Upload foto struknya terlebih dahulu!',
-                    'is_image' => 'File harus berupa image/foto!',
-                    'mime_in' => 'File harus berupa image/foto!'
-                ]
-            ],
-            'fotoPengiriman' => [
-                'rules' => 'uploaded[fotoPengiriman]|is_image[fotoPengiriman]|mime_in[fotoPengiriman,image/jpg,image/jpeg,image/png]',
-                'errors' => [
-                    'uploaded' => 'Upload foto Pengirimannya terlebih dahulu!',
-                    'is_image' => 'File harus berupa image/foto!',
-                    'mime_in' => 'File harus berupa image/foto!'
-                ]
-            ]
-        ])) {
-            return redirect()->to('/kurir')->withInput();
+        if ($this->request->getPost('kodeTransaksi2') != $this->request->getVar('kode_transaksi')) {
+            session()->setFlashData('message', 'Kode Transaksi harus sama!');
+            return redirect()->to('/pages/detail_transaksi/' . $kode_transaksi);
+        } else {
+            $fileFotoPengiriman = $this->request->getFile('fotoPengiriman');
+            $namaFoto2 = $fileFotoPengiriman->getRandomName();
+            $fileFotoPengiriman->move('img');
+            $namaFoto2 = $fileFotoPengiriman->getName();
+
+            $this->transactionModel->verifikasi([
+                'kodeTransaksi' => $this->request->getVar('kode_transaksi'),
+                'foto_pengiriman' => $namaFoto2
+            ]);
+            session()->setFlashData('message', 'Data berhasil diserahkan ke Admin untuk diverifikasi');
+
+            return redirect()->to('/')->withInput();
         }
-
-        $fileFotoStruk = $this->request->getFile('fotoStruk');
-        $fileFotoPengiriman = $this->request->getFile('fotoPengiriman');
-        $namaFoto = $fileFotoStruk->getRandomName();
-        $namaFoto2 = $fileFotoPengiriman->getRandomName();
-        $fileFotoStruk->move('img');
-        $fileFotoPengiriman->move('img');
-        $namaFoto = $fileFotoStruk->getName();
-        $namaFoto2 = $fileFotoPengiriman->getName();
-
-        $this->transactionModel->verifikasi([
-            'kodeTransaksi' => $this->request->getVar('kodeTransaksi'),
-            'foto_struk' => $namaFoto,
-            'foto_pengiriman' => $namaFoto2
-        ]);
-        session()->setFlashData('message', 'Data berhasil ditambahkan');
-
-        return redirect()->to('pages/kurir');
     }
 }

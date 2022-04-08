@@ -27,25 +27,15 @@ class CheckoutModel extends Model
 
     public function getDataByUsername($username = null)
     {
-        $today = Time::today('Asia/Jakarta', 'id_ID');
+        $today = Time::now('Asia/Jakarta');
         $hariIni = Time::parse($today, 'Asia/Jakarta');
         if ($username == null) {
             return $this->findAll();
-        } else {
-            $builder = $this->db->table('transaksi');
-            $builder->select('*');
-            $builder->where('username', $username);
-            $query = $builder->get();
-            foreach ($query->getResultArray() as $row) {
-                $expired_date = Time::parse($row['expired_date'], 'Asia/Jakarta');
-                if ($hariIni->toDateString() >= $expired_date->toDateString()) {
-                    $builder->where('kode_transaksi', $row['kode_transaksi']);
-                    return $builder->delete();
-                } else {
-                    return $builder->getWhere(['username' => $username]);
-                }
-            }
         }
+        $builder = $this->db->table('transaksi');
+        $builder->select('*');
+        $builder->where(['username' => $username, 'expired_date >' => $hariIni->toDateString()]);
+        return $builder->get();
     }
 
     public function getDataByDate()

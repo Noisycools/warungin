@@ -34,8 +34,8 @@ class Checkout extends BaseController
         $myTime = Time::now('Asia/Jakarta');
         $time = $myTime->toLocalizedString('d MMM yyyy');
 
-        $waktuCreatedAt = Time::now('Asia/Jakarta', 'id_ID');
-        $today = Time::today('Asia/Jakarta', 'id_ID');
+        $waktuCreatedAt = Time::now('Asia/Jakarta');
+        $today = Time::now('Asia/Jakarta');
         $expiredDate = Time::parse($today, 'Asia/Jakarta');
         $tgl = $expiredDate->toDateString();
         $expiredDate = $expiredDate->addDays(7);

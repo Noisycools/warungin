@@ -8,7 +8,7 @@ class TransactionModel extends Model
 {
     protected $table      = 'transaksi';
     protected $primaryKey = 'kode_transaksi';
-    protected $allowedFields = ['kode_transaksi', 'username', 'nama_penerima', 'nama_warung', 'alamat', 'no_hp', 'email', 'status', 'foto_struk', 'foto_pengiriman'];
+    protected $allowedFields = ['kode_transaksi', 'username', 'nama_penerima', 'nama_warung', 'alamat', 'no_hp', 'email', 'status', 'foto_pengiriman'];
 
 
     public function getTransaksi($kode_transaksi = null)
@@ -28,7 +28,7 @@ class TransactionModel extends Model
     public function verifikasi($data)
     {
         $builder = $this->db->table($this->table);
-        return $builder->set('foto_struk', $data['foto_struk'])->where('kode_transaksi', $data['kodeTransaksi'])->update();
+        return $builder->set(['foto_pengiriman' => $data['foto_pengiriman'], 'status' => 'Selesai'])->where('kode_transaksi', $data['kodeTransaksi'])->update();
     }
 
     public function pesanan_masuk()

@@ -31,12 +31,34 @@
     <title><?= $title; ?></title>
 </head>
 
-<body x-data="{ popup: false }">
+<body x-data="{ popup: false, flashdata: true }">
     <form action="/checkout/updatestatus" method="post">
         <?php $item3 = 0 ?>
         <?php $item2 = 0 ?>
         <?php $item1 = 0 ?>
         <!-- Delete Product Modal -->
+        <?php if (session()->getFlashdata('message')) : ?>
+            <!-- Main modal -->
+            <div id="walletModal" x-show="flashdata" tabindex="-1" aria-hidden="true" class="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 md:h-full flex items-center justify-center h-full bg-black bg-opacity-40">
+                <div class="relative p-4 w-full max-w-md h-full md:h-auto">
+                    <!-- Modal content -->
+                    <div class="relative bg-white rounded-lg shadow pt-6">
+                        <!-- Modal header -->
+                        <div class="flex justify-center items-center py-2 px-6 rounded-t">
+                            <h3 class="text-base font-semibold text-gray-900 lg:text-xl dark:text-white">
+                                <?= session()->getFlashdata('message') ?> <i class="far fa-check-circle text-green-500"></i>
+                            </h3>
+                        </div>
+                        <!-- Modal body -->
+                        <div class="p-4 text-center">
+                            <button @click="flashdata = false" class="text-white bg-green-600 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
+                                OK
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php endif; ?>
         <div id="popup-modal" x-show="popup" tabindex="-1" class="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 flex items-center justify-center h-full bg-slate-400 bg-opacity-50">
             <div class="relative p-4 w-full max-w-md h-full md:h-auto">
                 <!-- Modal content -->
@@ -164,8 +186,6 @@
                                         </h3>
                                     </div>
                                     <ul class="flex flex-col divide divide-y">
-                                        <?php //foreach ($transaksi->getResult('array') as $t) : 
-                                        ?>
 
                                         <?php foreach ($pending->getResult('array') as $t) : ?>
                                             <?php $item3++ ?>
@@ -185,7 +205,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="text-gray-200 text-xs">
-                                                        <?php 
+                                                        <?php
                                                         echo $t['waktu_created_at'] . ' WIB';
                                                         ?>
                                                     </div>
@@ -198,6 +218,13 @@
                                                 </div>
                                             </li>
                                         <?php endforeach; ?>
+                                        <?php if ($item3 <= 0) : ?>
+                                            <div class="p-6 text-center">
+                                                <h3 class="text-sm leading-6 font-medium text-gray-400">
+                                                    Tidak ada
+                                                </h3>
+                                            </div>
+                                        <?php endif; ?>
                                     </ul>
                                 </div>
                             </div>
@@ -242,6 +269,13 @@
                                                 </div>
                                             </li>
                                         <?php endforeach; ?>
+                                        <?php if ($item2 <= 0) : ?>
+                                            <div class="p-6 text-center">
+                                                <h3 class="text-sm leading-6 font-medium text-gray-400">
+                                                    Tidak ada
+                                                </h3>
+                                            </div>
+                                        <?php endif; ?>
                                     </ul>
                                 </div>
                             </div>
@@ -274,11 +308,18 @@
                                                         </div>
                                                     </div>
                                                     <div class="text-gray-200 text-md">
-                                                        <a href=""><i class="far fa-check-circle"></i></a>
+                                                        <a href="<?= '/pages/detail_transaksi/' . $s['kode_transaksi']; ?>"><i class="far fa-check-circle"></i></a>
                                                     </div>
                                                 </div>
                                             </li>
                                         <?php endforeach; ?>
+                                        <?php if ($item1 <= 0) : ?>
+                                            <div class="p-6 text-center">
+                                                <h3 class="text-sm leading-6 font-medium text-gray-400">
+                                                    Tidak ada
+                                                </h3>
+                                            </div>
+                                        <?php endif; ?>
                                     </ul>
                                 </div>
                             </div>

@@ -8,7 +8,7 @@
     <div id="walletModal" x-show="flashdata" tabindex="-1" aria-hidden="true" class="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 md:h-full flex items-center justify-center h-full bg-black bg-opacity-40">
       <div class="relative p-4 w-full max-w-md h-full md:h-auto">
         <!-- Modal content -->
-        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+        <div class="relative bg-white rounded-lg shadow">
           <!-- Modal header -->
           <div class="flex justify-between items-center py-4 px-6 rounded-t">
             <h3 class="text-base font-semibold text-gray-900 lg:text-xl dark:text-white">
@@ -191,7 +191,7 @@
     </div>
     <div class="grid grid-cols-2 gap-3 mx-auto sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
       <?php foreach ($barang as $b) : ?>
-        <a href="/pages/detail_barang/<?= $b['slug']; ?>">
+        <a <?php if (!logged_in()) { echo 'href="/login"'; } ?> href="/pages/detail_barang/<?= $b['slug'] ?>" >
           <div class="relative p-6 sm:pb-5 rounded-lg shadow-lg sm:w-full h-80">
             <img class="
                 object-cover object-center
