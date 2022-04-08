@@ -193,7 +193,7 @@
                 totalHarga.textContent = "Rp. " + sum.toLocaleString('id-ID');
                 totalHargaHidden.value = parseInt(sum);
             } else {
-                totalHarga.textContent = "<?php echo "Rp. " . number_format($rows->total_harga, 2, ',', '.'); ?>";
+                totalHarga.textContent = "<?php echo "Rp. " . number_format($rows->total_harga, 2, ', ', ' . '); ?>";
             }
             if (input.value) {
                 qty.textContent = input.value;

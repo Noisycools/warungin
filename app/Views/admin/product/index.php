@@ -32,7 +32,6 @@
                                     <th scope="col">Nama</th>
                                     <th scope="col">Harga</th>
                                     <th scope="col">Satuan</th>
-                                    <th scope="col">Kategori</th>
                                     <th scope="col">Stok</th>
                                     <th scope="col">Gambar</th>
                                     <th scope="col"></th>
@@ -54,7 +53,7 @@
                                             <td><?= $b['stok']; ?></td>
                                             <td><img src="/img/<?= $b['foto_barang']; ?>" alt="" class="gambar"></td>
                                             <td><a href="/product/edit/<?= $b['slug']; ?>" class="btn btn-info"><i class="fas fa-eye"></i></a>
-                                                <form action="/product/<?= $b['barang_id']; ?>" method="POST" class="d-inline">
+                                                <form action="/product/<?= $b['slug']; ?>" method="POST" class="d-inline">
                                                     <?= csrf_field(); ?>
                                                     <input type="hidden" name="_method" value="DELETE">
                                                     <button type="submit" class="btn btn-danger btn-hapus"><i class="fas fa-trash"></i></button>

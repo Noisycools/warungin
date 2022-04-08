@@ -25,7 +25,7 @@
                         <img src="/img/WarungIn2.png" alt="warunginLogo" class="attachment-img" width="7%">
                         Laporan Harian
                         <small>
-                            <h3 class="float-right">Tanggal : <?= $date; ?></h3>
+                            <h4 class="float-right" style="margin-top: 50px;">Tanggal : <?= $date; ?></h4>
                         </small>
                     </h2>
                 </div>
@@ -61,16 +61,18 @@
                                     <td>Rp. <?= number_format($t['harga_barang'], 0); ?></td>
                                     <td>Rp. <?= number_format($t['total_harga'], 0); ?></td>
                                 </tr>
-                                <tr>
-                                    <td></td>
-                                    <th colspan="6">Sub Total</th>
-                                    <?php foreach ($jumlah->getResult('array') as $j) : ?>
-                                        <td>Rp. <?= number_format($j['total'], 0); ?></td>
-                                    <?php endforeach; ?>
-                                </tr>
                             <?php endforeach; ?>
                         </tbody>
-                    </table>
+                        <tr>
+                            <td></td>
+                            <th colspan="6">Sub Total</th>
+                            <?php foreach ($jumlah->getResult('array') as $j) : ?>
+                                <td>Rp. <?= number_format((float)$j['total'], 0); ?></td>
+                            <?php endforeach; ?>
+                        </tr>
+                    </table><br><br><br>
+                    <h6 class="float-right" style="margin-right: 45px;">Bandung, <?= $date; ?></h6><br><br>
+                    <h6 class="float-right" style="margin: 50px 80px;">Warungin</h6>
                 </div>
             </div>
             <!-- /.row -->
@@ -81,7 +83,7 @@
     <!-- ./wrapper -->
     <!-- Page specific script -->
     <script>
-        window.addEventListener("load", window.print());
+        window.addEventListener(" load", window.print());
     </script>
 </body>
 

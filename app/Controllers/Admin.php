@@ -30,7 +30,8 @@ class Admin extends BaseController
         $myTime = Time::now('Asia/Jakarta');
         $date = $myTime->toLocalizedString('d MMM yyyy');
         $tanggal0 = $this->request->getPost('tanggal');
-        $tanggal = date('d M Y', strtotime($tanggal0));
+        $time = Time::parse($tanggal0, 'Asia/Jakarta');
+        $tanggal = $time->toLocalizedString('d MMM yyyy');
         // dd($tanggal);
         $data = [
             'title' => "Admin | Dashboard",

@@ -28,7 +28,8 @@ class BarangModel extends Model
         $builder = $this->db->table('tabel_barang');
         $builder->select('*');
         $builder->join('kategori_barang', 'kategori_barang.id_kategori = tabel_barang.id_kategori');
-        return $builder->get()->getFirstRow();
+        $builder->orderBy('tabel_barang.barang_id');
+        return $builder->get();
     }
 
     public function habis()
@@ -38,6 +39,6 @@ class BarangModel extends Model
 
     public function search($keyword)
     {
-        return $this->table('tabel_barang')->like('nama_barang', $keyword)->orLike('kategori_barang', $keyword)->orLike('stok', $keyword);
+        return $this->table('tabel_barang')->like('nama_barang', $keyword)->orLike('stok', $keyword);
     }
 }

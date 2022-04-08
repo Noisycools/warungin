@@ -42,6 +42,7 @@ class Pages extends BaseController
         $username = user()->username;
         $daftar_belanja = $this->daftarBelanjaModel->getData($username);
         $getTotal = $this->daftarBelanjaModel->getTotal($username);
+        $getTotal2 = $this->daftarBelanjaModel->getTotal($username)->getResult();
         $getProfile = $this->profileModel->getProfile($username)->getRow();
 
         $data = [
@@ -49,6 +50,7 @@ class Pages extends BaseController
             'alt_title' => 'daftarBelanja',
             'barang' => $daftar_belanja,
             'total' => $getTotal,
+            'total2' => $getTotal2,
             'profile' => $getProfile
         ];
 
