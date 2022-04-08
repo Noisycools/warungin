@@ -32,7 +32,8 @@ class Checkout extends BaseController
         $jumlahBarang = $this->request->getPost('jumlahBarang');
 
         $myTime = Time::now('Asia/Jakarta');
-        $time = $myTime->toLocalizedString('d MMM yyyy');
+        $time1 = $myTime->toLocalizedString('d MMM yyyy');
+        $time2 = date('d M Y', strtotime($time1));
 
         $waktuCreatedAt = Time::now('Asia/Jakarta');
         $today = Time::now('Asia/Jakarta');
@@ -49,7 +50,7 @@ class Checkout extends BaseController
             'alamat' => $this->request->getPost('alamat'),
             'no_hp' => $this->request->getPost('noHp'),
             'email' => $this->request->getPost('email'),
-            'tgl_pembayaran' => $time,
+            'tgl_pembayaran' => $time2,
             'created_at' => $tgl,
             'expired_date' => $expiredDate->toDateString(),
             'waktu_created_at' => $waktuCreatedAt->hour . ':' . $waktuCreatedAt->minute,
