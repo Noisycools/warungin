@@ -282,7 +282,9 @@
       <?php $i = 0 ?>
       <?php foreach ($barang as $b) : ?>
         <?php if ($i++ < 10) : ?>
-          <a href="/pages/detail_barang/<?= $b['slug']; ?>">
+          <a <?php if (!logged_in()) {
+                echo 'href="/login"';
+              } ?> href="/pages/detail_barang/<?= $b['slug'] ?>">
             <div class="p-6 sm:pb-5 rounded-lg shadow-lg sm:w-full h-80">
               <img class="
                 object-cover object-center

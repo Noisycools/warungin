@@ -23,13 +23,17 @@
             <div class="container mx-auto px-6">
                 <div class="flex justify-between">
                     <h3 class="text-gray-700 text-2xl font-medium">List Barang</h3>
-                    <h3 class="text-red-700 my-auto"><a href="/"><- Kembali</a></h3>
+                    <h3 class="text-red-700 my-auto"><a href="/">
+                            <- Kembali</a>
+                    </h3>
                 </div>
                 <span class="mt-3 text-sm text-gray-500"><?php echo $countAll ?> Products</span>
                 <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6">
                     <?php foreach ($barang as $b) : ?>
                         <div class="relative w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
-                            <a href="#" class="group">
+                            <a <?php if (!logged_in()) {
+                                    echo 'href="/login"';
+                                } ?> href="/pages/detail_barang/<?= $b['slug'] ?>" class="group">
                                 <div class="transition ease-in-out delay-100 group-hover:-translate-y-1 group-hover:scale-110 flex items-end justify-end h-56 w-full bg-cover" style="background-image: url('/img/<?= $b['foto_barang'] ?>')"></div>
                                 <div class="absolute left-0 top-5 -translate-x-48 group-hover:-translate-x-0 duration-300 p-2 text-red-500 border-l-4 border-red-500 bg-red-50" role="alert">
                                     <h3 class="text-sm font-medium">Lihat Selengkapnya</h3>
