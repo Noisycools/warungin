@@ -265,7 +265,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="text-blue-500 cursor-pointer text-md relative ml-4">
-                                                    <button @click="popup = !popup" type="button"><i class="far fa-check-square absolute top-0 right-0"></i></button>
+                                                    <button @click="popup = !popup" type="button"><i class="far fa-check-square absolute top-0 right-0 animate-ping"></i><i class="far fa-check-square absolute top-0 right-0"></i></button>
                                                 </div>
                                             </li>
                                         <?php endforeach; ?>
