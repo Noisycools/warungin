@@ -1,190 +1,107 @@
-<?= $this->extend('layout/tem_profile'); ?>
+<?= $this->extend('layout/template'); ?>
 
 <?= $this->section('content'); ?>
 
-<section class="ftco-section">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-6 text-center mb-5">
-                <h2 class="heading-section mt-5">Profil</h2>
+<!-- component -->
+<!-- This is an example component -->
+
+<div class="py-24">
+
+    <div class="block md:flex md:justify-center">
+
+        <div class="w-full h-3/4 lg:max-w-3xl md:w-2/5 p-4 sm:p-6 lg:p-8 bg-white rounded-md shadow-md">
+            <div class="flex justify-between border-b-2 pb-2">
+                <span class="text-xl text-black font-semibold block">User Profile</span>
+            </div>
+
+            <div class="w-full p-4 text-black">
+                <?php if ($profile == null) : ?>
+                    <p class="text-base leading-relaxed">
+                    <h3 class="text-xl text-black font-bold pb-4">Nama Warung Kamu</h3>
+                    <i class="fas fa-id-badge"></i> &nbsp;<b class="inline-block w-1/4 relative pr-3 after:content-[':'] after:absolute after:right-2">Nama</b> <span class="text-red-400">belum diset</span><br><br>
+                    <i class="fas fa-map-marked-alt"></i> &nbsp;<b class="inline-block w-1/4 relative pr-3 after:content-[':'] after:absolute after:right-3">Alamat</b> <span class="text-red-400">belum diset</span><br><br>
+                    <i class="fas fa-phone-alt"></i> &nbsp;<b class="inline-block w-1/4 relative pr-3 after:content-[':'] after:absolute after:right-3">No. HP</b> <span class="text-red-400">belum diset</span><br><br>
+                    <i class="fas fa-envelope"></i> &nbsp;<b class="inline-block w-1/4 relative pr-3 after:content-[':'] after:absolute after:right-3">Email</b> <span class="text-red-400">belum diset</span><br><br>
+                    </p>
+                <?php else : ?>
+                    <p class="text-base leading-relaxed">
+                    <h3 class="text-xl text-black font-bold pb-4"><?= $profile->nama_warung; ?></h3>
+                    <i class="fas fa-id-badge"></i> &nbsp;<b class="inline-block w-1/4 relative pr-3 after:content-[':'] after:absolute after:right-2">Nama</b> <span class="text-gray-500"><?= $profile->nama; ?></span><br><br>
+                    <i class="fas fa-map-marked-alt"></i> &nbsp;<b class="inline-block w-1/4 relative pr-3 after:content-[':'] after:absolute after:right-3">Alamat</b> <span class="text-gray-500"><?= $profile->alamat; ?></span><br><br>
+                    <i class="fas fa-phone-alt"></i> &nbsp;<b class="inline-block w-1/4 relative pr-3 after:content-[':'] after:absolute after:right-3">No. HP</b> <span class="text-gray-500"><?= $profile->no_hp; ?></span><br><br>
+                    <i class="fas fa-envelope"></i> &nbsp;<b class="inline-block w-1/4 relative pr-3 after:content-[':'] after:absolute after:right-3">Email</b> <span class="text-gray-500"><?= $profile->email; ?></span><br><br>
+                    </p>
+                <?php endif; ?>
             </div>
         </div>
-        <div class="row justify-content-center">
-            <div class="col-lg-10 col-md-12">
-                <div class="wrapper">
-                    <div class="row no-gutters">
-                        <div class="col-md-7 d-flex align-items-stretch">
-                            <div class="contact-wrap w-100 p-md-5 p-4">
-                                <h3 class="mb-4">
-                                    <?php if ($profile == null) : ?>
-                                        Tambahkan Profil Warung Kamu
-                                    <?php else :
-                                    ?> Edit Profil
-                                    <?php endif; ?>
-                                </h3>
-                                <?php if ($profile == null) : ?>
-                                    <form action="/profile/add" method="POST" id="contactForm" name="contactForm">
-                                        <input type="hidden" name="usersID" value="<?= $usersID->id ?>">
-                                    <?php else : ?>
-                                        <form action="profile/update" method="POST" id="contactForm" name="contactForm">
-                                        <?php endif; ?>
-                                        <div class="row">
-                                            <?php if ($profile == null) : ?>
-                                                <div class="col-md-7">
-                                                    <div class="form-group">
-                                                        <input type="text" class="form-control" name="nama" id="name" placeholder="Nama Panjang">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-7">
-                                                    <div class="form-group">
-                                                        <input type="text" class="form-control" name="namaWarung" id="name" placeholder="Nama Warung">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <div class="form-group">
-                                                        <textarea name="alamat" class="form-control" id="message" cols="20" rows="2" placeholder="Alamat"></textarea>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-7">
-                                                    <div class="form-group">
-                                                        <input type="text" class="form-control" name="noHp" id="email" placeholder="No. HP">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-7">
-                                                    <div class="form-group">
-                                                        <input type="email" class="form-control" name="email" id="email" placeholder="Email">
-                                                    </div>
-                                                </div>
-                                                <input type="hidden" name="username" value="<?= user()->username; ?>">
-                                            <?php else : ?>
-                                                <div class="col-md-7">
-                                                    <div class="form-group">
-                                                        <input type="text" class="form-control" name="nama" id="name" value="<?= $profile->nama; ?>" placeholder="Nama Panjang">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-7">
-                                                    <div class="form-group">
-                                                        <input type="text" class="form-control" name="namaWarung" id="name" value="<?= $profile->nama_warung; ?>" placeholder="Nama Warung">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <div class="form-group">
-                                                        <textarea name="alamat" class="form-control" id="message" cols="20" rows="2" placeholder="Alamat"><?= $profile->alamat; ?></textarea>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-7">
-                                                    <div class="form-group">
-                                                        <input type="text" class="form-control" name="noHp" id="email" value="<?= $profile->no_hp; ?>" placeholder="No. HP">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-7">
-                                                    <div class="form-group">
-                                                        <input type="email" class="form-control" name="email" id="email" value="<?= $profile->email; ?>" placeholder="Email">
-                                                    </div>
-                                                </div>
-                                            <?php endif; ?>
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <input type="submit" value="<?php if ($profile == null) :  echo "Tambah Profil";
-                                                                                else : echo "Edit Profil";
-                                                                                endif; ?>" class="btn btn-secondary">
-                                                    <div class="submitting"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        </form>
+
+        <div class="max-w-lg md:w-3/5 p-8 bg-white lg:ml-4 rounded-md shadow-md">
+            <div class="rounded  shadow-lg p-6">
+                <?php if ($profile == null) : ?>
+                    <form action="/profile/add" method="POST" id="contactForm" name="contactForm">
+                        <input type="hidden" name="usersID" value="<?= $usersID->id ?>">
+                    <?php else : ?>
+                        <form action="profile/update" method="POST" id="contactForm" name="contactForm">
+                        <?php endif; ?>
+                        <?php if ($profile == null) : ?>
+                            <div class="pb-6">
+                                <label for="name" class="font-semibold text-gray-700 block pb-1">Nama Panjang</label>
+                                <div class="flex">
+                                    <input name="nama" id="username" class="border-1 text-gray-900 bg-slate-200 focus:bg-transparent rounded-r px-4 py-2 w-full" type="text" value="" />
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-5 d-flex align-items-stretch">
-                            <?php if ($profile == null) : ?>
-                                <div class="info-wrap w-100 p-lg-5 p-4">
-                                    <h3 class="mb-4 mt-md-4">Nama Warung Kamu</h3>
-                                    <div class="dbox w-100 d-flex align-items-start">
-                                        <div class="icon d-flex align-items-center justify-content-center">
-                                            <span class="fas fa-id-badge"></span>
-                                        </div>
-                                        <div class="text pl-3">
-                                            <p><span>Nama :</span> Belum diset</p>
-                                        </div>
-                                    </div>
-                                    <div class="dbox w-100 d-flex align-items-start">
-                                        <div class="icon d-flex align-items-center justify-content-center">
-                                            <span class="fa fa-map-marker"></span>
-                                        </div>
-                                        <div class="text pl-3">
-                                            <p><span>Alamat :</span> Belum diset</p>
-                                        </div>
-                                    </div>
-                                    <div class="dbox w-100 d-flex align-items-center">
-                                        <div class="icon d-flex align-items-center justify-content-center">
-                                            <span class="fa fa-phone"></span>
-                                        </div>
-                                        <div class="text pl-3">
-                                            <p><span>No. HP :</span><a href="tel://1234567920"> Belum diset</a></p>
-                                        </div>
-                                    </div>
-                                    <div class="dbox w-100 d-flex align-items-center">
-                                        <div class="icon d-flex align-items-center justify-content-center">
-                                            <span class="fa fa-paper-plane"></span>
-                                        </div>
-                                        <div class="text pl-3">
-                                            <p><span>Email :</span><a href="mailto:info@yoursite.com"> Belum diset</a></p>
-                                        </div>
-                                    </div>
+                            <div class="pb-6">
+                                <label for="about" class="font-semibold text-gray-700 block pb-1">Nama Warung</label>
+                                <input name="namaWarung" id="email" class="border-1 text-gray-900 bg-slate-200 focus:bg-transparent rounded-r px-4 py-2 w-full" type="text" value="" />
+                            </div>
+                            <div class="pb-6">
+                                <label for="about" class="font-semibold text-gray-700 block pb-1">Alamat</label>
+                                <textarea class="border-1 text-gray-900 bg-slate-200 focus:bg-transparent rounded-r px-4 py-2 w-full" name="alamat" id="" cols="20" rows="2"></textarea>
+                            </div>
+                            <div class="pb-6">
+                                <label for="about" class="font-semibold text-gray-700 block pb-1">No. HP</label>
+                                <input name="noHp" id="email" class="border-1 text-gray-900 bg-slate-200 focus:bg-transparent rounded-r px-4 py-2 w-full" type="text" value="" />
+                            </div>
+                            <div class="pb-10">
+                                <label for="about" class="font-semibold text-gray-700 block pb-1">Email</label>
+                                <input name="email" id="email" class="border-1 text-gray-900 bg-slate-200 focus:bg-transparent rounded-r px-4 py-2 w-full" type="email" value="" />
+                            </div>
+                            <input type="hidden" name="username" value="<?= user()->username; ?>">
+                        <?php else : ?>
+                            <div class="pb-6">
+                                <label for="name" class="font-semibold text-gray-700 block pb-1">Nama Panjang</label>
+                                <div class="flex">
+                                    <input name="nama" id="username" class="border-1 text-gray-900 bg-slate-200 focus:bg-transparent rounded-r px-4 py-2 w-full" type="text" value="<?= $profile->nama; ?>" />
                                 </div>
-                            <?php else : ?>
-                                <div class="info-wrap w-100 p-lg-5 p-4">
-                                    <h3 class="mb-4 mt-md-4">
-                                        <?= $profile->nama_warung; ?>
-                                    </h3>
-                                    <div class="dbox w-100 d-flex align-items-start">
-                                        <div class="icon d-flex align-items-center justify-content-center">
-                                            <span class="fas fa-id-badge"></span>
-                                        </div>
-                                        <div class="text pl-3">
-                                            <p><span>Nama :</span>
-                                                <?= $profile->nama; ?>
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="dbox w-100 d-flex align-items-start">
-                                        <div class="icon d-flex align-items-center justify-content-center">
-                                            <span class="fa fa-map-marker"></span>
-                                        </div>
-                                        <div class="text pl-3">
-                                            <p><span>Alamat :</span>
-                                                <?= $profile->alamat; ?>
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="dbox w-100 d-flex align-items-center">
-                                        <div class="icon d-flex align-items-center justify-content-center">
-                                            <span class="fa fa-phone"></span>
-                                        </div>
-                                        <div class="text pl-3">
-                                            <p><span>No. HP :</span> <a href="tel://1234567920">
-                                                    <?= $profile->no_hp; ?>
-                                                </a></p>
-                                        </div>
-                                    </div>
-                                    <div class="dbox w-100 d-flex align-items-center">
-                                        <div class="icon d-flex align-items-center justify-content-center">
-                                            <span class="fa fa-paper-plane"></span>
-                                        </div>
-                                        <div class="text pl-3">
-                                            <p><span>Email :</span> <a href="mailto:info@yoursite.com">
-                                                    <?= $profile->email; ?>
-                                                </a></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            <?php endif; ?>
+                            </div>
+                            <div class="pb-6">
+                                <label for="about" class="font-semibold text-gray-700 block pb-1">Nama Warung</label>
+                                <input name="namaWarung" id="email" class="border-1 text-gray-900 bg-slate-200 focus:bg-transparent rounded-r px-4 py-2 w-full" type="text" value="<?= $profile->nama_warung; ?>" />
+                            </div>
+                            <div class="pb-6">
+                                <label for="about" class="font-semibold text-gray-700 block pb-1">Alamat</label>
+                                <textarea class="border-1 text-gray-900 bg-slate-200 focus:bg-transparent rounded-r px-4 py-2 w-full" name="alamat" id="" cols="20" rows="2"><?= $profile->alamat; ?></textarea>
+                            </div>
+                            <div class="pb-6">
+                                <label for="about" class="font-semibold text-gray-700 block pb-1">No. HP</label>
+                                <input name="noHp" id="email" class="border-1 text-gray-900 bg-slate-200 focus:bg-transparent rounded-r px-4 py-2 w-full" type="text" value="<?= $profile->no_hp; ?>" />
+                            </div>
+                            <div class="pb-10">
+                                <label for="about" class="font-semibold text-gray-700 block pb-1">Email</label>
+                                <input name="email" id="email" class="border-1 text-gray-900 bg-slate-200 focus:bg-transparent rounded-r px-4 py-2 w-full" type="email" value="<?= $profile->email; ?>" />
+                            </div>
+                        <?php endif; ?>
+                        <div class="pb-4">
+                            <input type="submit" value="<?php if ($profile == null) :  echo "Tambah Profil";
+                                                        else : echo "Edit Profil";
+                                                        endif; ?>" class="-mt-2 cursor-pointer text-md font-bold text-white bg-gray-700 rounded-full px-5 py-2 hover:bg-gray-800">
                         </div>
-                    </div>
-                </div>
+                        </form>
             </div>
         </div>
+
     </div>
-</section>
+
+</div>
 
 <?= $this->endSection(); ?>

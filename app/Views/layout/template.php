@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.css">
   <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+  <script src="/js/notification_init.js"></script>
 
   <style>
     .gradient {

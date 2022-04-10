@@ -28,7 +28,7 @@ class Kurir extends BaseController
                 'kodeTransaksi' => $this->request->getVar('kode_transaksi'),
                 'foto_pengiriman' => $namaFoto2
             ]);
-            session()->setFlashData('message', 'Data berhasil diserahkan ke Admin untuk diverifikasi');
+            session()->setFlashData('verified', 'Data berhasil diserahkan ke Admin untuk diverifikasi');
 
             return redirect()->to('/')->withInput();
         }

@@ -2,7 +2,7 @@
 
 <?= $this->section('content'); ?>
 
-<div class="pt-24" x-data="{ flashdata: true }">
+<div class="pt-24" x-data="{ flashdata: true, flashdata2: true }">
   <?php if (session()->getFlashdata('daftarBelanjaAdd')) : ?>
     <!-- Main modal -->
     <div id="walletModal" x-show="flashdata" tabindex="-1" aria-hidden="true" class="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 md:h-full flex items-center justify-center h-full bg-black bg-opacity-40">
@@ -11,10 +11,10 @@
         <div class="relative bg-white rounded-lg shadow">
           <!-- Modal header -->
           <div class="flex justify-between items-center py-4 px-6 rounded-t">
-            <h3 class="text-base font-semibold text-gray-900 lg:text-xl dark:text-white">
+            <h3 class="text-base font-semibold text-gray-900 lg:text-xl">
               <?= session()->getFlashdata('daftarBelanjaAdd') ?> <i class="far fa-check-circle text-green-500"></i>
             </h3>
-            <button @click="flashdata = false" type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white">
+            <button @click="flashdata = false" type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center">
               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
               </svg>
@@ -24,18 +24,40 @@
           <div class="p-6">
             <ul class="my-4 space-y-3">
               <li>
-                <a href="/daftar_belanja" class="flex items-center justify-center text-center p-3 text-base font-bold text-gray-900 bg-gray-50 rounded-lg hover:bg-gray-400 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
+                <a href="/daftar_belanja" class="flex items-center justify-center text-center p-3 text-base font-bold text-gray-900 bg-gray-50 rounded-lg hover:bg-gray-400 group hover:shadow">
                   <i class="fas fa-shopping-cart"></i>
                   <span class="flex-1 ml-3 whitespace-nowrap">Ke Daftar Belanja</span>
                 </a>
               </li>
               <li>
-                <button @click="flashdata = false" type="button" class="flex items-center p-3 text-base font-bold text-gray-900 w-full bg-gray-50 rounded-lg hover:bg-gray-400 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
+                <button @click="flashdata = false" type="button" class="flex items-center p-3 text-base font-bold text-gray-900 w-full bg-gray-50 rounded-lg hover:bg-gray-400 group hover:shadow">
                   <i class="fas fa-sign-in-alt"></i>
                   <span class="flex-1 ml-3 whitespace-nowrap">Lanjut Belanja</span>
                 </button>
               </li>
             </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  <?php endif; ?>
+  <?php if (session()->getFlashdata('profileAdd')) : ?>
+    <!-- Main modal -->
+    <div id="walletModal" x-show="flashdata2" tabindex="-1" aria-hidden="true" class="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 md:h-full flex items-center justify-center h-full bg-black bg-opacity-40">
+      <div class="relative p-4 w-full max-w-md h-full md:h-auto">
+        <!-- Modal content -->
+        <div class="relative bg-white rounded-lg shadow pt-6">
+          <!-- Modal header -->
+          <div class="flex justify-center items-center py-2 px-6 rounded-t">
+            <h3 class="text-base font-semibold text-gray-900 lg:text-xl">
+              <?= session()->getFlashdata('profileAdd') ?> <i class="far fa-check-circle text-green-500"></i>
+            </h3>
+          </div>
+          <!-- Modal body -->
+          <div class="p-4 text-center">
+            <button @click="flashdata2 = false" class="text-white bg-green-600 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
+              OK
+            </button>
           </div>
         </div>
       </div>
@@ -187,11 +209,13 @@
         ">
     <div class="flex justify-between">
       <h1 class="mb-8 text-4xl font-bold leading-none tracking-tighter  text-neutral-600 md:text-7xl lg:text-5xl"> Produk terbaru! </h1>
-      <h3 class="text-red-700 my-auto"><a href="">Lihat semua -></a></h3>
+      <h3 class="text-red-700 my-auto"><a href="/pages/product_list">Lihat semua -></a></h3>
     </div>
     <div class="grid grid-cols-2 gap-3 mx-auto sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
       <?php foreach ($barang as $b) : ?>
-        <a <?php if (!logged_in()) { echo 'href="/login"'; } ?> href="/pages/detail_barang/<?= $b['slug'] ?>" >
+        <a <?php if (!logged_in()) {
+              echo 'href="/login"';
+            } ?> href="/pages/detail_barang/<?= $b['slug'] ?>">
           <div class="relative p-6 sm:pb-5 rounded-lg shadow-lg sm:w-full h-80">
             <img class="
                 object-cover object-center
@@ -228,7 +252,7 @@
             <form action="/daftarbelanja/add" method="post">
               <input type="hidden" name="slug" value="<?= $b['slug']; ?>">
               <button class="w-full block cursor-pointer p-3 mx-auto text-xs font-medium gradient rounded-sm" type="button">
-                Tambah ke Daftar Belanja
+                Lihat Selengkapnya >
               </button>
             </form>
           </div>
@@ -252,7 +276,7 @@
         ">
     <div class="flex justify-between">
       <h1 class="mb-8 text-4xl font-bold leading-none tracking-tighter  text-neutral-600 md:text-7xl lg:text-5xl"> Paling banyak dicari </h1>
-      <h3 class="text-red-700 my-auto"><a href="">Lihat semua -></a></h3>
+      <h3 class="text-red-700 my-auto"><a href="/pages/product_list">Lihat semua -></a></h3>
     </div>
     <div class="grid grid-cols-2 gap-3 mx-auto sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
       <?php $i = 0 ?>
@@ -284,7 +308,7 @@
               <form action="/daftarbelanja/add" method="post">
                 <input type="hidden" name="slug" value="<?= $b['slug']; ?>">
                 <button class="w-full p-3 mx-auto text-xs font-medium gradient rounded-sm" type="button">
-                  Tambah ke Daftar Belanja
+                  Lihat Selengkapnya >
                 </button>
               </form>
             </div>

@@ -10,6 +10,13 @@ class BarangModel extends Model
     protected $primaryKey = 'barang_id';
     protected $allowedFields = ['nama_barang', 'slug', 'harga_barang', 'satuan_barang', 'foto_barang', 'kategori_barang', 'stok'];
 
+    public function getAll()
+    {
+        $builder = $this->db->table($this->table);
+        $builder->select('*');
+        return $builder->countAllResults();
+    }
+
     public function getBarang($slug = false)
     {
         if ($slug == false) {

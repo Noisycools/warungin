@@ -10,7 +10,8 @@
 		"myth/auth": "^1.0",
 		"phpmailer/phpmailer": "^6.5",
 		"tecnickcom/tcpdf": "^6.4",
-		"fakerphp/faker": "^1.16"
+		"fakerphp/faker": "^1.16",
+		"pusher/pusher-php-server": "^7.0"
 	},
 	"require-dev": {
 		"mikey179/vfsstream": "^1.6",

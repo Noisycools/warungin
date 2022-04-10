@@ -32,7 +32,8 @@ class Profile extends BaseController
         ];
 
         $this->profileModel->addProfile($data);
-        return redirect()->to('/profile');
+        session()->setFlashdata('profileAdd', 'Profile berhasil dibuat!');
+        return redirect()->to('/');
     }
 
     public function update()

@@ -28,28 +28,28 @@ use Myth\Auth\Collectors\Auth; ?>
                     <a id="home" href="/" class="block py-2 pr-4 pl-3 text-white rounded md:bg-transparent md:p-0" aria-current="page">Home</a>
                 </li>
                 <li>
-                    <a id="contactUs" href="#contact_us" class="block py-2 pr-4 pl-3 border-b border-white md:hover:bg-transparent md:border-0 md:p-0 text-white md:hover:text-white hover:bg-white hover:text-black">Contact Us</a>
+                    <a id="contactUs" href="#contact_us" class="block py-2 pr-4 pl-3 border-b border-white md:hover:bg-transparent md:border-0 md:p-0 text-white md:hover:text-blue-700 hover:bg-white hover:text-black">Contact Us</a>
                 </li>
                 <?php if (logged_in()) : ?>
                     <?php if (in_groups('user')) : ?>
                         <li>
-                            <a id="profile" href="/profile" class="block py-2 pr-4 pl-3 border-b border-white md:hover:bg-transparent md:border-0 md:p-0 text-white md:hover:text-white hover:bg-white hover:text-black">Profile</a>
+                            <a id="profile" href="/profile" class="block py-2 pr-4 pl-3 border-b border-white md:hover:bg-transparent md:border-0 md:p-0 text-white md:hover:text-blue-700 hover:bg-white hover:text-black">Profile</a>
                         </li>
                         <li>
-                            <a id="daftarBelanja" href="/daftar_belanja" class="block py-2 pr-4 pl-3 border-b border-white md:hover:bg-transparent md:border-0 md:p-0 text-white md:hover:text-white hover:bg-white hover:text-black">Daftar Belanja</a>
+                            <a id="daftarBelanja" href="/daftar_belanja" class="block py-2 pr-4 pl-3 border-b border-white md:hover:bg-transparent md:border-0 md:p-0 text-white md:hover:text-blue-700 hover:bg-white hover:text-black">Daftar Belanja</a>
                         </li>
                         <li>
-                            <a id="historiTransaksi" href="/histori_transaksi" class="block py-2 pr-4 pl-3 border-b border-white md:hover:bg-transparent md:border-0 md:p-0 text-white md:hover:text-white hover:bg-white hover:text-black">Histori Transaksi</a>
+                            <a id="historiTransaksi" href="/histori_transaksi" class="block py-2 pr-4 pl-3 border-b border-white md:hover:bg-transparent md:border-0 md:p-0 text-white md:hover:text-blue-700 hover:bg-white hover:text-black">Histori Transaksi</a>
                         </li>
                     <?php endif; ?>
                     <?php if (in_groups('admin')) : ?>
                         <li>
-                            <a id="admin" href="/admin" class="block py-2 pr-4 pl-3 border-b border-white md:hover:bg-transparent md:border-0 md:p-0 text-white md:hover:text-white hover:bg-white hover:text-black">Admin</a>
+                            <a id="admin" href="/admin" class="block py-2 pr-4 pl-3 border-b border-white md:hover:bg-transparent md:border-0 md:p-0 text-white md:hover:text-blue-700 hover:bg-white hover:text-black">Admin</a>
                         </li>
                     <?php endif; ?>
                     <?php if (in_groups('kurir')) : ?>
                         <li>
-                            <a id="kurir" href="/kurir" class="block py-2 pr-4 pl-3 border-b border-white md:hover:bg-transparent md:border-0 md:p-0 text-white md:hover:text-white hover:bg-white hover:text-black">Kurir</a>
+                            <a id="kurir" href="/kurir" class="block py-2 pr-4 pl-3 border-b border-white md:hover:bg-transparent md:border-0 md:p-0 text-white md:hover:text-blue-700 hover:bg-white hover:text-black">Kurir</a>
                         </li>
                     <?php endif; ?>
                 <?php endif; ?>
@@ -67,28 +67,28 @@ use Myth\Auth\Collectors\Auth; ?>
                     <a id="home2" href="/" class="block py-2 pr-4 pl-3 text-white rounded md:bg-transparent md:text-blue-700 md:p-0" aria-current="page">Home</a>
                 </li>
                 <li>
-                    <a id="contactUs2" href="#contact_us" class="block py-2 pr-4 pl-3 border-b border-white md:hover:bg-transparent md:border-0 md:p-0 text-white md:hover:text-white hover:bg-white hover:text-black">Contact Us</a>
+                    <a id="contactUs2" href="#contact_us" class="block py-2 pr-4 pl-3 border-b border-white md:hover:bg-transparent md:border-0 md:p-0 text-white md:hover:text-blue-700 hover:bg-white hover:text-black">Contact Us</a>
                 </li>
                 <?php if (logged_in()) : ?>
                     <?php if (in_groups('user')) : ?>
                         <li>
-                            <a id="profile2" href="/profile" class="block py-2 pr-4 pl-3 border-b border-white md:hover:bg-transparent md:border-0 md:p-0 text-white md:hover:text-white hover:bg-white hover:text-black">Profile</a>
+                            <a id="profile2" href="/profile" class="block py-2 pr-4 pl-3 border-b border-white md:hover:bg-transparent md:border-0 md:p-0 text-white md:hover:text-blue-700 hover:bg-white hover:text-black">Profile</a>
                         </li>
                         <li>
-                            <a id="daftarBelanja2" href="/daftar_belanja" class="block py-2 pr-4 pl-3 border-b border-white md:hover:bg-transparent md:border-0 md:p-0 text-white md:hover:text-white hover:bg-white hover:text-black">Daftar Belanja</a>
+                            <a id="daftarBelanja2" href="/daftar_belanja" class="block py-2 pr-4 pl-3 border-b border-white md:hover:bg-transparent md:border-0 md:p-0 text-white md:hover:text-blue-700 hover:bg-white hover:text-black">Daftar Belanja</a>
                         </li>
                         <li>
-                            <a id="historiTransaksi2" href="/histori_transaksi" class="block py-2 pr-4 pl-3 border-b border-white md:hover:bg-transparent md:border-0 md:p-0 text-white md:hover:text-white hover:bg-white hover:text-black">Histori Transaksi</a>
+                            <a id="historiTransaksi2" href="/histori_transaksi" class="block py-2 pr-4 pl-3 border-b border-white md:hover:bg-transparent md:border-0 md:p-0 text-white md:hover:text-blue-700 hover:bg-white hover:text-black">Histori Transaksi</a>
                         </li>
                     <?php endif; ?>
                     <?php if (in_groups('admin')) : ?>
                         <li>
-                            <a id="admin2" href="/admin" class="block py-2 pr-4 pl-3 border-b border-white md:hover:bg-transparent md:border-0 md:p-0 text-white md:hover:text-white hover:bg-white hover:text-black">Admin</a>
+                            <a id="admin2" href="/admin" class="block py-2 pr-4 pl-3 border-b border-white md:hover:bg-transparent md:border-0 md:p-0 text-white md:hover:text-blue-700 hover:bg-white hover:text-black">Admin</a>
                         </li>
                     <?php endif; ?>
                     <?php if (in_groups('kurir')) : ?>
                         <li>
-                            <a id="kurir2" href="/kurir" class="block py-2 pr-4 pl-3 border-b border-white md:hover:bg-transparent md:border-0 md:p-0 text-white md:hover:text-white hover:bg-white hover:text-black">Kurir</a>
+                            <a id="kurir2" href="/kurir" class="block py-2 pr-4 pl-3 border-b border-white md:hover:bg-transparent md:border-0 md:p-0 text-white md:hover:text-blue-700 hover:bg-white hover:text-black">Kurir</a>
                         </li>
                     <?php endif; ?>
                 <?php endif; ?>

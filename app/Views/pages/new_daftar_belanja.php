@@ -7,10 +7,10 @@
         <div id="popup-modal" x-show="warning" tabindex="-1" class="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 w-full z-50 md:inset-0 md:h-full flex items-center justify-center h-full bg-black bg-opacity-40">
             <div class="relative p-4 w-full max-w-md h-full md:h-auto">
                 <!-- Modal content -->
-                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                <div class="relative bg-white rounded-lg shadow">
                     <!-- Modal header -->
                     <div class="flex justify-end p-2">
-                        <button @click="warning = false" type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-toggle="popup-modal">
+                        <button @click="warning = false" type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center" data-modal-toggle="popup-modal">
                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                             </svg>
@@ -18,11 +18,11 @@
                     </div>
                     <!-- Modal body -->
                     <div class="p-6 pt-0 text-center">
-                        <svg class="mx-auto mb-4 w-14 h-14 text-gray-400 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <svg class="mx-auto mb-4 w-14 h-14 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                         </svg>
-                        <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Kamu harus memesan minimal 1 barang!</h3>
-                        <button @click="warning = false" type="button" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
+                        <h3 class="mb-5 text-lg font-normal text-gray-500">Kamu harus memesan minimal 1 barang!</h3>
+                        <button @click="warning = false" type="button" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
                             OK
                         </button>
                     </div>
@@ -32,10 +32,10 @@
         <div id="defaultModal" x-show="open" tabindex="-1" aria-hidden="true" class="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 flex items-center justify-center h-full bg-slate-400 backdrop-blur-sm bg-opacity-75">
             <div class="relative p-4 w-full max-w-2xl h-full md:h-auto">
                 <!-- Modal content -->
-                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                <div class="relative bg-white rounded-lg shadow">
                     <!-- Modal header -->
-                    <div class="flex justify-between items-start p-5 rounded-t border-b dark:border-gray-600">
-                        <h3 class="text-xl font-semibold text-gray-900 lg:text-2xl dark:text-white">
+                    <div class="flex justify-between items-start p-5 rounded-t border-b">
+                        <h3 class="text-xl font-semibold text-gray-900 lg:text-2xl">
                             Checkout
                         </h3>
                     </div>
@@ -45,7 +45,7 @@
                         <?php $urutanKe = 0; ?>
                         <?php $qtyKe = 0; ?>
                         <?php $hargaBarangKe = 0; ?>
-                        <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                        <p class="text-base leading-relaxed text-gray-500">
                             Barang yang dibeli : <br>
                             <?php foreach ($barang->getResult() as $b) : ?>
                                 <label>- <?= $b->nama_barang; ?> <span id="harga_total1"></span> (<span id="_qty"></span>)</label> <br>
@@ -56,14 +56,14 @@
                             <?php endforeach; ?>
                             <input type="hidden" name="jumlahBarang" value="<?= $urutanKe ?>">
                         </p>
-                        <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                        <p class="text-base leading-relaxed text-gray-500">
                             Total :
                             <?php foreach ($total->getResult() as $rows) : ?>
                                 <label id="total_harga"><?php echo "Rp. " . number_format($rows->total_harga, 2, ',', '.'); ?></label>
                                 <input id="totalHargaHidden" type="hidden" name="totalHarga" value="<?= $rows->total_harga; ?>">
                             <?php endforeach;  ?>
                         </p>
-                        <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                        <p class="text-base leading-relaxed text-gray-500">
                             <b class="inline-block w-1/2 relative pr-3 after:content-[':'] after:absolute after:right-3">Nama Penerima</b> <span id="_namaPenerima"></span><br>
                             <b class="inline-block w-1/2 relative pr-3 after:content-[':'] after:absolute after:right-3">Nama Warung</b> <span id="_namaWarung"></span><br>
                             <b class="inline-block w-1/2 relative pr-3 after:content-[':'] after:absolute after:right-3">Alamat</b> <span id="_alamat"></span><br>
@@ -72,11 +72,11 @@
                         </p>
                     </div>
                     <!-- Modal footer -->
-                    <div class="flex items-center p-6 space-x-2 rounded-b border-t border-gray-200 dark:border-gray-600">
+                    <div class="flex items-center p-6 space-x-2 rounded-b border-t border-gray-200">
                         <?php $kodeTransaksi = 'wr-' . random_int(1, 1000000); ?>
                         <input type="hidden" name="kodeTransaksi" value="<?= trim($kodeTransaksi); ?>">
-                        <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Pesan</button>
-                        <button @click="open = false" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Batal</button>
+                        <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Pesan</button>
+                        <button @click="open = false" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10">Batal</button>
                     </div>
                 </div>
             </div>

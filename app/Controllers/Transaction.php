@@ -280,7 +280,7 @@ class Transaction extends BaseController
             'status' => 'Diterima'
         ]);
         session()->setFlashData('pesan', 'Pesanan berhasil diterima');
-        return redirect()->to('Warungin/tes_tailwind');
+        return redirect()->to('/');
     }
 
     public function pesanan_diterima()

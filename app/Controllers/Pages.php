@@ -66,7 +66,7 @@ class Pages extends BaseController
             'transaksi' => $this->checkoutModel->getDataByUsername($username)
         ];
 
-        return view('Warungin/tes_tailwind4', $data);
+        return view('pages/histori_transaksi', $data);
     }
 
     public function detail_transaksi($kodeTransaksi)
@@ -93,8 +93,19 @@ class Pages extends BaseController
                 ]
             ]
         ])) {
-            return view('Warungin/tes_tailwind3', $data);
+            return view('pages/detail_transaksi', $data);
         }
+    }
+
+    public function detail_histori_transaksi($kodeTransaksi)
+    {
+        $data = [
+            'title'     => 'Detail Transaksi | WarungIn',
+            'alt_title' => 'detailHistoriTransaksi',
+            'transaksi' => $this->checkoutModel->getData($kodeTransaksi)->getRowArray()
+        ];
+
+        return view('pages/detail_histori_transaksi', $data);
     }
 
     public function struk($kodeTransaksi)
@@ -137,7 +148,28 @@ class Pages extends BaseController
             'barang' => $this->barangModel->getBarang($slug),
             'profile' => $this->profileModel->getProfile($username)->getRow()
         ];
-        return view('Warungin/tes_tailwind2', $data);
+        return view('pages/detail_barang', $data);
+    }
+
+    public function product_list()
+    {
+        $keyword = $this->request->getVar('keyword');
+        if($keyword) {
+            $barang = $this->barangModel->search($keyword);
+        } else {
+            $barang = $this->barangModel;
+        }
+
+        $data = [
+            'title' => 'Product | WarungIn',
+            'alt_title' => 'product-list',
+            // 'barang' => $this->barangModel->findAll(),
+            'barang' => $barang->paginate(8, 'tabel_barang'),
+            'pager' => $this->barangModel->pager,
+            'countAll' => $this->barangModel->getAll()
+        ];
+
+        return view('pages/product_list', $data);
     }
 
     public function product()
@@ -165,7 +197,7 @@ class Pages extends BaseController
             'usersID' => $usersID
         ];
 
-        return view('Warungin/tes_tailwind5', $data);
+        return view('pages/profile', $data);
     }
 
     public function kurir()

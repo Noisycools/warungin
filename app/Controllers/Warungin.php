@@ -57,7 +57,7 @@ class Warungin extends BaseController
                     'proses' => $this->checkoutModel->getDataByStatus('Diproses')
                 ];
                 // return view('pages/kurir', $data);
-                return view('Warungin/tes_tailwind', $data);
+                return view('pages/kurir', $data);
             endif;
             if (in_groups('admin')) :
                 $data = ['title' => "Admin | Dashboard"];

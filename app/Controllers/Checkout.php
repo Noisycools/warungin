@@ -55,7 +55,6 @@ class Checkout extends BaseController
             'expired_date' => $expiredDate->toDateString(),
             'waktu_created_at' => $waktuCreatedAt->hour . ':' . $waktuCreatedAt->minute,
             'status' => 'Pending',
-            'foto_struk' => 'none'
         ];
         $this->checkoutModel->add($data);
 

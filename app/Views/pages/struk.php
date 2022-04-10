@@ -96,6 +96,13 @@
                     </div>
                 </div>
             <?php endif; ?>
+            <?php if (in_groups('user')) : ?>
+                <div class="row no-print">
+                    <div class="col-xs-12">
+                        <a class="btn btn-primary pull-right" href="<?= '/pages/detail_histori_transaksi/' . $transaksi['kode_transaksi']; ?>">Kembali</a>
+                    </div>
+                </div>
+            <?php endif; ?>
         <?php endif; ?>
     </section>
 </section>

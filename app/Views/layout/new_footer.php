@@ -1,4 +1,4 @@
-<footer class="p-4 rounded-lg shadow md:px-6 md:py-8 bg-red-700">
+<footer class="p-4 rounded-lg shadow md:px-6 md:py-8 bg-red-700 h-screen max-h-64">
     <div class="sm:flex sm:items-center sm:justify-between">
         <a href="/" class="flex items-center w-24 h-12 mb-4 sm:mb-0">
             <img src="/img/WarungIn.png" class="mr-3" alt="Flowbite Logo" />
