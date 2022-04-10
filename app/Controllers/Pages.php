@@ -160,13 +160,16 @@ class Pages extends BaseController
             $barang = $this->barangModel;
         }
 
+        $username = user()->username;
+
         $data = [
             'title' => 'Product | WarungIn',
             'alt_title' => 'product-list',
             // 'barang' => $this->barangModel->findAll(),
             'barang' => $barang->paginate(8, 'tabel_barang'),
             'pager' => $this->barangModel->pager,
-            'countAll' => $this->barangModel->getAll()
+            'countAll' => $this->barangModel->getAll(),
+            'profile' => $this->profileModel->getProfile($username)->getRow()
         ];
 
         return view('pages/product_list', $data);
