@@ -21,13 +21,10 @@
             <!-- title row -->
             <div class="row">
                 <div class="col-12">
-                    <h2 class="page-header">
+                    <h3 class="page-header">
                         <img src="/img/WarungIn2.png" alt="warunginLogo" class="attachment-img" width="7%">
-                        Laporan Harian
-                        <small>
-                            <h4 class="float-right" style="margin-top: 50px;">Tanggal : <?= $date; ?></h4>
-                        </small>
-                    </h2>
+                        Laporan Harian Tanggal <?= $tanggal; ?>
+                    </h3>
                 </div>
                 <!-- /.col -->
             </div>
@@ -40,6 +37,7 @@
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Kode Transaksi</th>
+                                <th scope="col">Tanggal Pembayaran</th>
                                 <th scope="col">Pelanggan</th>
                                 <th scope="col">Warung</th>
                                 <th scope="col">Nama Barang</th>
@@ -54,6 +52,7 @@
                                 <tr>
                                     <th scope="row"><?= $i++; ?></th>
                                     <td><?= $t['kode_transaksi']; ?></td>
+                                    <td><?= $t['tgl_pembayaran']; ?></td>
                                     <td><?= $t['nama_penerima']; ?></td>
                                     <td><?= $t['nama_warung']; ?></td>
                                     <td><?= $t['nama_barang']; ?></td>
@@ -65,14 +64,18 @@
                         </tbody>
                         <tr>
                             <td></td>
-                            <th colspan="6">Sub Total</th>
+                            <th colspan="5">Sub Total</th>
+                            <?php foreach ($qty->getResult('array') as $q) : ?>
+                            <td><?= $q['total_qty']; ?></td>
+                            <?php endforeach; ?>
+                            <td>-</td>
                             <?php foreach ($jumlah->getResult('array') as $j) : ?>
                                 <td>Rp. <?= number_format((float)$j['total'], 0); ?></td>
                             <?php endforeach; ?>
                         </tr>
                     </table><br><br><br>
                     <h6 class="float-right" style="margin-right: 45px;">Bandung, <?= $date; ?></h6><br><br>
-                    <h6 class="float-right" style="margin: 50px 80px;">Warungin</h6>
+                    <h6 class="float-right" style="margin: 50px 133px;">Warungin</h6>
                 </div>
             </div>
             <!-- /.row -->

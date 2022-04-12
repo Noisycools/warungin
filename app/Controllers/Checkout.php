@@ -32,7 +32,7 @@ class Checkout extends BaseController
         $jumlahBarang = $this->request->getPost('jumlahBarang');
 
         $myTime = Time::now('Asia/Jakarta');
-        $time1 = $myTime->toLocalizedString('d MMM yyyy');
+        $time1 = $myTime->toLocalizedString('d MMMM yyyy');
 
         $waktuCreatedAt = Time::now('Asia/Jakarta');
         $today = Time::now('Asia/Jakarta');

@@ -59,7 +59,7 @@
                         <p class="text-base leading-relaxed text-gray-500">
                             Total :
                             <?php foreach ($total->getResult() as $rows) : ?>
-                                <label id="total_harga"><?php echo "Rp. " . number_format($rows->total_harga, 2, ',', '.'); ?></label>
+                                <label id="total_harga"><?php echo "Rp. " . number_format((float)$rows->total_harga, 2, ',', '.'); ?></label>
                                 <input id="totalHargaHidden" type="hidden" name="totalHarga" value="<?= $rows->total_harga; ?>">
                             <?php endforeach;  ?>
                         </p>
@@ -111,7 +111,7 @@
                                 <div class="flex items-center"> <i class="fa fa-arrow-left text-sm pr-2 text-blue-500"></i> <span class="text-md font-medium text-blue-500"><a href="/">Lanjut Belanja</a></span> </div>
                                 <div class="flex justify-center items-end"> <span class="text-sm font-medium text-gray-400 mr-1">Subtotal:</span> <span class="text-lg font-bold text-gray-800 ">
                                         <?php foreach ($total->getResult() as $rows) : ?>
-                                            <span id="subtotal"><?php echo "Rp. " . number_format($rows->total_harga, 2, ',', '.'); ?></span>
+                                            <span id="subtotal"><?php echo "Rp. " . number_format((float)$rows->total_harga, 2, ',', '.'); ?></span>
                                         <?php endforeach;  ?>
                                     </span> </div>
                             </div>
@@ -193,7 +193,7 @@
                 totalHarga.textContent = "Rp. " + sum.toLocaleString('id-ID');
                 totalHargaHidden.value = parseInt(sum);
             } else {
-                totalHarga.textContent = "<?php echo "Rp. " . number_format($rows->total_harga, 2, ', ', ' . '); ?>";
+                totalHarga.textContent = "<?php echo "Rp. " . number_format((float)$rows->total_harga, 2, ', ', ' . '); ?>";
             }
             if (input.value) {
                 qty.textContent = input.value;

@@ -36,7 +36,7 @@
                 <br>
                 <b>Kode : <?= $transaksi->kode_transaksi ?>
                     <br>
-                    <b>Tanggal Pembayaran : <?= $transaksi->tgl_pembayaran ?>
+                    <b>Tanggal Pembayaran : <br><?= $transaksi->tgl_pembayaran ?>
                         <br>
             </div><!-- /.col -->
         </div><!-- /.row -->

@@ -178,14 +178,14 @@
 
                             <!-- THIS IS THE PENDING TRANSACTION -->
 
-                            <div id="item3-container" class="w-full h-96">
+                            <div id="item3-container" class="w-full max-h-96">
                                 <div class="container flex flex-col w-full items-center justify-center bg-red-500 rounded-lg shadow-lg">
                                     <div class="px-4 py-5 sm:px-6 border-b w-full">
                                         <h3 class="text-lg leading-6 font-medium text-white">
                                             Daftar Pesanan
                                         </h3>
                                     </div>
-                                    <ul class="flex flex-col divide divide-y">
+                                    <ul class="flex flex-col divide divide-y w-full p-5">
 
                                         <?php foreach ($pending->getResult('array') as $t) : ?>
                                             <?php $item3++ ?>

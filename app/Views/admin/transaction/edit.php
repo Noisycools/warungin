@@ -11,56 +11,66 @@
                     <div class="col">
                         <div class="col-8">
                             <h2 class="my-3">Form Ubah Data</h2>
-                            <form action="/transaction/update/<?= $transaksi['kode_transaksi']; ?>" method="POST" enctype="multipart/form-data">
+                            <form action="/transaction/update/<?= $transaksi['kode_transaksi']; ?>" method="POST"
+                                enctype="multipart/form-data">
                                 <?= csrf_field(); ?>
                                 <input type="hidden" name="kode_transaksi" value="<?= $transaksi['kode_transaksi']; ?>">
                                 <div class="form-group row">
-                                    <label for="nama_penerima" class="col-sm-2 col-form-label">Nama Penerima</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control <?= ($validation->hasError('nama_penerima')) ? 'is-invalid' : ''; ?>" id="nama_penerima" name="nama_penerima" autofocus value="<?= (old('nama_penerima')) ? old('nama_penerima') : $transaksi['nama_penerima'] ?>">
+                                    <label for="kode_transaksi" class="col-sm-4 col-form-label">Kode Transaksi</label>
+                                    <div class="col-sm-5">
+                                        <input type="text"
+                                            class="form-control <?= ($validation->hasError('kode_transaksi')) ? 'is-invalid' : ''; ?>"
+                                            id="kode_transaksi" name="kode_transaksi" autofocus
+                                            value="<?= (old('kode_transaksi')) ? old('kode_transaksi') : $transaksi['kode_transaksi']; ?>">
                                         <div class="invalid-feedback">
-                                            <?= $validation->getError('nama_penerima'); ?>
+                                            <?= $validation->getError('kode_transaksi'); ?>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="nama_warung" class="col-sm-2 col-form-label">Nama Warung</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="nama_warung" name="nama_warung" value="<?= (old('nama_warung')) ? old('nama_warung') : $transaksi['nama_warung'] ?>">
+                                    <label for="username" class="col-sm-4 col-form-label">Username</label>
+                                    <div class="col-sm-5">
+                                        <input type="text" class="form-control" id="username" name="username"
+                                            value="<?= (old('username')) ? old('username') : $transaksi['username']; ?>">
+                                        <div class="invalid-feedback">
+                                            <?= $validation->getError('username'); ?>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="nama_warung" class="col-sm-4 col-form-label">Nama Warung</label>
+                                    <div class="col-sm-5">
+                                        <input type="text" class="form-control" id="nama_warung" name="nama_warung"
+                                            value="<?= (old('nama_warung')) ? old('nama_warung') : $transaksi['nama_warung']; ?>">
                                         <div class="invalid-feedback">
                                             <?= $validation->getError('nama_warung'); ?>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="alamat" class="col-sm-2 col-form-label">Alamat</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="alamat" name="alamat" value="<?= (old('alamat')) ? old('alamat') : $transaksi['alamat'] ?>">
+                                    <label for="tgl_pembayaran" class="col-sm-4 col-form-label">Tanggal
+                                        Pembayaran</label>
+                                    <div class="col-sm-5">
+                                        <input type="text" class="form-control" id="tgl_pembayaran"
+                                            name="tgl_pembayaran"
+                                            value="<?= (old('tgl_pembayaran')) ? old('tgl_pembayaran') : $transaksi['tgl_pembayaran'] ?>">
                                         <div class="invalid-feedback">
-                                            <?= $validation->getError('alamat'); ?>
+                                            <?= $validation->getError('tgl_pembayaran'); ?>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="no_hp" class="col-sm-2 col-form-label">No HP</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="no_hp" name="no_hp" value="<?= (old('no_hp')) ? old('no_hp') : $transaksi['no_hp'] ?>">
+                                    <label for="total_harga" class="col-sm-4 col-form-label">Total Harga</label>
+                                    <div class="col-sm-5">
+                                        <input type="text" class="form-control" id="total_harga" name="total_harga"
+                                            value="<?= (old('total_harga')) ? old('total_harga') : $transaksi['total_harga'] ?>">
                                         <div class="invalid-feedback">
-                                            <?= $validation->getError('no_hp'); ?>
+                                            <?= $validation->getError('total_harga'); ?>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="email" class="col-sm-2 col-form-label">Email</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="email" name="email" value="<?= (old('email')) ? old('email') : $transaksi['email'] ?>">
-                                        <div class="invalid-feedback">
-                                            <?= $validation->getError('email'); ?>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-10">
+                                    <div class="col-sm-5">
                                         <button type="submit" class="btn btn-primary">Ubah Data</button>
                                     </div>
                                 </div>
@@ -75,22 +85,5 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
-
-<script>
-    function previewImg() {
-        const gambar = document.querySelector('#foto_barang');
-        const gambarLabel = document.querySelector('.custom-file-label');
-        const imgPreview = document.querySelector('.img-preview');
-
-        gambarLabel.textContent = gambar.files[0].name;
-
-        const fileGambar = new FileReader();
-        fileGambar.readAsDataURL(gambar.files[0]);
-
-        fileGambar.onload = function(e) {
-            imgPreview.src = e.target.result;
-        }
-    }
-</script>
 
 <?= $this->endSection(); ?>

@@ -33,47 +33,38 @@ class TransactionModel extends Model
 
     public function pesanan_masuk()
     {
-        return $this->db->query("SELECT DISTINCT transaksi.kode_transaksi, transaksi.username, transaksi.nama_warung, transaksi.tgl_pembayaran, barang_transaksi.total_harga, transaksi.status
-        FROM transaksi INNER JOIN barang_transaksi 
-        ON transaksi.kode_transaksi = barang_transaksi.kode_transaksi
-        WHERE transaksi.status='Pending'
-        ORDER BY transaksi.created_at DESC");
+        return $this->db->query("SELECT * FROM transaksi WHERE status='Pending'
+        ORDER BY waktu_created_at ASC");
     }
 
     public function pesanan_proses()
     {
-        return $this->db->query("SELECT DISTINCT transaksi.kode_transaksi, transaksi.username, transaksi.nama_warung, transaksi.tgl_pembayaran, barang_transaksi.total_harga, transaksi.status
-        FROM transaksi INNER JOIN barang_transaksi 
-        ON transaksi.kode_transaksi = barang_transaksi.kode_transaksi
-        WHERE transaksi.status='Proses'
-        ORDER BY transaksi.created_at DESC");
+        return $this->db->query("SELECT * FROM transaksi WHERE status='Diproses'
+        ORDER BY waktu_created_at ASC");
     }
 
     public function pesanan_selesai()
     {
-        return $this->db->query("SELECT DISTINCT transaksi.kode_transaksi, transaksi.username, transaksi.nama_warung, transaksi.tgl_pembayaran, barang_transaksi.total_harga, transaksi.status
-        FROM transaksi INNER JOIN barang_transaksi 
-        ON transaksi.kode_transaksi = barang_transaksi.kode_transaksi
-        WHERE transaksi.status='Selesai'
-        ORDER BY transaksi.created_at DESC");
+        return $this->db->query("SELECT * FROM transaksi WHERE status='Selesai'
+        ORDER BY waktu_created_at ASC");
     }
 
     public function pesanan_dikirim()
     {
-        return $this->db->query("SELECT DISTINCT transaksi.kode_transaksi, transaksi.username, transaksi.nama_warung, transaksi.tgl_pembayaran, barang_transaksi.total_harga, transaksi.status
-        FROM transaksi INNER JOIN barang_transaksi 
-        ON transaksi.kode_transaksi = barang_transaksi.kode_transaksi
-        WHERE transaksi.status='Dikirim'
-        ORDER BY transaksi.created_at DESC");
+        return $this->db->query("SELECT * FROM transaksi WHERE status='Dikirim'
+        ORDER BY waktu_created_at ASC");
     }
 
     public function pesanan_diterima()
     {
-        return $this->db->query("SELECT DISTINCT transaksi.kode_transaksi, transaksi.username, transaksi.nama_warung, transaksi.tgl_pembayaran, barang_transaksi.total_harga, transaksi.status
-        FROM transaksi INNER JOIN barang_transaksi 
-        ON transaksi.kode_transaksi = barang_transaksi.kode_transaksi
-        WHERE transaksi.status='Diterima'
-        ORDER BY transaksi.created_at DESC");
+        return $this->db->query("SELECT * FROM transaksi WHERE status='Diterima'
+        ORDER BY waktu_created_at DESC");
+    }
+
+    public function info_pesanan()
+    {
+        return $this->db->query("SELECT * FROM transaksi JOIN barang_transaksi 
+        ON transaksi.kode_transaksi=barang_transaksi.kode_transaksi");
     }
 
     public function search($keyword)
@@ -81,11 +72,8 @@ class TransactionModel extends Model
         return $this->table('transaksi')
             ->Like('kode_transaksi', $keyword)
             ->orLike('username', $keyword)
-            ->orLike('nama_penerima', $keyword)
             ->orLike('nama_warung', $keyword)
-            ->orLike('alamat', $keyword)
-            ->orLike('no_hp', $keyword)
-            ->orLike('email', $keyword)
+            ->orLike('tgl_pembayaran', $keyword)
             ->orLike('status', $keyword);
     }
 }

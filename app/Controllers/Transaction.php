@@ -158,7 +158,7 @@ class Transaction extends BaseController
     public function edit($kode_transaksi)
     {
         $data = [
-            'title' => "Admin | Edit Transaksi",
+            'title' => "Admin | Edit Pesanan Masuk",
             'validation' => \Config\Services::validation(),
             'transaksi' => $this->transaksiModel->getTransaksi($kode_transaksi)
         ];
@@ -218,9 +218,16 @@ class Transaction extends BaseController
 
     public function pesanan_masuk()
     {
+        $keyword = $this->request->getVar('keyword');
+        if ($keyword) {
+            $transaksi = $this->transaksiModel->search($keyword);
+        } else {
+            $transaksi = $this->transaksiModel;
+        }
+
         $data = [
             'title' => "Admin | Pesanan Masuk",
-            'transaksi' => $this->transaksiModel->pesanan_masuk()
+            'transaksi' => $transaksi->pesanan_masuk()
         ];
         return view('admin/transaction/pesanan_masuk/index', $data);
     }
@@ -229,7 +236,7 @@ class Transaction extends BaseController
     {
         $this->transaksiModel->save([
             'kode_transaksi' => $kode_transaksi,
-            'status' => 'Proses'
+            'status' => 'Diproses'
         ]);
         session()->setFlashData('pesan', 'Pesanan berhasil diproses');
         return redirect()->to('admin/transaction/pesanan_masuk');
@@ -237,9 +244,16 @@ class Transaction extends BaseController
 
     public function pesanan_proses()
     {
+        $keyword = $this->request->getVar('keyword');
+        if ($keyword) {
+            $transaksi = $this->transaksiModel->search($keyword);
+        } else {
+            $transaksi = $this->transaksiModel;
+        }
+
         $data = [
             'title' => "Admin | Pesanan Proses",
-            'transaksi' => $this->transaksiModel->pesanan_proses()
+            'transaksi' => $transaksi->pesanan_proses()
         ];
         return view('admin/transaction/pesanan_proses/index', $data);
     }
@@ -256,9 +270,16 @@ class Transaction extends BaseController
 
     public function pesanan_dikirim()
     {
+        $keyword = $this->request->getVar('keyword');
+        if ($keyword) {
+            $transaksi = $this->transaksiModel->search($keyword);
+        } else {
+            $transaksi = $this->transaksiModel;
+        }
+
         $data = [
             'title' => "Admin | Pesanan Dikirim",
-            'transaksi' => $this->transaksiModel->pesanan_dikirim()
+            'transaksi' => $transaksi->pesanan_dikirim()
         ];
         return view('admin/transaction/pesanan_dikirim/index', $data);
     }
@@ -294,7 +315,7 @@ class Transaction extends BaseController
 
         $data = [
             'title' => "Admin | Pesanan Diterima",
-            'transaksi' => $this->transaksiModel->pesanan_diterima()
+            'transaksi' => $transaksi->pesanan_diterima()
         ];
         return view('admin/transaction/pesanan_diterima/index', $data);
     }
@@ -314,20 +335,16 @@ class Transaction extends BaseController
 
     public function pesanan_selesai()
     {
-        $keyword = $this->request->getVar('search');
-        if (isset($keyword)) {
-            $search = $this->request->getVar('keyword');
-            session()->set('keyword', $search);
-            redirect()->to('admin/transaction/pesanan_selesai/index');
+        $keyword = $this->request->getVar('keyword');
+        if ($keyword) {
+            $transaksi = $this->transaksiModel->search($keyword);
         } else {
-            $search = session()->get('search');
+            $transaksi = $this->transaksiModel;
         }
 
-        $transaksi = $search ? $this->transaksiModel->search($keyword) : $this->transaksiModel;
         $data = [
             'title' => "Admin | Pesanan Selesai",
-            'transaksi' => $transaksi->pesanan_selesai(),
-            'search' => $search
+            'transaksi' => $transaksi->pesanan_selesai()
         ];
         return view('admin/transaction/pesanan_selesai/index', $data);
     }

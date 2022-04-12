@@ -47,7 +47,7 @@ class CheckoutModel extends Model
     public function getDataByStatus($status = null)
     {
         $myTime = Time::now('Asia/Jakarta');
-        $time = $myTime->toLocalizedString('d MMM yyyy');
+        $time = $myTime->toLocalizedString('d MMMM yyyy');
         if ($status == null) {
             return $this->findAll();
         } else {

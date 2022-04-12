@@ -82,7 +82,7 @@
           </div>
         </div>
         <!-- ./col -->
-        <div class="col-lg-4 col-6">
+        <div class="col-lg-5 col-6">
           <div class="card card-primary">
             <div class="card-header">
               <h3 class="card-title">Laporan</h3>
@@ -93,67 +93,84 @@
                 <div class="form-group">
                   <label>Laporan Tanggal:</label>
                   <div class="row">
-                    <div class="input-group date" id="reservationdate" data-target-input="nearest" style="width: 80%;">
-                      <input type="text" class="form-control datetimepicker-input" data-target="#reservationdate" name="tanggal" />
+                    <div class="input-group date" id="reservationdate" data-target-input="nearest" style="width: 82%;">
+                      <input type="text" class="form-control datetimepicker-input" data-target="#reservationdate"
+                        name="tanggal" />
                       <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
                         <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                       </div>
                     </div>
-                    &ensp;<button type="submit" class="btn btn-block btn-primary" style="width: 15%;"><i class="fa fa-download"></i></button>
+                    &ensp;<button type="submit" class="btn btn-block btn-primary" style="width: 10%;"><i
+                        class="fa fa-download"></i></button>
                   </div>
                 </div>
               </form>
               <!-- Date range -->
-              <div class="form-group">
-                <label>Laporan mingguan:</label>
-                <div class="row">
-                  <div class="input-group" style="width: 80%;">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">
-                        <i class="far fa-calendar-alt"></i>
-                      </span>
+              <form action="admin/lap_mingguan" method="POST">
+                <div class="form-group">
+                  <label>Laporan mingguan:</label>
+                  <div class="row">
+                    <div class="input-group date" id="reservationdate1" data-target-input="nearest" style="width: 40%;">
+                      <input type="text" class="form-control datetimepicker-input" data-target="#reservationdate1"
+                        name="tanggal1" />
+                      <div class="input-group-append" data-target="#reservationdate1" data-toggle="datetimepicker">
+                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                      </div>
+                    </div>&ensp;
+                    <div class="input-group date" id="reservationdate2" data-target-input="nearest" style="width: 40%;">
+                      <input type="text" class="form-control datetimepicker-input" data-target="#reservationdate2"
+                        name="tanggal2" />
+                      <div class="input-group-append" data-target="#reservationdate2" data-toggle="datetimepicker">
+                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                      </div>
                     </div>
-                    <input type="text" class="form-control float-right" id="reservation">
+                    &ensp;<button type="submit" class="btn btn-block btn-primary" style="width: 10%;"><i
+                        class="fa fa-download"></i></button>
                   </div>
-                  &ensp;<button type="button" class="btn btn-block btn-primary" style="width: 15%;"><i class="fa fa-download"></i></button>
+                  <!-- /.input group -->
                 </div>
-                <!-- /.input group -->
-              </div>
+              </form>
               <!-- /.form group -->
-              <div class="form-group">
-                <label>Laporan Bulanan</label>
-                <div class="row">
-                  <select class="form-control select2" style="width: 80%;">
-                    <option selected="selected">Januari</option>
-                    <option>Februari</option>
-                    <option>Maret</option>
-                    <option>April</option>
-                    <option>Mei</option>
-                    <option>Juni</option>
-                    <option>Juli</option>
-                    <option>Agustus</option>
-                    <option>September</option>
-                    <option>Oktober</option>
-                    <option>November</option>
-                    <option>Desember</option>
-                  </select>
-                  &ensp;<button type="button" class="btn btn-block btn-primary" style="width: 15%;"><i class="fa fa-download"></i></button>
+              <form action="admin/lap_bulanan" method="POST">
+                <div class="form-group">
+                  <label>Laporan Bulanan</label>
+                  <div class="row">
+                    <select class="form-control select2" style="width: 82%;" name="bulan">
+                      <option>Januari</option>
+                      <option>Februari</option>
+                      <option>Maret</option>
+                      <option selected="selected">April</option>
+                      <option>Mei</option>
+                      <option>Juni</option>
+                      <option>Juli</option>
+                      <option>Agustus</option>
+                      <option>September</option>
+                      <option>Oktober</option>
+                      <option>November</option>
+                      <option>Desember</option>
+                    </select>
+                    &ensp;<button type="submit" class="btn btn-block btn-primary" style="width: 10%;"><i
+                        class="fa fa-download"></i></button>
+                  </div>
                 </div>
-              </div>
-              <div class="form-group">
-                <label>Laporan Tahunan</label>
-                <div class="row">
-                  <select class="form-control select2" style="width: 80%;">
-                    <?php
+              </form>
+              <form action="admin/lap_tahunan" method="POST">
+                <div class="form-group">
+                  <label>Laporan Tahunan</label>
+                  <div class="row">
+                    <select class="form-control select2" style="width: 82%;" name="tahun">
+                      <?php
                     $i = date("Y") - 2;
                     for ($j = $i; $j < $i + 5; $j++) {
                       echo '<option value="' . $j . '">' . $j . '</option>';
                     }
                     ?>
-                  </select>
-                  &ensp;<button type="button" class="btn btn-block btn-primary" style="width: 15%;"><i class="fa fa-download"></i></button>
+                    </select>
+                    &ensp;<button type="submit" class="btn btn-block btn-primary" style="width: 10%;"><i
+                        class="fa fa-download"></i></button>
+                  </div>
                 </div>
-              </div>
+              </form>
             </div>
           </div>
           <!-- /.card-body -->
