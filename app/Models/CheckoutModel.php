@@ -38,6 +38,31 @@ class CheckoutModel extends Model
         return $builder->get();
     }
 
+    public function changeStatus($username = null)
+    {
+        $today = Time::now('Asia/Jakarta');
+        $hariIni = Time::parse($today, 'Asia/Jakarta');
+        if ($username == null) {
+            return $this->findAll();
+        }
+        $builder = $this->db->table('transaksi');
+        $builder->select('*');
+        $builder->where(['username' => $username, 'expired_date >' => $hariIni->toDateString()]);
+        return $builder->get();
+    }
+
+    public function getDataByUsername2($value, $username = null)
+    {
+        $today = Time::now('Asia/Jakarta');
+        $hariIni = Time::parse($today, 'Asia/Jakarta');
+        if ($username == null) {
+            return $this->findAll();
+        }
+        $results = $this->where(['username' => $username, 'expired_date >' => $hariIni->toDateString()])->paginate($value);
+
+        return $results;
+    }
+
     public function getDataByDate()
     {
         $tgl = date("d M Y");
@@ -57,6 +82,11 @@ class CheckoutModel extends Model
             $builder->orderBy('waktu_created_at', 'asc');
             return $builder->get();
         }
+    }
+
+    public function search($keyword)
+    {
+        return $this->table($this->table)->like('kode_transaksi', $keyword);
     }
 
     public function add($data)

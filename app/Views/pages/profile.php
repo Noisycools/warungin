@@ -9,7 +9,7 @@
 
     <div class="block md:flex md:justify-center">
 
-        <div class="w-full h-3/4 lg:max-w-3xl md:w-2/5 p-4 sm:p-6 lg:p-8 bg-white rounded-md shadow-md">
+        <div class="w-full h-3/4 lg:max-w-3xl md:w-2/5 p-4 sm:p-6 lg:p-8 bg-white border-b border-2 md:rounded-md shadow-md">
             <div class="flex justify-between border-b-2 pb-2">
                 <span class="text-xl text-black font-semibold block">User Profile</span>
             </div>
@@ -35,7 +35,7 @@
             </div>
         </div>
 
-        <div class="max-w-lg md:w-3/5 p-8 bg-white lg:ml-4 rounded-md shadow-md">
+        <div class="md:max-w-lg md:w-3/5 p-8 bg-white lg:ml-4 mx-auto md:mx-0 md:rounded-md shadow-md">
             <div class="rounded  shadow-lg p-6">
                 <?php if ($profile == null) : ?>
                     <form action="/profile/add" method="POST" id="contactForm" name="contactForm">

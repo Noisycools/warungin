@@ -347,37 +347,43 @@
     <div class="h-1 mx-auto bg-white w-1/6 opacity-25 my-0 py-0 rounded-t"></div>
   </div>
 
-  <div class="text-gray-100 mx-auto">
-    <div class="max-w-screen-lg mt-8 px-8 grid gap-8 grid-cols-1 md:grid-cols-2 md:px-12 lg:px-16 xl:px-32 py-16 mx-auto bg-white text-gray-900 rounded-lg shadow-lg">
-      <div class="flex flex-col">
-        <div class="pb-24">
-          <h2 class="text-4xl lg:text-5xl font-bold leading-tight">Lets talk about everything!</h2>
+  <form action="/sendemail" method="post">
+    <div class="text-gray-100 mx-auto">
+      <div class="max-w-screen-lg mt-8 px-8 grid gap-8 grid-cols-1 md:grid-cols-2 md:px-12 lg:px-16 xl:px-32 py-16 mx-auto bg-white text-gray-900 rounded-lg shadow-lg">
+        <div class="flex flex-col">
+          <div class="pb-24">
+            <h2 class="text-4xl lg:text-5xl font-bold leading-tight">Lets talk about everything!</h2>
+          </div>
+          <div class="mt-8 text-center">
+            <img src="/img/contact.png" class="w-full">
+          </div>
         </div>
-        <div class="mt-8 text-center">
-          <img src="/img/contact.png" class="w-full">
-        </div>
-      </div>
-      <div class="">
-        <div>
-          <span class="uppercase text-sm text-gray-600 font-bold">Full Name</span>
-          <input class="w-full bg-red-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline" type="text" placeholder="">
-        </div>
-        <div class="mt-8">
-          <span class="uppercase text-sm text-gray-600 font-bold">Email</span>
-          <input class="w-full bg-red-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline" type="text">
-        </div>
-        <div class="mt-8">
-          <span class="uppercase text-sm text-gray-600 font-bold">Message</span>
-          <textarea class="w-full h-32 bg-red-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"></textarea>
-        </div>
-        <div class="mt-8">
-          <button class="uppercase text-sm font-bold tracking-wide bg-red-600 hover:bg-red-900 text-gray-100 p-3 rounded-lg w-full focus:outline-none focus:shadow-outline">
-            Send Message
-          </button>
+        <div class="">
+          <div>
+            <span class="uppercase text-sm text-gray-600 font-bold">Nama lengkap</span>
+            <input name="nama" class="w-full bg-red-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline" type="text">
+          </div>
+          <div class="mt-8">
+            <span class="uppercase text-sm text-gray-600 font-bold">Email</span>
+            <input name="email" class="w-full bg-red-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline" type="email">
+          </div>
+          <div class="mt-8">
+            <span class="uppercase text-sm text-gray-600 font-bold">Nomor telepon</span>
+            <input name="nomor_kontak" class="w-full bg-red-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline" type="text">
+          </div>
+          <div class="mt-8">
+            <span class="uppercase text-sm text-gray-600 font-bold">Pesan</span>
+            <textarea name="pesan" class="w-full h-32 bg-red-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"></textarea>
+          </div>
+          <div class="mt-8">
+            <button type="submit" class="uppercase text-sm font-bold tracking-wide bg-red-600 hover:bg-red-900 text-gray-100 p-3 rounded-lg w-full focus:outline-none focus:shadow-outline">
+              Kirim Pesan
+            </button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </form>
 
 </section>
 

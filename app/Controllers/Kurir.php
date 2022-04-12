@@ -33,4 +33,18 @@ class Kurir extends BaseController
             return redirect()->to('/')->withInput();
         }
     }
+
+    public function verifikasi_customer($kode_transaksi)
+    {
+        if ($this->request->getPost('kodeTransaksi2') != $this->request->getVar('kode_transaksi')) {
+            session()->setFlashData('message', 'Kode Transaksi harus sama!');
+            return redirect()->to('/pages/detail_transaksi/' . $kode_transaksi);
+        } else {
+            $this->transactionModel->verifikasi_customer([
+                'kodeTransaksi' => $this->request->getVar('kode_transaksi'),
+            ]);
+
+            return redirect()->to('/histori_transaksi')->withInput();
+        }
+    }
 }

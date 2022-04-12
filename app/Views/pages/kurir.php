@@ -31,34 +31,34 @@
     <title><?= $title; ?></title>
 </head>
 
-<body x-data="{ popup: false, flashdata: true }">
+<body x-data="{ popup: false, flashdata: true, date: false }">
+    <!-- Delete Product Modal -->
+    <?php if (session()->getFlashdata('verified')) : ?>
+        <!-- Main modal -->
+        <div id="walletModal" x-show="flashdata" tabindex="-1" aria-hidden="true" class="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 md:h-full flex items-center justify-center h-full bg-black bg-opacity-40">
+            <div class="relative p-4 w-full max-w-md h-full md:h-auto">
+                <!-- Modal content -->
+                <div class="relative bg-white rounded-lg shadow pt-6">
+                    <!-- Modal header -->
+                    <div class="flex justify-center items-center py-2 px-6 rounded-t">
+                        <h3 class="text-base font-semibold text-gray-900 lg:text-xl">
+                            <?= session()->getFlashdata('verified') ?> <i class="far fa-check-circle text-green-500"></i>
+                        </h3>
+                    </div>
+                    <!-- Modal body -->
+                    <div class="p-4 text-center">
+                        <button @click="flashdata = false" class="text-white bg-green-600 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
+                            OK
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php endif; ?>
     <form action="/checkout/updatestatus" method="post">
         <?php $item3 = 0 ?>
         <?php $item2 = 0 ?>
         <?php $item1 = 0 ?>
-        <!-- Delete Product Modal -->
-        <?php if (session()->getFlashdata('verified')) : ?>
-            <!-- Main modal -->
-            <div id="walletModal" x-show="flashdata" tabindex="-1" aria-hidden="true" class="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 md:h-full flex items-center justify-center h-full bg-black bg-opacity-40">
-                <div class="relative p-4 w-full max-w-md h-full md:h-auto">
-                    <!-- Modal content -->
-                    <div class="relative bg-white rounded-lg shadow pt-6">
-                        <!-- Modal header -->
-                        <div class="flex justify-center items-center py-2 px-6 rounded-t">
-                            <h3 class="text-base font-semibold text-gray-900 lg:text-xl">
-                                <?= session()->getFlashdata('verified') ?> <i class="far fa-check-circle text-green-500"></i>
-                            </h3>
-                        </div>
-                        <!-- Modal body -->
-                        <div class="p-4 text-center">
-                            <button @click="flashdata = false" class="text-white bg-green-600 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
-                                OK
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        <?php endif; ?>
         <div id="popup-modal" x-show="popup" tabindex="-1" class="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 flex items-center justify-center h-full bg-slate-400 bg-opacity-50">
             <div class="relative p-4 w-full max-w-md h-full md:h-auto">
                 <!-- Modal content -->
@@ -121,7 +121,7 @@
                         <div class="flex my-6 items-center w-full space-y-4 md:space-x-4 md:space-y-0 flex-col md:flex-row">
                             <div class="w-full md:w-6/12">
                                 <div class="shadow-lg w-full bg-red-500 relative overflow-hidden">
-                                    <a href="#" class="w-full h-full block">
+                                    <div class="w-full h-full block">
                                         <div class="w-1/2">
                                             <div class="px-4 py-6 w-full bg-red-500 relative">
                                                 <p id="pending" class="text-2xl text-white font-bold">
@@ -132,7 +132,7 @@
                                                 </p>
                                             </div>
                                         </div>
-                                    </a>
+                                    </div>
                                 </div>
                             </div>
                             <div class="flex items-center w-full md:w-1/2 space-x-4">
@@ -158,21 +158,25 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="flex items-center space-x-4">
-                            <button class="flex items-center text-gray-400 text-md border-gray-300 border px-4 py-2 rounded-tl-sm rounded-bl-full rounded-r-full">
+                        <div class="relative flex items-center space-x-4">
+                            <button @click="date = !date" type="button" class="flex items-center text-gray-400 text-md border-gray-300 border px-4 py-2 rounded-tl-sm rounded-bl-full rounded-r-full">
                                 <svg width="20" height="20" fill="currentColor" class="mr-2 text-gray-400" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M192 1664h288v-288h-288v288zm352 0h320v-288h-320v288zm-352-352h288v-320h-288v320zm352 0h320v-320h-320v320zm-352-384h288v-288h-288v288zm736 736h320v-288h-320v288zm-384-736h320v-288h-320v288zm768 736h288v-288h-288v288zm-384-352h320v-320h-320v320zm-352-864v-288q0-13-9.5-22.5t-22.5-9.5h-64q-13 0-22.5 9.5t-9.5 22.5v288q0 13 9.5 22.5t22.5 9.5h64q13 0 22.5-9.5t9.5-22.5zm736 864h288v-320h-288v320zm-384-384h320v-288h-320v288zm384 0h288v-288h-288v288zm32-480v-288q0-13-9.5-22.5t-22.5-9.5h-64q-13 0-22.5 9.5t-9.5 22.5v288q0 13 9.5 22.5t22.5 9.5h64q13 0 22.5-9.5t9.5-22.5zm384-64v1280q0 52-38 90t-90 38h-1408q-52 0-90-38t-38-90v-1280q0-52 38-90t90-38h128v-96q0-66 47-113t113-47h64q66 0 113 47t47 113v96h384v-96q0-66 47-113t113-47h64q66 0 113 47t47 113v96h128q52 0 90 38t38 90z">
                                     </path>
                                 </svg>
-                                Last month
+                                Hari ini
                                 <svg width="20" height="20" class="ml-2 text-gray-400" fill="currentColor" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M1408 704q0 26-19 45l-448 448q-19 19-45 19t-45-19l-448-448q-19-19-19-45t19-45 45-19h896q26 0 45 19t19 45z">
                                     </path>
                                 </svg>
                             </button>
-                            <span class="text-sm text-gray-400">
-                                Compared to oct 1- otc 30, 2020
-                            </span>
+                            <div x-show="date" class="absolute -left-3 top-10 overflow-y-auto overflow-x-hidden z-50 rounded-b-xl bg-slate-500 w-32 border border-white">
+                                <ul class="flex flex-col">
+                                    <li>
+                                        <a id="home2" href="#" class="block py-2 pr-4 pl-3 text-white rounded" aria-current="page">Hari ini</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-4">
 
@@ -233,7 +237,7 @@
 
                             <!-- ================================================== -->
 
-                            <div id="item2-container" class="w-full max-h-96">
+                            <div id="item2-container" class="w-full max-h-96 pt-12 sm:pt-0">
                                 <div class="container flex flex-col mx-auto w-full items-center justify-center bg-red-500 rounded-lg shadow-lg">
                                     <div class="px-4 py-5 sm:px-6 border-b w-full">
                                         <h3 class="text-lg leading-6 font-medium text-white">
@@ -307,8 +311,10 @@
                                                             <?= $s['nama_penerima'] ?> (<i><?= $s['kode_transaksi'] ?></i>)
                                                         </div>
                                                     </div>
-                                                    <div class="text-gray-200 text-md">
-                                                        <a href="<?= '/pages/detail_transaksi/' . $s['kode_transaksi']; ?>"><i class="far fa-check-circle"></i></a>
+                                                    <div class="text-gray-200 text-md relative">
+                                                        <a href="<?= '/pages/detail_transaksi/' . $s['kode_transaksi']; ?>">
+                                                            <i class="far fa-check-circle absolute animate-ping"></i><i class="far fa-check-circle absolute"></i>
+                                                        </a>
                                                     </div>
                                                 </div>
                                             </li>

@@ -29,33 +29,40 @@ class Email extends BaseController
     {
         $mail = new PHPMailer(true);
 
-        if (isset($_POST['submit'])) {
-            $nama = $_POST['nama'];
-            $email = $_POST['email'];
-            $nomor_kontak = $_POST['nomor_kontak'];
-            $pesan = $_POST['pesan'];
+        $nama = $this->request->getPost('nama');
+        $email = $this->request->getPost('email');
+        $nomor_kontak = $this->request->getPost('nomor_kontak');
+        $pesan = $this->request->getPost('pesan');
+        $username = user()->username;
 
-            try {
-                $mail->isSMTP();
-                $mail->Host = 'smtp.gmail.com';
-                $mail->SMTPAuth = true;
-                $mail->Username = 'warungin.id@gmail.com';
-                $mail->Password = 'penyetokwarung';
-                $mail->SMTPSecure = 'tsl';
-                $mail->Port = '587';
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'warungin.id@gmail.com';
+        $mail->Password = 'penyetokwarung';
+        $mail->SMTPSecure = 'tls';
+        $mail->Port = 587;
 
-                $mail->setFrom('warungin.id@gmail.com');
-                $mail->addAddress('warungin.id@gmail.com');
+        $mail->setFrom('warungin.id@gmail.com', $nama);
+        $mail->addReplyTo($email, $nama);
+        $mail->addAddress('warungin.id@gmail.com');
 
-                $mail->isHTML(true);
-                $mail->Subject = 'Message Received (Contact Page)';
-                $mail->Body = "<h3>Name : '$nama' <br>Email : '$email' <br>Nomor Kontak : '$nomor_kontak' <br>Pesan : '$pesan' </h3>";
+        $mail->isHTML(true);
+        $mail->Subject = 'Pesan dari ' . $nama;
+        $mailContent = "<center>
+        <h1>Nama : " . $nama . "</h1>
+        <h1>Email : " . $email . "</h1>
+        <h1>Nomor Kontak : " . $nomor_kontak . "</h1>
+        <h1>Pesan : " . $pesan . "</h1>
+        </center>";
+        $mail->Body = $mailContent;
+        // $mail->Body = "<h3>Name : " . $nama . " <br>Email : " . $email . " <br>Nomor Kontak : " . $nomor_kontak . " <br>Pesan : " . $pesan . " </h3>";
 
-                $mail->send();
-            } catch (Exceptions $e) {
-                $alert = "<span>'.$e'</span>";
-            }
-            return redirect()->to('/contact_us');
+        // Send email
+        if (!$mail->send()) {
+            throw new \Exception($mail->ErrorInfo);
+        } else {
+            return redirect()->to('/#contact_us');
         }
     }
 }
