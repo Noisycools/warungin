@@ -52,7 +52,7 @@
                                     <td><?= $b['stok']; ?></td>
                                     <td><img src="/img/<?= $b['foto_barang']; ?>" alt="" class="gambar"></td>
                                     <td><a href="<?= $b['barang_id']; ?>" type="buttpn" class="badge btn-primary btn-sm"
-                                            data-toggle="modal" data-target="#modal-sm<?= $b['barang_id']; ?>">
+                                            data-toggle="modal" data-target="#modal-sm">
                                             <i class="fas fa-plus"></i>
                                         </a>
                                     </td>
@@ -65,7 +65,7 @@
             </div>
             <?php foreach ($barang->getResult('array') as $b) : ?>
             <form action="/product/tambah" method="POST">
-                <div class="modal fade" id="modal-sm<?= $b['barang_id']; ?>">
+                <div class="modal fade" id="modal-sm">
                     <div class="modal-dialog modal-sm">
                         <div class="modal-content">
                             <div class="modal-header">

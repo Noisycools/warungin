@@ -69,7 +69,7 @@ class Product extends BaseController
         $data = [
             'title' => "Admin | Create Barang",
             'validation' => \Config\Services::validation(),
-            'barang' => $this->barangModel->getBarang()
+            'barang' => $this->barangModel->getKategori()
         ];
         return view('admin/product/create', $data);
     }
@@ -83,12 +83,6 @@ class Product extends BaseController
                 'errors' => [
                     'required' => 'Kolom ini harus diisi!',
                     'is_unique' => 'nama barang sudah terdaftar'
-                ]
-            ],
-            'kategori_barang' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Kolom ini harus diisi!'
                 ]
             ],
             'harga_barang' => [
@@ -130,15 +124,26 @@ class Product extends BaseController
         $namaGambar = $fileGambar->getName();
 
         $slug = url_title($this->request->getVar('nama_barang'), '-', true);
-        $this->barangModel->save([
+        // $this->barangModel->save([
+        //     'nama_barang' => $this->request->getVar('nama_barang'),
+        //     'slug' => $slug,
+        //     'kategori_barang' => $this->request->getVar('kategori_barang'),
+        //     'harga_barang' => $this->request->getVar('harga_barang'),
+        //     'satuan_barang' => $this->request->getVar('satuan_barang'),
+        //     'stok' => $this->request->getVar('stok'),
+        //     'foto_barang' => $namaGambar
+        // ]);
+        $dataCreate = [
             'nama_barang' => $this->request->getVar('nama_barang'),
             'slug' => $slug,
-            'kategori_barang' => $this->request->getVar('kategori_barang'),
+            'id_kategori' => $this->request->getVar('kategori_barang'),
             'harga_barang' => $this->request->getVar('harga_barang'),
             'satuan_barang' => $this->request->getVar('satuan_barang'),
             'stok' => $this->request->getVar('stok'),
             'foto_barang' => $namaGambar
-        ]);
+        ];
+        $id_kategori = $this->request->getVar('kategori_barang');
+        $this->barangModel->create($id_kategori, $dataCreate);
         session()->setFlashData('message', 'Data berhasil ditambahkan');
         return redirect()->to('admin/product');
     }
@@ -170,25 +175,25 @@ class Product extends BaseController
     {
         // dd($this->request->getVar());
         //cek nama_barang
-        $barangLama = $this->barangModel->getBarang($this->request->getVar('slug'));
-        if ($barangLama['nama_barang'] == $this->request->getVar('nama_barang')) {
-            $rule_namabarang = 'required';
-        } else {
-            $rule_namabarang = 'required|is_unique[tabel_barang.nama_barang]';
-        }
+        // $barangLama = $this->barangModel->getBarang($this->request->getVar('slug'));
+        // if ($barangLama['nama_barang'] == $this->request->getVar('nama_barang')) {
+        //     $rule_namabarang = 'required';
+        // } else {
+        //     $rule_namabarang = 'required|is_unique[tabel_barang.nama_barang]';
+        // }
 
-        if (!$this->validate([
-            'nama_barang' => [
-                'rules' => $rule_namabarang,
-                'errors' => [
-                    'required' => 'Kolom ini harus diisi!',
-                    'is_unique' => 'nama barang sudah terdaftar'
-                ]
-            ]
-        ])) {
-            // $validation = \Config\Services::validation();
-            return redirect()->to('/product/edit/' . $this->request->getVar('slug'))->withInput();
-        }
+        // if (!$this->validate([
+        //     'nama_barang' => [
+        //         'rules' => $rule_namabarang,
+        //         'errors' => [
+        //             'required' => 'Kolom ini harus diisi!',
+        //             'is_unique' => 'nama barang sudah terdaftar'
+        //         ]
+        //     ]
+        // ])) {
+        //     // $validation = \Config\Services::validation();
+        //     return redirect()->to('/product/edit/' . $this->request->getVar('slug'))->withInput();
+        // }
 
         $fileGambar = $this->request->getFile('foto_barang');
         //cek gambar apakah tetap gambar lama
@@ -204,16 +209,25 @@ class Product extends BaseController
         }
 
         $slug = url_title($this->request->getVar('nama_barang'), '-', true);
-        $this->barangModel->save([
+        // $this->barangModel->update([
+        //     'barang_id' => $barang_id,
+        //     'nama_barang' => $this->request->getVar('nama_barang'),
+        //     'slug' => $slug,
+        //     'harga_barang' => $this->request->getVar('harga_barang'),
+        //     'satuan_barang' => $this->request->getVar('satuan_barang'),
+        //     'stok' => $this->request->getVar('stok'),
+        //     'foto_barang' => $namaGambar
+        // ]);
+        $data = [
             'barang_id' => $barang_id,
             'nama_barang' => $this->request->getVar('nama_barang'),
             'slug' => $slug,
-            'kategori_barang' => $this->request->getVar('kategori_barang'),
             'harga_barang' => $this->request->getVar('harga_barang'),
             'satuan_barang' => $this->request->getVar('satuan_barang'),
             'stok' => $this->request->getVar('stok'),
             'foto_barang' => $namaGambar
-        ]);
+        ];
+        $this->barangModel->edit($data);
         session()->setFlashData('message', 'Data berhasil diubah');
         return redirect()->to('admin/product');
     }

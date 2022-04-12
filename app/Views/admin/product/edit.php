@@ -11,7 +11,7 @@
                     <div class="col">
                         <div class="col-8">
                             <h2 class="my-3">Form Ubah Data</h2>
-                            <form action="/product/update/<?= $barang->slug; ?>" method="POST"
+                            <form action="/product/update/<?= $barang->barang_id; ?>" method="POST"
                                 enctype="multipart/form-data">
                                 <?= csrf_field(); ?>
                                 <input type="hidden" name="slug" value="<?= $barang->slug; ?>">

@@ -23,12 +23,14 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="kategori_barang" class="col-sm-2 col-form-label">Kategori</label>
+                                    <label for="kategoriBarang" class="col-sm-2 col-form-label">Kategori</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control <?= ($validation->hasError('kategori_barang')) ? 'is-invalid' : ''; ?>" id="kategori_barang" name="kategori_barang" autofocus value="<?= old('kategori_barang'); ?>">
-                                        <div class="invalid-feedback">
-                                            <?= $validation->getError('kategori_barang'); ?>
-                                        </div>
+                                        <select class="form-select" id="kategoriBarang" name="kategori_barang" aria-label="Default select example">
+                                            <option selected>Kategori barang</option>
+                                            <?php foreach ($barang->getResultArray() as $b) : ?>
+                                                <option value="<?= $b['id_kategori']; ?>"><?= $b['kategori']; ?></option>
+                                            <?php endforeach; ?>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="form-group row">

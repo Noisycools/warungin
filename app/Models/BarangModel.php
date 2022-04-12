@@ -30,6 +30,14 @@ class BarangModel extends Model
         return $builder->get()->getFirstRow();
     }
 
+    public function getKategori()
+    {
+        $builder = $this->db->table('kategori_barang');
+        $builder->select('*');
+        // $builder->join('kategori_barang', 'kategori_barang.id_kategori = tabel_barang.id_kategori');
+        return $builder->get();
+    }
+
     public function getBarang1($slug = false)
     {
         if ($slug == false) {
@@ -45,6 +53,19 @@ class BarangModel extends Model
         $builder->join('kategori_barang', 'kategori_barang.id_kategori = tabel_barang.id_kategori');
         $builder->orderBy('tabel_barang.barang_id');
         return $builder->get();
+    }
+
+    public function create($id_kategori, $data){
+        $builder = $this->db->table($this->table);
+        $builder->join('kategori_barang', 'kategori_barang.id_kategori = tabel_barang.id_kategori');
+        $builder->where('id_kategori', $id_kategori);
+        return $builder->insert($data);
+    }
+
+    public function edit($data) {
+        $builder = $this->db->table($this->table);
+        $builder->where('barang_id', $data['barang_id']);
+        return $builder->update($data);
     }
 
     public function habis()
