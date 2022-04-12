@@ -37,34 +37,34 @@ class TransactionModel extends Model
         return $builder->set(['status' => 'Diterima'])->where('kode_transaksi', $data['kodeTransaksi'])->update();
     }
 
-    public function pesanan_masuk()
+    public function pesanan_masuk($value)
     {
-        return $this->db->query("SELECT * FROM transaksi WHERE status='Pending'
-        ORDER BY waktu_created_at ASC");
+        $results = $this->where('status', 'Pending')->orderBy('created_at', 'asc')->paginate($value);
+        return $results;
     }
 
-    public function pesanan_proses()
+    public function pesanan_proses($value)
     {
-        return $this->db->query("SELECT * FROM transaksi WHERE status='Diproses'
-        ORDER BY waktu_created_at ASC");
+        $results = $this->where('status', 'Diproses')->orderBy('created_at', 'asc')->paginate($value);
+        return $results;
     }
 
-    public function pesanan_selesai()
+    public function pesanan_perlu_diverifikasi($value)
     {
-        return $this->db->query("SELECT * FROM transaksi WHERE status='Selesai'
-        ORDER BY waktu_created_at ASC");
+        $results = $this->where('status', 'Perlu Diverifikasi')->orderBy('created_at', 'asc')->paginate($value);
+        return $results;
     }
 
-    public function pesanan_dikirim()
+    public function pesanan_dikirim($value)
     {
         return $this->db->query("SELECT * FROM transaksi WHERE status='Dikirim'
         ORDER BY waktu_created_at ASC");
     }
 
-    public function pesanan_diterima()
+    public function pesanan_diterima($value)
     {
-        return $this->db->query("SELECT * FROM transaksi WHERE status='Diterima'
-        ORDER BY waktu_created_at DESC");
+        $results = $this->where('status', 'Diterima')->orderBy('created_at', 'asc')->paginate($value);
+        return $results;
     }
 
     public function info_pesanan()

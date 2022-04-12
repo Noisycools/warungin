@@ -42,7 +42,7 @@
                             </thead>
                             <tbody>
                                 <?php $i = 1; ?>
-                                <?php foreach ($transaksi->getResult('array') as $t) : ?>
+                                <?php foreach ($transaksi as $t) : ?>
                                     <tr>
                                         <th scope="row"><?= $i++; ?></th>
                                         <td><?= $t['kode_transaksi']; ?></td>
@@ -66,6 +66,7 @@
                                 <?php endforeach; ?>
                             </tbody>
                         </table>
+                        <?= $pager->links('transaksi2', 'histori_transaksi_pagination') ?>
                     </div>
                 </div>
                 <div class="modal fade" id="modal-default">

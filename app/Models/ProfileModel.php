@@ -28,7 +28,7 @@ class ProfileModel extends Model
     public function updateProfile($data)
     {
         $builder = $this->db->table($this->table);
-        $builder->where(['nama' => $data['nama']]);
+        $builder->where(['id_profile' => $data['id_profile']]);
         return $builder->update($data);
     }
 

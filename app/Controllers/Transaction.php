@@ -227,7 +227,9 @@ class Transaction extends BaseController
 
         $data = [
             'title' => "Admin | Pesanan Masuk",
-            'transaksi' => $transaksi->pesanan_masuk()
+            'transaksi' => $this->transaksiModel->pesanan_masuk(10),
+            'transaksi2' => $transaksi->paginate(10, 'transaksi'),
+            'pager' => $this->transaksiModel->pager
         ];
         return view('admin/transaction/pesanan_masuk/index', $data);
     }
@@ -253,7 +255,9 @@ class Transaction extends BaseController
 
         $data = [
             'title' => "Admin | Pesanan Proses",
-            'transaksi' => $transaksi->pesanan_proses()
+            'transaksi' => $this->transaksiModel->pesanan_proses(10),
+            'transaksi2' => $transaksi->paginate(10, 'transaksi'),
+            'pager' => $this->transaksiModel->pager
         ];
         return view('admin/transaction/pesanan_proses/index', $data);
     }
@@ -279,7 +283,9 @@ class Transaction extends BaseController
 
         $data = [
             'title' => "Admin | Pesanan Dikirim",
-            'transaksi' => $transaksi->pesanan_dikirim()
+            'transaksi' => $this->transaksiModel->pesanan_dikirim(10),
+            'transaksi2' => $transaksi->paginate(10, 'transaksi'),
+            'pager' => $this->transaksiModel->pager
         ];
         return view('admin/transaction/pesanan_dikirim/index', $data);
     }
@@ -315,7 +321,9 @@ class Transaction extends BaseController
 
         $data = [
             'title' => "Admin | Pesanan Diterima",
-            'transaksi' => $transaksi->pesanan_diterima()
+            'transaksi' => $this->transaksiModel->pesanan_diterima(10),
+            'transaksi2' => $transaksi->paginate(10, 'transaksi'),
+            'pager' => $this->transaksiModel->pager
         ];
         return view('admin/transaction/pesanan_diterima/index', $data);
     }
@@ -344,7 +352,9 @@ class Transaction extends BaseController
 
         $data = [
             'title' => "Admin | Pesanan Selesai",
-            'transaksi' => $transaksi->pesanan_selesai()
+            'transaksi' => $this->transaksiModel->pesanan_perlu_diverifikasi(10),
+            'transaksi2' => $transaksi->paginate(10, 'transaksi'),
+            'pager' => $this->transaksiModel->pager
         ];
         return view('admin/transaction/pesanan_selesai/index', $data);
     }

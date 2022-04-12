@@ -11,7 +11,7 @@
                     <div class="col">
                         <div class="col-8">
                             <h2 class="my-3">Form Ubah Data</h2>
-                            <form action="/customer/update" method="POST" enctype="multipart/form-data">
+                            <form action="/customer/update/<?= $profile->id_profile ?>" method="POST" enctype="multipart/form-data">
                                 <?= csrf_field(); ?>
                                 <div class="form-group row">
                                     <label for="nama" class="col-sm-2 col-form-label">Nama</label>

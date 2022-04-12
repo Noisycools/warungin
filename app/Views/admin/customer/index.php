@@ -11,7 +11,6 @@
                     <div class="col">
                         <h1 class="mt-2">Daftar Customer</h1>
                         <a href="/customer/laporan" rel="noopener" target="_blank" class="btn btn-primary float-right"><i class="fas fa-print"></i> Print</a>
-                        <a href="/customer/create" class="btn btn-primary mb-3 float-right mr-2">Tambah Data</a>
                         <div class="swal" data-swal="<?= session()->getFlashdata('message'); ?>"></div>
                         <div class="col-4">
                             <form action="" method="GET">
@@ -50,9 +49,8 @@
                                         <td><?= $p['email']; ?></td>
                                         <td><a href="/customer/edit/<?= $p['username']; ?>" class="btn btn-warning">Edit</a></td>
                                         <td>
-                                            <form action="/customer/<?= $p['username']; ?>" method="POST" class="d-inline">
+                                            <form action="/customer/delete/<?= $p['id_profile']; ?>" method="POST" class="d-inline">
                                                 <?= csrf_field(); ?>
-                                                <input type="hidden" name="_method" value="DELETE">
                                                 <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin?')">Delete</button>
                                             </form>
                                         </td>

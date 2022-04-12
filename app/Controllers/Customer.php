@@ -147,7 +147,6 @@ class Customer extends BaseController
 
         // // hapus gambar
         // unlink('img/' . $customer['foto_customer']);
-
         $this->profileModel->delete($id_profile);
         session()->setFlashData('pesan', 'Data berhasil dihapus');
         return redirect()->to('admin/customer');
@@ -164,7 +163,7 @@ class Customer extends BaseController
         return view('admin/customer/edit', $data);
     }
 
-    public function update()
+    public function update($id_profile)
     {
         // dd($this->request->getVar());
         //cek nama_customer
@@ -190,6 +189,7 @@ class Customer extends BaseController
 
         // $slug = url_title($this->request->getVar('nama_customer'), '-', true);
         $data = [
+            'id_profile' => $id_profile,
             'nama' => $this->request->getPost('nama'),
             'nama_warung' => $this->request->getPost('nama_warung'),
             'alamat' => $this->request->getPost('alamat'),
