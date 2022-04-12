@@ -57,8 +57,8 @@ class TransactionModel extends Model
 
     public function pesanan_dikirim($value)
     {
-        return $this->db->query("SELECT * FROM transaksi WHERE status='Dikirim'
-        ORDER BY waktu_created_at ASC");
+        $results = $this->where('status', 'Dikirim')->orderBy('created_at', 'asc')->paginate($value);
+        return $results;
     }
 
     public function pesanan_diterima($value)

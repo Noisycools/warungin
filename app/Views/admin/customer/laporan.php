@@ -7,7 +7,8 @@
     <title>Print</title>
 
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
@@ -21,11 +22,10 @@
             <!-- title row -->
             <div class="row">
                 <div class="col-12">
-                    <h2 class="page-header">
-                        <i class="fas fa-user-tag"></i> Warungin
-                        <small class="float-right">Date: <?= $date; ?></small>
-                    </h2>
-                    <h1 class="mt-2 mb-2">Daftar Customer</h1>
+                    <h3 class="page-header">
+                        <img src="/img/WarungIn2.png" alt="warunginLogo" class="attachment-img" width="7%">
+                        Laporan Data Customer
+                    </h3>
                 </div>
                 <!-- /.col -->
             </div>
@@ -47,18 +47,20 @@
                         <tbody>
                             <?php $i = 1; ?>
                             <?php foreach ($profile as $p) : ?>
-                                <tr>
-                                    <th scope="row"><?= $i++; ?></th>
-                                    <td><?= $p['nama']; ?></td>
-                                    <td><?= $p['nama_warung']; ?></td>
-                                    <td><?= $p['alamat']; ?></td>
-                                    <td><?= $p['no_hp']; ?></td>
-                                    <td><?= $p['email']; ?></td>
+                            <tr>
+                                <th scope="row"><?= $i++; ?></th>
+                                <td><?= $p['nama']; ?></td>
+                                <td><?= $p['nama_warung']; ?></td>
+                                <td><?= $p['alamat']; ?></td>
+                                <td><?= $p['no_hp']; ?></td>
+                                <td><?= $p['email']; ?></td>
 
-                                </tr>
+                            </tr>
                             <?php endforeach; ?>
                         </tbody>
                     </table>
+                    <h6 class="float-right" style="margin-right: 45px;">Bandung, <?= $date; ?></h6><br><br>
+                    <h6 class="float-right" style="margin: 50px 133px;">Warungin</h6>
                 </div>
             </div>
             <!-- /.row -->
@@ -69,7 +71,7 @@
     <!-- ./wrapper -->
     <!-- Page specific script -->
     <script>
-        window.addEventListener("load", window.print());
+    window.addEventListener("load", window.print());
     </script>
 </body>
 

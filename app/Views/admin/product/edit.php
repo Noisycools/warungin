@@ -51,7 +51,7 @@
                                 <div class="form-group row">
                                     <label for="stok" class="col-sm-2 col-form-label">Stok</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="stok" name="stok"
+                                        <input type="number" class="form-control" id="stok" name="stok"
                                             value="<?= (old('stok')) ? old('stok') : $barang->stok ?>">
                                         <div class="invalid-feedback">
                                             <?= $validation->getError('stok'); ?>

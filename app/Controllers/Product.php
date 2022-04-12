@@ -17,10 +17,10 @@ class Product extends BaseController
     public function laporan()
     {
         $myTime = Time::now('Asia/Jakarta');
-        $date = $myTime->toLocalizedString('d MMM yyyy');
+        $date = $myTime->toLocalizedString('d MMMM yyyy');
         $data = [
             'date' => $date,
-            'barang' => $this->barangModel->getBarang()
+            'barang' => $this->barangModel->getBarang1()
         ];
 
         return view('admin/product/laporan', $data);
@@ -61,6 +61,25 @@ class Product extends BaseController
             'barang' => $this->barangModel->habis()
         ];
         return view('admin/product/habis/index', $data);
+    }
+
+    public function tambah($barang_id)
+    {
+        $data = [
+            'title' => "Admin | Edit Barang",
+            'validation' => \Config\Services::validation(),
+            'barang' => $this->barangModel->getBarang($barang_id)
+        ];
+        return view('admin/product/habis/edit', $data);
+    }
+
+    public function add($barang_id)
+    {
+        $this->barangModel->save([
+            'barang_id' => $barang_id,
+            'stok' => $this->request->getVar('stok')
+        ]);
+        session()->setFlashData('message', 'Data berhasil diubah');
     }
 
     public function create()
@@ -170,6 +189,7 @@ class Product extends BaseController
         ];
         return view('admin/product/edit', $data);
     }
+
 
     public function update($barang_id)
     {

@@ -11,7 +11,7 @@
                     <div class="col">
                         <div class="col-8">
                             <h2 class="my-3">Form Ubah Data</h2>
-                            <form action="/transaction/update/<?= $transaksi['kode_transaksi']; ?>" method="POST"
+                            <form action="/transaction/update3/<?= $transaksi['kode_transaksi']; ?>" method="POST"
                                 enctype="multipart/form-data">
                                 <?= csrf_field(); ?>
                                 <input type="hidden" name="kode_transaksi" value="<?= $transaksi['kode_transaksi']; ?>">

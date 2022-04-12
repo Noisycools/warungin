@@ -131,15 +131,15 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="<?= base_url('admin/transaction/pesanan_diterima'); ?>" class="nav-link">
-                                        &ensp;<i class=" 	fas fa-truck nav-icon"></i>
-                                        <p>Diterima</p>
+                                    <a href="<?= base_url('admin/transaction/pesanan_selesai'); ?>" class="nav-link">
+                                        &ensp;<i class="fas fa-truck nav-icon"></i>
+                                        <p>Perlu Diverifikasi</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="<?= base_url('admin/transaction/pesanan_selesai'); ?>" class="nav-link">
+                                    <a href="<?= base_url('admin/transaction/pesanan_diterima'); ?>" class="nav-link">
                                         &ensp;<i class="fas fa-check-circle nav-icon"></i>
-                                        <p>Selesai</p>
+                                        <p>Diterima</p>
                                     </a>
                                 </li>
                             </ul>

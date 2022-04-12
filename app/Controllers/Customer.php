@@ -21,7 +21,7 @@ class Customer extends BaseController
     public function laporan()
     {
         $myTime = Time::now('Asia/Jakarta');
-        $date = $myTime->toLocalizedString('d MMM yyyy');
+        $date = $myTime->toLocalizedString('d MMMM yyyy');
         $data = [
             'date' => $date,
             'profile' => $this->profileModel->getProfile()

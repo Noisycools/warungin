@@ -16,7 +16,10 @@
                                 <div class="form-group row">
                                     <label for="nama_barang" class="col-sm-2 col-form-label">Nama</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control <?= ($validation->hasError('nama_barang')) ? 'is-invalid' : ''; ?>" id="nama_barang" name="nama barang" autofocus value="<?= old('nama_barang'); ?>">
+                                        <input type="text"
+                                            class="form-control <?= ($validation->hasError('nama_barang')) ? 'is-invalid' : ''; ?>"
+                                            id="nama_barang" name="nama barang" autofocus
+                                            value="<?= old('nama_barang'); ?>">
                                         <div class="invalid-feedback">
                                             <?= $validation->getError('nama_barang'); ?>
                                         </div>
@@ -24,19 +27,22 @@
                                 </div>
                                 <div class="form-group row">
                                     <label for="kategoriBarang" class="col-sm-2 col-form-label">Kategori</label>
-                                    <div class="col-sm-10">
-                                        <select class="form-select" id="kategoriBarang" name="kategori_barang" aria-label="Default select example">
-                                            <option selected>Kategori barang</option>
-                                            <?php foreach ($barang->getResultArray() as $b) : ?>
-                                                <option value="<?= $b['id_kategori']; ?>"><?= $b['kategori']; ?></option>
-                                            <?php endforeach; ?>
-                                        </select>
-                                    </div>
+                                    &ensp;
+                                    <select class="col-sm-9 form-select" id="kategoriBarang" name="kategori_barang"
+                                        aria-label="Default select example">
+                                        <option selected>Kategori barang</option>
+                                        <?php foreach ($barang->getResultArray() as $b) : ?>
+                                        <option value="<?= $b['id_kategori']; ?>"><?= $b['kategori']; ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
                                 </div>
                                 <div class="form-group row">
                                     <label for="harga_barang" class="col-sm-2 col-form-label">Harga</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control <?= ($validation->hasError('harga_barang')) ? 'is-invalid' : ''; ?>" id="harga_barang" name="harga_barang" autofocus value="<?= old('harga_barang'); ?>">
+                                        <input type="text"
+                                            class="form-control <?= ($validation->hasError('harga_barang')) ? 'is-invalid' : ''; ?>"
+                                            id="harga_barang" name="harga_barang" autofocus
+                                            value="<?= old('harga_barang'); ?>">
                                         <div class="invalid-feedback">
                                             <?= $validation->getError('harga_barang'); ?>
                                         </div>
@@ -45,7 +51,10 @@
                                 <div class="form-group row">
                                     <label for="satuan_barang" class="col-sm-2 col-form-label">Satuan</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control <?= ($validation->hasError('satuan_barang')) ? 'is-invalid' : ''; ?>" id="satuan_barang" name="satuan_barang" autofocus value="<?= old('satuan_barang'); ?>">
+                                        <input type="text"
+                                            class="form-control <?= ($validation->hasError('satuan_barang')) ? 'is-invalid' : ''; ?>"
+                                            id="satuan_barang" name="satuan_barang" autofocus
+                                            value="<?= old('satuan_barang'); ?>">
                                         <div class="invalid-feedback">
                                             <?= $validation->getError('satuan_barang'); ?>
                                         </div>
@@ -54,7 +63,9 @@
                                 <div class="form-group row">
                                     <label for="stok" class="col-sm-2 col-form-label">Stok</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control <?= ($validation->hasError('stok')) ? 'is-invalid' : ''; ?>" id="stok" name="stok" autofocus value="<?= old('stok'); ?>">
+                                        <input type="number"
+                                            class="form-control <?= ($validation->hasError('stok')) ? 'is-invalid' : ''; ?>"
+                                            id="stok" name="stok" autofocus value="<?= old('stok'); ?>">
                                         <div class="invalid-feedback">
                                             <?= $validation->getError('stok'); ?>
                                         </div>
@@ -64,7 +75,9 @@
                                     <label for="foto_barang" class="col-sm-2 col-form-label">Gambar</label>
                                     <div class="col">
                                         <div class="col-sm-12">
-                                            <input type="file" class="custom-file-input <?= ($validation->hasError('foto_barang')) ? 'is-invalid' : ''; ?>" id="foto_barang" name="foto_barang" onchange="previewImg()">
+                                            <input type="file"
+                                                class="custom-file-input <?= ($validation->hasError('foto_barang')) ? 'is-invalid' : ''; ?>"
+                                                id="foto_barang" name="foto_barang" onchange="previewImg()">
                                             <div class="invalid-feedback">
                                                 <?= $validation->getError('foto_barang'); ?>
                                             </div>
@@ -93,20 +106,20 @@
 </div>
 <!-- /.content-wrapper -->
 <script>
-    function previewImg() {
-        const gambar = document.querySelector('#foto_barang');
-        const gambarLabel = document.querySelector('.custom-file-label');
-        const imgPreview = document.querySelector('.img-preview');
+function previewImg() {
+    const gambar = document.querySelector('#foto_barang');
+    const gambarLabel = document.querySelector('.custom-file-label');
+    const imgPreview = document.querySelector('.img-preview');
 
-        gambarLabel.textContent = gambar.files[0].name;
+    gambarLabel.textContent = gambar.files[0].name;
 
-        const fileGambar = new FileReader();
-        fileGambar.readAsDataURL(gambar.files[0]);
+    const fileGambar = new FileReader();
+    fileGambar.readAsDataURL(gambar.files[0]);
 
-        fileGambar.onload = function(e) {
-            imgPreview.src = e.target.result;
-        }
+    fileGambar.onload = function(e) {
+        imgPreview.src = e.target.result;
     }
+}
 </script>
 
 <?= $this->endSection(); ?>

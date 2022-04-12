@@ -155,29 +155,65 @@ class Transaction extends BaseController
         return redirect()->to('admin/transaction');
     }
 
-    public function edit($kode_transaksi)
+    public function edit1($kode_transaksi)
     {
         $data = [
             'title' => "Admin | Edit Pesanan Masuk",
             'validation' => \Config\Services::validation(),
             'transaksi' => $this->transaksiModel->getTransaksi($kode_transaksi)
         ];
-        return view('admin/transaction/edit', $data);
+        return view('admin/transaction/edit1', $data);
+    }
+    public function edit2($kode_transaksi)
+    {
+        $data = [
+            'title' => "Admin | Edit Pesanan Masuk",
+            'validation' => \Config\Services::validation(),
+            'transaksi' => $this->transaksiModel->getTransaksi($kode_transaksi)
+        ];
+        return view('admin/transaction/edit2', $data);
+    }
+    public function edit3($kode_transaksi)
+    {
+        $data = [
+            'title' => "Admin | Edit Pesanan Masuk",
+            'validation' => \Config\Services::validation(),
+            'transaksi' => $this->transaksiModel->getTransaksi($kode_transaksi)
+        ];
+        return view('admin/transaction/edit3', $data);
+    }
+    public function edit4($kode_transaksi)
+    {
+        $data = [
+            'title' => "Admin | Edit Pesanan Masuk",
+            'validation' => \Config\Services::validation(),
+            'transaksi' => $this->transaksiModel->getTransaksi($kode_transaksi)
+        ];
+        return view('admin/transaction/edit4', $data);
+    }
+    public function edit5($kode_transaksi)
+    {
+        $data = [
+            'title' => "Admin | Edit Pesanan Masuk",
+            'validation' => \Config\Services::validation(),
+            'transaksi' => $this->transaksiModel->getTransaksi($kode_transaksi)
+        ];
+        return view('admin/transaction/edit5', $data);
     }
 
-    public function update($kode_transaksi)
+    public function update1($kode_transaksi)
     {
         // dd($this->request->getVar());
         //cek nama_barang
-        $penerimaLama = $this->transaksiModel->getTransaksi($this->request->getVar('kode_transaksi'));
-        if ($penerimaLama['nama_penerima'] == $this->request->getVar('nama_penerima')) {
+        $kodeLama = $this->transaksiModel->getTransaksi($this->request->getVar('kode_transaksi'));
+        if ($kodeLama['kode_transaksi'] == $this->request->getVar('kode_transaksi')) {
             $rule_namapenerima = 'required';
         } else {
-            $rule_namapenerima = 'required|is_unique[transaksi.nama_penerima]';
+            $rule_namapenerima = 'required|is_unique[transaksi.kode_transaki]';
         }
 
         if (!$this->validate([
-            'nama_penerima' => [
+            'kode_transaksi' => [
                 'rules' => $rule_namapenerima,
                 'errors' => [
                     'required' => 'Kolom ini harus diisi!',
@@ -206,14 +242,207 @@ class Transaction extends BaseController
         $this->transaksiModel->save([
             'kode_transaksi' => $kode_transaksi,
             'username' => $this->request->getVar('username'),
-            'nama_penerima' => $this->request->getVar('nama_penerima'),
             'nama_warung' => $this->request->getVar('nama_warung'),
-            'alamat' => $this->request->getVar('alamat'),
-            'no_hp' => $this->request->getVar('no_hp'),
-            'email' => $this->request->getVar('email')
+            'tgl_pembayaran' => $this->request->getVar('tgl_pembayaran'),
+            'total_harga' => $this->request->getVar('total_harga')
         ]);
-        session()->setFlashData('pesan', 'Data berhasil diubah');
-        return redirect()->to('admin/transaction');
+        session()->setFlashData('message', 'Data berhasil diubah');
+        return redirect()->to('admin/transaction/pesanan_masuk');
+    }
+
+    public function update2($kode_transaksi)
+    {
+        // dd($this->request->getVar());
+        //cek nama_barang
+        $kodeLama = $this->transaksiModel->getTransaksi($this->request->getVar('kode_transaksi'));
+        if ($kodeLama['kode_transaksi'] == $this->request->getVar('kode_transaksi')) {
+            $rule_namapenerima = 'required';
+        } else {
+            $rule_namapenerima = 'required|is_unique[transaksi.kode_transaki]';
+        }
+
+        if (!$this->validate([
+            'kode_transaksi' => [
+                'rules' => $rule_namapenerima,
+                'errors' => [
+                    'required' => 'Kolom ini harus diisi!',
+                    'is_unique' => 'nama penerima sudah terdaftar'
+                ]
+            ]
+        ])) {
+            // $validation = \Config\Services::validation();
+            return redirect()->to('/transaction/edit/' . $this->request->getVar('kode_transaksi'))->withInput();
+        }
+
+        // $fileGambar = $this->request->getFile('foto_barang');
+        // //cek gambar apakah tetap gambar lama
+        // if ($fileGambar->getError() == 4) {
+        //     $namaGambar = $this->request->getVar('gambarLama');
+        // } else {
+        //     //pindahkan file ke folder img
+        //     $fileGambar->move('img');
+        //     //ambil nama file
+        //     $namaGambar = $fileGambar->getName();
+        //     //hapus file lama
+        //     unlink('img/' . $this->request->getVar('gambarLama'));
+        // }
+
+        // $slug = url_title($this->request->getVar('nama_barang'), '-', true);
+        $this->transaksiModel->save([
+            'kode_transaksi' => $kode_transaksi,
+            'username' => $this->request->getVar('username'),
+            'nama_warung' => $this->request->getVar('nama_warung'),
+            'tgl_pembayaran' => $this->request->getVar('tgl_pembayaran'),
+            'total_harga' => $this->request->getVar('total_harga')
+        ]);
+        session()->setFlashData('message', 'Data berhasil diubah');
+        return redirect()->to('admin/transaction/pesanan_proses');
+    }
+    public function update3($kode_transaksi)
+    {
+        // dd($this->request->getVar());
+        //cek nama_barang
+        $kodeLama = $this->transaksiModel->getTransaksi($this->request->getVar('kode_transaksi'));
+        if ($kodeLama['kode_transaksi'] == $this->request->getVar('kode_transaksi')) {
+            $rule_namapenerima = 'required';
+        } else {
+            $rule_namapenerima = 'required|is_unique[transaksi.kode_transaki]';
+        }
+
+        if (!$this->validate([
+            'kode_transaksi' => [
+                'rules' => $rule_namapenerima,
+                'errors' => [
+                    'required' => 'Kolom ini harus diisi!',
+                    'is_unique' => 'nama penerima sudah terdaftar'
+                ]
+            ]
+        ])) {
+            // $validation = \Config\Services::validation();
+            return redirect()->to('/transaction/edit/' . $this->request->getVar('kode_transaksi'))->withInput();
+        }
+
+        // $fileGambar = $this->request->getFile('foto_barang');
+        // //cek gambar apakah tetap gambar lama
+        // if ($fileGambar->getError() == 4) {
+        //     $namaGambar = $this->request->getVar('gambarLama');
+        // } else {
+        //     //pindahkan file ke folder img
+        //     $fileGambar->move('img');
+        //     //ambil nama file
+        //     $namaGambar = $fileGambar->getName();
+        //     //hapus file lama
+        //     unlink('img/' . $this->request->getVar('gambarLama'));
+        // }
+
+        // $slug = url_title($this->request->getVar('nama_barang'), '-', true);
+        $this->transaksiModel->save([
+            'kode_transaksi' => $kode_transaksi,
+            'username' => $this->request->getVar('username'),
+            'nama_warung' => $this->request->getVar('nama_warung'),
+            'tgl_pembayaran' => $this->request->getVar('tgl_pembayaran'),
+            'total_harga' => $this->request->getVar('total_harga')
+        ]);
+        session()->setFlashData('message', 'Data berhasil diubah');
+        return redirect()->to('admin/transaction/pesanan_dikirim');
+    }
+
+    public function update4($kode_transaksi)
+    {
+        // dd($this->request->getVar());
+        //cek nama_barang
+        $kodeLama = $this->transaksiModel->getTransaksi($this->request->getVar('kode_transaksi'));
+        if ($kodeLama['kode_transaksi'] == $this->request->getVar('kode_transaksi')) {
+            $rule_namapenerima = 'required';
+        } else {
+            $rule_namapenerima = 'required|is_unique[transaksi.kode_transaki]';
+        }
+
+        if (!$this->validate([
+            'kode_transaksi' => [
+                'rules' => $rule_namapenerima,
+                'errors' => [
+                    'required' => 'Kolom ini harus diisi!',
+                    'is_unique' => 'nama penerima sudah terdaftar'
+                ]
+            ]
+        ])) {
+            // $validation = \Config\Services::validation();
+            return redirect()->to('/transaction/edit/' . $this->request->getVar('kode_transaksi'))->withInput();
+        }
+
+        // $fileGambar = $this->request->getFile('foto_barang');
+        // //cek gambar apakah tetap gambar lama
+        // if ($fileGambar->getError() == 4) {
+        //     $namaGambar = $this->request->getVar('gambarLama');
+        // } else {
+        //     //pindahkan file ke folder img
+        //     $fileGambar->move('img');
+        //     //ambil nama file
+        //     $namaGambar = $fileGambar->getName();
+        //     //hapus file lama
+        //     unlink('img/' . $this->request->getVar('gambarLama'));
+        // }
+
+        // $slug = url_title($this->request->getVar('nama_barang'), '-', true);
+        $this->transaksiModel->save([
+            'kode_transaksi' => $kode_transaksi,
+            'username' => $this->request->getVar('username'),
+            'nama_warung' => $this->request->getVar('nama_warung'),
+            'tgl_pembayaran' => $this->request->getVar('tgl_pembayaran'),
+            'total_harga' => $this->request->getVar('total_harga')
+        ]);
+        session()->setFlashData('message', 'Data berhasil diubah');
+        return redirect()->to('admin/transaction/pesanan_diterima');
+    }
+
+    public function update5($kode_transaksi)
+    {
+        // dd($this->request->getVar());
+        //cek nama_barang
+        $kodeLama = $this->transaksiModel->getTransaksi($this->request->getVar('kode_transaksi'));
+        if ($kodeLama['kode_transaksi'] == $this->request->getVar('kode_transaksi')) {
+            $rule_namapenerima = 'required';
+        } else {
+            $rule_namapenerima = 'required|is_unique[transaksi.kode_transaki]';
+        }
+
+        if (!$this->validate([
+            'kode_transaksi' => [
+                'rules' => $rule_namapenerima,
+                'errors' => [
+                    'required' => 'Kolom ini harus diisi!',
+                    'is_unique' => 'nama penerima sudah terdaftar'
+                ]
+            ]
+        ])) {
+            // $validation = \Config\Services::validation();
+            return redirect()->to('/transaction/edit/' . $this->request->getVar('kode_transaksi'))->withInput();
+        }
+
+        // $fileGambar = $this->request->getFile('foto_barang');
+        // //cek gambar apakah tetap gambar lama
+        // if ($fileGambar->getError() == 4) {
+        //     $namaGambar = $this->request->getVar('gambarLama');
+        // } else {
+        //     //pindahkan file ke folder img
+        //     $fileGambar->move('img');
+        //     //ambil nama file
+        //     $namaGambar = $fileGambar->getName();
+        //     //hapus file lama
+        //     unlink('img/' . $this->request->getVar('gambarLama'));
+        // }
+
+        // $slug = url_title($this->request->getVar('nama_barang'), '-', true);
+        $this->transaksiModel->save([
+            'kode_transaksi' => $kode_transaksi,
+            'username' => $this->request->getVar('username'),
+            'nama_warung' => $this->request->getVar('nama_warung'),
+            'tgl_pembayaran' => $this->request->getVar('tgl_pembayaran'),
+            'total_harga' => $this->request->getVar('total_harga')
+        ]);
+        session()->setFlashData('message', 'Data berhasil diubah');
+        return redirect()->to('admin/transaction/pesanan_selesai');
     }
 
     public function pesanan_masuk()
@@ -257,7 +486,8 @@ class Transaction extends BaseController
             'title' => "Admin | Pesanan Proses",
             'transaksi' => $this->transaksiModel->pesanan_proses(10),
             'transaksi2' => $transaksi->paginate(10, 'transaksi'),
-            'pager' => $this->transaksiModel->pager
+            'pager' => $this->transaksiModel->pager,
+            'info_pesanan' => $transaksi->info_pesanan()
         ];
         return view('admin/transaction/pesanan_proses/index', $data);
     }
@@ -294,7 +524,7 @@ class Transaction extends BaseController
     {
         $this->transaksiModel->save([
             'kode_transaksi' => $kode_transaksi,
-            'status' => 'Diterima'
+            'status' => 'Perlu Diverifikasi'
         ]);
         session()->setFlashData('pesan', 'Pesanan berhasil diterima');
         return redirect()->to('admin/transaction/pesanan_dikirim');
@@ -330,12 +560,9 @@ class Transaction extends BaseController
 
     public function update_terima($kode_transaksi)
     {
-        $myTime = Time::now('Asia/Jakarta');
-        $date = $myTime->toLocalizedString('d MMM yyyy');
         $this->transaksiModel->save([
             'kode_transaksi' => $kode_transaksi,
-            'status' => 'Selesai',
-            'tgl_pembayaran' => $date
+            'status' => 'Diterima',
         ]);
         session()->setFlashData('pesan', 'Pesanan berhasil diterima');
         return redirect()->to('admin/transaction/pesanan_diterima');

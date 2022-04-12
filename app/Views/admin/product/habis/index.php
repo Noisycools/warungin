@@ -51,10 +51,8 @@
                                     <td><?= $b['kategori']; ?></td>
                                     <td><?= $b['stok']; ?></td>
                                     <td><img src="/img/<?= $b['foto_barang']; ?>" alt="" class="gambar"></td>
-                                    <td><a href="<?= $b['barang_id']; ?>" type="buttpn" class="badge btn-primary btn-sm"
-                                            data-toggle="modal" data-target="#modal-sm">
-                                            <i class="fas fa-plus"></i>
-                                        </a>
+                                    <td><a href="/product/habis/edit/<?= $b['barang_id']; ?>" class="btn btn-primary"><i
+                                                class="fas fa-plus"></i></a>
                                     </td>
                                     </tr>
                                     <?php endforeach; ?>
@@ -63,33 +61,6 @@
                     </div>
                 </div>
             </div>
-            <?php foreach ($barang->getResult('array') as $b) : ?>
-            <form action="/product/tambah" method="POST">
-                <div class="modal fade" id="modal-sm">
-                    <div class="modal-dialog modal-sm">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title">Tambah Stok</h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="col">
-                                    <input type="text" value="<?= $b['barang_id']; ?>" name="barang_id">
-                                    <input type="text" value="<?= $b['nama_barang']; ?>" name="nama_barang">
-                                    <input type="number" class="form-control" name="stok">
-                                </div>
-                            </div>
-                            <div class="modal-footer justify-content-between">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-primary">Tambah</button>
-                            </div>
-                        </div>
-                        <!-- /.modal-content -->
-                    </div>
-            </form>
-            <?php endforeach; ?>
         </div><!-- /.container-fluid -->
     </section>
 

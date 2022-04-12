@@ -38,12 +38,11 @@ class BarangModel extends Model
         return $builder->get();
     }
 
-    public function getBarang1($slug = false)
+    public function getBarang1()
     {
-        if ($slug == false) {
-            return $this->findAll();
-        }
-        return $this->where(['slug' => $slug])->first();
+        return $this->db->query("SELECT * FROM tabel_barang JOIN kategori_barang 
+        ON tabel_barang.id_kategori=kategori_barang.id_kategori
+        ORDER BY barang_id");
     }
 
     public function getBarangFull()
@@ -55,14 +54,16 @@ class BarangModel extends Model
         return $builder->get();
     }
 
-    public function create($id_kategori, $data){
+    public function create($id_kategori, $data)
+    {
         $builder = $this->db->table($this->table);
         $builder->join('kategori_barang', 'kategori_barang.id_kategori = tabel_barang.id_kategori');
         $builder->where('id_kategori', $id_kategori);
         return $builder->insert($data);
     }
 
-    public function edit($data) {
+    public function edit($data)
+    {
         $builder = $this->db->table($this->table);
         $builder->where('barang_id', $data['barang_id']);
         return $builder->update($data);
