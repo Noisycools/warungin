@@ -470,7 +470,7 @@ class Transaction extends BaseController
             'kode_transaksi' => $kode_transaksi,
             'status' => 'Diproses'
         ]);
-        session()->setFlashData('pesan', 'Pesanan berhasil diproses');
+        session()->setFlashData('message', 'Pesanan berhasil dikonfirmasi');
         return redirect()->to('admin/transaction/pesanan_masuk');
     }
 
@@ -499,7 +499,7 @@ class Transaction extends BaseController
             'kode_transaksi' => $kode_transaksi,
             'status' => 'Dikirim'
         ]);
-        session()->setFlashData('pesan', 'Pesanan berhasil diproses');
+        session()->setFlashData('message', 'Pesanan berhasil diproses');
         return redirect()->to('admin/transaction/pesanan_proses');
     }
 
@@ -528,7 +528,7 @@ class Transaction extends BaseController
             'kode_transaksi' => $kode_transaksi,
             'status' => 'Perlu Diverifikasi'
         ]);
-        session()->setFlashData('pesan', 'Pesanan berhasil diterima');
+        session()->setFlashData('message', 'Pesanan berhasil dikirim');
         return redirect()->to('admin/transaction/pesanan_dikirim');
     }
 
@@ -538,7 +538,7 @@ class Transaction extends BaseController
             'kode_transaksi' => $kode_transaksi,
             'status' => 'Diterima'
         ]);
-        session()->setFlashData('pesan', 'Pesanan berhasil diterima');
+        session()->setFlashData('message', 'Pesanan berhasil diterima');
         return redirect()->to('/');
     }
 
@@ -567,7 +567,7 @@ class Transaction extends BaseController
             'kode_transaksi' => $kode_transaksi,
             'status' => 'Diterima',
         ]);
-        session()->setFlashData('pesan', 'Pesanan berhasil diterima');
+        session()->setFlashData('message', 'Pesanan berhasil diterima');
         return redirect()->to('admin/transaction/pesanan_diterima');
     }
 
