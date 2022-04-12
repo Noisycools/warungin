@@ -73,6 +73,12 @@ class TransactionModel extends Model
         ON transaksi.kode_transaksi=barang_transaksi.kode_transaksi");
     }
 
+    public function info_barang($kode_transaksi)
+    {
+        return $this->db->query("SELECT * FROM transaksi JOIN barang_transaksi 
+        ON transaksi.kode_transaksi=barang_transaksi.kode_transaksi WHERE transaksi.kode_transaksi=$kode_transaksi;");
+    }
+
     public function search($keyword)
     {
         return $this->table('transaksi')

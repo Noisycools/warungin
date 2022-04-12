@@ -75,6 +75,7 @@
                         <?= $pager->links('transaksi2', 'pagination') ?>
                     </div>
                 </div>
+                <?php foreach ($info_pesanan->getResult('array') as $i) : ?>
                 <div class="modal fade" id="modal-default">
                     <div class="modal-dialog">
                         <div class="modal-content">
@@ -127,6 +128,7 @@
                     </div>
                     <!-- /.modal-dialog -->
                 </div>
+                <?php endforeach ?>
             </div>
         </div><!-- /.container-fluid -->
     </section>

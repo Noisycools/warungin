@@ -49,7 +49,7 @@
                                     <td><?= $t['nama_warung']; ?></td>
                                     <td><?= $t['tgl_pembayaran']; ?></td>
                                     <td>Rp. <?= number_format($t['total_harga'], 0); ?></td>
-                                    <td><span class="badge bg-success"><?= $t['status']; ?></span></td>
+                                    <td><span class="badge bg-primary"><?= $t['status']; ?></span></td>
                                     <td><a href="/transaction/edit5/<?= $t['kode_transaksi']; ?>"
                                             class="btn btn-warning"><i class="fas fa-pen"></i></a></td>
                                     <td> <button type="button" class="btn btn-info" data-toggle="modal"
