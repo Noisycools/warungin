@@ -51,6 +51,11 @@
     ?>
 
     window.addEventListener('load', (event) => {
+      windowSize = window.innerWidth;
+
+      if (windowSize > 768) {
+        header.classList.remove("bg-red-700");
+      }
 
       if (home.id == jsvar) {
         home.classList.add("md:text-blue-700");
@@ -87,11 +92,15 @@
 
     document.addEventListener("scroll", function() {
       scrollpos = window.scrollY;
+      windowSize = window.innerWidth;
 
       if (scrollpos > 10) {
         header.classList.add("bg-red-700");
+        header.classList.remove("md:bg-transaparent");
       } else {
-        header.classList.remove("bg-red-700");
+        if (windowSize > 768) {
+          header.classList.remove("bg-red-700");
+        }
       }
     });
   </script>

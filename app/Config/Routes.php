@@ -34,6 +34,7 @@ $routes->setAutoRoute(true);
 
 $routes->get('/', 'Warungin::index');
 $routes->get('/contact_us', 'Email::index');
+$routes->add('/sendemail', 'Email::sendEmail');
 $routes->get('/daftar_belanja', 'Pages::daftar_belanja', ['filter' => 'role:user']);
 $routes->get('/homepage', 'Pages::homepage');
 $routes->get('/product', 'Pages::product');

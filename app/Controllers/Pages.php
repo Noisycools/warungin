@@ -59,11 +59,19 @@ class Pages extends BaseController
 
     public function histori_transaksi()
     {
+        $keyword = $this->request->getVar('keyword');
+        if ($keyword) {
+            $transaksi = $this->checkoutModel->search($keyword);
+        } else {
+            $transaksi = $this->checkoutModel;
+        }
         $username = user()->username;
         $data = [
             'title'     => 'Histori Transaksi | WarungIn',
             'alt_title' => 'historiTransaksi',
-            'transaksi' => $this->checkoutModel->getDataByUsername($username)
+            'transaksi' => $this->checkoutModel->getDataByUsername2(5, $username),
+            'transaksi2' => $transaksi->paginate(5, 'transaksi'),
+            'pager' => $this->checkoutModel->pager
         ];
 
         return view('pages/histori_transaksi', $data);
@@ -126,6 +134,10 @@ class Pages extends BaseController
 
     public function detail_barang($slug)
     {
+        if (!in_groups('user')) {
+            return redirect()->to('/');
+        }
+
         $username = user()->username;
         if ($this->profileModel->getProfile($username)->getRow() == null) {
             $profileModel = new ProfileModel();
@@ -154,7 +166,7 @@ class Pages extends BaseController
     public function product_list()
     {
         $keyword = $this->request->getVar('keyword');
-        if($keyword) {
+        if ($keyword) {
             $barang = $this->barangModel->search($keyword);
         } else {
             $barang = $this->barangModel;

@@ -2,7 +2,7 @@
 
 use Myth\Auth\Collectors\Auth; ?>
 
-<nav id="header" class="fixed w-full z-50 border-gray-200 px-2 sm:px-4 py-3 rounded-b-xl" x-data="{ isOpen: false }">
+<nav id="header" class="fixed bg-red-700 md:bg-transaparent w-full z-50 border-gray-200 px-2 sm:px-4 py-3 rounded-b-xl" x-data="{ isOpen: false }">
     <div class="container flex flex-wrap justify-between items-center mx-auto">
         <a href="#" class="flex items-center w-24 h-12">
             <img src="/img/WarungIn.png" class="" alt="Logo Warungin" />
@@ -39,7 +39,7 @@ use Myth\Auth\Collectors\Auth; ?>
                             <a id="daftarBelanja" href="/daftar_belanja" class="block py-2 pr-4 pl-3 border-b border-white md:hover:bg-transparent md:border-0 md:p-0 text-white md:hover:text-blue-700 hover:bg-white hover:text-black">Daftar Belanja</a>
                         </li>
                         <li>
-                            <a id="historiTransaksi" href="/histori_transaksi" class="block py-2 pr-4 pl-3 border-b border-white md:hover:bg-transparent md:border-0 md:p-0 text-white md:hover:text-blue-700 hover:bg-white hover:text-black">Histori Transaksi</a>
+                            <a id="historiTransaksi" href="pages/histori_transaksi" class="block py-2 pr-4 pl-3 border-b border-white md:hover:bg-transparent md:border-0 md:p-0 text-white md:hover:text-blue-700 hover:bg-white hover:text-black">Histori Transaksi</a>
                         </li>
                     <?php endif; ?>
                     <?php if (in_groups('admin')) : ?>

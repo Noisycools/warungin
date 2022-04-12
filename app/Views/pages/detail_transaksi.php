@@ -113,7 +113,7 @@
                         <!-- THIS IS THE PENDING TRANSACTION -->
 
                         <div id="item3-container" class="w-full h-64">
-                            <div class="container flex flex-col w-full items-center justify-center bg-red-500 rounded-lg shadow-lg">
+                            <div class="container mt-6 sm:mt-0 flex flex-col w-full items-center justify-center bg-red-500 rounded-lg shadow-lg">
                                 <div class="px-4 py-5 sm:px-6 border-b w-full">
                                     <h3 class="text-lg leading-6 font-medium text-white">
                                         <?= $transaksi['kode_transaksi'] ?>
@@ -133,7 +133,7 @@
                                                 </ul>
                                                 <?php if ($transaksi['status'] != 'Dikirim') : ?>
                                                     <!-- Base - Left -->
-                                                    <div class="mt-3">
+                                                    <div class="pt-6 pb-3 pl-3">
                                                         <a class="relative inline-flex items-center px-4 py-3 overflow-hidden text-white bg-blue-600 rounded group active:bg-blue-500 focus:outline-none focus:ring" href="/pages/struk/<?= $transaksi['kode_transaksi'] ?>">
                                                             <span class="absolute right-0 transition-transform translate-x-full group-hover:-translate-x-1">
                                                                 <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -152,7 +152,7 @@
                                     </li>
                                 </ul>
                             </div>
-                            <div class="hidden sm:flex items-center mt-6"> <i class="fa fa-arrow-left text-sm pr-2 text-white"></i> <span class="text-md font-medium text-white"><a href="/">Kembali</a></span> </div>
+                            <div class="flex sm:justify-center lg:justify-start items-center mt-6"> <i class="fa fa-arrow-left text-sm pr-2 text-white"></i> <span class="text-md font-medium text-white"><a href="/">Kembali</a></span> </div>
                         </div>
 
                         <?php if ($transaksi['status'] == 'Dikirim') : ?>

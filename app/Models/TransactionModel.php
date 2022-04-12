@@ -28,7 +28,13 @@ class TransactionModel extends Model
     public function verifikasi($data)
     {
         $builder = $this->db->table($this->table);
-        return $builder->set(['foto_pengiriman' => $data['foto_pengiriman'], 'status' => 'Selesai'])->where('kode_transaksi', $data['kodeTransaksi'])->update();
+        return $builder->set(['foto_pengiriman' => $data['foto_pengiriman'], 'status' => 'Perlu Diverifikasi'])->where('kode_transaksi', $data['kodeTransaksi'])->update();
+    }
+
+    public function verifikasi_customer($data)
+    {
+        $builder = $this->db->table($this->table);
+        return $builder->set(['status' => 'Diterima'])->where('kode_transaksi', $data['kodeTransaksi'])->update();
     }
 
     public function pesanan_masuk()
