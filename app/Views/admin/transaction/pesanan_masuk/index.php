@@ -10,9 +10,6 @@
                 <div class="row">
                     <div class="col">
                         <h1 class="mt-2">Histori Transaksi</h1>
-                        <a href="/transaction/laporan" rel="noopener" target="_blank"
-                            class="btn btn-primary float-right"><i class="fas fa-print"></i> Print</a>
-                        <a href="/transaction/create" class="btn btn-primary mb-3 float-right mr-2">Tambah Data</a>
                         <div class="swal" data-swal="<?= session()->getFlashdata('message'); ?>"></div>
                         <div class="col-4">
                             <form action="" method="GET">
@@ -58,6 +55,10 @@
                                     </td>
                                     <td><a href="/transaction/edit1/<?= $t['kode_transaksi']; ?>"
                                             class="btn btn-warning"><i class="fas fa-pen"></i></a></td>
+                                    <td> <button type="button" class="btn btn-info" data-toggle="modal"
+                                            data-target="#modal-default<?= $t['kode_transaksi']; ?>">
+                                            <i class="fas fa-eye"></i>
+                                        </button></td>
                                     <td>
                                         <form action="/transaction/<?= $t['kode_transaksi']; ?>" method="POST"
                                             class="d-inline">
@@ -74,24 +75,60 @@
                         </table>
                         <?= $pager->links('transaksi2', 'pagination') ?>
                     </div>
-                </div>
-                <div class="modal fade" id="modal-default">
+                </div> <?php foreach ($info_pesanan->getResult('array') as $i) : ?>
+                <div class="modal fade" id="modal-default<?= $i['kode_transaksi']; ?>">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title">Default Modal</h4>
+                                <h4 class="modal-title">Info Pesanan</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <p>One fine body&hellip;</p>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Pelanggan </th>
+                                            <th scope="col">:</th>
+                                            <th scope="col"><?= $i['nama_penerima']; ?></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Warung</td>
+                                            <td>:</td>
+                                            <td><?= $i['nama_warung']; ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td> Alamat</td>
+                                            <td>:</td>
+                                            <td><?= $i['alamat']; ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td>No Hp </td>
+                                            <td>:</td>
+                                            <td><?= $i['no_hp']; ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Email</td>
+                                            <td>:</td>
+                                            <td><?= $i['email']; ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Total Harga</td>
+                                            <td>:</td>
+                                            <td>Rp. <?= number_format($i['total_harga'], 0); ?></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                         <!-- /.modal-content -->
                     </div>
                     <!-- /.modal-dialog -->
                 </div>
+                <?php endforeach; ?>
             </div>
         </div><!-- /.container-fluid -->
     </section>

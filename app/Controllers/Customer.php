@@ -136,7 +136,7 @@ class Customer extends BaseController
             'no_hp' => $this->request->getVar('no_hp'),
             'email' => $this->request->getVar('email'),
         ]);
-        session()->setFlashData('pesan', 'Data berhasil ditambahkan');
+        session()->setFlashData('message', 'Data berhasil ditambahkan');
         return redirect()->to('admin/customer');
     }
 
@@ -148,7 +148,7 @@ class Customer extends BaseController
         // // hapus gambar
         // unlink('img/' . $customer['foto_customer']);
         $this->profileModel->delete($id_profile);
-        session()->setFlashData('pesan', 'Data berhasil dihapus');
+        session()->setFlashData('message', 'Data berhasil dihapus');
         return redirect()->to('admin/customer');
     }
 
@@ -210,7 +210,7 @@ class Customer extends BaseController
         // }
         $this->profileModel->updateProfile($data);
 
-        session()->setFlashData('pesan', 'Data berhasil diubah');
+        session()->setFlashData('message', 'Data berhasil diubah');
         return redirect()->to('admin/customer');
     }
 }

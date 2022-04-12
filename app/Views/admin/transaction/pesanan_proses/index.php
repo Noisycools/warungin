@@ -10,9 +10,6 @@
                 <div class="row">
                     <div class="col">
                         <h1 class="mt-2">Histori Transaksi</h1>
-                        <a href="/transaction/laporan" rel="noopener" target="_blank"
-                            class="btn btn-primary float-right"><i class="fas fa-print"></i> Print</a>
-                        <a href="/transaction/create" class="btn btn-primary mb-3 float-right mr-2">Tambah Data</a>
                         <div class="swal" data-swal="<?= session()->getFlashdata('message'); ?>"></div>
                         <div class="col-4">
                             <form action="" method="GET">
@@ -89,13 +86,42 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                Pelanggan : <?= $i['nama_penerima']; ?><br>
-                                Warung : <?= $i['nama_warung']; ?><br>
-                                Alamat : <?= $i['alamat']; ?><br>
-                                No Hp : <?= $i['no_hp']; ?><br>
-                                Email : <?= $i['email']; ?><br>
-                                Barang : <?= $i['nama_barang']; ?><br>
-                                Total Harga : <?= $i['total_harga']; ?>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Pelanggan </th>
+                                            <th scope="col">:</th>
+                                            <th scope="col"><?= $i['nama_penerima']; ?></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Warung</td>
+                                            <td>:</td>
+                                            <td><?= $i['nama_warung']; ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td> Alamat</td>
+                                            <td>:</td>
+                                            <td><?= $i['alamat']; ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td>No Hp </td>
+                                            <td>:</td>
+                                            <td><?= $i['no_hp']; ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Email</td>
+                                            <td>:</td>
+                                            <td><?= $i['email']; ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Total Harga</td>
+                                            <td>:</td>
+                                            <td>Rp. <?= number_format($i['total_harga'], 0); ?></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                         <!-- /.modal-content -->

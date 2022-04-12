@@ -138,7 +138,7 @@ class Transaction extends BaseController
             'no_hp' => $this->request->getVar('no_hp'),
             'email' => $this->request->getVar('email')
         ]);
-        session()->setFlashData('pesan', 'Data berhasil ditambahkan');
+        session()->setFlashData('message', 'Data berhasil ditambahkan');
         return redirect()->to('admin/transaction');
     }
 
@@ -151,7 +151,7 @@ class Transaction extends BaseController
         // unlink('img/' . $barang['foto_barang']);
 
         $this->transaksiModel->delete($kode_transaksi);
-        session()->setFlashData('pesan', 'Data berhasil dihapus');
+        session()->setFlashData('message', 'Data berhasil dihapus');
         return redirect()->to('admin/transaction');
     }
 
@@ -458,7 +458,8 @@ class Transaction extends BaseController
             'title' => "Admin | Pesanan Masuk",
             'transaksi' => $this->transaksiModel->pesanan_masuk(10),
             'transaksi2' => $transaksi->paginate(10, 'transaksi'),
-            'pager' => $this->transaksiModel->pager
+            'pager' => $this->transaksiModel->pager,
+            'info_pesanan' => $transaksi->info_pesanan()
         ];
         return view('admin/transaction/pesanan_masuk/index', $data);
     }
@@ -515,7 +516,8 @@ class Transaction extends BaseController
             'title' => "Admin | Pesanan Dikirim",
             'transaksi' => $this->transaksiModel->pesanan_dikirim(10),
             'transaksi2' => $transaksi->paginate(10, 'transaksi'),
-            'pager' => $this->transaksiModel->pager
+            'pager' => $this->transaksiModel->pager,
+            'info_pesanan' => $transaksi->info_pesanan()
         ];
         return view('admin/transaction/pesanan_dikirim/index', $data);
     }
@@ -553,7 +555,8 @@ class Transaction extends BaseController
             'title' => "Admin | Pesanan Diterima",
             'transaksi' => $this->transaksiModel->pesanan_diterima(10),
             'transaksi2' => $transaksi->paginate(10, 'transaksi'),
-            'pager' => $this->transaksiModel->pager
+            'pager' => $this->transaksiModel->pager,
+            'info_pesanan' => $transaksi->info_pesanan()
         ];
         return view('admin/transaction/pesanan_diterima/index', $data);
     }
@@ -581,7 +584,8 @@ class Transaction extends BaseController
             'title' => "Admin | Pesanan Selesai",
             'transaksi' => $this->transaksiModel->pesanan_perlu_diverifikasi(10),
             'transaksi2' => $transaksi->paginate(10, 'transaksi'),
-            'pager' => $this->transaksiModel->pager
+            'pager' => $this->transaksiModel->pager,
+            'info_pesanan' => $transaksi->info_pesanan()
         ];
         return view('admin/transaction/pesanan_selesai/index', $data);
     }
