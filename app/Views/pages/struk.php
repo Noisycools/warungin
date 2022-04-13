@@ -103,6 +103,13 @@
                     </div>
                 </div>
             <?php endif; ?>
+            <?php if (in_groups('admin')) : ?>
+                <div class="row no-print">
+                    <div class="col-xs-12">
+                        <a class="btn btn-primary pull-right" href="/admin/transaction/pesanan_masuk">Kembali</a>
+                    </div>
+                </div>
+            <?php endif; ?>
         <?php endif; ?>
     </section>
 </section>

@@ -37,9 +37,9 @@
                             <path d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                     </span>
-                    <form action="" method="post">
+                    <form action="" method="GET">
                         <input name="keyword" class="w-full text-black border shadow-sm rounded-md pl-10 pr-4 py-2 focus:border-red-500 focus:outline-none focus:shadow-outline" type="text" placeholder="Search">
-                        <input type="submit" class="hidden">
+                        <input type="submit" name="something" class="hidden">
                     </form>
                 </div>
             </div>
@@ -48,9 +48,17 @@
             <div class="container mx-auto px-6">
                 <div class="flex justify-between">
                     <h3 class="text-gray-700 text-2xl font-medium">List Barang</h3>
-                    <h3 class="text-red-700 my-auto"><a href="/">
-                            <- Kembali</a>
-                    </h3>
+                    <?php if (!isset($_GET['something'])) { ?>
+                        <h3 class="text-red-700 my-auto">
+                            <a href="/">
+                                <- Kembali </a>
+                        </h3>
+                    <?php } else { ?>
+                        <h3 class="text-red-700 my-auto">
+                            <a href="/pages/product_list">
+                                <- Kembali </a>
+                        </h3>
+                    <?php } ?>
                 </div>
                 <span class="mt-3 text-sm text-gray-500"><?php echo $countAll ?> Products</span>
                 <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6">

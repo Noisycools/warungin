@@ -19,6 +19,9 @@ class Transaction extends BaseController
 
     public function laporan()
     {
+        if (!in_groups('admin')) {
+            return redirect()->to('/');
+        }
         $myTime = Time::now('Asia/Jakarta');
         $date = $myTime->toLocalizedString('d MMM yyyy');
         $data = [
@@ -31,6 +34,9 @@ class Transaction extends BaseController
 
     public function index()
     {
+        if (!in_groups('admin')) {
+            return redirect()->to('/');
+        }
         // $transaksi = $this->transaksiModel->findAll();
         $currentPage = $this->request->getVar('page_transaksi') ? $this->request->getVar('page_transaksi') : 1;
         // d($this->request->getVar('keyword'));
@@ -60,6 +66,9 @@ class Transaction extends BaseController
 
     public function create()
     {
+        if (!in_groups('admin')) {
+            return redirect()->to('/');
+        }
         // session();
         $data = [
             'title' => "Admin | Create Transaksi",
@@ -157,6 +166,9 @@ class Transaction extends BaseController
 
     public function edit1($kode_transaksi)
     {
+        if (!in_groups('admin')) {
+            return redirect()->to('/');
+        }
         $data = [
             'title' => "Admin | Edit Pesanan Masuk",
             'validation' => \Config\Services::validation(),
@@ -166,6 +178,9 @@ class Transaction extends BaseController
     }
     public function edit2($kode_transaksi)
     {
+        if (!in_groups('admin')) {
+            return redirect()->to('/');
+        }
         $data = [
             'title' => "Admin | Edit Pesanan Masuk",
             'validation' => \Config\Services::validation(),
@@ -175,6 +190,9 @@ class Transaction extends BaseController
     }
     public function edit3($kode_transaksi)
     {
+        if (!in_groups('admin')) {
+            return redirect()->to('/');
+        }
         $data = [
             'title' => "Admin | Edit Pesanan Masuk",
             'validation' => \Config\Services::validation(),
@@ -184,6 +202,9 @@ class Transaction extends BaseController
     }
     public function edit4($kode_transaksi)
     {
+        if (!in_groups('admin')) {
+            return redirect()->to('/');
+        }
         $data = [
             'title' => "Admin | Edit Pesanan Masuk",
             'validation' => \Config\Services::validation(),
@@ -193,6 +214,9 @@ class Transaction extends BaseController
     }
     public function edit5($kode_transaksi)
     {
+        if (!in_groups('admin')) {
+            return redirect()->to('/');
+        }
         $data = [
             'title' => "Admin | Edit Pesanan Masuk",
             'validation' => \Config\Services::validation(),
@@ -447,6 +471,9 @@ class Transaction extends BaseController
 
     public function pesanan_masuk()
     {
+        if (!in_groups('admin')) {
+            return redirect()->to('/');
+        }
         $keyword = $this->request->getVar('keyword');
         if ($keyword) {
             $transaksi = $this->transaksiModel->search($keyword);
@@ -476,6 +503,9 @@ class Transaction extends BaseController
 
     public function pesanan_proses()
     {
+        if (!in_groups('admin')) {
+            return redirect()->to('/');
+        }
         $keyword = $this->request->getVar('keyword');
         if ($keyword) {
             $transaksi = $this->transaksiModel->search($keyword);
@@ -505,6 +535,9 @@ class Transaction extends BaseController
 
     public function pesanan_dikirim()
     {
+        if (!in_groups('admin')) {
+            return redirect()->to('/');
+        }
         $keyword = $this->request->getVar('keyword');
         if ($keyword) {
             $transaksi = $this->transaksiModel->search($keyword);
@@ -544,6 +577,9 @@ class Transaction extends BaseController
 
     public function pesanan_diterima()
     {
+        if (!in_groups('admin')) {
+            return redirect()->to('/');
+        }
         $keyword = $this->request->getVar('keyword');
         if ($keyword) {
             $transaksi = $this->transaksiModel->search($keyword);
@@ -573,6 +609,9 @@ class Transaction extends BaseController
 
     public function pesanan_selesai()
     {
+        if (!in_groups('admin')) {
+            return redirect()->to('/');
+        }
         $keyword = $this->request->getVar('keyword');
         if ($keyword) {
             $transaksi = $this->transaksiModel->search($keyword);

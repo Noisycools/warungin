@@ -20,6 +20,9 @@ class Customer extends BaseController
 
     public function laporan()
     {
+        if (!in_groups('admin')) {
+            return redirect()->to('/');
+        }
         $myTime = Time::now('Asia/Jakarta');
         $date = $myTime->toLocalizedString('d MMMM yyyy');
         $data = [
@@ -32,6 +35,9 @@ class Customer extends BaseController
 
     public function index()
     {
+        if (!in_groups('admin')) {
+            return redirect()->to('/');
+        }
         // $barang = $this->barangModel->findAll();
         $currentPage = $this->request->getVar('page_profile') ? $this->request->getVar('page_profile') : 1;
         // d($this->request->getVar('keyword'));
@@ -60,6 +66,9 @@ class Customer extends BaseController
 
     public function create()
     {
+        if (!in_groups('admin')) {
+            return redirect()->to('/');
+        }
         // session();
         $data = [
             'title' => "Admin | Create Customer",
@@ -154,6 +163,9 @@ class Customer extends BaseController
 
     public function edit($username)
     {
+        if (!in_groups('admin')) {
+            return redirect()->to('/');
+        }
         $data = [
             'title' => "Admin | Edit Customer",
             'validation' => \Config\Services::validation(),

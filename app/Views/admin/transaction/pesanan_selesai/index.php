@@ -14,8 +14,7 @@
                         <div class="col-4">
                             <form action="" method="GET">
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" placeholder="Masukkan keyword pencarian.."
-                                        name="keyword">
+                                    <input type="text" class="form-control" placeholder="Masukkan keyword pencarian.." name="keyword">
                                     <button class="btn btn-outline-secondary" type="submit" name="search">Cari</button>
                                 </div>
                             </form>
@@ -42,89 +41,85 @@
                             <tbody>
                                 <?php $i = 1; ?>
                                 <?php foreach ($transaksi as $t) : ?>
-                                <tr>
-                                    <th scope="row"><?= $i++; ?></th>
-                                    <td><?= $t['kode_transaksi']; ?></td>
-                                    <td><?= $t['username']; ?></td>
-                                    <td><?= $t['nama_warung']; ?></td>
-                                    <td><?= $t['tgl_pembayaran']; ?></td>
-                                    <td>Rp. <?= number_format($t['total_harga'], 0); ?></td>
-                                    <td><span class="badge bg-primary"><?= $t['status']; ?></span></td>
-                                    <td><a href="/transaction/edit5/<?= $t['kode_transaksi']; ?>"
-                                            class="btn btn-warning"><i class="fas fa-pen"></i></a></td>
-                                    <td> <button type="button" class="btn btn-info" data-toggle="modal"
-                                            data-target="#modal-default">
-                                            <i class="fas fa-eye"></i>
-                                        </button></td>
-                                    <td>
-                                        <form action="/transaction/<?= $t['kode_transaksi']; ?>" method="POST"
-                                            class="d-inline">
-                                            <?= csrf_field(); ?>
-                                            <input type="hidden" name="_method" value="DELETE">
-                                            <button type="submit" class="btn btn-danger"
-                                                onclick="return confirm('Apakah Anda Yakin?')"><i
-                                                    class="fas fa-trash"></i></button>
-                                        </form>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <th scope="row"><?= $i++; ?></th>
+                                        <td><?= $t['kode_transaksi']; ?></td>
+                                        <td><?= $t['username']; ?></td>
+                                        <td><?= $t['nama_warung']; ?></td>
+                                        <td><?= $t['tgl_pembayaran']; ?></td>
+                                        <td>Rp. <?= number_format($t['total_harga'], 0); ?></td>
+                                        <td><span class="badge bg-primary"><?= $t['status']; ?></span></td>
+                                        <td><a href="/transaction/edit5/<?= $t['kode_transaksi']; ?>" class="btn btn-warning"><i class="fas fa-pen"></i></a></td>
+                                        <td> <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-default">
+                                                <i class="fas fa-eye"></i>
+                                            </button></td>
+                                        <td>
+                                            <form action="/transaction/<?= $t['kode_transaksi']; ?>" method="POST" class="d-inline">
+                                                <?= csrf_field(); ?>
+                                                <input type="hidden" name="_method" value="DELETE">
+                                                <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin?')"><i class="fas fa-trash"></i></button>
+                                            </form>
+                                        </td>
+                                    </tr>
                                 <?php endforeach; ?>
                             </tbody>
                         </table>
                         <?= $pager->links('transaksi2', 'pagination') ?>
                     </div>
                 </div> <?php foreach ($info_pesanan->getResult('array') as $i) : ?>
-                <div class="modal fade" id="modal-default<?= $i['kode_transaksi']; ?>">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title">Info Pesanan</h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
+                    <div class="modal fade" id="modal-default<?= $i['kode_transaksi']; ?>">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Info Pesanan</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Pelanggan </th>
+                                                <th scope="col">:</th>
+                                                <th scope="col"><?= $i['nama_penerima']; ?></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Warung</td>
+                                                <td>:</td>
+                                                <td><?= $i['nama_warung']; ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td> Alamat</td>
+                                                <td>:</td>
+                                                <td><?= $i['alamat']; ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>No Hp </td>
+                                                <td>:</td>
+                                                <td><?= $i['no_hp']; ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Email</td>
+                                                <td>:</td>
+                                                <td><?= $i['email']; ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Total Harga</td>
+                                                <td>:</td>
+                                                <td>Rp. <?= number_format($i['total_harga'], 0); ?></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <a name="" id="" class="btn btn-primary" href="/pages/struk/<?= $i['kode_transaksi'] ?>" role="button">Lihat Struk pesanan</a>
+                                </div>
                             </div>
-                            <div class="modal-body">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Pelanggan </th>
-                                            <th scope="col">:</th>
-                                            <th scope="col"><?= $i['nama_penerima']; ?></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Warung</td>
-                                            <td>:</td>
-                                            <td><?= $i['nama_warung']; ?></td>
-                                        </tr>
-                                        <tr>
-                                            <td> Alamat</td>
-                                            <td>:</td>
-                                            <td><?= $i['alamat']; ?></td>
-                                        </tr>
-                                        <tr>
-                                            <td>No Hp </td>
-                                            <td>:</td>
-                                            <td><?= $i['no_hp']; ?></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Email</td>
-                                            <td>:</td>
-                                            <td><?= $i['email']; ?></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Total Harga</td>
-                                            <td>:</td>
-                                            <td>Rp. <?= number_format($i['total_harga'], 0); ?></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                            <!-- /.modal-content -->
                         </div>
-                        <!-- /.modal-content -->
+                        <!-- /.modal-dialog -->
                     </div>
-                    <!-- /.modal-dialog -->
-                </div>
                 <?php endforeach; ?>
             </div>
         </div><!-- /.container-fluid -->

@@ -39,6 +39,10 @@ class Pages extends BaseController
 
     public function daftar_belanja()
     {
+        if (!in_groups('user')) {
+            return redirect()->to('/');
+        }
+
         $username = user()->username;
         $daftar_belanja = $this->daftarBelanjaModel->getData($username);
         $getTotal = $this->daftarBelanjaModel->getTotal($username);
@@ -59,6 +63,10 @@ class Pages extends BaseController
 
     public function histori_transaksi()
     {
+        if (!in_groups('user')) {
+            return redirect()->to('/');
+        }
+
         $keyword = $this->request->getVar('keyword');
         if ($keyword) {
             $transaksi = $this->checkoutModel->search($keyword);
@@ -79,6 +87,9 @@ class Pages extends BaseController
 
     public function detail_transaksi($kodeTransaksi)
     {
+        if (!in_groups('kurir')) {
+            return redirect()->to('/');
+        }
         $data = [
             'title'     => 'Detail Transaksi | WarungIn',
             'transaksi' => $this->checkoutModel->getData($kodeTransaksi)->getRowArray(),
@@ -107,6 +118,9 @@ class Pages extends BaseController
 
     public function detail_histori_transaksi($kodeTransaksi)
     {
+        if (!in_groups('user')) {
+            return redirect()->to('/');
+        }
         $data = [
             'title'     => 'Detail Transaksi | WarungIn',
             'alt_title' => 'detailHistoriTransaksi',
@@ -165,6 +179,10 @@ class Pages extends BaseController
 
     public function product_list()
     {
+        if (!in_groups('user')) {
+            return redirect()->to('/');
+        }
+
         $keyword = $this->request->getVar('keyword');
         if ($keyword) {
             $barang = $this->barangModel->search($keyword);
@@ -200,6 +218,10 @@ class Pages extends BaseController
 
     public function profile()
     {
+        if (!in_groups('user')) {
+            return redirect()->to('/');
+        }
+
         $profileModel = new ProfileModel();
         $username = user()->username;
         $usersID = $this->usersModel->getID($username)->getRow();

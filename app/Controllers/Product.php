@@ -16,6 +16,9 @@ class Product extends BaseController
 
     public function laporan()
     {
+        if (!in_groups('admin')) {
+            return redirect()->to('/');
+        }
         $myTime = Time::now('Asia/Jakarta');
         $date = $myTime->toLocalizedString('d MMMM yyyy');
         $data = [
@@ -28,6 +31,9 @@ class Product extends BaseController
 
     public function index()
     {
+        if (!in_groups('admin')) {
+            return redirect()->to('/');
+        }
         // $barang = $this->barangModel->findAll();
         $currentPage = $this->request->getVar('page_tabel_barang') ? $this->request->getVar('page_tabel_barang') : 1;
         // d($this->request->getVar('keyword'));
@@ -56,6 +62,9 @@ class Product extends BaseController
 
     public function habis()
     {
+        if (!in_groups('admin')) {
+            return redirect()->to('/');
+        }
         $data = [
             'title' => 'Admin | Product Habis',
             'barang' => $this->barangModel->habis()
@@ -65,6 +74,9 @@ class Product extends BaseController
 
     public function tambah($barang_id)
     {
+        if (!in_groups('admin')) {
+            return redirect()->to('/');
+        }
         $data = [
             'title' => "Admin | Edit Barang",
             'validation' => \Config\Services::validation(),
@@ -75,6 +87,9 @@ class Product extends BaseController
 
     public function add($barang_id)
     {
+        if (!in_groups('admin')) {
+            return redirect()->to('/');
+        }
         $data = [
             'barang_id' => $barang_id,
             'stok' => $this->request->getVar('stok')
@@ -86,6 +101,9 @@ class Product extends BaseController
 
     public function create()
     {
+        if (!in_groups('admin')) {
+            return redirect()->to('/');
+        }
         // session();
         $data = [
             'title' => "Admin | Create Barang",
@@ -184,6 +202,9 @@ class Product extends BaseController
 
     public function edit($barang_id)
     {
+        if (!in_groups('admin')) {
+            return redirect()->to('/');
+        }
         $data = [
             'title' => "Admin | Edit Barang",
             'validation' => \Config\Services::validation(),
@@ -194,6 +215,9 @@ class Product extends BaseController
 
     public function editStok($slug)
     {
+        if (!in_groups('admin')) {
+            return redirect()->to('/');
+        }
         $data = [
             'title' => "Admin | Tambah Stok Barang",
             'validation' => \Config\Services::validation(),

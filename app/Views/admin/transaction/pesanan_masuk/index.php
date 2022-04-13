@@ -122,6 +122,7 @@
                                         </tr>
                                     </tbody>
                                 </table>
+                                <a name="" id="" class="btn btn-primary" href="/pages/struk/<?= $i['kode_transaksi'] ?>" role="button">Lihat Struk pesanan</a>
                             </div>
                         </div>
                         <!-- /.modal-content -->

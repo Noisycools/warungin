@@ -39,6 +39,9 @@ class Admin extends BaseController
 
     public function lap_harian()
     {
+        if (!in_groups('admin')) {
+            return redirect()->to('/');
+        }
         $myTime = Time::now('Asia/Jakarta');
         $date = $myTime->toLocalizedString('d MMMM yyyy');
         $tanggal0 = $this->request->getPost('tanggal');
@@ -59,6 +62,9 @@ class Admin extends BaseController
 
     public function lap_mingguan()
     {
+        if (!in_groups('admin')) {
+            return redirect()->to('/');
+        }
         $myTime = Time::now('Asia/Jakarta');
         $date = $myTime->toLocalizedString('d MMMM yyyy');
         $tanggall = $this->request->getPost('tanggal1');
@@ -84,6 +90,9 @@ class Admin extends BaseController
 
     public function lap_bulanan()
     {
+        if (!in_groups('admin')) {
+            return redirect()->to('/');
+        }
         $myTime = Time::now('Asia/Jakarta');
         $date = $myTime->toLocalizedString('d MMMM yyyy');
         $bulan = $this->request->getPost('bulan');
@@ -101,6 +110,9 @@ class Admin extends BaseController
 
     public function lap_tahunan()
     {
+        if (!in_groups('admin')) {
+            return redirect()->to('/');
+        }
         $myTime = Time::now('Asia/Jakarta');
         $date = $myTime->toLocalizedString('d MMMM yyyy');
         $tahun = $this->request->getPost('tahun');
