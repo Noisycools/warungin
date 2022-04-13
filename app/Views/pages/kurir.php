@@ -267,6 +267,12 @@
                                                     <div class="text-gray-200 text-md">
                                                         <i class="far fa-clock"></i>
                                                     </div>
+                                                    <a href="<?= '/pages/detail_transaksi/' . $s['kode_transaksi']; ?>" class="w-12 lg:w-12 text-right lg:text-center flex justify-end lg:justify-center">
+                                                        <svg width="20" fill="currentColor" height="20" class="text-gray-200" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M1363 877l-742 742q-19 19-45 19t-45-19l-166-166q-19-19-19-45t19-45l531-531-531-531q-19-19-19-45t19-45l166-166q19-19 45-19t45 19l742 742q19 19 19 45t-19 45z">
+                                                            </path>
+                                                        </svg>
+                                                    </a>
                                                 </div>
                                                 <div class="text-blue-500 cursor-pointer text-md relative ml-4">
                                                     <button @click="popup = !popup" type="button"><i class="far fa-check-square absolute top-0 right-0 animate-ping"></i><i class="far fa-check-square absolute top-0 right-0"></i></button>

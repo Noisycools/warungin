@@ -75,11 +75,13 @@ class Product extends BaseController
 
     public function add($barang_id)
     {
-        $this->barangModel->save([
+        $data = [
             'barang_id' => $barang_id,
             'stok' => $this->request->getVar('stok')
-        ]);
+        ];
+        $this->barangModel->edit($data);
         session()->setFlashData('message', 'Data berhasil diubah');
+        return redirect()->to('/admin/product');
     }
 
     public function create()
@@ -188,6 +190,16 @@ class Product extends BaseController
             'barang' => $this->barangModel->getBarang($barang_id)
         ];
         return view('admin/product/edit', $data);
+    }
+
+    public function editStok($slug)
+    {
+        $data = [
+            'title' => "Admin | Tambah Stok Barang",
+            'validation' => \Config\Services::validation(),
+            'barang' => $this->barangModel->getBarang($slug)
+        ];
+        return view('admin/product/habis/edit', $data);
     }
 
 

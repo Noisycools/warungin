@@ -51,7 +51,7 @@
                                     <td><?= $b['kategori']; ?></td>
                                     <td><?= $b['stok']; ?></td>
                                     <td><img src="/img/<?= $b['foto_barang']; ?>" alt="" class="gambar"></td>
-                                    <td><a href="/product/habis/edit/<?= $b['barang_id']; ?>" class="btn btn-primary"><i
+                                    <td><a href="/product/editstok/<?= $b['slug']; ?>" class="btn btn-primary"><i
                                                 class="fas fa-plus"></i></a>
                                     </td>
                                     </tr>
