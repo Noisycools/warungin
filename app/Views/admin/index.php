@@ -170,11 +170,11 @@
                                     <div class="row">
                                         <select class="form-control select2" style="width: 82%;" name="tahun">
                                             <?php
-                      $i = date("Y") - 2;
-                      for ($j = $i; $j < $i + 5; $j++) {
-                        echo '<option value="' . $j . '">' . $j . '</option>';
-                      }
-                      ?>
+                                            $i = date("Y") - 2;
+                                            for ($j = $i; $j < $i + 5; $j++) {
+                                                echo '<option value="' . $j . '">' . $j . '</option>';
+                                            }
+                                            ?>
                                         </select>
                                         &ensp;<button type="submit" class="btn btn-block btn-primary"
                                             style="width: 10%;"><i class="fa fa-download"></i></button>

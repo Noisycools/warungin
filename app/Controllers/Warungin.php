@@ -6,6 +6,7 @@ use App\Models\BarangModel;
 use App\Models\CheckoutModel;
 use App\Models\DaftarBelanjaModel;
 use App\Models\HistoriTransaksiModel;
+use App\Models\TransactionModel;
 use App\Models\ProfileModel;
 use CodeIgniter\I18n\Time;
 use TCPDF;
@@ -32,10 +33,13 @@ class Warungin extends BaseController
     protected $checkoutModel;
     protected $daftarBelanjaModel;
     protected $historiTransaksiModel;
+    protected $transaksiModel;
+
 
     public function __construct()
     {
         $this->barangModel = new BarangModel();
+        $this->transaksiModel = new TransactionModel();
         $this->profileModel = new ProfileModel();
         $this->checkoutModel = new CheckoutModel();
         $this->daftarBelanjaModel = new DaftarBelanjaModel();
@@ -60,7 +64,13 @@ class Warungin extends BaseController
                 return view('pages/kurir', $data);
             endif;
             if (in_groups('admin')) :
-                $data = ['title' => "Admin | Dashboard"];
+                $data = [
+                    'title' => "Admin | Dashboard",
+                    'pesanan' => $this->transaksiModel->jumlah_pesanan(),
+                    'pendapatan' => $this->transaksiModel->pendapatan(),
+                    'customer' => $this->profileModel->customer(),
+                    'barang' => $this->barangModel->jumlah_barang()
+                ];
                 return view('admin/index', $data);
             endif;
         endif;
