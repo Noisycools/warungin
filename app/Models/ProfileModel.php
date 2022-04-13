@@ -10,6 +10,11 @@ class ProfileModel extends Model
     protected $primaryKey = 'id_profile';
     protected $allowedFields = ['nama', 'nama_warung', 'alamat', 'no_hp', 'email'];
 
+    public function customer()
+    {
+        return $this->db->query("SELECT COUNT(id_profile) as total FROM `profile`;");
+    }
+
     public function getProfile($username = null)
     {
         if ($username == null) {

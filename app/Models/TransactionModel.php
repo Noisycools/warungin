@@ -67,6 +67,16 @@ class TransactionModel extends Model
         return $results;
     }
 
+    public function jumlah_pesanan()
+    {
+        return $this->db->query("SELECT COUNT(kode_transaksi) as total FROM `transaksi`;");
+    }
+
+    public function pendapatan()
+    {
+        return $this->db->query("SELECT SUM(total_harga) as total FROM `transaksi`;");
+    }
+
     public function info_pesanan()
     {
         return $this->db->query("SELECT * FROM transaksi JOIN barang_transaksi 

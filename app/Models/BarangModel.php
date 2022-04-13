@@ -30,6 +30,11 @@ class BarangModel extends Model
         return $builder->get()->getFirstRow();
     }
 
+    public function jumlah_barang()
+    {
+        return $this->db->query("SELECT COUNT(barang_id) as total FROM `tabel_barang`;");
+    }
+
     public function getKategori()
     {
         $builder = $this->db->table('kategori_barang');

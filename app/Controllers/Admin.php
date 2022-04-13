@@ -5,23 +5,35 @@ namespace App\Controllers;
 
 use App\Models\TransactionModel;
 use App\Models\BarangTransaksiModel;
+use App\Models\BarangModel;
 use App\Models\AdminModel;
+use App\Models\ProfileModel;
 use CodeIgniter\I18n\Time;
 
 class Admin extends BaseController
 {
     protected $transaksiModel;
     protected $barangTransaksiModel;
+    protected $profile;
+    protected $barangModel;
     public function __construct()
     {
         $this->transaksiModel = new TransactionModel();
         $this->barangTransaksiModel = new BarangTransaksiModel();
+        $this->barangModel = new BarangModel();
         $this->adminModel = new AdminModel();
+        $this->profile = new ProfileModel();
     }
 
     public function index()
     {
-        $data = ['title' => "Admin | Dashboard"];
+        $data = [
+            'title' => "Admin | Dashboard",
+            'pesanan' => $this->transaksiModel->jumlah_pesanan(),
+            'pendapatan' => $this->transaksiModel->pendapatan(),
+            'customer' => $this->profile->customer(),
+            'barang' => $this->barangModel->jumlah_barang()
+        ];
         return view('admin/index', $data);
     }
 
