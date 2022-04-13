@@ -49,8 +49,7 @@
                                     <td><?= $t['nama_warung']; ?></td>
                                     <td><?= $t['tgl_pembayaran']; ?></td>
                                     <td>Rp. <?= number_format($t['total_harga'], 0); ?></td>
-                                    <td><a type="submit" href="/transaction/update_terima/<?= $t['kode_transaksi']; ?>"
-                                            class="badge btn btn-block btn-outline-primary btn-sm"><?= $t['status']; ?></a>
+                                    <td><span class="badge bg-success"><?= $t['status']; ?></span>
                                     </td>
                                     <td><a href="/transaction/edit4/<?= $t['kode_transaksi']; ?>"
                                             class="btn btn-warning"><i class="fas fa-pen"></i></a></td>
