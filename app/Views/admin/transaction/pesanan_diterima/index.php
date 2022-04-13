@@ -44,22 +44,22 @@
                                 <?php foreach ($transaksi as $t) : ?>
                                 <tr>
                                     <th scope="row"><?= $i++; ?></th>
-                                    <td><?= $t->kode_transaksi; ?></td>
-                                    <td><?= $t->username; ?></td>
-                                    <td><?= $t->nama_warung; ?></td>
-                                    <td><?= $t->tgl_pembayaran; ?></td>
-                                    <td>Rp. <?= number_format($t->total_harga, 0); ?></td>
-                                    <td><a type="submit" href="/transaction/update_terima/<?= $t->kode_transaksi; ?>"
-                                            class="badge btn btn-block btn-outline-primary btn-sm"><?= $t->status; ?></a>
+                                    <td><?= $t['kode_transaksi']; ?></td>
+                                    <td><?= $t['username']; ?></td>
+                                    <td><?= $t['nama_warung']; ?></td>
+                                    <td><?= $t['tgl_pembayaran']; ?></td>
+                                    <td>Rp. <?= number_format($t['total_harga'], 0); ?></td>
+                                    <td><a type="submit" href="/transaction/update_terima/<?= $t['kode_transaksi']; ?>"
+                                            class="badge btn btn-block btn-outline-primary btn-sm"><?= $t['status']; ?></a>
                                     </td>
-                                    <td><a href="/transaction/edit4/<?= $t->kode_transaksi; ?>"
+                                    <td><a href="/transaction/edit4/<?= $t['kode_transaksi']; ?>"
                                             class="btn btn-warning"><i class="fas fa-pen"></i></a></td>
                                     <td> <button type="button" class="btn btn-info" data-toggle="modal"
                                             data-target="#modal-default">
                                             <i class="fas fa-eye"></i>
                                         </button></td>
                                     <td>
-                                        <form action="/transaction/<?= $t->kode_transaksi; ?>" method="POST"
+                                        <form action="/transaction/<?= $t['kode_transaksi']; ?>" method="POST"
                                             class="d-inline">
                                             <?= csrf_field(); ?>
                                             <input type="hidden" name="_method" value="DELETE">
